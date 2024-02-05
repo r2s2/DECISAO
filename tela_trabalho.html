@@ -1,0 +1,185 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js"></script>    
+         
+    
+   
+   
+</head>
+<body>
+
+    
+    <header>
+    
+
+    <h1>Rodrigo Sacramento</h1>    
+
+
+    </header>
+<section class="texto">
+    <div class = "texto_base_relatório">
+
+<p> Trata-se de <span id = "classe">[valor]</span> <span id = "se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
+<p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela prática, em tese, <span id="dosDelitos"> do delito</span> de<span id = "DELITO"></span> <span id='virgulaOuE'></span> <span id='ultimoDelito'></span> por haver </span> <span id='fatos'></span>.</p>
+<p>O Tribunal de origem denegou a ordem. </p>
+
+<p><span id = 'teste'></span></p>
+
+<p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+<p><span id="tesesSelecionadas"><span id= 'folhasSTJ'></span></span> </p>
+
+<p>Requer<span id="pedidoLiminar"></span> a expedição de alvará de soltura. <span id="pedidoPrincipal1"></span> </p>
+<p> <span id = "se_liminar2"> </span>  </p>
+<p><span id="informacoes"></span></p>
+<p> <span id="parecerMinisterial"></span><span id="parecerClasse"></span></p>
+<p>É o relatório.</p>
+<p></p>
+<p ><b>Decido.</b> </p>
+</div>
+
+</section>
+
+    
+    <form  name="formulario"   method="GET" onclick= "check()" id="formulario">
+      
+           
+   
+     <section >
+        <input type="reset" value = "Reiniciar" onclick="zerarTudo()">
+           <p> <u>CLASSE</u> </p>
+                <input type="radio" name="classe_processual" id = 'HC' value="hc" checked>
+                <label for="HC"> HC</label>
+                <input type="radio" name="classe_processual" id = 'RHC' value ='rhc'>
+                <label for="RHC"> RHC</label> <br>
+                <input type="radio" name="classe_processual" id = 'RESP' value ='resp'>
+                <label for="RESP"> REsp</label>
+                <input type="radio" name="classe_processual" id = 'ARESP' value ='aresp'>
+                <label for="ARESP"> AREsp</label>
+                
+            <p> <u>FASE</u> </p>
+               
+                <input type="radio" name="fase" id = 'analise_liminar'  value="Analise_liminar" onclick="selecionaFase('liminarComLiminar')" required checked> 
+                <label for="analise_liminar"> Liminar</label>
+                <input type="radio"  name="fase" id = 'analise_merito' value="Analise_merito" onclick="selecionaFase('meritoComLiminar')">
+                <label for="analise_merito" > Mérito</label>
+                <input type="radio"  name="fase" id = 'sem_liminar'  value="Sem_liminar" onclick="selecionaFase('semLiminar')">
+                <label for="sem_liminar" > Sem liminar</label>
+                
+        
+                <p> <u>DELITOS</u>  </p>
+                
+                <input type="checkbox" id = 'trafico' name="delito" value = 'trafico' onclick= "criarElementoDelito(id)">
+                <label for="trafico"> Tráfico</label>      
+                
+                
+                <input type="checkbox" id = 'assocTrafico'  name="delito" value="Associação para o Tráfico" onclick= "criarElementoDelito(id)">
+                <label for="assocTrafico"> Associação para o Tráfico</label> <br>
+                <input type="checkbox"  id = 'roubo'  name="delito" value="Roubo" onclick= "criarElementoDelito(id)">
+                <label for="roubo"> Roubo</label>
+                <input type="checkbox" id = 'homicidio'  name="delito" value="Homicídio" onclick= "criarElementoDelito(id)">
+                <label for="homicidio"> Homicídio</label><br>
+                <input type="checkbox" id = 'estuproVuln'  name="delito" value="estupro de vulneravel" onclick= "criarElementoDelito(id)">
+                <label for="estuproVuln"> Estupro de vulnerável</label>
+                <input type="checkbox" id = 'furto'  name="delito" value="Furto" onclick= "criarElementoDelito(id)">
+                <label for="furto"> Furto</label><br>
+                <input type="checkbox" id = 'orcrim'  name="delito" value="Organização Criminosa" onclick= "criarElementoDelito(id)">
+                <label for="orcrim"> Organização Criminosa</label><br>
+
+
+
+             <p><u>FATOS </u> </p>
+             <textarea id="caixatexto_base_relatório" oninput="fatosIncluidos()" rows='8' cols="40" placeholder="Descreva a situação fática" ></textarea>         
+
+
+
+
+            <p><u>TESES </u> </p>
+            <input type="checkbox" id = 'requisitos' name="tese" value="Fundamentos"  onclick="selecionaTese(id)">
+            <label for="requisitos"> Fundamentos da Prisão    </label>
+            <input type="checkbox"  id = 'prazoInstrucao'  name="tese" value="Prazo" onclick="selecionaTese(id)">
+            <label for="prazoInstrucao"> Instrução - Prazo    </label> <br>
+            <input type="checkbox" id = 'prazoApelacao' name="tese" value="prazoApelacao"  onclick="selecionaTese(id)">
+            <label for="prazoApelacao"> Apelação - Prazo    </label><br>
+            <input type="checkbox"  id = 'contemporaneidade'  name="tese" value="contemporaneidade" onclick="selecionaTese(id)">
+            <label for="contemporaneidade"> Ausência de Contemporaneidade    </label><br>
+            <input type="checkbox" id = 'domiciliarMae'   name="tese" value="Domiciliar" onclick="selecionaTese(id)">
+            <label for="domiciliarMae"> Domiciliar Mãe    </label><br>
+            <input type="checkbox" id = 'domiciliarCovid'   name="tese" value="domiciliarCovid" onclick="selecionaTese(id)">
+            <label for="domiciliarCovid"> Domiciliar COVID    </label><br>
+            <input type="checkbox"  id = 'desproporcionalidade'  name="tese" value="desproporcionalidade"  onclick="selecionaTese(id)">
+            <label for="desproporcionalidade"> Desproporcionalidade    </label><br>
+            <input type="checkbox" id = 'oficio'   name="tese" value="oficio"  onclick="selecionaTese(id)">
+            <label for="oficio"> Decretação de Ofício    </label><br>
+            <input type="checkbox" id = 'revisao'   name="tese" value="revisao" onclick="selecionaTese(id)">
+            <label for="revisao"> Revisão a cada 90 dias    </label><br>
+            <input type="checkbox" id = 'condicoes'   name="tese" value="Condições"  onclick="selecionaTese(id)">
+            <label for="condicoes"> Condições Pessoais Favoráveis    </label><br>
+            <input type="checkbox"  id = 'cautelares'  name="tese" value="Cautelares"  onclick="selecionaTese(id)">
+            <label for="cautelares"> Cautelares Diversas    </label><br>
+            
+            <p><u>PEDIDOS </u> </p>
+            <input type="checkbox" id = 'revoga' name="pedidos" value="revoga"  >  <label for="revoga">Soltura</label>
+            <input type="checkbox" id = 'substituir' name="pedidos" value="substituir"  onclick="selecionaPedido(id)">  <label for="substituir">Substituir por Cautelares</label>
+            
+
+                
+                
+
+           
+            <p>
+                <u>LIMINAR</u>
+            </p>
+           
+                <input type="radio" id = 'deferida' name="liminar" value="deferida" required onclick="selecionaLiminar('deferida')">
+                <label for="deferida"> Deferida</label>
+                <input type="radio"  id = 'indeferida' name="liminar" value="indeferida" checked onclick="selecionaLiminar('indeferida')"> 
+                <label for="indeferida" > Indeferida</label><br>
+                <input type="radio"  id = 'semLiminar' name="liminar" value="Sem liminar" onclick="selecionaLiminar('semPedido')">
+                <label for="semLiminar" > Sem liminar</label><br>
+           
+            <p>
+                <u>PARECER DO MP</u>
+            </p>
+            
+                <input type="radio" id="naoConhecimento" name="MP" value="naoConhecer" onclick="selecionaParecer('naoConhecimento')">
+                <label for="naoConhecimento"> Não conhecimento</label><br>
+                <input type="radio" id="concessao" name="MP" value="conceder" onclick="selecionaParecer('concessao')">
+                <label for="concessao"> Concessão</label>
+                <input type="radio" id="denegacao" name="MP" value="denegar" onclick="selecionaParecer('denegacao')">
+                <label for="denegacao"> Denegação</label><br>
+                <input type="radio" id="provimento" name="MP" value="prover" onclick="selecionaParecer('provimento')">
+                <label for="provimento"> Provimento </label>
+                <input type="radio" id="desprovimento" name="MP" value="desprover" onclick="selecionaParecer('desprovimento')">
+                <label for="desprovimento"> Desprovimento </label><br>
+
+                
+           
+
+       <br><br>
+
+       <button onclick="copyBlueClassToClipboard()">Copiar texto</button>
+
+
+    </section>
+    </form>
+    
+    <footer> 
+       
+                
+        
+        <p>&copy; Rodrigo Sacramento</p>  </footer>
+    </div>
+
+       
+  
+</body>
+</html>
