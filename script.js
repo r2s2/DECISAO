@@ -102,42 +102,90 @@ function criarElementoDelito(id) {
 }
 
 
+// Variável global para rastrear o índice do marcador de letras
+var letterIndex = 0;
 
-var teses = {
-  requisitos: "Ausência de fundamentos idôneos para a decretação e manutenção da prisão preventiva.",
-  prazoInstrucao: 'Estar configurado constrangimento ilegal por excesso de prazo da prisão preventiva por não haver previsão para o encerramento da instrução criminal.',
-  prazoApelacao: 'Estar configurado excesso de prazo da prisão pela demora no julgamento da apelação.',
-  cautelares: 'Ser desproporcional a custódia  antecipada, sendo recomendável sua substituição por medidas cautelares diversas previstas no art. 319 do Código de Processo Penal.',
-  condicoes: 'Assere que as condições pessoais favoráveis militam contra a segregação cautelar.',
-  contemporaneidade: 'Não haver contemporaneidade entre a data dos fatos narrados e a decretação da custódia.',
-  desproporcionalidade: 'Ser desproporcional a prisão, uma vez que uma futura condenação importaria em fixação de regime de cumprimento de pena menos gravoso do que a cautela máxima.',
-  oficio: 'Ser ilegal a decretação de prisão preventiva de ofício, sem manifestação nesse sentido das autoridades competentes.',
-  revisao: 'Não ter havido a revisão obrigatória da necessidade da custódia em 90 dias, como prevê a norma regente.',
-  domiciliarMae: 'Fazer jus a agente à prisão domiciliar em razão de ser mãe de criançamenor de 12 anos.',
-  domiciliarCovid: 'Fazer jus à prisão domiciliar em razão contexto de pandemia de COVID.'
+// Variável global para rastrear se o evento de clique já foi adicionado
+var clickEventAdded = false;
 
-} 
-function selecionaTese(id) {
-  var index = contadorTeses.indexOf(id);
-  if (index !== -1) {
-    // Se o id já está no contadorTeses, remova-o
-    contadorTeses.splice(index, 1);
+function searchTese() {
+  var input, filter, results, i, tese, tags, count = 0;
+  input = document.getElementById('search');
+  input.setAttribute('autocomplete', 'off');
 
-    // Remova o elemento correspondente do DOM
-    var element = document.getElementById(id);
-    element.parentNode.removeChild(element);
-  } else {
-    // Se o id não está no contadorTeses, adicione-o
-    contadorTeses.push(id);
+  filter = input.value.toUpperCase();
+  results = document.getElementById('searchResults');
+  results.innerHTML = '';
 
-    // Crie um novo elemento no DOM
-    var node = document.createElement("p");
-    node.id = id;  // Adicione um id ao elemento para que possamos removê-lo mais tarde
-    var textnode = document.createTextNode(teses[id]);
-    node.appendChild(textnode);
-    document.getElementById("tesesSelecionadas").appendChild(node);
+  fetch('teses.json')
+    .then(response => response.json())
+    .then(data => {
+      for(i = 0; i < data.teses.length; i++) {
+        tese = data.teses[i];
+        tags = tese.tags || '';
+        if(tese.tese.toUpperCase().indexOf(filter) > -1 || tags.toUpperCase().indexOf(filter) > -1 || tese.id.toString() === input.value) {
+          var option = document.createElement('option');
+          option.value = tese.tese;
+          option.text = tese.id + " - " + tese.tese; // Inclui o id da tese no texto
+          results.appendChild(option);
+          count++;
+        }
+      }
+      results.size = results.length; // Define o tamanho do select para o número de opções
+    });
+
+  
+  // Adiciona o evento de clique apenas se ele ainda não foi adicionado
+  // Adiciona o evento de clique apenas se ele ainda não foi adicionado
+  if (!clickEventAdded) {
+    results.addEventListener('click', function(event) {
+      if (event.target.tagName === 'OPTION') {
+        var selectedTeseText = event.target.value;
+        
+        var selectedTese = document.getElementById('tesesSelecionadas');
+        var teseEnfrentar = document.getElementById('teseEnfrentar'); // Novo elemento
+        
+        // Verifica se a tese já foi adicionada
+        var alreadyAdded = Array.from(selectedTese.getElementsByTagName('p')).some(p => p.textContent.slice(3) === selectedTeseText);
+        if (alreadyAdded) {
+          alert('Esta tese já foi adicionada.');
+          return;
+        }
+        
+        // Cria um novo parágrafo para a tese selecionada
+        var p = document.createElement('p');
+        // Adiciona o marcador de letras correspondente
+        p.textContent = String.fromCharCode(97 + letterIndex) + ") " + selectedTeseText;
+        selectedTese.appendChild(p);
+        
+        // Duplica o código para adicionar a tese ao elemento teseEnfrentar
+        var p2 = document.createElement('p');
+        p2.textContent = String.fromCharCode(97 + letterIndex) + ") " + selectedTeseText;
+        teseEnfrentar.appendChild(p2); // Adiciona ao novo elemento
+        
+        // Atualiza o índice do marcador de letras
+        letterIndex++;
+
+        // Remove a tese selecionada dos resultados
+        event.target.remove();
+        
+        // Fecha o select de resultados
+        results.size = 0;
+
+        // Limpa o campo de busca
+        input.value = '';
+
+        // Remove todas as teses dos resultados
+        results.innerHTML = '';
+      }
+    });
+
+    // Marca que o evento de clique foi adicionado
+    clickEventAdded = true;
   }
 }
+
+
 var pedidos = {  
   substituir: 'Subsidiariamente, pleiteia a substituição da prisão preventiva por medidas cautelares diversas.'
 }
@@ -208,21 +256,9 @@ function check() {
     REsp.selecionadoClasse();
   } else if (document.getElementById('ARESP').checked) {
     AREsp.selecionadoClasse();
-  } 
+  }   
 
 
-
-
-   
-
-
-   // document.getElementById('teste5').innerHTML = teses['cautelares']
-    /*if da escolha da classe*/
-  /*
-   if (document.getElementById('HC').checked){
-      HC.selecionadoClasse()} else if (document.getElementById('RHC').checked){ RHC.selecionadoClasse()
-  } */
-    
     //if da escolha da fase
   if (document.getElementById('analise_liminar').checked){
         document.getElementById("se_liminar").innerHTML = "com pedido liminar";
@@ -233,24 +269,35 @@ function check() {
         
   } else if (document.getElementById('sem_liminar').checked) {
           document.getElementById('se_liminar').innerHTML = "";
-          document.getElementById('se_liminar2').innerHTML = "NÃ£o houve pedido liminar."}
+          document.getElementById('se_liminar2').innerHTML = "NÃo houve pedido liminar."}
 
       
 }
 
-  
-// InclusÃ£o do texto dos fatos
-function fatosIncluidos() {
-  var x = document.getElementById("caixaTexto").value;
-  document.getElementById("fatos").innerHTML = x;
-}
+  function fatosIncluidos() {
+    // Pega o textarea e o elemento 'fatos'
+    var textarea = document.getElementById('caixatexto_base_relatório');
+    var fatos = document.getElementById('fatos');
 
-async function copyBlueClassToClipboard() {
-  let element = document.getElementsByClassName('texto_base_relatório')[0];
-  let textToCopy = element.innerText;
+    // Atualiza o conteúdo de 'fatos' com o valor do textarea
+    if (textarea && fatos) {
+      fatos.innerHTML = textarea.value;
+    }
+  }
+
+
+
+async function copyFormattedTextToClipboard() {
+  let element = document.getElementsByClassName('texto')[0];
+  let styledHtml = `<p style="font-family: Arial, Helvetica, sans-serif; margin-bottom: 7.1pt; text-indent: 2cm;">${element.innerHTML}</p>`;
+  let textToCopy = new Blob([styledHtml], {type: 'text/html'});
   try {
-    await navigator.clipboard.writeText(textToCopy);
-    alert('Texto copiado para a área de transferência');
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        'text/html': textToCopy
+      })
+    ]);
+    alert('Texto formatado copiado para a área de transferência');
   } catch (err) {
     console.error('Erro ao copiar texto: ', err);
   }

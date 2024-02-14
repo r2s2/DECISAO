@@ -7,9 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário</title>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 
-    <script src="script.js"></script>    
+    <script src="script.js"></script>
+   
     
    
    
@@ -24,11 +26,9 @@
 <section class="texto">
     <div class = "texto_base_relatório">
 
-<p> Trata-se de <span id = "classe">[valor]</span> <span id = "se_liminar">[valor]</span> <span id="VERBO">[valor]</span> <span class="parteAutora">[valor]</span> apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
+<p> Trata-se de <span id = "classe"></span> <span id = "se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
 <p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela prática, em tese, <span id="dosDelitos"> do delito</span> de<span id = "DELITO"></span> <span id='virgulaOuE'></span> <span id='ultimoDelito'></span> por haver </span> <span id='fatos'></span>.</p>
 <p>O Tribunal de origem denegou a ordem. </p>
-
-<p><span id = 'teste'></span></p>
 
 <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
 <p><span id="tesesSelecionadas"><span id= 'folhasSTJ'></span></span> </p>
@@ -40,7 +40,12 @@
 <p>É o relatório.</p>
 <p></p>
 <p ><b>Decido.</b> </p>
+
+<p>  <span id="teseEnfrentar"></span></p>
 </div>
+
+
+
 
 </section>
 
@@ -99,38 +104,21 @@
 
 
             <p><u>TESES </u> </p>
-            <input type="checkbox" id = 'requisitos' name="tese" value="Fundamentos"  onclick="selecionaTese(id)">
-            <label for="requisitos"> Fundamentos da Prisão    </label>
-            <input type="checkbox"  id = 'prazoInstrucao'  name="tese" value="Prazo" onclick="selecionaTese(id)">
-            <label for="prazoInstrucao"> Instrução - Prazo    </label> <br>
-            <input type="checkbox" id = 'prazoApelacao' name="tese" value="prazoApelacao"  onclick="selecionaTese(id)">
-            <label for="prazoApelacao"> Apelação - Prazo    </label><br>
-            <input type="checkbox"  id = 'contemporaneidade'  name="tese" value="contemporaneidade" onclick="selecionaTese(id)">
-            <label for="contemporaneidade"> Ausência de Contemporaneidade    </label><br>
-            <input type="checkbox" id = 'domiciliarMae'   name="tese" value="Domiciliar" onclick="selecionaTese(id)">
-            <label for="domiciliarMae"> Domiciliar Mãe    </label><br>
-            <input type="checkbox" id = 'domiciliarCovid'   name="tese" value="domiciliarCovid" onclick="selecionaTese(id)">
-            <label for="domiciliarCovid"> Domiciliar COVID    </label><br>
-            <input type="checkbox"  id = 'desproporcionalidade'  name="tese" value="desproporcionalidade"  onclick="selecionaTese(id)">
-            <label for="desproporcionalidade"> Desproporcionalidade    </label><br>
-            <input type="checkbox" id = 'oficio'   name="tese" value="oficio"  onclick="selecionaTese(id)">
-            <label for="oficio"> Decretação de Ofício    </label><br>
-            <input type="checkbox" id = 'revisao'   name="tese" value="revisao" onclick="selecionaTese(id)">
-            <label for="revisao"> Revisão a cada 90 dias    </label><br>
-            <input type="checkbox" id = 'condicoes'   name="tese" value="Condições"  onclick="selecionaTese(id)">
-            <label for="condicoes"> Condições Pessoais Favoráveis    </label><br>
-            <input type="checkbox"  id = 'cautelares'  name="tese" value="Cautelares"  onclick="selecionaTese(id)">
-            <label for="cautelares"> Cautelares Diversas    </label><br>
+
+            <div class="teses-api">
+                <input type="text" id="search" onkeyup="searchTese()"  placeholder="Buscar tese...">
+                <select id="searchResults" style="font-family: Arial; font-size: 10px;"></select>
+            </div>
             
+
+            
+            <br>
             <p><u>PEDIDOS </u> </p>
             <input type="checkbox" id = 'revoga' name="pedidos" value="revoga"  >  <label for="revoga">Soltura</label>
             <input type="checkbox" id = 'substituir' name="pedidos" value="substituir"  onclick="selecionaPedido(id)">  <label for="substituir">Substituir por Cautelares</label>
-            
+                           
 
-                
-                
-
-           
+           <br>
             <p>
                 <u>LIMINAR</u>
             </p>
@@ -138,7 +126,7 @@
                 <input type="radio" id = 'deferida' name="liminar" value="deferida" required onclick="selecionaLiminar('deferida')">
                 <label for="deferida"> Deferida</label>
                 <input type="radio"  id = 'indeferida' name="liminar" value="indeferida" checked onclick="selecionaLiminar('indeferida')"> 
-                <label for="indeferida" > Indeferida</label><br>
+                <label for="indeferida" > Indeferida</label>
                 <input type="radio"  id = 'semLiminar' name="liminar" value="Sem liminar" onclick="selecionaLiminar('semPedido')">
                 <label for="semLiminar" > Sem liminar</label><br>
            
@@ -162,7 +150,7 @@
 
        <br><br>
 
-       <button onclick="copyBlueClassToClipboard()">Copiar texto</button>
+       <button onclick="copyFormattedTextToClipboard()">Copiar texto</button>
 
 
     </section>

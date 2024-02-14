@@ -1,6 +1,7 @@
-body{
+body {
     background: rgb(107, 107, 241);
-  
+    line-height: 1.5; /* Espaçamento entre linhas */
+
 }
 
 form {
@@ -8,25 +9,50 @@ form {
     width: 45%;
 }
 
-.texto {
+p {
+    font-family: Arial;
+    margin-bottom: 7.1pt; /* Espaçamento entre parágrafos */
+    text-indent: 2cm; /* Recuo da primeira linha do parágrafo */
     
+    line-height: 18pt;
+}
+
+.texto_base_relatorio {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    margin-bottom: 7.1pt; /* Espaçamento entre parágrafos */
+    text-indent: 2cm; /* Recuo da primeira linha do parágrafo */
+    line-height: 1.5; /* Espaçamento entre linhas */
+
+
+}
+.texto {
 
     background-color: aquamarine;
     position: absolute;
     width: 45%;
     top: 0;
-    right: 0;    
-    height:100%;   
+    right: 0;
+    height: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16pt;    
+    font-size: 12pt;
     margin-bottom: 10px;
     margin-top: 100px;
     padding: 20px;
-    margin-left: 50%; 
+    margin-left: 50%;
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.493);
-    
-    
+    text-align: justify;
+
+
+}
+
+p #teseEnfrentar {
+    font-weight: bold;
+    text-decoration: underline;
+    font: normal 10pt Arial;
+    text-transform: uppercase;
 }
 
 header {
@@ -34,8 +60,9 @@ header {
     text-align: center;
     padding: 10px;
 
-  
+
 }
+
 span {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(241, 228, 107);
@@ -47,7 +74,7 @@ section {
     top: 0;
     width: 100%;
     height: 100%;
-    border-radius: 5px;    
+    border-radius: 5px;
     z-index: 1;
     overflow-x: hidden;
     padding: 10px;
@@ -59,35 +86,29 @@ section {
     padding: 10px;
 
 
-    }
-
-footer {
-color: white;
-text-align: center;
-font-style: italic;
 }
 
-p {
-    color: black;
-    text-align: justify;
-    font: normal 12pt Arial; 
-   
-    }
+footer {
+    color: white;
+    text-align: center;
+    font-style: italic;
+}
+
+
 
 #folhas1 {
     width: 1%;
-    
+
 }
+
 #folhas2 {
     width: 5%;
-    
+
 }
+
 #eSTJfls {
     width: 10%;
     text-align: right;
 }
-
-/* classe painel */
-
 
 
