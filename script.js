@@ -136,7 +136,6 @@ function searchTese() {
 
   
   // Adiciona o evento de clique apenas se ele ainda não foi adicionado
-  // Adiciona o evento de clique apenas se ele ainda não foi adicionado
   if (!clickEventAdded) {
     results.addEventListener('click', function(event) {
       if (event.target.tagName === 'OPTION') {
@@ -160,7 +159,7 @@ function searchTese() {
         
         // Duplica o código para adicionar a tese ao elemento teseEnfrentar
         var p2 = document.createElement('p');
-        p2.textContent = String.fromCharCode(97 + letterIndex) + ") " + selectedTeseText;
+        p2.textContent = String.fromCharCode(97 + letterIndex).toLocaleLowerCase() + ") " + selectedTeseText;
         teseEnfrentar.appendChild(p2); // Adiciona ao novo elemento
         
         // Atualiza o índice do marcador de letras
@@ -276,7 +275,7 @@ function check() {
 
   function fatosIncluidos() {
     // Pega o textarea e o elemento 'fatos'
-    var textarea = document.getElementById('caixatexto_base_relatório');
+    var textarea = document.getElementById('caixatexto_base_relatorio');
     var fatos = document.getElementById('fatos');
 
     // Atualiza o conteúdo de 'fatos' com o valor do textarea
@@ -288,7 +287,7 @@ function check() {
 
 
 async function copyFormattedTextToClipboard() {
-  let element = document.getElementsByClassName('texto')[0];
+  let element = document.getElementsByClassName('texto_base_relatorio')[0];
   let styledHtml = `<p style="font-family: Arial, Helvetica, sans-serif; margin-bottom: 7.1pt; text-indent: 2cm;">${element.innerHTML}</p>`;
   let textToCopy = new Blob([styledHtml], {type: 'text/html'});
   try {
@@ -297,8 +296,10 @@ async function copyFormattedTextToClipboard() {
         'text/html': textToCopy
       })
     ]);
-    alert('Texto formatado copiado para a área de transferência');
+    alert('Texto não formatado copiado para a área de transferência');
   } catch (err) {
     console.error('Erro ao copiar texto: ', err);
   }
 }
+
+
