@@ -301,7 +301,6 @@ async function copyFormattedTextToClipboard() {
     console.error('Erro ao copiar texto: ', err);
   }
 }
-
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
@@ -329,10 +328,8 @@ http.createServer(function (req, res) {
         var id = json.teses.length + 1;
         json.teses.push({ id, grupo, tese, tags });
 
-        fs.writeFile('teses.json', JSON.stringify(json), (err) => {
-          if (err) throw err;
-          console.log('Tese adicionada com sucesso!');
-        });
+        fs.writeFileSync('teses.json', JSON.stringify(json));
+        console.log('Tese adicionada com sucesso!');
       });
 
       res.writeHead(302, {'Location': 'adiciona_teses.html'});
@@ -341,24 +338,42 @@ http.createServer(function (req, res) {
   } else {
     // Default to 'adiciona_teses.html' if the path is '/'
     if (pathname === '/') {
-      pathname = '/adiciona_teses.html';
+      pathname = '/tela_trabalho.html';
     }
 
     // Determine the file to serve
     const filePath = path.join(__dirname, pathname);
+    const ext = path.extname(filePath).toLowerCase();
+
+    // Set the Content-Type based on the file extension
+    let contentType;
+    switch (ext) {
+      case '.html':
+        contentType = 'text/html';
+        break;
+      case '.css':
+        contentType = 'text/css';
+        break;
+      case '.js':
+        contentType = 'text/javascript';
+        break;
+      // Add more cases for other file types if needed
+      default:
+        contentType = 'text/plain';
+    }
 
     fs.readFile(filePath, function(err, data) {
       if (err) {
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.end('Erro ao ler o arquivo ' + filePath);
       } else {
-        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.writeHead(200, {'Content-Type': contentType});
         res.end(data);
       }
     });
   }
 
-   if (requestUrl.pathname === '/excluir_tese' && req.method === 'POST') {
+  if (requestUrl.pathname === '/excluir_tese' && req.method === 'POST') {
     let body = '';
     req.on('data', chunk => {
       body += chunk.toString();
@@ -372,16 +387,11 @@ http.createServer(function (req, res) {
         let json = JSON.parse(fileData);
         json.teses = json.teses.filter(tese => tese.id !== id);
 
-        fs.writeFile('teses.json', JSON.stringify(json), (err) => {
-          if (err) throw err;
-          console.log('Tese excluída com sucesso!');
-          res.end('Tese excluída com sucesso!');
-        });
+        fs.writeFileSync('teses.json', JSON.stringify(json));
+        console.log('Tese excluída com sucesso!');
+        res.end('Tese excluída com sucesso!');
       });
     });
   } 
-
-
-
 
 }).listen(8082);
