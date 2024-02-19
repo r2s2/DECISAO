@@ -111,4 +111,14 @@ footer {
     text-align: right;
 }
 
+#esquerda {
+    float: left;
+    width: 45%;
+    text-align: left;
+}
 
+#direita {
+    float: right;
+    width: 45%;
+    text-align: right;
+}

@@ -302,4 +302,86 @@ async function copyFormattedTextToClipboard() {
   }
 }
 
+const http = require('http');
+const fs = require('fs');
+const url = require('url');
+const path = require('path');
+const querystring = require('querystring');
 
+http.createServer(function (req, res) {
+  const requestUrl = url.parse(req.url);
+  let pathname = requestUrl.pathname;
+
+  if (req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+    req.on('end', () => {
+      const data = querystring.parse(body);
+      const tese = data.tese;
+      const tags = data.tags;
+      const grupo = data.grupo;
+
+      fs.readFile('teses.json', (err, fileData) => {
+        if (err) throw err;
+        let json = JSON.parse(fileData);
+        var id = json.teses.length + 1;
+        json.teses.push({ id, grupo, tese, tags });
+
+        fs.writeFile('teses.json', JSON.stringify(json), (err) => {
+          if (err) throw err;
+          console.log('Tese adicionada com sucesso!');
+        });
+      });
+
+      res.writeHead(302, {'Location': 'adiciona_teses.html'});
+      res.end('Tese adicionada com sucesso!');
+    });
+  } else {
+    // Default to 'adiciona_teses.html' if the path is '/'
+    if (pathname === '/') {
+      pathname = '/adiciona_teses.html';
+    }
+
+    // Determine the file to serve
+    const filePath = path.join(__dirname, pathname);
+
+    fs.readFile(filePath, function(err, data) {
+      if (err) {
+        res.writeHead(500, {'Content-Type': 'text/plain'});
+        res.end('Erro ao ler o arquivo ' + filePath);
+      } else {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end(data);
+      }
+    });
+  }
+
+   if (requestUrl.pathname === '/excluir_tese' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+    req.on('end', () => {
+      const data = querystring.parse(body);
+      const id = parseInt(data.id);
+
+      fs.readFile('teses.json', (err, fileData) => {
+        if (err) throw err;
+        let json = JSON.parse(fileData);
+        json.teses = json.teses.filter(tese => tese.id !== id);
+
+        fs.writeFile('teses.json', JSON.stringify(json), (err) => {
+          if (err) throw err;
+          console.log('Tese excluída com sucesso!');
+          res.end('Tese excluída com sucesso!');
+        });
+      });
+    });
+  } 
+
+
+
+
+}).listen(8082);

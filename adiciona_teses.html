@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Teses</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="script.js"></script>
+
+
+
+
+
+</head>
+
+<header>
+    <a href="/remove_teses.html">Ir para Remove Teses</a>
+
+</header>
+
+    <body>
+
+      <section id="esquerda">
+        <h1>Adicionar Teses</h1>
+
+
+        <form method="POST">
+
+            <div>
+                Grupo <br>
+    
+                <input type="radio" name="grupo" value="prisao" id="prisao"  checked>
+                <label for="prisao">Prisão</label>
+    
+                <input type="radio" name="grupo" value="trancamento" id="trancamento">
+                <label for="trancamento">Trancamento</label>
+    
+                <input type="radio" name="grupo" value="nulidade" id="nulidade">
+                <label for="nulidade">Nulidade</label>
+    
+                <input type="radio" name="grupo" value="execucao" id="execucao">
+                <label for="execucao">Execução</label>
+
+                <input type="radio" name="grupo" value="dosimetria" id="dosimetria">
+                <label for="dosimetria">Dosimetria</label>              
+                
+    
+    <br>
+            </div>
+    
+            <div>
+                Tese <br>
+
+                <textarea id="caixaTese" name="tese" rows='8' cols="60" placeholder="Descreva a tese" ></textarea>  
+
+
+                <br>
+            </div>
+    
+            <div>
+                <br>
+                Tags
+                <br>
+
+                <textarea id="caixaTags" name = "tags" rows='8' cols="60" placeholder="Escreva o máximo de tags relevantes, como minorante, redutora, privilegiado, tráfico, §, 4º, fração, terço, terços etc" ></textarea>  
+            </div>
+
+            <br>
+
+    
+            <!-- Seus campos de entrada vão aqui -->
+            <input type="submit" value="Adicionar tese">
+            
+        </form>
+
+    </section>
+
+    <section id="direita">
+
+        <h1>Lista de Teses</h1>
+
+        <div id="listaTeses">
+            <!-- Aqui vai a lista de teses buscada do arquivo teses.json apresentada com cabeçalho id, grupo, tese, tags, e nas linhas os respectivos elementos do arquivo, com botão para selecionar e excluir -->
+
+       
+
+       
+        </div>
+
+    </section>
+
+  
+
+
+
+       
+        
+
+    </body>
+
+    <footer>
+
+    </footer>
+
+</html>
