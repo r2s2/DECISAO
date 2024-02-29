@@ -13,7 +13,7 @@ class Classe {
     document.getElementById('classe2').innerHTML = this.sinonimo;
     document.getElementById('reu').innerHTML = this.agente;
     document.getElementById('VERBO').innerHTML = this.verbo;
-    document.getElementById('sinonimo').innerHTML = this.sinonimo;
+    
     }
 }
 
@@ -26,7 +26,7 @@ var AREsp = new Classe("agravo em recurso especial", "interposto", "recorrente",
 
 var contadorDelito = []
 var contadorPedidos = []
-contadorTeses = []
+var contadorTeses = []
 
 function digitaFls() {
 
@@ -123,7 +123,7 @@ function searchTese() {
       for(i = 0; i < data.teses.length; i++) {
         tese = data.teses[i];
         tags = tese.tags || '';
-        if(tese.tese.toUpperCase().indexOf(filter) > -1 || tags.toUpperCase().indexOf(filter) > -1 || tese.id.toString() === input.value) {
+        if((tese.tese && tese.tese.toUpperCase().indexOf(filter) > -1) || (tags && tags.toUpperCase().indexOf(filter) > -1) || tese.id.toString() === input.value) {
           var option = document.createElement('option');
           option.value = tese.tese;
           option.text = tese.id + " - " + tese.tese; // Inclui o id da tese no texto
@@ -224,7 +224,7 @@ var parecer = {
 }
 function selecionaParecer(argumento1){ 
   
-    document.getElementById('parecerMinisterial').innerHTML = 'O MinistÃ©rio PÃºblico Federal manifestou-se '
+    document.getElementById('parecerMinisterial').innerHTML = 'O Ministério Público Federal manifestou-se '
     document.getElementById('parecerClasse').innerHTML = parecer[argumento1]
 
 }
@@ -262,13 +262,13 @@ function check() {
   if (document.getElementById('analise_liminar').checked){
         document.getElementById("se_liminar").innerHTML = "com pedido liminar";
         document.getElementById('se_liminar2').innerHTML = "";
-        document.getElementById('pedidoLiminar').innerHTML = ', liminarmente e no mÃ©rito,'
+        document.getElementById('pedidoLiminar').innerHTML = ', liminarmente e no mérito,'
   } else if (document.getElementById('analise_merito').checked) {
         document.getElementById('se_liminar').innerHTML = "";
         
   } else if (document.getElementById('sem_liminar').checked) {
           document.getElementById('se_liminar').innerHTML = "";
-          document.getElementById('se_liminar2').innerHTML = "NÃo houve pedido liminar."}
+          document.getElementById('se_liminar2').innerHTML = "Não houve pedido liminar."}
 
       
 }
@@ -328,10 +328,8 @@ http.createServer(function (req, res) {
         var id = json.teses.length + 1;
         json.teses.push({ id, grupo, tese, tags });
 
-        fs.writeFile('teses.json', JSON.stringify(json), (err) => {
-          if (err) throw err;
-          console.log('Tese adicionada com sucesso!');
-        });
+        fs.writeFileSync('teses.json', JSON.stringify(json));
+        console.log('Tese adicionada com sucesso!');
       });
 
       res.writeHead(302, {'Location': 'adiciona_teses.html'});
@@ -340,24 +338,42 @@ http.createServer(function (req, res) {
   } else {
     // Default to 'adiciona_teses.html' if the path is '/'
     if (pathname === '/') {
-      pathname = '/adiciona_teses.html';
+      pathname = '/tela_trabalho.html';
     }
 
     // Determine the file to serve
     const filePath = path.join(__dirname, pathname);
+    const ext = path.extname(filePath).toLowerCase();
+
+    // Set the Content-Type based on the file extension
+    let contentType;
+    switch (ext) {
+      case '.html':
+        contentType = 'text/html';
+        break;
+      case '.css':
+        contentType = 'text/css';
+        break;
+      case '.js':
+        contentType = 'text/javascript';
+        break;
+      // Add more cases for other file types if needed
+      default:
+        contentType = 'text/plain';
+    }
 
     fs.readFile(filePath, function(err, data) {
       if (err) {
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.end('Erro ao ler o arquivo ' + filePath);
       } else {
-        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.writeHead(200, {'Content-Type': contentType});
         res.end(data);
       }
     });
   }
 
-   if (requestUrl.pathname === '/excluir_tese' && req.method === 'POST') {
+  if (requestUrl.pathname === '/excluir_tese' && req.method === 'POST') {
     let body = '';
     req.on('data', chunk => {
       body += chunk.toString();
@@ -371,16 +387,11 @@ http.createServer(function (req, res) {
         let json = JSON.parse(fileData);
         json.teses = json.teses.filter(tese => tese.id !== id);
 
-        fs.writeFile('teses.json', JSON.stringify(json), (err) => {
-          if (err) throw err;
-          console.log('Tese excluída com sucesso!');
-          res.end('Tese excluída com sucesso!');
-        });
+        fs.writeFileSync('teses.json', JSON.stringify(json));
+        console.log('Tese excluída com sucesso!');
+        res.end('Tese excluída com sucesso!');
       });
     });
   } 
-
-
-
 
 }).listen(8082);
