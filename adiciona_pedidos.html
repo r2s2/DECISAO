@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Pedidos</title> <!-- Atualize o título aqui -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="scriptPedidos.js"></script>
+</head>
+
+<header>
+    <a href="/tela_trabalho.html">Ir para tela de trabalho</a>
+    <br> <br>
+    <a href="/remove_pedidos.html">Ir para Remove Pedidos</a> <!-- Atualize o link aqui -->
+</header>
+
+<body>
+  <section id="centro">
+    <h1>Adicionar pedidos</h1>
+    <form method="POST">
+        <div>
+            Pedido <br>
+            <textarea id="caixaPedido" name="pedido" rows='8' cols="60" placeholder="Descreva o pedido" ></textarea>  
+            <br>
+        </div>
+        <div>
+            <br>
+            Tags
+            <br>
+            <textarea id="caixaTagsPedidos" name = "tagsPedidos" rows='8' cols="60" placeholder="Escreva o máximo de tags relevantes, como minorante, redutora, privilegiado, tráfico, §, 4º, fração, terço, terços etc" ></textarea>  
+        </div>
+        <br>
+        <input type="submit" value="Adicionar pedido">
+    </form>
+  </section>
+</body>
+
+<footer>
+</footer>
+
+</html>
