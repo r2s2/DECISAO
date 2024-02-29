@@ -301,7 +301,6 @@ async function copyFormattedTextToClipboard() {
     console.error('Erro ao copiar texto: ', err);
   }
 }
-
 const http = require('http');
 const fs = require('fs');
 const url = require('url');

@@ -111,14 +111,9 @@ footer {
     text-align: right;
 }
 
-#esquerda {
+#centro {
     float: left;
-    width: 45%;
+    width: 80%;
     text-align: left;
 }
 
-#direita {
-    float: right;
-    width: 45%;
-    text-align: right;
-}
