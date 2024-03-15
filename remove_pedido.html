@@ -90,7 +90,7 @@
                     var row = $('<tr></tr>');
                     row.append($('<td></td>').text(val.id));
                     row.append($('<td></td>').text(val.pedido));
-                    row.append($('<td></td>').text(val.tags));
+                    row.append($('<td></td>').text(val.tagsPedidos));
                     row.append($('<td></td>').html('<button onclick="excluirPedido(' + val.id + ')">Excluir</button>'));
                     $('#pedidosTable tbody').append(row);
                 });

@@ -33,27 +33,37 @@
     </header>
 
 <section class="texto">
-    <div class = "texto_base_relatorio">
+    <div id = "texto_base_relatorio">
 
-<p> Trata-se de <span id = "classe"></span> <span id = "se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
-<p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela prática, em tese, <span id="dosDelitos"> do delito</span> de<span id = "DELITO"></span> <span id='virgulaOuE'></span> <span id='ultimoDelito'></span> por haver </span> <span id='fatos'></span>.</p>
-<p>O Tribunal de origem denegou a ordem. </p>
+        <p> Trata-se de <span id = "classe"></span> <span id = "se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
+        <p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela prática, em tese, <span id="dosDelitos"> do delito</span> de<span id = "DELITO"></span> <span id='virgulaOuE'></span> <span id='ultimoDelito'></span> por haver </span> <span id='fatos'></span>.</p>
+        <p>O Tribunal de origem denegou a ordem. </p>
 
-<p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
-<p><span id="tesesSelecionadas"><span id= 'folhasSTJ'></span></span> </p>
+        <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+        <p><span id="tesesSelecionadas"><span id= 'folhasSTJ'></span></span> </p>
 
-<p>Requer<span id="pedidoLiminar"></span> a expedição de alvará de soltura. <span id="pedidoPrincipal1"></span> </p>
-<p> <span id = "se_liminar2"> </span>  </p>
-<p><span id="informacoes"></span></p>
-<p> <span id="parecerMinisterial"></span><span id="parecerClasse"></span></p>
-<p>É o relatório.</p>
-<p></p>
-<p ><b>Decido.</b> </p>
+        <p>Requer, por fim:</p>
+ 
+        <span id="pedidoPrincipal1"></span>
+        <p> <span id = "se_liminar2"> </span>  </p>
+        <p><span id="informacoes"></span></p>
+        <p> <span id="parecerMinisterial"></span><span id="parecerClasse"></span></p>
+        <p>É o relatório.</p>
+        <p></p>
+        <p ><b>Decido.</b> </p>
 
-<p>  <span id="teseEnfrentar"></span></p>
+        <p>  <span id="teseEnfrentar"></span></p>
+        <p>  <span id="pedidoEnfrentar"></span></p>
+        <p><span id="'resultadoMerito"></span> </p>
+
+        <!-- FAZER O RESULTADO FICAR ATRELADO À TESE  -->
+        
 
 
-</div>
+
+
+
+    </div>
 
 
 </section>
@@ -74,6 +84,11 @@
                 <label for="RESP"> REsp</label>
                 <input type="radio" name="classe_processual" id = 'ARESP' value ='aresp'>
                 <label for="ARESP"> AREsp</label>
+                <!-- FAZER AGRG E EDCL DEPOIS, JÁ ESTÁ INCLUÍDOS NO SCRIPT 
+                    <input type="radio" name="classe_processual" id = 'agrg' value ='agrg'>
+                <label for="agrg"> AgRg</label>
+                <input type="radio" name="classe_processual" id = 'edcl' value ='edcl'>
+                <label for="edcl"> EDcl</label> -->
                 
             <p> <u>FASE</u> </p>
                
@@ -123,8 +138,13 @@
             
             <br>
             <p><u>PEDIDOS </u> </p>
-            <input type="checkbox" id = 'revoga' name="pedidos" value="revoga"  >  <label for="revoga">Soltura</label>
-            <input type="checkbox" id = 'substituir' name="pedidos" value="substituir"  onclick="selecionaPedido(id)">  <label for="substituir">Substituir por Cautelares</label>
+            <div class="pedidos-api">
+            <input type="text" id="pedido" onkeyup="searchPedidoFuncao()" placeholder="Buscar pedido..." >
+            <select id="searchPedido" style="font-family: Arial; font-size: 10px;"></select>
+            </div>
+            
+
+
                            
 
            <br>

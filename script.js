@@ -9,18 +9,25 @@ class Classe {
   }
 
   selecionadoClasse(){
-    document.getElementById('classe').innerHTML = this.nomeExtenso;
-    document.getElementById('classe2').innerHTML = this.sinonimo;
-    document.getElementById('reu').innerHTML = this.agente;
-    document.getElementById('VERBO').innerHTML = this.verbo;
+
     
-    }
+      document.getElementById('classe').innerHTML = this.nomeExtenso;
+      document.getElementById('classe2').innerHTML = this.sinonimo;
+      document.getElementById('reu').innerHTML = this.agente;
+      document.getElementById('VERBO').innerHTML = this.verbo;
+       
+
+
+    
+}
 }
 
 var HC = new Classe("<i>habeas corpus</i>", "impetrado em favor de", "paciente", "<b>concedo a ordem.</b>", "<b>denego a ordem.</b>", "<i>writ</i>")
 var RHC = new Classe("recurso ordinário em <i>habeas corpus</i>", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso ordinário")
 var REsp = new Classe("recurso especial", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial")
 var AREsp = new Classe("agravo em recurso especial", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial")
+var agrg = new Classe("agravo regimental", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental")
+var edcl = new Classe("embargos de declaração", "opostos", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração")
 
 
 
@@ -163,7 +170,7 @@ function searchTese() {
         teseEnfrentar.appendChild(p2); // Adiciona ao novo elemento
         
         // Atualiza o índice do marcador de letras
-        letterIndex++;
+        letterIndex++; // Use letterIndex aqui
 
         // Remove a tese selecionada dos resultados
         event.target.remove();
@@ -183,6 +190,96 @@ function searchTese() {
     clickEventAdded = true;
   }
 }
+
+
+
+// Variável global para rastrear o índice do marcador de letras
+var letterIndexPedido = 0;
+
+// Variável global para rastrear se o evento de clique já foi adicionado
+var clickEventAddedPedido = false;
+
+  function searchPedidoFuncao() {
+    var input, filter, results, i, pedido, tags, count = 0;
+    input = document.getElementById('pedido');
+    input.setAttribute('autocomplete', 'off');
+    
+    filter = input.value.toUpperCase();
+    results = document.getElementById('searchPedido');
+    results.innerHTML = '';
+  
+    fetch('pedidos.json')
+      .then(response => response.json())
+      .then(data => {
+        for(i = 0; i < data.pedidos.length; i++) {
+          pedido = data.pedidos[i];
+          tags = pedido.tags || '';
+          if((pedido.pedido && pedido.pedido.toUpperCase().indexOf(filter) > -1) || (tags && tags.toUpperCase().indexOf(filter) > -1) || pedido.id.toString() === input.value) {
+            var option = document.createElement('option');
+            option.value = pedido.pedido;
+            option.text = pedido.id + " - " + pedido.pedido; // Inclui o id do pedido no texto
+            results.appendChild(option);
+            count++;
+          }
+        }
+        results.size = results.length; // Define o tamanho do select para o número de opções
+      });
+  
+    // Adiciona o evento de clique apenas se ele ainda não foi adicionado
+    if (!clickEventAddedPedido) {
+      results.addEventListener('click', function(event) {
+        if (event.target.tagName === 'OPTION') {
+          var selectedPedidoText = event.target.value;
+  
+          var selectedPedido = document.getElementById('pedidoPrincipal1');
+          var pedidoEnfrentar = document.getElementById('pedidoEnfrentar'); // Novo elemento
+  
+          // Verifica se o pedido já foi adicionado
+          var alreadyAdded = Array.from(selectedPedido.getElementsByTagName('p')).some(p => p.textContent.slice(3) === selectedPedidoText);
+          if (alreadyAdded) {
+            alert('Este pedido já foi adicionado.');
+            return;
+          }
+  
+          // Cria um novo parágrafo para o pedido selecionado
+          var p = document.createElement('p');
+          // Adiciona o marcador de letras correspondente
+          p.textContent = String.fromCharCode(97 + letterIndexPedido) + ") " + selectedPedidoText; // Use letterIndexPedido aqui
+          selectedPedido.appendChild(p);
+  
+          // Duplica o código para adicionar o pedido ao elemento pedidoEnfrentar 
+          var p2 = document.createElement('p');
+          p2.textContent = String.fromCharCode(97 + letterIndex).toLocaleLowerCase() + ") " + selectedPedidoText;
+          pedidoEnfrentar.appendChild(p2); // Adiciona ao novo elemento
+  
+          // Atualiza o índice do marcador de letras
+          letterIndexPedido++;
+  
+          // Remove o pedido selecionado dos resultados
+          event.target.remove();
+  
+          // Fecha o select de resultados
+          results.size = 0;
+  
+          // Limpa o campo de busca
+          input.value = '';
+  
+          // Remove todos os pedidos dos resultados
+          results.innerHTML = '';
+  
+        }
+      });
+  
+      // Marca que o evento de clique foi adicionado
+      clickEventAddedPedido = true;
+  
+    }
+  
+  }
+  
+
+
+
 
 
 var pedidos = {  
@@ -247,15 +344,21 @@ function zerarTudo(){
 function check() {
  
 
-  if (document.getElementById('HC').checked) {
-    HC.selecionadoClasse();
-  } else if (document.getElementById('RHC').checked) {
-    RHC.selecionadoClasse();
-  } else if (document.getElementById('RESP').checked) {
-    REsp.selecionadoClasse();
-  } else if (document.getElementById('ARESP').checked) {
-    AREsp.selecionadoClasse();
-  }   
+  const classes = {
+    'HC': HC,
+    'RHC': RHC,
+    'RESP': REsp,
+    'ARESP': AREsp,
+    'agrg': agrg,
+    'edcl': edcl
+  };
+
+  for (let id in classes) {
+    if (document.getElementById(id).checked) {
+      classes[id].selecionadoClasse();
+      break;
+    }
+  }
 
 
     //if da escolha da fase
@@ -301,3 +404,23 @@ async function copyFormattedTextToClipboard() {
     console.error('Erro ao copiar texto: ', err);
   }
 }
+
+// fazer tela de login
+// fazer tela de cadastro
+// fazer tela de reset de senha
+// fazer tela de perfil
+// fazer tela de edição de perfil
+// fazer tela de edição de senha
+// fazer tela de edição de email
+// fazer tela de exclusão de conta
+// fazer log de quem criar teses, pedidos e resultados
+// fazer tela de busca de teses
+// fazer tela de busca de pedidos
+// fazer tela de busca de resultados
+// fazer log de todos os itens de cada processo
+// fazer tela de administrador com atribuição de privilégios
+// incluir campos de apreensão, droga com maconha, cocaína, crack e outros, e arma com calibre e tipo pistola, revólver, fuzil e outros
+// criar classes agrg e edcl
+// delitos como lista igual o de buscar teses, e que retorne sempre em ordem dos mais usados
+// sob o parecer, criar dinamicamente os pedidos e abrir um campo para que o usuário possa selecionar um resultado
+// criar ratio com dispositivos primeiro sobre o conhecimento, depois sobre o mérito
