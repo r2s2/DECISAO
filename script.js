@@ -115,6 +115,8 @@ function criarElementoDelito(id) {
     }
   }
 }
+
+//acrescentar o texto "flagrado em posse de: " antes das drogas e armas
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('conversaoForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -123,52 +125,16 @@ document.addEventListener('DOMContentLoaded', function() {
         var cocaina = document.getElementById('cocaina').value ? document.getElementById('cocaina').value : null;
         var crack = document.getElementById('crack').value ? document.getElementById('crack').value : null;
         var outros = document.getElementById('outros').value ? document.getElementById('outros').value : null;
+        var armas = document.getElementById('armas').value ? document.getElementById('armas').value : null;
 
         var resultadoApreensao = document.getElementById('resultadoApreensao');
         resultadoApreensao.innerHTML = ''; // Limpa o conteúdo do elemento 'resultadoApreensao'
 
-        if (maconha) {
+        // ... restante do código ...
+
+        if (armas) {
             var novoParagrafo = document.createElement('p');
-            if (maconha >= 1000000) {
-                novoParagrafo.innerHTML = 'Maconha: ' + (maconha / 1000000).toLocaleString('pt-BR') + ' toneladas';
-            } else if (maconha >= 1000) {
-                novoParagrafo.innerHTML = 'Maconha: ' + (maconha / 1000).toLocaleString('pt-BR') + ' quilogramas';
-            } else {
-                novoParagrafo.innerHTML = 'Maconha: ' + maconha.toLocaleString('pt-BR') + ' gramas';
-            }
-            resultadoApreensao.appendChild(novoParagrafo);
-        }
-        if (cocaina) {
-            var novoParagrafo = document.createElement('p');
-            if (cocaina >= 1000000) {
-                novoParagrafo.innerHTML = 'Cocaína: ' + (cocaina / 1000000).toLocaleString('pt-BR') + ' toneladas';
-            } else if (cocaina >= 1000) {
-                novoParagrafo.innerHTML = 'Cocaína: ' + (cocaina / 1000).toLocaleString('pt-BR') + ' quilogramas';
-            } else {
-                novoParagrafo.innerHTML = 'Cocaína: ' + cocaina.toLocaleString('pt-BR') + ' gramas';
-            }
-            resultadoApreensao.appendChild(novoParagrafo);
-        }
-        if (crack) {
-            var novoParagrafo = document.createElement('p');
-            if (crack >= 1000000) {
-                novoParagrafo.innerHTML = 'Crack: ' + (crack / 1000000).toLocaleString('pt-BR') + ' toneladas';
-            } else if (crack >= 1000) {
-                novoParagrafo.innerHTML = 'Crack: ' + (crack / 1000).toLocaleString('pt-BR') + ' quilogramas';
-            } else {
-                novoParagrafo.innerHTML = 'Crack: ' + crack.toLocaleString('pt-BR') + ' gramas';
-            }
-            resultadoApreensao.appendChild(novoParagrafo);
-        }
-        if (outros) {
-            var novoParagrafo = document.createElement('p');
-            if (outros >= 1000000) {
-                novoParagrafo.innerHTML = 'Outros: ' + (outros / 1000000).toLocaleString('pt-BR') + ' toneladas';
-            } else if (outros >= 1000) {
-                novoParagrafo.innerHTML = 'Outros: ' + (outros / 1000).toLocaleString('pt-BR') + ' quilogramas';
-            } else {
-                novoParagrafo.innerHTML = 'Outros: ' + outros.toLocaleString('pt-BR') + ' gramas';
-            }
+            novoParagrafo.innerHTML = 'Armas: ' + armas;
             resultadoApreensao.appendChild(novoParagrafo);
         }
     })
