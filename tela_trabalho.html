@@ -35,8 +35,13 @@
 <section class="texto">
     <div id = "texto_base_relatorio">
 
-        <p> Trata-se de <span id = "classe"></span> <span id = "se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
-        <p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela prática, em tese, <span id="dosDelitos"> do delito</span> de<span id = "DELITO"></span> <span id='virgulaOuE'></span> <span id='ultimoDelito'></span> por haver </span> <span id='fatos'></span>.</p>
+        <p> Trata-se de  <span id = "classe"></span> <span id = "se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
+        <p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela prática, em tese, <span id="dosDelitos"> do delito</span> de<span id = "DELITO"></span> <span id='virgulaOuE'></span> <span id='ultimoDelito'></span> por haver </span> <span id='fatos'></span> <span id="seApreensão"> </span>.
+
+        </p>
+        
+        <div class="apreensoes"> <p id="resultadoApreensao"></p> </div> 
+        
         <p>O Tribunal de origem denegou a ordem. </p>
 
         <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
@@ -52,7 +57,7 @@
         <p></p>
         <p ><b>Decido.</b> </p>
 
-        <p>  <span id="teseEnfrentar"></span></p>
+        <p>  <span id="teseEnfrentar"></span></p> <!-- Creio ser melhor tirar isso  -->
         <p>  <span id="pedidoEnfrentar"></span></p>
         <p><span id="'resultadoMerito"></span> </p>
 
@@ -69,11 +74,11 @@
 </section>
 
     
-    <form  name="formulario"   method="GET" onclick="check()" id="formulario">
+   
       
            
    
-     <section >
+     <section id = 'formul'>
         <input type="reset" value = "Reiniciar" onclick="zerarTudo()">
            <p> <u>CLASSE</u> </p>
                 <input type="radio" name="classe_processual" id = 'HC' value="hc" checked>
@@ -122,7 +127,47 @@
 
 
              <p><u>FATOS </u> </p>
-             <textarea id="caixatexto_base_relatorio" oninput="fatosIncluidos()" rows='8' cols="40" placeholder="Descreva a situação fática" ></textarea>         
+             <textarea id="caixatexto_base_relatorio" oninput="fatosIncluidos()" rows='8' cols="40" placeholder="Descreva a situação fática" ></textarea>    
+             
+                <p><u>APREENSÃO</u> </p>
+               
+               
+                <form id="conversaoForm">
+                    <input type="number" id="maconha" name="gramas" min="0" step="any" placeholder="37 gramas de maconha">
+                    <button type="submit">Incluir</button>
+                    <br>
+
+                    
+                    <input type="number" id="cocaina" name="gramas" min="0" step="any" placeholder="22 gramas de cocaína">
+                    <button type="submit">Incluir</button><br>
+
+                    
+                    <input type="number" id="crack" name="gramas" min="0" step="any" placeholder="17 gramas de crack">
+                    <button type="submit">Incluir</button><br>
+
+                    <input type="texto" id="outros" name="gramas" min="0" step="any" placeholder="12 tubos de lança-perfume">
+                    <button type="submit">Incluir</button><br>
+
+                    <input type="text" id="armas" name="quantidade" min="0" step="any" placeholder="3 pistolas, 2 revólveres e  4 munições">
+                    <button type="submit">Incluir</button><br>
+                    
+
+
+
+
+
+                </form>
+
+               
+                
+
+                
+                
+            
+                
+
+
+
 
 
 
@@ -186,7 +231,7 @@
 
 
     </section>
-    </form>
+    
     
     <footer> 
        

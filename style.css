@@ -1,22 +1,26 @@
 body {
     background: rgb(107, 107, 241);
     line-height: 1.5; /* Espaçamento entre linhas */
-
 }
 
-form {
+.form {
+    width: 10%;
+    position: justify;
+}
 
-    width: 45%;
+#apreensoes {
+    width: 50%;
+    float: left;
+    margin-left: 10px;
+    margin-right: 5px;
+    padding: 0;
 }
 
 p {
     font-family: Arial;
     margin-bottom: 7.1pt; /* Espaçamento entre parágrafos */
     text-indent: 2cm; /* Recuo da primeira linha do parágrafo */
-    
-    line-height: 18pt;
 }
-
 .texto_base_relatorio {
 
     font-family: Arial, Helvetica, sans-serif;
@@ -68,11 +72,13 @@ span {
     background-color: rgb(241, 228, 107);
 }
 
+
+
 section {
     background-color: blueviolet;
     position: relative;
     top: 0;
-    width: 100%;
+    width: 50%;
     height: 100%;
     border-radius: 5px;
     z-index: 1;
@@ -116,4 +122,14 @@ footer {
     width: 80%;
     text-align: left;
 }
+
+.resultadoApreensao
+{
+    width: 10%;
+    text-align: left;
+    margin-left: 10px;
+    
+
+}
+
 
