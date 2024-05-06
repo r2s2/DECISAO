@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tela Inicial</title>
+</head>
+<body>
+    <h1>Tela Inicial</h1>
+    
+    <form>
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <button type="submit">Entrar</button>
+        <button type="button">Criar Usuário</button>
+        <button type="button">Recuperar Senha</button>
+    </form>
+    
+    <p id="error-message"></p>
+    
+    <script>
+        
+
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var username = document.querySelector('#username').value;
+            var password = document.querySelector('#password').value;
+            
+            if ((username === 'admin' && password === 'admin') || (username === 'usuario' && password === 'usuario')) {
+                localStorage.setItem('username', username);
+                window.location.href = 'tela_trabalho.html';
+            } else {
+                document.querySelector('#error-message').textContent = 'Usuário ou senha inválidos';
+            }
+        });
+
+    </script>
+</body>
+</html>

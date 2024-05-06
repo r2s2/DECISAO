@@ -223,6 +223,79 @@ function searchTese() {
 }
 
 
+// apreensões
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('conversaoForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var maconha = document.getElementById('maconha').value ? document.getElementById('maconha').value : null;
+        var cocaina = document.getElementById('cocaina').value ? document.getElementById('cocaina').value : null;
+        var crack = document.getElementById('crack').value ? document.getElementById('crack').value : null;
+        var outros = document.getElementById('outros').value ? document.getElementById('outros').value : null;
+        var armas = document.getElementById('armas').value ? document.getElementById('armas').value : null;
+
+        var resultadoApreensao = document.getElementById('resultadoApreensao');
+        resultadoApreensao.innerHTML = ''; // Limpa o conteúdo do elemento 'resultadoApreensao'
+
+        var apreensoes = [];
+
+        if (maconha) {
+            var texto = '';
+            if (maconha >= 1000000) {
+                texto = '<b>Maconha</b>: ' + (maconha / 1000000).toLocaleString('pt-BR') + ' toneladas';
+            } else if (maconha >= 1000) {
+                texto = '<b>Maconha</b>: ' + (maconha / 1000).toLocaleString('pt-BR') + ' quilogramas';
+            } else {
+                texto = '<b>Maconha</b>: ' + maconha.toLocaleString('pt-BR') + ' gramas';
+            }
+            apreensoes.push(texto);
+        }
+        if (cocaina) {
+            var texto = '';
+            if (cocaina >= 1000000) {
+                texto = '<b>Cocaína</b>: ' + (cocaina / 1000000).toLocaleString('pt-BR') + ' toneladas';
+            } else if (cocaina >= 1000) {
+                texto = '<b>Cocaína</b>: ' + (cocaina / 1000).toLocaleString('pt-BR') + ' quilogramas';
+            } else {
+                texto = '<b>Cocaína</b>: ' + cocaina.toLocaleString('pt-BR') + ' gramas';
+            }
+            apreensoes.push(texto);
+        }
+        if (crack) {
+            var texto = '';
+            if (crack >= 1000000) {
+                texto = '<b><i>Crack</i></b>: ' + (crack / 1000000).toLocaleString('pt-BR') + ' toneladas';
+            } else if (crack >= 1000) {
+                texto = '<b><i>Crack</i></b>: ' + (crack / 1000).toLocaleString('pt-BR') + ' quilogramas';
+            } else {
+                texto = '<b><i>Crack</i></b>: ' + crack.toLocaleString('pt-BR') + ' gramas';
+            }
+            apreensoes.push(texto);
+        }
+        if (outros) {
+            var texto = '<b>Outros</b>: ' + outros.toLocaleString('pt-BR');
+            apreensoes.push(texto);
+        }
+        if (armas) {
+            var texto = '<b>Armas</b>: ' + armas;
+            apreensoes.push(texto);
+        }
+
+        if (apreensoes.length > 0) {
+          var paragrafoIntro = document.createElement('p');
+          paragrafoIntro.innerHTML = 'Foram apreendidas:';
+          resultadoApreensao.appendChild(paragrafoIntro);
+
+          for (var i = 0; i < apreensoes.length; i++) {
+              var novoParagrafo = document.createElement('p');
+              novoParagrafo.innerHTML = apreensoes[i] + (i === apreensoes.length - 1 ? '.' : ';');
+              resultadoApreensao.appendChild(novoParagrafo);
+          }
+      }
+
+
+    })
+});
 
 // Variável global para rastrear o índice do marcador de letras
 var letterIndexPedido = 0;

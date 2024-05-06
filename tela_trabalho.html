@@ -9,13 +9,21 @@
     <title>Formulário</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <a href="pagina_restrita.html" class="link-restrito">Página Restrita</a>
+
     <script src="client.js"></script>
-    
-   
- 
-
-
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var username = localStorage.getItem('username');
+            
+            if (username === 'usuario') {
+                var linksRestritos = document.querySelectorAll('.link-restrito');
+                for (var i = 0; i < linksRestritos.length; i++) {
+                    linksRestritos[i].classList.add('ocultar');
+                }
+            }
+        });
+    </script>
     <script src="script.js"></script>   
    
    
@@ -24,10 +32,10 @@
     <header>   
 
     <h1>Rodrigo Sacramento</h1>    
-    <a href="/adiciona_teses.html">Ir para adiciona teses</a>
-    <a href="/remove_teses.html">Ir para Remove Teses</a>
-    <a href="/adiciona_pedidos.html">Ir para adiciona pedidos</a>
-    <a href="/remove_pedido.html">Ir para Remove Pedidos</a>
+    <a href="/adiciona_teses.html" class="link-restrito">Ir para adiciona teses</a>
+    <a href="/remove_teses.html" class="link-restrito">Ir para Remove Teses</a>
+    <a href="/adiciona_pedidos.html" class="link-restrito">Ir para adiciona pedidos</a>
+    <a href="/remove_pedido.html" class="link-restrito">Ir para Remove Pedidos</a>
 
 
     </header>
@@ -133,25 +141,28 @@
                
                
                 <form id="conversaoForm">
-                    <input type="number" id="maconha" name="gramas" min="0" step="any" placeholder="37 gramas de maconha">MACONHA <br>
-                    <input type="number" id="cocaina" name="gramas" min="0" step="any" placeholder="22 gramas de cocaína">COCAÍNA<br>
-                    <input type="number" id="crack" name="gramas" min="0" step="any" placeholder="17 gramas de crack">CRACK<br>
-                    <input type="text" id="outros" name="gramas" min="0" step="any" placeholder="12 tubos de lança-perfume com 30 mL de líquido">OUTRAS DROGAS<br>
-                    <input type="text" id="armas" name="armas" placeholder="3 pistolas calibre .38, 7 munições 9mm etc">ARMAS<br>
-                    <input type="submit" style="display: none;">
+
+                    <!-- colocar o texto do input como um botão de submeter ao js  -->
+
+                    <input type="number" id="maconha" name="gramas" min="0" step="any" placeholder="Digite a quantidade de gramas"> MACONHA <br>
+                    <input type="number" id="cocaina" name="gramas" min="0" step="any" placeholder="Digite a quantidade de gramas"> COCAÍNA<br>
+                    <input type="number" id="crack" name="gramas" min="0" step="any" placeholder="Digite a quantidade de gramas"> CRACK<br>
+                    <input type="text" id="outros" name="gramas" min="0" step="any" placeholder="12 tubos de lança-perfume com 30 mL de líquido"> OUTRAS DROGAS<br>
+                    <input type="text" id="armas" name="armas" placeholder="3 pistolas calibre .38, 7 munições 9mm etc"> ARMAS<br>
+                    <input type="submit" value="Enviar">
+                
                 </form>
 
-               
-                
+                <script>
+                    
 
                 
-                
-            
-                
+                    
+                        
+                    
 
 
-
-
+                </script>
 
 
 
