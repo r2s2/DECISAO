@@ -9,27 +9,81 @@ class Classe {
   }
 
   selecionadoClasse(){
-
     
       document.getElementById('classe').innerHTML = this.nomeExtenso;
       document.getElementById('classe2').innerHTML = this.sinonimo;
       document.getElementById('reu').innerHTML = this.agente;
-      document.getElementById('VERBO').innerHTML = this.verbo;
-       
-
-
-    
+      document.getElementById('VERBO').innerHTML = this.verbo;    
 }
 }
 
 var HC = new Classe("<i>habeas corpus</i>", "impetrado em favor de", "paciente", "<b>concedo a ordem.</b>", "<b>denego a ordem.</b>", "<i>writ</i>")
 var RHC = new Classe("recurso ordinário em <i>habeas corpus</i>", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso ordinário")
 var REsp = new Classe("recurso especial", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial")
-var AREsp = new Classe("agravo em recurso especial", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial")
-var agrg = new Classe("agravo regimental", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental")
+var AREsp = new Classe("agravo em recurso especial", "interposto", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial")
+var agrg = new Classe("agravo regimental", "interposto", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental")
 var edcl = new Classe("embargos de declaração", "opostos", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração")
 
 
+
+
+
+function check() {
+ 
+
+  const classes = {
+    'HC': HC,
+    'RHC': RHC,
+    'RESP': REsp,
+    'ARESP': AREsp,
+    'agrg': agrg,
+    'edcl': edcl
+  };
+
+  for (let id in classes) {
+    if (document.getElementById(id).checked) {
+      classes[id].selecionadoClasse();
+      break;
+    }
+  }
+
+
+    //if da escolha da fase
+  if (document.getElementById('analise_liminar').checked){
+        document.getElementById("se_liminar").innerHTML = "com pedido liminar";
+        document.getElementById('se_liminar2').innerHTML = "";
+        document.getElementById('pedidoLiminar').innerHTML = ', liminarmente e no mérito,'
+  } else if (document.getElementById('analise_merito').checked) {
+        document.getElementById('se_liminar').innerHTML = "";
+        
+  } else if (document.getElementById('sem_liminar').checked) {
+          document.getElementById('se_liminar').innerHTML = "";
+          document.getElementById('se_liminar2').innerHTML = "Não houve pedido liminar."}
+
+      
+}
+
+
+function selecionaResultado(id) {
+  if (id === 'concedeu') {
+      document.getElementById('resultadoQuo').innerHTML = 'concedeu o <i>habeas corpus</i>.';
+  } else if (id === 'denegou') {
+      document.getElementById('resultadoQuo').innerHTML = 'denegou o <i>habeas corpus</i>.';
+  } else if (id === 'concedeuParcial') {
+      document.getElementById('resultadoQuo').innerHTML = 'concedeu parcialmente o <i>habeas corpus</i>.';
+  } else if (id === 'naoConheceu') {
+      document.getElementById('resultadoQuo').innerHTML = 'não conheceu do <i>habeas corpus</i>.'; 
+  } else if (id === 'semResultado') {
+      document.getElementById('resultadoQuo').innerHTML = 'não se manifestou.';
+  } else if (id === 'negouProvimento') {
+      document.getElementById('resultadoQuo').innerHTML = 'negou provimento ao recurso.';
+  } else if (id === 'deuProvimento') {
+      document.getElementById('resultadoQuo').innerHTML = 'deu provimento ao recurso.';
+  } else if (id === 'deuParcialProvimento') {
+      document.getElementById('resultadoQuo').innerHTML = 'deu parcial provimento ao recurso.';
+  }
+
+}
 
 var contadorDelito = []
 var contadorPedidos = []
@@ -51,14 +105,6 @@ function digitaFls() {
 }
 
 
-function incluirApreensao (){
-  var maconha = document.getElementById('maconha').value
-  var node = document.createElement("span");
-  var textnode = document.createTextNode('Apreensão de ' + maconha );
-  node.appendChild(textnode);
-  document.getElementById("resultado").appendChild(node);
-
-}
   
 var faseLiminar = {
     
@@ -115,30 +161,6 @@ function criarElementoDelito(id) {
     }
   }
 }
-
-//acrescentar o texto "flagrado em posse de: " antes das drogas e armas
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('conversaoForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var maconha = document.getElementById('maconha').value ? document.getElementById('maconha').value : null;
-        var cocaina = document.getElementById('cocaina').value ? document.getElementById('cocaina').value : null;
-        var crack = document.getElementById('crack').value ? document.getElementById('crack').value : null;
-        var outros = document.getElementById('outros').value ? document.getElementById('outros').value : null;
-        var armas = document.getElementById('armas').value ? document.getElementById('armas').value : null;
-
-        var resultadoApreensao = document.getElementById('resultadoApreensao');
-        resultadoApreensao.innerHTML = ''; // Limpa o conteúdo do elemento 'resultadoApreensao'
-
-        // ... restante do código ...
-
-        if (armas) {
-            var novoParagrafo = document.createElement('p');
-            novoParagrafo.innerHTML = 'Armas: ' + armas;
-            resultadoApreensao.appendChild(novoParagrafo);
-        }
-    })
-});
 
 // Variável global para rastrear o índice do marcador de letras
 var letterIndex = 0;
@@ -199,6 +221,25 @@ function searchTese() {
         var p2 = document.createElement('p');
         p2.textContent = String.fromCharCode(97 + letterIndex).toLocaleLowerCase() + ") " + selectedTeseText;
         teseEnfrentar.appendChild(p2); // Adiciona ao novo elemento
+
+                // Cria um novo parágrafo com um campo de entrada (input) do tipo 'text' com id 'resultadoMerito'
+        var p3 = document.createElement('p');
+        var input = document.createElement('input');
+        input.id = 'resultadoMerito';
+        input.type = 'text';
+        input.placeholder = 'Resultado do mérito';
+        input.addEventListener('input', searchResultadoMerito);
+        p3.appendChild(input);
+        teseEnfrentar.appendChild(p3); // Adiciona ao novo elemento
+
+
+        // Adiciona o evento de clique apenas se ele ainda não foi adicionado
+
+
+
+        
+    
+
         
         // Atualiza o índice do marcador de letras
         letterIndex++; // Use letterIndex aqui
@@ -222,7 +263,46 @@ function searchTese() {
   }
 }
 
+//PARADO AQUI FALTA CONSEGUIR FAZER ESSA FUNÇÃO BUSCAR O RESULTADO DO MÉRITO NO JSON
 
+function searchResultadoMerito() {
+  console.log('searchResultadoMerito');
+  const campoEntrada = document.getElementById('resultadoMerito');
+  if (!campoEntrada) {
+      console.error('Erro: elemento resultadoMerito não encontrado');
+      return;
+  }
+
+  campoEntrada.addEventListener('input', () => {
+
+      const inputText = campoEntrada.value;
+
+      fetch('resultados.json')
+          .then(response => response.json())
+          .then(data => {
+              if (!Array.isArray(data.resultados)) {
+                  console.error('Erro: data.resultados não é um array');
+                  return;
+              }
+              const resultadosFiltrados = data.resultados.filter(resultado => 
+                  resultado.resultado.includes(inputText) || 
+                  (resultado.tagsResultado && resultado.tagsResultado.includes(inputText))
+              );
+              const listaResultados = document.getElementById('resultadoMerito');
+              if (!listaResultados) {
+                  console.error('Erro: elemento listaResultados não encontrado');
+                  return;
+              }
+              listaResultados.innerHTML = '';
+              resultadosFiltrados.forEach(resultado => {
+                  const opcao = document.createElement('option');
+                  opcao.value = resultado.resultado;
+                  listaResultados.appendChild(opcao);
+              });
+          })
+          .catch(error => console.error('Erro:', error));
+  });
+}
 // apreensões
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('conversaoForm').addEventListener('submit', function(event) {
@@ -296,6 +376,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     })
 });
+
+
+function fatosIncluidos() {
+  // Pega o textarea e o elemento 'fatos'
+  var textarea = document.getElementById('caixatexto_base_relatorio');
+  var fatos = document.getElementById('fatos');
+
+  // Atualiza o conteúdo de 'fatos' com o valor do textarea
+  if (textarea && fatos) {
+    fatos.innerHTML = textarea.value;
+  }
+}
+
+
 
 // Variável global para rastrear o índice do marcador de letras
 var letterIndexPedido = 0;
@@ -381,11 +475,6 @@ var clickEventAddedPedido = false;
   
   }
   
-
-
-
-
-
 var pedidos = {  
   substituir: 'Subsidiariamente, pleiteia a substituição da prisão preventiva por medidas cautelares diversas.'
 }
@@ -430,6 +519,7 @@ function selecionaParecer(argumento1){
 
 }
 
+
 function zerarTudo(){
   document.getElementById('DELITO').innerHTML = ''
   document.getElementById('tesesSelecionadas').innerHTML = ''
@@ -440,57 +530,6 @@ function zerarTudo(){
   document.getElementById('dosDelitos').innerHTML = 'do delito'
   document.getElementById('pedidoPrincipal').innerHTML = ''
 }
-
-
- 
-
-
-function check() {
- 
-
-  const classes = {
-    'HC': HC,
-    'RHC': RHC,
-    'RESP': REsp,
-    'ARESP': AREsp,
-    'agrg': agrg,
-    'edcl': edcl
-  };
-
-  for (let id in classes) {
-    if (document.getElementById(id).checked) {
-      classes[id].selecionadoClasse();
-      break;
-    }
-  }
-
-
-    //if da escolha da fase
-  if (document.getElementById('analise_liminar').checked){
-        document.getElementById("se_liminar").innerHTML = "com pedido liminar";
-        document.getElementById('se_liminar2').innerHTML = "";
-        document.getElementById('pedidoLiminar').innerHTML = ', liminarmente e no mérito,'
-  } else if (document.getElementById('analise_merito').checked) {
-        document.getElementById('se_liminar').innerHTML = "";
-        
-  } else if (document.getElementById('sem_liminar').checked) {
-          document.getElementById('se_liminar').innerHTML = "";
-          document.getElementById('se_liminar2').innerHTML = "Não houve pedido liminar."}
-
-      
-}
-
-  function fatosIncluidos() {
-    // Pega o textarea e o elemento 'fatos'
-    var textarea = document.getElementById('caixatexto_base_relatorio');
-    var fatos = document.getElementById('fatos');
-
-    // Atualiza o conteúdo de 'fatos' com o valor do textarea
-    if (textarea && fatos) {
-      fatos.innerHTML = textarea.value;
-    }
-  }
-
 
 
 async function copyFormattedTextToClipboard() {

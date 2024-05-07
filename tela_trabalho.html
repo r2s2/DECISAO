@@ -1,21 +1,19 @@
-
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
- 
+
 
     <script src="client.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var username = localStorage.getItem('username');
-            
+
             if (username === 'usuario') {
                 var linksRestritos = document.querySelectorAll('.link-restrito');
                 for (var i = 0; i < linksRestritos.length; i++) {
@@ -24,217 +22,264 @@
             }
         });
     </script>
-    <script src="script.js"></script>   
-   
-   
-</head>
-<body>    
-    <header>   
+    <script src="script.js"></script>
 
-    <h1>Rodrigo Sacramento</h1>    
-    <a href="/adiciona_teses.html" class="link-restrito">Ir para adiciona teses</a>
-    <a href="/remove_teses.html" class="link-restrito">Ir para Remove Teses</a>
-    <a href="/adiciona_pedidos.html" class="link-restrito">Ir para adiciona pedidos</a>
-    <a href="/remove_pedido.html" class="link-restrito">Ir para Remove Pedidos</a>
+
+</head>
+
+<body>
+    <header>
+
+        <h1>Rodrigo Sacramento</h1>
+        <a href="/tela_trabalho.html" class="link-restrito">Tela de trabalho</a>
+        <br> <br>
+        <a href="/adiciona_teses.html" class="link-restrito"> Adicionar teses</a>
+        <a href="/remove_teses.html" class="link-restrito"> Remover Teses</a>
+        <a href="/adiciona_pedidos.html" class="link-restrito"> Adicionar pedidos</a>
+        <a href="/remove_pedido.html" class="link-restrito"> Remover Pedidos</a>
 
 
     </header>
 
-<section class="texto">
-    <div id = "texto_base_relatorio">
+    <section class="texto">
+        <div id="texto_base_relatorio">
 
-        <p> Trata-se de  <span id = "classe"></span> <span id = "se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
-        <p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela prática, em tese, <span id="dosDelitos"> do delito</span> de<span id = "DELITO"></span> <span id='virgulaOuE'></span> <span id='ultimoDelito'></span> por haver </span> <span id='fatos'></span> <span id="seApreensão"> </span>.
+            <p> Trata-se de <span id="classe"></span> <span id="se_liminar">[valor]</span> <span
+                    id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
+            <p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela
+                prática, em tese, <span id="dosDelitos"> do delito</span> de<span id="DELITO"></span> <span
+                    id='virgulaOuE'></span> <span id='ultimoDelito'></span> por haver </span> <span id='fatos'></span>
+                <span id="seApreensão"> </span>.
 
-        </p>
-        
-        <div class="apreensoes"> <p id="resultadoApreensao"></p> </div> 
-        
-        <p>O Tribunal de origem denegou a ordem. </p>
+            </p>
 
-        <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
-        <p><span id="tesesSelecionadas"><span id= 'folhasSTJ'></span></span> </p>
+            <div class="apreensoes">
+                <p id="resultadoApreensao"></p>
+            </div>
 
-        <p>Requer, por fim:</p>
- 
-        <span id="pedidoPrincipal1"></span>
-        <p> <span id = "se_liminar2"> </span>  </p>
-        <p><span id="informacoes"></span></p>
-        <p> <span id="parecerMinisterial"></span><span id="parecerClasse"></span></p>
-        <p>É o relatório.</p>
-        <p></p>
-        <p ><b>Decido.</b> </p>
+            <p>O Tribunal de origem <span id="resultadoQuo"></span> </p>
 
-        <p>  <span id="teseEnfrentar"></span></p> <!-- Creio ser melhor tirar isso  -->
-        <p>  <span id="pedidoEnfrentar"></span></p>
-        <p><span id="'resultadoMerito"></span> </p>
+            <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+            <p><span id="tesesSelecionadas"><span id='folhasSTJ'></span></span> </p>
 
-        <!-- FAZER O RESULTADO FICAR ATRELADO À TESE  -->
-        
+            <p>Requer, por fim:</p>
 
+            <span id="pedidoPrincipal1"></span>
+            <p> <span id="se_liminar2"> </span> </p>
+            <p><span id="informacoes"></span></p>
+            <p> <span id="parecerMinisterial"></span><span id="parecerClasse"></span></p>
+            <p>É o relatório.</p>
+            <p></p>
+            <p><b>Decido.</b> </p>
 
-
-
-
-    </div>
+            <p> <span id="teseEnfrentar"></span></p> <!-- Creio ser melhor tirar isso  -->
+            <p> <span id="pedidoEnfrentar"></span></p>
 
 
-</section>
+            <!-- FAZER O RESULTADO FICAR ATRELADO À TESE  -->
 
-    
-   
-      
-           
-   
-     <section id = 'formul'>
-        <input type="reset" value = "Reiniciar" onclick="zerarTudo()">
-           <p> <u>CLASSE</u> </p>
-                <input type="radio" name="classe_processual" id = 'HC' value="hc" checked>
-                <label for="HC"> HC</label>
-                <input type="radio" name="classe_processual" id = 'RHC' value ='rhc'>
-                <label for="RHC"> RHC</label> <br>
-                <input type="radio" name="classe_processual" id = 'RESP' value ='resp'>
-                <label for="RESP"> REsp</label>
-                <input type="radio" name="classe_processual" id = 'ARESP' value ='aresp'>
-                <label for="ARESP"> AREsp</label>
-                <!-- FAZER AGRG E EDCL DEPOIS, JÁ ESTÁ INCLUÍDOS NO SCRIPT 
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+    <section id='formul'>
+        <input type="reset" value="Reiniciar" onclick="zerarTudo()">
+        <p> <u>CLASSE</u> </p>
+        <input type="radio" name="classe_processual" id='HC' value="hc" onclick="check()" checked>
+        <label for="HC"> HC</label>
+        <input type="radio" name="classe_processual" id='RHC' value='rhc' onclick="check()">
+        <label for="RHC"> RHC</label> <br>
+        <input type="radio" name="classe_processual" id='RESP' value='resp' onclick="check()">
+        <label for="RESP"> REsp</label>
+        <input type="radio" name="classe_processual" id='ARESP' value='aresp' onclick="check()">
+        <label for="ARESP"> AREsp</label>
+        <!-- FAZER AGRG E EDCL DEPOIS, JÁ ESTÁ INCLUÍDOS NO SCRIPT 
                     <input type="radio" name="classe_processual" id = 'agrg' value ='agrg'>
                 <label for="agrg"> AgRg</label>
                 <input type="radio" name="classe_processual" id = 'edcl' value ='edcl'>
                 <label for="edcl"> EDcl</label> -->
-                
-            <p> <u>FASE</u> </p>
-               
-                <input type="radio" name="fase" id = 'analise_liminar'  value="Analise_liminar" onclick="selecionaFase('liminarComLiminar')" required checked> 
-                <label for="analise_liminar"> Liminar</label>
-                <input type="radio"  name="fase" id = 'analise_merito' value="Analise_merito" onclick="selecionaFase('meritoComLiminar')">
-                <label for="analise_merito" > Mérito</label>
-                <input type="radio"  name="fase" id = 'sem_liminar'  value="Sem_liminar" onclick="selecionaFase('semLiminar')">
-                <label for="sem_liminar" > Sem liminar</label>
-                
-        
-                <p> <u>DELITOS</u>  </p>
-                
-                <input type="checkbox" id = 'trafico' name="delito" value = 'trafico' onclick= "criarElementoDelito(id)">
-                <label for="trafico"> Tráfico</label>      
-                
-                
-                <input type="checkbox" id = 'assocTrafico'  name="delito" value="Associação para o Tráfico" onclick= "criarElementoDelito(id)">
-                <label for="assocTrafico"> Associação para o Tráfico</label> <br>
-                <input type="checkbox"  id = 'roubo'  name="delito" value="Roubo" onclick= "criarElementoDelito(id)">
-                <label for="roubo"> Roubo</label>
-                <input type="checkbox" id = 'homicidio'  name="delito" value="Homicídio" onclick= "criarElementoDelito(id)">
-                <label for="homicidio"> Homicídio</label><br>
-                <input type="checkbox" id = 'estuproVuln'  name="delito" value="estupro de vulneravel" onclick= "criarElementoDelito(id)">
-                <label for="estuproVuln"> Estupro de vulnerável</label>
-                <input type="checkbox" id = 'furto'  name="delito" value="Furto" onclick= "criarElementoDelito(id)">
-                <label for="furto"> Furto</label><br>
-                <input type="checkbox" id = 'orcrim'  name="delito" value="Organização Criminosa" onclick= "criarElementoDelito(id)">
-                <label for="orcrim"> Organização Criminosa</label><br>
+
+        <p> <u>FASE</u> </p>
+
+        <input type="radio" name="fase" id='analise_liminar' value="Analise_liminar"
+            onclick="selecionaFase('liminarComLiminar')" required>
+        <label for="analise_liminar"> Liminar</label>
+        <input type="radio" name="fase" id='analise_merito' value="Analise_merito"
+            onclick="selecionaFase('meritoComLiminar')">
+        <label for="analise_merito"> Mérito</label>
+        <input type="radio" name="fase" id='sem_liminar' value="Sem_liminar" onclick="selecionaFase('semLiminar')"
+            checked>
+        <label for="sem_liminar"> Sem liminar</label>
+
+        <p> <u>RESULTADO DA ORIGEM</u> </p>
+
+        <input type="radio" name="resultado_origem" id='denegou' value="denegou" onclick="selecionaResultado('denegou')"
+            checked>
+        <label for="denegou"> Denegou</label>
+        <input type="radio" name="resultado_origem" id='negouProvimento' value="negouProvimento"
+            onclick="selecionaResultado('negouProvimento')">
+        <label for="negouProvimento"> Negou provimento</label>
+        <input type="radio" name="resultado_origem" id='naoConheceu' value="naoConheceu"
+            onclick="selecionaResultado('naoConheceu')">
+        <label for="naoConheceu"> Não conheceu</label> <br>
+
+        <input type="radio" name="resultado_origem" id='concedeu' value="concedeu"
+            onclick="selecionaResultado('concedeu')" required>
+        <label for="concedeu"> Concedeu</label>
+        <input type="radio" name="resultado_origem" id='concedeuParcial' value="concedeuParcial"
+            onclick="selecionaResultado('concedeuParcial')">
+        <label for="concedeuParcial"> Concedeu parcial</label>
+        <input type="radio" name="resultado_origem" id='deuProvimento' value="deuProvimento"
+            onclick="selecionaResultado('deuProvimento')">
+        <label for="deuProvimento"> Deu provimento</label> <br>
+        <input type="radio" name="resultado_origem" id='deuParcialProvimento' value="deuParcialProvimento"
+            onclick="selecionaResultado('deuParcialProvimento')">
+        <label for="deuParcialProvimento"> Deu parcial provimento</label>
+
+        <input type="radio" name="resultado_origem" id='semResultado' value="semResultado"
+            onclick="selecionaResultado('semResultado')">
+        <label for="semResultado"> Não se manifestou</label>
 
 
 
-             <p><u>FATOS </u> </p>
-             <textarea id="caixatexto_base_relatorio" oninput="fatosIncluidos()" rows='8' cols="40" placeholder="Descreva a situação fática" ></textarea>    
-             
-                <p><u>APREENSÃO</u> </p>
-               
-               
-                <form id="conversaoForm">
-
-                    <!-- colocar o texto do input como um botão de submeter ao js  -->
-
-                    <input type="number" id="maconha" name="gramas" min="0" step="any" placeholder="Digite a quantidade de gramas"> MACONHA <br>
-                    <input type="number" id="cocaina" name="gramas" min="0" step="any" placeholder="Digite a quantidade de gramas"> COCAÍNA<br>
-                    <input type="number" id="crack" name="gramas" min="0" step="any" placeholder="Digite a quantidade de gramas"> CRACK<br>
-                    <input type="text" id="outros" name="gramas" min="0" step="any" placeholder="12 tubos de lança-perfume com 30 mL de líquido"> OUTRAS DROGAS<br>
-                    <input type="text" id="armas" name="armas" placeholder="3 pistolas calibre .38, 7 munições 9mm etc"> ARMAS<br>
-                    <input type="submit" value="Enviar">
-                
-                </form>
-
-                <script>
-                    
-
-                
-                    
-                        
-                    
-
-
-                </script>
 
 
 
-            <p><u>TESES </u> </p>
 
-            <div class="teses-api">
-                <input type="text" id="search" onkeyup="searchTese()"  placeholder="Buscar tese...">
-                <select id="searchResults" style="font-family: Arial; font-size: 10px;"></select>
-            </div>
-            
 
-            
-            <br>
-            <p><u>PEDIDOS </u> </p>
-            <div class="pedidos-api">
-            <input type="text" id="pedido" onkeyup="searchPedidoFuncao()" placeholder="Buscar pedido..." >
+        <p> <u>DELITOS</u> </p>
+
+        <input type="checkbox" id='trafico' name="delito" value='trafico' onclick="criarElementoDelito(id)">
+        <label for="trafico"> Tráfico</label>
+
+
+        <input type="checkbox" id='assocTrafico' name="delito" value="Associação para o Tráfico"
+            onclick="criarElementoDelito(id)">
+        <label for="assocTrafico"> Associação para o Tráfico</label> <br>
+        <input type="checkbox" id='roubo' name="delito" value="Roubo" onclick="criarElementoDelito(id)">
+        <label for="roubo"> Roubo</label>
+        <input type="checkbox" id='homicidio' name="delito" value="Homicídio" onclick="criarElementoDelito(id)">
+        <label for="homicidio"> Homicídio</label><br>
+        <input type="checkbox" id='estuproVuln' name="delito" value="estupro de vulneravel"
+            onclick="criarElementoDelito(id)">
+        <label for="estuproVuln"> Estupro de vulnerável</label>
+        <input type="checkbox" id='furto' name="delito" value="Furto" onclick="criarElementoDelito(id)">
+        <label for="furto"> Furto</label><br>
+        <input type="checkbox" id='orcrim' name="delito" value="Organização Criminosa"
+            onclick="criarElementoDelito(id)">
+        <label for="orcrim"> Organização Criminosa</label><br>
+      
+
+
+
+
+
+        <p><u>FATOS </u> </p>
+        <textarea id="caixatexto_base_relatorio" oninput="fatosIncluidos()" rows='8' cols="40"
+            placeholder="Descreva a situação fática"></textarea>
+
+        <p><u>APREENSÃO</u> </p>
+
+
+        <form id="conversaoForm">
+
+            <!-- colocar o texto do input como um botão de submeter ao js  -->
+
+            <input type="number" id="maconha" name="gramas" min="0" step="any"
+                placeholder="Digite a quantidade de gramas"> MACONHA <br>
+            <input type="number" id="cocaina" name="gramas" min="0" step="any"
+                placeholder="Digite a quantidade de gramas"> COCAÍNA<br>
+            <input type="number" id="crack" name="gramas" min="0" step="any"
+                placeholder="Digite a quantidade de gramas"> CRACK<br>
+            <input type="text" id="outros" name="gramas" min="0" step="any"
+                placeholder="12 tubos de lança-perfume com 30 mL de líquido"> OUTRAS DROGAS<br>
+            <input type="text" id="armas" name="armas" placeholder="3 pistolas calibre .38, 7 munições 9mm etc">
+            ARMAS<br>
+            <input type="submit" value="Enviar">
+
+        </form>
+
+
+        <p><u>TESES </u> </p>
+
+        <div class="teses-api">
+            <input type="text" id="search" onkeyup="searchTese()" placeholder="Buscar tese...">
+            <select id="searchResults" style="font-family: Arial; font-size: 10px;"></select>
+        </div>
+
+
+
+        <br>
+        <p><u>PEDIDOS </u> </p>
+        <div class="pedidos-api">
+            <input type="text" id="pedido" onkeyup="searchPedidoFuncao()" placeholder="Buscar pedido...">
             <select id="searchPedido" style="font-family: Arial; font-size: 10px;"></select>
-            </div>
-            
+        </div>
 
 
-                           
-
-           <br>
-            <p>
-                <u>LIMINAR</u>
-            </p>
-           
-                <input type="radio" id = 'deferida' name="liminar" value="deferida" required onclick="selecionaLiminar('deferida')">
-                <label for="deferida"> Deferida</label>
-                <input type="radio"  id = 'indeferida' name="liminar" value="indeferida" checked onclick="selecionaLiminar('indeferida')"> 
-                <label for="indeferida" > Indeferida</label>
-                <input type="radio"  id = 'semLiminar' name="liminar" value="Sem liminar" onclick="selecionaLiminar('semPedido')">
-                <label for="semLiminar" > Sem liminar</label><br>
-           
-            <p>
-                <u>PARECER DO MP</u>
-            </p>
-            
-                <input type="radio" id="naoConhecimento" name="MP" value="naoConhecer" onclick="selecionaParecer('naoConhecimento')">
-                <label for="naoConhecimento"> Não conhecimento</label><br>
-                <input type="radio" id="concessao" name="MP" value="conceder" onclick="selecionaParecer('concessao')">
-                <label for="concessao"> Concessão</label>
-                <input type="radio" id="denegacao" name="MP" value="denegar" onclick="selecionaParecer('denegacao')">
-                <label for="denegacao"> Denegação</label><br>
-                <input type="radio" id="provimento" name="MP" value="prover" onclick="selecionaParecer('provimento')">
-                <label for="provimento"> Provimento </label>
-                <input type="radio" id="desprovimento" name="MP" value="desprover" onclick="selecionaParecer('desprovimento')">
-                <label for="desprovimento"> Desprovimento </label><br>
-
-                
-           
-
-       <br><br>
-
-       <button onclick="copyFormattedTextToClipboard()">Copiar texto</button>
 
 
-       
+
+        <br>
+        <p>
+            <u>LIMINAR</u>
+        </p>
+
+        <input type="radio" id='deferida' name="liminar" value="deferida" required
+            onclick="selecionaLiminar('deferida')">
+        <label for="deferida"> Deferida</label>
+        <input type="radio" id='indeferida' name="liminar" value="indeferida" checked
+            onclick="selecionaLiminar('indeferida')">
+        <label for="indeferida"> Indeferida</label>
+        <input type="radio" id='semLiminar' name="liminar" value="Sem liminar" onclick="selecionaLiminar('semPedido')">
+        <label for="semLiminar"> Sem liminar</label><br>
+
+        <p>
+            <u>PARECER DO MP</u>
+        </p>
+
+        <input type="radio" id="naoConhecimento" name="MP" value="naoConhecer"
+            onclick="selecionaParecer('naoConhecimento')">
+        <label for="naoConhecimento"> Não conhecimento</label><br>
+        <input type="radio" id="concessao" name="MP" value="conceder" onclick="selecionaParecer('concessao')">
+        <label for="concessao"> Concessão</label>
+        <input type="radio" id="denegacao" name="MP" value="denegar" onclick="selecionaParecer('denegacao')">
+        <label for="denegacao"> Denegação</label><br>
+        <input type="radio" id="provimento" name="MP" value="prover" onclick="selecionaParecer('provimento')">
+        <label for="provimento"> Provimento </label>
+        <input type="radio" id="desprovimento" name="MP" value="desprover" onclick="selecionaParecer('desprovimento')">
+        <label for="desprovimento"> Desprovimento </label><br>
+
+
+
+
+        <br><br>
+
+        <button onclick="copyFormattedTextToClipboard()">Copiar texto</button>
+
+
+
 
 
     </section>
-    
-    
-    <footer> 
-       
-                
-        
-        <p>&copy; Rodrigo Sacramento</p>  </footer>
+
+
+    <footer>
+
+
+
+        <p>&copy; Rodrigo Sacramento</p>
+    </footer>
     </div>
 
-       
-  
+
+
 </body>
+
 </html>
