@@ -37,6 +37,9 @@
         <a href="/remove_teses.html" class="link-restrito"> Remover Teses</a>
         <a href="/adiciona_pedidos.html" class="link-restrito"> Adicionar pedidos</a>
         <a href="/remove_pedido.html" class="link-restrito"> Remover Pedidos</a>
+        <a href="/adiciona_resultados.html" class="link-restrito"> Adicionar Resultados</a>
+        <a href="/remove_resultados.html" class="link-restrito"> Remover Resultados</a>
+
 
 
     </header>
@@ -72,8 +75,8 @@
             <p></p>
             <p><b>Decido.</b> </p>
 
-            <p> <span id="teseEnfrentar"></span></p> <!-- Creio ser melhor tirar isso  -->
-            <p> <span id="pedidoEnfrentar"></span></p>
+          <!--  <p> <span id="teseEnfrentar"></span></p> Creio ser melhor tirar isso  -->
+            <!-- <p> <span id="pedidoEnfrentar"></span></p> -->
 
 
             <!-- FAZER O RESULTADO FICAR ATRELADO À TESE  -->
@@ -82,8 +85,6 @@
 
 
     </section>
-
-
 
 
 
@@ -221,6 +222,19 @@
             <input type="text" id="pedido" onkeyup="searchPedidoFuncao()" placeholder="Buscar pedido...">
             <select id="searchPedido" style="font-family: Arial; font-size: 10px;"></select>
         </div>
+
+        <br>
+        <p><u>RESULTADOS </u> </p>
+        <div class="resultados-api">
+            <input type="text" id="resultado" onkeyup="searchResultadoFuncao()" placeholder="Buscar resultado...">
+            <select id="searchResultado" style="font-family: Arial; font-size: 10px;"></select>
+        </div>
+
+        <!--   parei aqui, falta fazer a função de procurar resultados e resolrver como mostrá-la-->
+
+
+
+
 
 
 

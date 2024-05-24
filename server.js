@@ -73,6 +73,22 @@ http.createServer(function (req, res) {
                     console.log('Pedido excluído com sucesso!');
                     res.end('Pedido excluído com sucesso!');
                 });
+            } else if (pathname === '/adiciona_resultados.html') {
+                const resultado = data.resultado;
+                const tags = data.tags;
+
+                fs.readFile('resultados.json', (err, fileData) => {
+                    if (err) throw err;
+                    let json = JSON.parse(fileData);
+                    var id = json.resultados.length + 1;
+                    json.resultados.push({ id, resultado, tags });
+
+                    fs.writeFileSync('resultados.json', JSON.stringify(json));
+                    console.log('Resultado adicionado com sucesso!');
+                });
+
+                res.writeHead(302, {'Location': 'adiciona_resultados.html'});
+                res.end('Resultado adicionado com sucesso!');
             }
         });
     } else {

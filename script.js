@@ -202,7 +202,7 @@ function searchTese() {
         var selectedTeseText = event.target.value;
         
         var selectedTese = document.getElementById('tesesSelecionadas');
-        var teseEnfrentar = document.getElementById('teseEnfrentar'); // Novo elemento
+        
         
         // Verifica se a tese já foi adicionada
         var alreadyAdded = Array.from(selectedTese.getElementsByTagName('p')).some(p => p.textContent.slice(3) === selectedTeseText);
@@ -220,27 +220,15 @@ function searchTese() {
         // Duplica o código para adicionar a tese ao elemento teseEnfrentar
         var p2 = document.createElement('p');
         p2.textContent = String.fromCharCode(97 + letterIndex).toLocaleLowerCase() + ") " + selectedTeseText;
-        teseEnfrentar.appendChild(p2); // Adiciona ao novo elemento
-
-                // Cria um novo parágrafo com um campo de entrada (input) do tipo 'text' com id 'resultadoMerito'
-        var p3 = document.createElement('p');
-        var input = document.createElement('input');
-        input.id = 'resultadoMerito';
-        input.type = 'text';
-        input.placeholder = 'Resultado do mérito';
-        input.addEventListener('input', searchResultadoMerito);
-        p3.appendChild(input);
-        teseEnfrentar.appendChild(p3); // Adiciona ao novo elemento
-
-
-        // Adiciona o evento de clique apenas se ele ainda não foi adicionado
-
-
-
         
-    
+               // Adiciona o evento de clique apenas se ele ainda não foi adicionado
+       
 
-        
+
+
+
+
+       
         // Atualiza o índice do marcador de letras
         letterIndex++; // Use letterIndex aqui
 
@@ -260,49 +248,14 @@ function searchTese() {
 
     // Marca que o evento de clique foi adicionado
     clickEventAdded = true;
+    
+
+
   }
 }
 
 //PARADO AQUI FALTA CONSEGUIR FAZER ESSA FUNÇÃO BUSCAR O RESULTADO DO MÉRITO NO JSON
 
-function searchResultadoMerito() {
-  console.log('searchResultadoMerito');
-  const campoEntrada = document.getElementById('resultadoMerito');
-  if (!campoEntrada) {
-      console.error('Erro: elemento resultadoMerito não encontrado');
-      return;
-  }
-
-  campoEntrada.addEventListener('input', () => {
-
-      const inputText = campoEntrada.value;
-
-      fetch('resultados.json')
-          .then(response => response.json())
-          .then(data => {
-              if (!Array.isArray(data.resultados)) {
-                  console.error('Erro: data.resultados não é um array');
-                  return;
-              }
-              const resultadosFiltrados = data.resultados.filter(resultado => 
-                  resultado.resultado.includes(inputText) || 
-                  (resultado.tagsResultado && resultado.tagsResultado.includes(inputText))
-              );
-              const listaResultados = document.getElementById('resultadoMerito');
-              if (!listaResultados) {
-                  console.error('Erro: elemento listaResultados não encontrado');
-                  return;
-              }
-              listaResultados.innerHTML = '';
-              resultadosFiltrados.forEach(resultado => {
-                  const opcao = document.createElement('option');
-                  opcao.value = resultado.resultado;
-                  listaResultados.appendChild(opcao);
-              });
-          })
-          .catch(error => console.error('Erro:', error));
-  });
-}
 // apreensões
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('conversaoForm').addEventListener('submit', function(event) {
@@ -430,10 +383,10 @@ var clickEventAddedPedido = false;
           var selectedPedidoText = event.target.value;
   
           var selectedPedido = document.getElementById('pedidoPrincipal1');
-          var pedidoEnfrentar = document.getElementById('pedidoEnfrentar'); // Novo elemento
+         
   
           // Verifica se o pedido já foi adicionado
-          var alreadyAdded = Array.from(selectedPedido.getElementsByTagName('p')).some(p => p.textContent.slice(3) === selectedPedidoText);
+          var alreadyAdded = Array.from(selectedPedido.getElementsByTagName('p')).some(p => p.textContent.slice(4) === selectedPedidoText);
           if (alreadyAdded) {
             alert('Este pedido já foi adicionado.');
             return;
@@ -445,10 +398,7 @@ var clickEventAddedPedido = false;
           p.textContent = String.fromCharCode(97 + letterIndexPedido) + ") " + selectedPedidoText; // Use letterIndexPedido aqui
           selectedPedido.appendChild(p);
   
-          // Duplica o código para adicionar o pedido ao elemento pedidoEnfrentar 
-          var p2 = document.createElement('p');
-          p2.textContent = String.fromCharCode(97 + letterIndex).toLocaleLowerCase() + ") " + selectedPedidoText;
-          pedidoEnfrentar.appendChild(p2); // Adiciona ao novo elemento
+         
   
           // Atualiza o índice do marcador de letras
           letterIndexPedido++;
