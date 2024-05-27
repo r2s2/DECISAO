@@ -1,21 +1,22 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    // Seu código aqui
+//criar função que encaminha para o resultados.json o resultado, precedente e tags
+
+// Path: scriptResultado.js
 
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        var tese = document.getElementById('caixaTese').value;
+        var resultado = document.getElementById('caixaResultado').value;
+        var precedente = document.getElementById('caixaPrecedente').value;
         var tags = document.getElementById('caixaTags').value;
-        var grupo = document.getElementById('caixaGrupo').value;
 
         var data = {
-            tese: tese,
-            tags: tags,
-            grupo: grupo
+            resultado: resultado,
+            precedente: precedente,
+            tags: tags
         };
 
-        fetch('/adiciona_teses.html', {
+        fetch('/adiciona_resultados.html', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -25,19 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
                 return response.text();
             } else {
-                throw new Error('Erro ao adicionar tese');
+                throw new Error('Erro ao adicionar resultado');
             }
         }).then(function(text) {
             console.log(text);
-            window.location.href = '/adiciona_teses.html';
+            window.location.href = '/adiciona_resultados.html';
         }).catch(function(error) {
             console.error(error);
         });
     });
 });
-
-
-});
-
-
-

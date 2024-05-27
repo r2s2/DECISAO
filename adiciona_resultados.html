@@ -8,51 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <script src="client.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="scriptResultado.js"></script>
    
     
-    
-    <script >
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('form').addEventListener('submit', function(event) {
-                event.preventDefault();
-
-                var resultado = document.getElementById('caixaResultado').value;
-                var tags = document.getElementById('caixaTags').value;
-              
-
-                var data = {
-                    resultado: resultado,
-                    tags: tags,
-
-                };
-
-                fetch('/adiciona_resultados.html', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams(data).toString()
-                }).then(function(response) {
-                    if (response.ok) {
-                        return response.text();
-                    } else {
-                        throw new Error('Erro ao adicionar resultado');
-                    }
-                }).then(function(text) {
-                    console.log(text);
-                    window.location.href = '/adiciona_resultados.html';
-                }).catch(function(error) {
-                    console.error(error);
-                });
-            });
-        });
-
-
-
-    </script>
-
-
-
 </head>
 
 <header>
@@ -77,18 +35,21 @@
 
               
             <div>
-                Resultado <br>
+                Introdução sobre o entendimento do STJ <br>
 
-                <textarea id="caixaResultado" name="resultado" rows='8' cols="60" placeholder="Descreva o resultado" ></textarea>  
+                <textarea id="caixaResultado" name="resultado" rows='8' cols="60" placeholder="Esta Corte vem entendendo que..." ></textarea>  
+                <br>
+            </div>
 
+            <div>
+                Precedentes <br>
 
+                <textarea id="caixaPrecedente" name="precedente" rows='8' cols="60" placeholder="Colacionar aqui o(s) precedente(s)" ></textarea>
                 <br>
             </div>
     
             <div>
-                <br>
-                Tags
-                <br>
+                <br>               Tags         <br>
 
                 <textarea id="caixaTags" name = "tags" rows='8' cols="60" placeholder="Escreva o máximo de tags relevantes, como minorante, súmula, 7, 283, 182, redutora, privilegiado, tráfico, §, 4º, fração, terço, terços,  etc" ></textarea>  
             </div>
@@ -101,15 +62,7 @@
             
         </form>
 
-    </section>
-
-   
-
-  
-
-
-
-       
+    </section>       
         
 
     </body>

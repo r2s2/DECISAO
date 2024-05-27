@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remover Resultados</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: small;
+            background-color: rgb(192, 250, 244);
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+   
+<header>
+    <a href="/tela_trabalho.html" class="link-restrito">Tela de trabalho</a>
+        <br> <br>
+        <a href="/adiciona_teses.html" class="link-restrito"> Adicionar teses</a>
+        <a href="/remove_teses.html" class="link-restrito"> Remover Teses</a>
+        <a href="/adiciona_pedidos.html" class="link-restrito"> Adicionar pedidos</a>
+        <a href="/remove_pedido.html" class="link-restrito"> Remover Pedidos</a>
+        <a href="/adiciona_resultados.html" class="link-restrito"> Adicionar Resultados</a>
+        <a href="/remove_resultados.html" class="link-restrito"> Remover Resultados</a>
+</header>
+<body>
+ 
+    <h1>Remover Resultados</h1>
+    <table id="resultadosTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Resultado</th>
+                <th>Precedente</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- As linhas da tabela serão preenchidas aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            // Carrega os resultados do arquivo JSON
+            $.getJSON('resultados.json', function(data) {
+                $.each(data.resultados, function(i, resultado) {
+                    // Adiciona uma linha para cada resultado
+                    var row = $('<tr></tr>');
+                    row.append($('<td></td>').text(resultado.id));
+                    row.append($('<td></td>').text(resultado.resultado));
+                    row.append($('<td></td>').text(resultado.precedente));
+                    row.append($('<td></td>').html('<button onclick="excluirResultado(' + resultado.id + ')">Excluir</button>'));
+                    $('#resultadosTable tbody').append(row);
+                });
+            });
+        });
+
+        function excluirResultado(id) {
+            console.log('Enviando ID para exclusão:', id); // Adicione esta linha
+        
+            $.ajax({
+                url: '/excluir_resultado',
+                type: 'POST',
+                data: JSON.stringify({ id: id }),
+                contentType: 'application/json; charset=utf-8',
+                success: function(response) {
+                    console.log(response);
+                    location.reload(); // Recarrega a página para mostrar a lista atualizada de resultados
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

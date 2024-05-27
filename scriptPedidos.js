@@ -1,33 +1,26 @@
-    document.querySelector('form').addEventListener('submit', function(event) {
-        event.preventDefault();
+  const express = require('express');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const app = express();
 
-        var pedido = document.getElementById('caixaPedido').value;
-        var tags = document.getElementById('caixaTagsPedidos').value;
+app.use(bodyParser.urlencoded({ extended: true }));
 
-        var data = {
-            pedido: pedido,
-            tagsPedidos: tags
-        };
+app.post('/adiciona_pedidos', (req, res) => {
+    const data = req.body;
 
-        fetch('/adiciona_pedidos.html', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams(data).toString()
-        }).then(function(response) {
-            if (response.ok) {
-                return response.text();
-            } else {
-                throw new Error('Erro ao adicionar pedido');
-            }
-        }).then(function(text) {
-            console.log(text);
-            // Não redirecione ainda
-            // window.location.href = '/adiciona_pedidos.html';
-        }).catch(function(error) {
-            console.error(error);
+    fs.readFile('pedidos.json', (err, json) => {
+        if (err) throw err;
+
+        const obj = JSON.parse(json);
+        obj.pedidos.push(data);
+
+        fs.writeFile('pedidos.json', JSON.stringify(obj), (err) => {
+            if (err) throw err;
+            console.log('Pedido adicionado');
         });
     });
 
-  
+    res.status(200).send('Pedido adicionado');
+});
+
+app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
