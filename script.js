@@ -437,6 +437,118 @@ function selecionaPedido(id) {
     document.getElementById("pedidoPrincipal1").innerHTML = pedidos[id];
   }
 }
+
+
+var liminar = {
+  deferida: 'O pedido liminar foi deferido.',
+  indeferida: 'O pedido liminar foi indeferido.',
+  semPedido: 'Não houve pedido liminar.'
+}
+function selecionaLiminar(argumento4) {
+  document.getElementById('se_liminar2').innerHTML = liminar[argumento4]
+  if (argumento4 == 'semPedido') {
+    document.getElementById('pedidoLiminar').innerHTML = ''
+  } else { document.getElementById('pedidoLiminar').innerHTML = ', inclusive liminarmente, ' }
+
+}
+
+var parecer = {
+  naoConhecimento: 'pelo não conhecimento da ordem.',
+  denegacao: 'pela denegação da ordem.',
+  concessao: 'pela concessão da ordem.',
+  provimento: 'pelo provimento do recurso.',
+  desprovimento: 'pelo desprovimento do recurso.'
+}
+function selecionaParecer(argumento1) {
+
+  document.getElementById('parecerMinisterial').innerHTML = 'O Ministério Público Federal manifestou-se '
+  document.getElementById('parecerClasse').innerHTML = parecer[argumento1]
+
+}
+
+
+function primeiroGrau() {
+  // Obtem o elemento de entrada onde o usuário digita o texto
+  var input = document.getElementById('primeiroGrau');
+
+  // Cria um novo elemento p
+  var p = document.createElement('p');
+  var p2 = document.createElement('p');
+
+  // Adiciona estilos ao parágrafo
+  p.style.fontStyle = 'italic'; // Torna o texto itálico
+  p.style.paddingLeft = '4cm'; // Adiciona uma indentação de 2cm
+  p.style.textIndent = '0'; 
+  p.style.fontSize = '10pt'; // Define o tamanho da fonte como 10pt
+
+  // Define o conteúdo de texto do parágrafo
+  p2.innerHTML = "Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:"; 
+  p.textContent = input.value;
+
+  // Adiciona o parágrafo ao elemento com id 'primeiroGrauTexto'
+  document.getElementById('primeiroGrauTexto').appendChild(p2);
+  document.getElementById('primeiroGrauTexto').appendChild(p);
+
+  // Limpa o input
+  input.value = '';
+}
+
+function segundoGrau() {
+  // Obtem o elemento de entrada onde o usuário digita o texto
+  var input = document.getElementById('segundoGrau');
+
+  // Cria um novo elemento p
+  var p = document.createElement('p');
+  var p2 = document.createElement('p');
+
+  // Adiciona estilos ao parágrafo
+  p.style.fontStyle = 'italic'; // Torna o texto itálico
+  p.style.paddingLeft = '4cm'; // Adiciona uma indentação de 2cm
+  p.style.textIndent = '0'; 
+  p.style.fontSize = '10pt'; // Define o tamanho da fonte como 10pt
+
+  // Define o conteúdo de texto do parágrafo
+  p2.innerHTML = "A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:"; 
+  p.textContent = input.value;
+
+  // Adiciona o parágrafo ao elemento com id 'primeiroGrauTexto'
+  document.getElementById('segundoGrauTexto').appendChild(p2);
+  document.getElementById('segundoGrauTexto').appendChild(p);
+
+  // Limpa o input
+  input.value = '';
+}
+
+// Adiciona o evento 'keydown' ao elemento de entrada
+document.getElementById('primeiroGrau').addEventListener('keydown', function(event) {
+  // Verifica se a tecla pressionada foi Enter
+  if (event.key === 'Enter') {
+    // Chama a função primeiroGrau
+    primeiroGrau();
+
+    // Previne a ação padrão do evento Enter
+    event.preventDefault();
+  }
+});
+
+
+// Adiciona o evento 'keydown' ao elemento de entrada
+document.getElementById('primeiroGrau').addEventListener('keydown', function(event) {
+  // Verifica se a tecla pressionada foi Enter
+  if (event.key === 'Enter') {
+    // Chama a função primeiroGrau
+    primeiroGrau();
+
+    // Previne a ação padrão do evento Enter
+    event.preventDefault();
+  }
+});
+
+function removeAcentos(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+
 function searchResultadoFuncao() {
   var input, filter, results, i, resultado, tags, count = 0;
   input = document.getElementById('resultado');
@@ -447,12 +559,24 @@ function searchResultadoFuncao() {
   results.innerHTML = '';
 
   fetch('resultados.json')
-    .then(response => response.json())
-    .then(data => {
-      for (i = 0; i < data.resultados.length; i++) {
-        resultado = data.resultados[i];
-        tags = resultado.tags || '';
-        if ((resultado.resultado && resultado.resultado.toUpperCase().indexOf(filter) > -1) || (tags && tags.toUpperCase().indexOf(filter) > -1) || resultado.id.toString() === input.value) {
+  .then(response => response.json())
+  
+.then(data => {
+  // Divide o filtro em várias palavras-chave e remove os acentos
+  var keywords = filter.split(' ').map(keyword => removeAcentos(keyword));
+
+  for (i = 0; i < data.resultados.length; i++) {
+    resultado = data.resultados[i];
+    tags = resultado.tags || '';
+    var tagsUpper = removeAcentos(tags.toUpperCase());
+
+    // Verifica se todas as palavras-chave estão presentes nas tags
+    var allKeywordsFound = keywords.every(keyword => tagsUpper.indexOf(keyword.toUpperCase()) > -1);
+
+    if ((resultado.resultado && removeAcentos(resultado.resultado.toUpperCase()).indexOf(filter) > -1) || allKeywordsFound || resultado.id.toString() === input.value) {
+    
+      
+        
           var option = document.createElement('option');
           option.value = resultado.resultado + '|' + resultado.precedente; // Separa o resultado e o precedente com um |
           option.text = resultado.id + " - " + resultado.resultado + " - " + resultado.precedente; // Inclui o id do resultado e o precedente no texto
@@ -471,8 +595,8 @@ function searchResultadoFuncao() {
 
       var selectedResultado = document.getElementById('resultadoTese');
 
-      // Verifica se o resultado já foi adicionado
-      var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(p => p.textContent.slice(4) === selectedResultadoText);
+     // Verifica se o resultado já foi adicionado
+var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(p => p.textContent === selectedResultadoText);
       if (alreadyAdded) {
         alert('Este resultado já foi adicionado.');
         return;
@@ -492,7 +616,7 @@ function searchResultadoFuncao() {
       var p3 = document.createElement('p');
 
       // Encontra o texto entre parênteses que começa com letras e termina com um ano ou com um ano e ponto final
-      var regex = /\(([A-Za-z].*?\d{4}\.?)\)/g;
+      var regex = /\(([A-Za-z].*?\d{4}\.)\)/g;
       var match;
       while ((match = regex.exec(selectedPrecedenteText)) !== null) {
         // Adiciona tags <span> ao redor do texto encontrado
@@ -531,32 +655,8 @@ function searchResultadoFuncao() {
 
 }
 
-var liminar = {
-  deferida: 'O pedido liminar foi deferido.',
-  indeferida: 'O pedido liminar foi indeferido.',
-  semPedido: 'Não houve pedido liminar.'
-}
-function selecionaLiminar(argumento4) {
-  document.getElementById('se_liminar2').innerHTML = liminar[argumento4]
-  if (argumento4 == 'semPedido') {
-    document.getElementById('pedidoLiminar').innerHTML = ''
-  } else { document.getElementById('pedidoLiminar').innerHTML = ', inclusive liminarmente, ' }
 
-}
 
-var parecer = {
-  naoConhecimento: 'pelo não conhecimento da ordem.',
-  denegacao: 'pela denegação da ordem.',
-  concessao: 'pela concessão da ordem.',
-  provimento: 'pelo provimento do recurso.',
-  desprovimento: 'pelo desprovimento do recurso.'
-}
-function selecionaParecer(argumento1) {
-
-  document.getElementById('parecerMinisterial').innerHTML = 'O Ministério Público Federal manifestou-se '
-  document.getElementById('parecerClasse').innerHTML = parecer[argumento1]
-
-}
 
 
 function zerarTudo() {

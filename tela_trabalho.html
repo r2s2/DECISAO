@@ -44,6 +44,8 @@
 
     </header>
 
+    <div class="container">
+
     <section class="texto">
         <div id="texto_base_relatorio">
 
@@ -75,7 +77,11 @@
             <p></p>
             <p><b>Decido.</b> </p>
 
+            <p> <span id="primeiroGrauTexto"> </span></p>
+            <p> <span id="segundoGrauTexto"></span></p>
+
             <p> <span id="resultadoTese"></span></p>
+
 
           <!--  <p> <span id="teseEnfrentar"></span></p> Creio ser melhor tirar isso  -->
             <!-- <p> <span id="pedidoEnfrentar"></span></p> -->
@@ -226,23 +232,6 @@
         </div>
 
         <br>
-        <p><u>RESULTADOS </u> </p>
-        <div class="resultados-api">
-            <input type="text" id="resultado" onkeyup="searchResultadoFuncao()" placeholder="Buscar resultado...">
-            <select id="searchResultado" style="font-family: Arial; font-size: 10px;"></select>
-        </div>
-
-        <!--   parei aqui, falta fazer a função de procurar resultados e resolrver como mostrá-la-->
-
-
-
-
-
-
-
-
-
-        <br>
         <p>
             <u>LIMINAR</u>
         </p>
@@ -272,9 +261,30 @@
         <input type="radio" id="desprovimento" name="MP" value="desprover" onclick="selecionaParecer('desprovimento')">
         <label for="desprovimento"> Desprovimento </label><br>
 
+        <br>
+
+        <p><u>INSTÂNCIAS ORDINÁRIAS</u></p>
+        <p>1º Grau</p>
+        <textarea id="primeiroGrau" onkeydown="if(event.key === 'Enter') { primeiroGrau(); event.preventDefault(); }" rows='8' cols="40"
+        placeholder="Assim se manifestou o Juízo de 1º Grau: (apenas colar o texto)"></textarea>
+
+        <p>2º Grau</p>
+
+        <textarea id="segundoGrau" onkeydown="if(event.key === 'Enter') { segundoGrau(); event.preventDefault(); }" rows='8' cols="40"
+        placeholder="A Corte de origem fundamentou seu entendimento nos seguintes termos: (apenas colar o texto)"></textarea>
 
 
 
+        <p><u>RESULTADOS </u> </p>
+        <div class="resultados-api">
+            <input type="text" id="resultado" onkeyup="searchResultadoFuncao()" placeholder="Buscar resultado...">
+            <select id="searchResultado" style="font-family: Arial; font-size: 10px;"></select>
+        </div>
+
+        <!--   parei aqui, falta fazer a função de procurar resultados e resolrver como mostrá-la-->
+
+
+        <br>
         <br><br>
 
         <button onclick="copyFormattedTextToClipboard()">Copiar texto</button>
@@ -284,7 +294,7 @@
 
 
     </section>
-
+</div>
 
     <footer>
 

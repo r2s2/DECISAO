@@ -75,22 +75,28 @@ p {
     margin-top: 5px; /* Espaçamento de 5px do topo */
     margin-left: 5px; /* Espaçamento de 5px da esquerda */
 }
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Isso adiciona espaço entre as seções */
+}
 .texto {
     background-color: aquamarine;
-    position: absolute;
-    width: 45%;
+    position: sticky;
+    width: 47%;
     top: 0;
     right: 0;
     height: auto;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12pt;
     margin-bottom: 10px;
-    margin-top: 144px;
+    margin-top: 10px;
     padding: 25px 20px 20px 25px; /* Ajusta o padding para adicionar 5px extra no topo e à esquerda */
-    margin-left: 50%;
+    margin-left: 0%;
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.493);
     text-align: justify;
+    z-index: 1;
 }
 
 p #teseEnfrentar {
@@ -117,9 +123,9 @@ span {
 
 section {
     background-color: blueviolet;
-    position: relative;
+    position: static; 
     top: 0;
-    width: 50%;
+    width: 48%;
     height: 100%;
     border-radius: 5px;
     z-index: 1;
@@ -127,7 +133,7 @@ section {
     padding: 10px;
     transition: 0.5s;
     box-shadow: 0px 0px 10px 0px #000000;
-    margin-top: 35px;
+    margin-top: 10px;
     font-size: 12px;
     zoom: 1.6;
     padding: 10px;
