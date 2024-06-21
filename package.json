@@ -1,0 +1,24 @@
+{
+  "name": "decisao",
+  "version": "1.0.0",
+  "description": "Primeira",
+  "main": "client.js",
+  "scripts": {
+    "test": "a",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "main"
+  },
+  "keywords": [
+    "decisao",
+    "relatorio"
+  ],
+  "author": "rodrigo sacramento",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  }
+}

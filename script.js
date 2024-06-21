@@ -626,11 +626,11 @@ var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(
       // Adiciona o texto ao parágrafo
       p3.innerHTML = selectedPrecedenteText;
 
-      // Adiciona estilos ao parágrafo
-      p3.style.fontStyle = 'italic'; // Torna o texto itálico
-      p3.style.paddingLeft = '4cm'; // Adiciona uma indentação de 2cm
-      p3.style.textIndent = '0'; 
-      p3.style.fontSize = '10pt'; // Define o tamanho da fonte como 10pt
+            // Adiciona estilos ao parágrafo com !important para evitar sobrescrita
+      p3.style.cssText += 'font-style: italic !important;'; // Torna o texto itálico
+      p3.style.cssText += 'padding-left: 4cm !important;'; // Adiciona uma left de 4cm
+      p3.style.cssText += 'text-indent: 0 !important;'; 
+      p3.style.cssText += 'font-size: 10pt !important;'; // Define o tamanho da fonte como 10pt
 
       // Adiciona o parágrafo ao resultado
       selectedResultado.appendChild(p3);
@@ -658,6 +658,29 @@ var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(
 
 
 
+function selecionaDispositivo(id) {
+  if (id === 'conceder') {
+    document.getElementById('dispositivo').innerHTML = 'concedo a ordem';
+  } else if (id === 'denegar') {
+    document.getElementById('dispositivo').innerHTML = 'denego a ordem';
+  } else if (id === 'concederParcial') {
+    document.getElementById('dispositivo').innerHTML = 'concedo parcialmente a ordem';
+  } else if (id === 'negouProvimento') {
+    document.getElementById('dispositivo').innerHTML = 'nego provimento ao recurso';
+  } else if (id === 'darProvimento') {
+    document.getElementById('dispositivo').innerHTML = 'dou provimento ao recurso';
+  } else if (id === 'darParcialProvimento') {
+    document.getElementById('dispositivo').innerHTML = 'dou parcial provimento ao recurso';
+  /*} else if (id === 'naoConheco' || id === 'naoConheco2') {
+    document.getElementById('dispositivo').innerHTML = 'Não conheço do <i>habeas corpus</i>.';
+  }      PRECISA AJUSTAR COM AS CLASSES*/
+}
+}
+
+
+
+
+
 
 function zerarTudo() {
   document.getElementById('DELITO').innerHTML = ''
@@ -672,8 +695,24 @@ function zerarTudo() {
 
 
 async function copyFormattedTextToClipboard() {
-  let element = document.getElementsByClassName('texto_base_relatorio')[0];
-  let styledHtml = `<p style="font-family: Arial, Helvetica, sans-serif; margin-bottom: 7.1pt; text-indent: 2cm;">${element.innerHTML}</p>`;
+  let element = document.getElementById('texto_base_relatorio');
+  let styledHtml = `
+<html>
+<head>
+<style>
+  body, p {
+    font-family: 'Arial', sans-serif !important; /* Usando !important para tentar forçar a sobreposição de estilos padrão */
+    margin-bottom: 7.1pt;
+    text-indent: 2cm;    
+  }
+</style>
+</head>
+<body>
+<p>${element.innerHTML}</p>
+</body>
+</html>`;
+
+  // Cria um novo Blob com o tipo MIME correto para HTML
   let textToCopy = new Blob([styledHtml], { type: 'text/html' });
   try {
     await navigator.clipboard.write([
@@ -681,11 +720,15 @@ async function copyFormattedTextToClipboard() {
         'text/html': textToCopy
       })
     ]);
-    alert('Texto não formatado copiado para a área de transferência');
+    alert('Texto formatado copiado para a área de transferência');
   } catch (err) {
     console.error('Erro ao copiar texto: ', err);
   }
 }
+
+
+
+
 
 // fazer tela de login
 // fazer tela de cadastro

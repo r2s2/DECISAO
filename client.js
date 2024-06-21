@@ -1,5 +1,10 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+
+ document.addEventListener('DOMContentLoaded', (event) => {
     // Seu código aqui
+
+   
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('form').addEventListener('submit', function(event) {
@@ -14,6 +19,28 @@ document.addEventListener('DOMContentLoaded', function() {
             tags: tags,
             grupo: grupo
         };
+
+        const sqlite3 = require('sqlite3').verbose();
+        let db = new sqlite3.Database('./banco_dados.db', sqlite3.OPEN_READWRITE, (err) => {
+            if (err) {
+              console.error(err.message);
+            }
+            console.log('Conectado ao banco de dados SQLite.');
+          });
+        
+        let grupo = document.getElementById('caixaGrupo').value;
+        let tese = document.getElementById('caixaTese').value;
+        let tags = document.getElementById('caixaTags').value;
+        
+        let sql = `INSERT INTO teses(grupo, tese, tags) VALUES(?, ?, ?)`;
+        
+        db.run(sql, [grupo, tese, tags], function(err) {
+          if (err) {
+            console.error('Erro ao inserir dados:', err.message);
+            return;
+          }
+          console.log(`Tese adicionada com ID: ${this.lastID}`);
+        });
 
         fetch('/adiciona_teses.html', {
             method: 'POST',
@@ -41,3 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+// Abra a conexão com o banco de dados
+
+// Dados a serem inseridos

@@ -82,6 +82,9 @@
 
             <p> <span id="resultadoTese"></span></p>
 
+            <p>Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
 
           <!--  <p> <span id="teseEnfrentar"></span></p> Creio ser melhor tirar isso  -->
             <!-- <p> <span id="pedidoEnfrentar"></span></p> -->
@@ -266,12 +269,12 @@
         <p><u>INSTÂNCIAS ORDINÁRIAS</u></p>
         <p>1º Grau</p>
         <textarea id="primeiroGrau" onkeydown="if(event.key === 'Enter') { primeiroGrau(); event.preventDefault(); }" rows='8' cols="40"
-        placeholder="Assim se manifestou o Juízo de 1º Grau: (apenas colar o texto)"></textarea>
+        placeholder="Assim se manifestou o Juízo de 1º Grau: (apenas colar o texto + Enter)"></textarea>
 
         <p>2º Grau</p>
 
         <textarea id="segundoGrau" onkeydown="if(event.key === 'Enter') { segundoGrau(); event.preventDefault(); }" rows='8' cols="40"
-        placeholder="A Corte de origem fundamentou seu entendimento nos seguintes termos: (apenas colar o texto)"></textarea>
+        placeholder="A Corte de origem fundamentou seu entendimento nos seguintes termos: (apenas colar o texto + Enter)"></textarea>
 
 
 
@@ -279,15 +282,42 @@
         <div class="resultados-api">
             <input type="text" id="resultado" onkeyup="searchResultadoFuncao()" placeholder="Buscar resultado...">
             <select id="searchResultado" style="font-family: Arial; font-size: 10px;"></select>
+        </div>     
+        <br>        
+        
+        <p><u>DISPOSITIVO</u></p>
+        <div class="dispositivos">
+            
+            <input type="radio" id="naoConheco" name="dispositivos" value="naoConheco" onclick="selecionaDispositivo(id)">
+            <label for="naoConheco"> Não conheço</label>
+            <input type="radio" id="concederParcial" name="dispositivos" value="concederParcial" onclick="selecionaDispositivo(id)">
+            <label for="concederParcial"> Conceder de ofício</label>            
+            <br>
+            <input type="radio" id="denegar" name="dispositivos" value="denegar" onclick="selecionaDispositivo(id)">
+            <label for="denegar"> Denegar</label>
+            <input type="radio" id="conceder" name="dispositivos" value="conceder" onclick="selecionaDispositivo(id)">
+            <label for="conceder"> Conceder</label>
+            <input type="radio" id="concederParcial" name="dispositivos" value="concederParcial" onclick="selecionaDispositivo(id)" >
+            <label for="concederParcial"> Conceder parcial</label>
+            <br>
+            <input type="radio" id="negarProvimento" name="dispositivos" value="negarProvimento" onclick="selecionaDispositivo(id)">
+            <label for="negarProvimento"> Negar provimento</label>
+            <input type="radio" id="darProvimento" name="dispositivos" value="darProvimento" onclick="selecionaDispositivo(id)">
+            <label for="darProvimento"> Dar provimento</label>
+            <input type="radio" id="darParcialProvimento" name="dispositivos" value="darParcialProvimento" onclick="selecionaDispositivo(id)">
+            <label for="darParcialProvimento"> Dar parcial provimento</label>
+         
+            
+
         </div>
 
-        <!--   parei aqui, falta fazer a função de procurar resultados e resolrver como mostrá-la-->
-
-
-        <br>
         <br><br>
 
+
+
+
         <button onclick="copyFormattedTextToClipboard()">Copiar texto</button>
+        
 
 
 
