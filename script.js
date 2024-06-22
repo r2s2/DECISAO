@@ -43,6 +43,10 @@ function check() {
   for (let id in classes) {
     if (document.getElementById(id).checked) {
       classes[id].selecionadoClasse();
+
+      if (id === 'HC') {
+        return 'HC'
+      } // para ser chamado no dispositivo
       break;
     }
   }
@@ -660,20 +664,29 @@ var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(
 
 function selecionaDispositivo(id) {
   if (id === 'conceder') {
-    document.getElementById('dispositivo').innerHTML = 'concedo a ordem';
+    document.getElementById('dispositivo').innerHTML = '<b>concedo a ordem</b>';
   } else if (id === 'denegar') {
-    document.getElementById('dispositivo').innerHTML = 'denego a ordem';
+    document.getElementById('dispositivo').innerHTML = '<b>denego a ordem</b>';
   } else if (id === 'concederParcial') {
-    document.getElementById('dispositivo').innerHTML = 'concedo parcialmente a ordem';
+    document.getElementById('dispositivo').innerHTML = '<b>concedo parcialmente a ordem</b>';
   } else if (id === 'negouProvimento') {
-    document.getElementById('dispositivo').innerHTML = 'nego provimento ao recurso';
+    document.getElementById('dispositivo').innerHTML = '<b>nego provimento ao recurso</b>';
   } else if (id === 'darProvimento') {
-    document.getElementById('dispositivo').innerHTML = 'dou provimento ao recurso';
+    document.getElementById('dispositivo').innerHTML = '<b>dou provimento ao recurso</b>';
   } else if (id === 'darParcialProvimento') {
-    document.getElementById('dispositivo').innerHTML = 'dou parcial provimento ao recurso';
-  /*} else if (id === 'naoConheco' || id === 'naoConheco2') {
-    document.getElementById('dispositivo').innerHTML = 'Não conheço do <i>habeas corpus</i>.';
-  }      PRECISA AJUSTAR COM AS CLASSES*/
+    document.getElementById('dispositivo').innerHTML = '<b>dou parcial provimento ao recurso</b>';
+  } else if (id === 'naoConheco') {
+    if (check() === 'HC') {
+      document.getElementById('dispositivo').innerHTML = '<b>não conheço do <i>habeas corpus</i></b>';
+    } else {
+      document.getElementById('dispositivo').innerHTML = '<b>não conheço do recurso</b>';
+    }
+  } else if (id === 'concederOficio') {
+    if (check() === 'HC') {
+      document.getElementById('dispositivo').innerHTML = '<b>não conheço do <i>writ</i></b>. Contudo, <b>concedo a ordem de ofício</b>';
+    } else {
+      document.getElementById('dispositivo').innerHTML = '<b>não conheço do recurso</b>. Contudo, <b>concedo a ordem de ofício</b>';
+    }
 }
 }
 
