@@ -51,9 +51,11 @@
 
             <p> Trata-se de <span id="classe"></span> <span id="se_liminar">[valor]</span> <span
                     id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
-            <p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela
-                prática, em tese, <span id="dosDelitos"> do delito</span> de<span id="DELITO"></span><span id='virgulaOuE'></span>
-                <span id='ultimoDelito'></span>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                <input type="text" id="inputTexto" style="width: 350px;" 
+                placeholder="encontra-se preso... foi condenado a... cumpre pena..." >
+                <span id="dosDelitos"> do delito</span>
+                 de<span id="DELITO"></span>.
 
             </p>
 
@@ -168,31 +170,10 @@
 
 
         <p> <u>DELITOS</u> </p>
-
-        <input type="checkbox" id='trafico' name="delito" value='trafico' onclick="criarElementoDelito(id)">
-        <label for="trafico"> Tráfico</label>
-
-
-        <input type="checkbox" id='assocTrafico' name="delito" value="Associação para o Tráfico"
-            onclick="criarElementoDelito(id)">
-        <label for="assocTrafico"> Associação para o Tráfico</label> <br>
-        <input type="checkbox" id='roubo' name="delito" value="Roubo" onclick="criarElementoDelito(id)">
-        <label for="roubo"> Roubo</label>
-        <input type="checkbox" id='homicidio' name="delito" value="Homicídio" onclick="criarElementoDelito(id)">
-        <label for="homicidio"> Homicídio</label><br>
-        <input type="checkbox" id='estuproVuln' name="delito" value="estupro de vulneravel"
-            onclick="criarElementoDelito(id)">
-        <label for="estuproVuln"> Estupro de vulnerável</label>
-        <input type="checkbox" id='furto' name="delito" value="Furto" onclick="criarElementoDelito(id)">
-        <label for="furto"> Furto</label><br>
-        <input type="checkbox" id='orcrim' name="delito" value="Organização Criminosa"
-            onclick="criarElementoDelito(id)">
-        <label for="orcrim"> Organização Criminosa</label><br>
+        <input type="text" id="tipoPenal" onkeyup="searchTipoPenal()"
+        placeholder="Buscar tipo">
+        <select id="searchTipoPenal" style="font-family: Arial; font-size: 10px;"></select>
       
-
-
-
-
 
         <p><u>FATOS </u> </p>
         <textarea id="caixatexto_base_relatorio" oninput="fatosIncluidos()" rows='8' cols="40"

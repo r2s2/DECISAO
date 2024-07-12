@@ -133,8 +133,97 @@ var delito = {
   furto: ' furto',
   homicidio: ' homicídio',
   estuproVuln: ' estupro de vulnerável',
-  orcrim: ' organização criminosa'
+  orcrim: ' organização criminosa',
+  estelionato: ' estelionato',
+  lavagemDinheiro: ' lavagem de dinheiro',
+  corrupcao: ' corrupção',
+  tortura: ' tortura',
+  contrabando: ' contrabando',
+  descaminho: ' descaminho',
+  armas: ' porte ilegal de armas',
+  sequestro: ' sequestro',
+  estupro: ' estupro',
+  receptacao: ' receptação',
+
+
 }
+
+
+function searchTipoPenal() {
+  var input, filter, results, i;
+  input = document.getElementById('tipoPenal');
+  input.setAttribute('autocomplete', 'off');
+
+  filter = input.value.toUpperCase();
+  results = document.getElementById('searchTipoPenal');
+  results.innerHTML = '';
+
+  for (i in delito) {
+    if (delito[i].toUpperCase().includes(filter)) {
+      var option = document.createElement('option');
+      option.value = delito[i];
+      option.text = delito[i];
+      results.appendChild(option);
+    }
+  }
+  results.size = results.length;
+
+  results.addEventListener('click', function (event) {
+    if (event.target.tagName === 'OPTION') {
+      var selectedDelitoText = event.target.value;
+
+      // Verifica se o delito já foi adicionado
+      if (!contadorDelito.includes(selectedDelitoText)) {
+        contadorDelito.push(selectedDelitoText);
+        atualizarVisualizacaoDelitos();
+      }
+      // Remove o alerta e mantém a funcionalidade de esconder a lista e limpar o campo de entrada
+      results.style.display = 'none'; // Esconde a lista de resultados
+      input.value = ''; // Limpa o campo de entrada
+    }
+  });
+
+  if (input.value.trim() === '') {
+    results.style.display = 'none';
+  } else {
+    results.style.display = 'block';
+  }
+}
+
+function atualizarVisualizacaoDelitos() {
+  var pDelitosSelecionados = document.getElementById('DELITO');
+  var textoDosDelitos = document.getElementById('dosDelitos');
+
+  if (contadorDelito.length > 0) {
+    // Cria a string de delitos, substituindo a última vírgula por " e "
+    var delitosTexto = contadorDelito.join(', ').replace(/, ([^,]*)$/, ' e $1');
+    pDelitosSelecionados.textContent = delitosTexto;
+    // Altera o texto para "dos delitos" se houver mais de um delito selecionado
+    textoDosDelitos.textContent = contadorDelito.length > 1 ? 'dos delitos' : 'do delito';
+  } else {
+    // Se não houver delitos selecionados, limpa o texto do parágrafo e volta ao singular
+    pDelitosSelecionados.textContent = '';
+    textoDosDelitos.textContent = 'do delito';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var inputTexto = document.getElementById('inputTexto');
+  inputTexto.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      var texto = inputTexto.value;
+      // Cria um novo nó de texto com o valor do input
+      var textoNode = document.createTextNode(texto);
+      var paragrafoTexto = document.getElementById('paragrafoTexto');
+      // Insere o texto no lugar do input
+      paragrafoTexto.insertBefore(textoNode, inputTexto);
+      // Remove o input do parágrafo
+      paragrafoTexto.removeChild(inputTexto);
+      event.preventDefault();
+    }
+  });
+});
+
 
 function fatosIncluidos() {
   // Pega o textarea e o elemento 'fatos'
@@ -146,6 +235,8 @@ function fatosIncluidos() {
     fatos.innerHTML = textarea.value;
   }
 }
+/*
+
 function atualizarVisualizacaoDelitos() {
   // Limpa a visualização atual
   document.getElementById("DELITO").innerHTML = '';
@@ -179,7 +270,7 @@ function criarElementoDelito(id) {
   // Atualiza a visualização dos delitos após adicionar ou remover
   atualizarVisualizacaoDelitos();
 }
-
+*/
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('conversaoForm').addEventListener('submit', function (event) {
