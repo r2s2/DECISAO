@@ -52,11 +52,12 @@
             <p> Trata-se de <span id="classe"></span> <span id="se_liminar">[valor]</span> <span
                     id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
             <p>Depreende-se dos autos que o <span id="reu">[valor]</span> encontra-se preso preventivamente pela
-                prática, em tese, <span id="dosDelitos"> do delito</span> de<span id="DELITO"></span> <span
-                    id='virgulaOuE'></span> <span id='ultimoDelito'></span> por haver </span> <span id='fatos'></span>
-                <span id="seApreensão"> </span>.
+                prática, em tese, <span id="dosDelitos"> do delito</span> de<span id="DELITO"></span><span id='virgulaOuE'></span>
+                <span id='ultimoDelito'></span>
 
             </p>
+
+            <p><span id='fatos'></span></p>
 
             <div class="apreensoes">
                 <p id="resultadoApreensao"></p>
@@ -81,6 +82,7 @@
             <p> <span id="segundoGrauTexto"></span></p>
 
             <p> <span id="resultadoTese"></span></p>
+            <p> <span id="resultadoTextoParticular"></span></p>
 
             <p>Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
             <p>Publique-se. Intimem-se.</p>
@@ -194,7 +196,7 @@
 
         <p><u>FATOS </u> </p>
         <textarea id="caixatexto_base_relatorio" oninput="fatosIncluidos()" rows='8' cols="40"
-            placeholder="Descreva a situação fática"></textarea>
+            placeholder="Narram os autos que..."></textarea>
 
         <p><u>APREENSÃO</u> </p>
 
@@ -284,6 +286,8 @@
             <select id="searchResultado" style="font-family: Arial; font-size: 10px;"></select>
         </div>     
         <br>        
+
+
         
         <p><u>DISPOSITIVO</u></p>
         <div class="dispositivos">

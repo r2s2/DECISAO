@@ -146,38 +146,41 @@ function fatosIncluidos() {
     fatos.innerHTML = textarea.value;
   }
 }
+function atualizarVisualizacaoDelitos() {
+  // Limpa a visualização atual
+  document.getElementById("DELITO").innerHTML = '';
+  // Constrói a nova string de delitos
+  let delitosTexto = contadorDelito.slice(0, -1).map(id => delito[id]).join(", ");
+  if (contadorDelito.length > 1) {
+    delitosTexto += " e " + delito[contadorDelito[contadorDelito.length - 1]];
+  } else if (contadorDelito.length === 1) {
+    delitosTexto = delito[contadorDelito[0]];
+  }
+  // Adiciona o texto ao DOM
+  if (delitosTexto) {
+    const node = document.createElement("span");
+    const textnode = document.createTextNode(delitosTexto + ".");
+    node.appendChild(textnode);
+    document.getElementById("DELITO").appendChild(node);
+  }
+  // Atualiza 'dosDelitos' se necessário
+  document.getElementById('dosDelitos').innerHTML = contadorDelito.length > 1 ? 'dos delitos' : '';
+}
 
 function criarElementoDelito(id) {
   var index = contadorDelito.indexOf(id);
   if (index !== -1) {
     // Se o id já está no contadorDelito, remova-o
     contadorDelito.splice(index, 1);
-
-    // Remova o elemento correspondente do DOM
-    var element = document.getElementById(id);
-    element.parentNode.removeChild(element);
-
-    // Atualize 'dosDelitos' se necessário
-    if (contadorDelito.length <= 1) {
-      document.getElementById('dosDelitos').innerHTML = '';
-    }
   } else {
     // Se o id não está no contadorDelito, adicione-o
     contadorDelito.push(id);
-
-    // Crie um novo elemento no DOM
-    var node = document.createElement("span");
-    node.id = id;  // Adicione um id ao elemento para que possamos removê-lo mais tarde
-    var textnode = document.createTextNode(contadorDelito.length > 1 ? ',' + delito[id] : delito[id]);
-    node.appendChild(textnode);
-    document.getElementById("DELITO").appendChild(node);
-
-    // Atualize 'dosDelitos' se necessário
-    if (contadorDelito.length > 1) {
-      document.getElementById('dosDelitos').innerHTML = 'dos delitos';
-    }
   }
+  // Atualiza a visualização dos delitos após adicionar ou remover
+  atualizarVisualizacaoDelitos();
 }
+
+
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('conversaoForm').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -602,7 +605,7 @@ function searchResultadoFuncao() {
      // Verifica se o resultado já foi adicionado
 var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(p => p.textContent === selectedResultadoText);
       if (alreadyAdded) {
-        alert('Este resultado já foi adicionado.');
+        //alert('Este resultado já foi adicionado.');
         return;
       }
 
@@ -639,6 +642,46 @@ var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(
       // Adiciona o parágrafo ao resultado
       selectedResultado.appendChild(p3);
 
+      
+// Cria a div que irá conter o textarea e o botão
+var div = document.createElement('div');
+
+// Cria o textarea
+var textarea = document.createElement('textarea');
+
+// Adiciona o textarea à div
+div.appendChild(textarea);
+
+// Cria o botão
+var button = document.createElement('button');
+button.textContent = 'Incluir';
+
+// Adiciona o botão à div
+div.appendChild(button);
+
+// Adiciona a div logo após o parágrafo p3
+p3.parentNode.insertBefore(div, p3.nextSibling);
+
+// Configura o evento de clique do botão
+button.addEventListener('click', function() {
+  // Cria um novo elemento para substituir o textarea
+  var textoDiv = document.createElement('div');
+
+// Divide o valor do textarea em linhas
+  var linhas = textarea.value.split('\n');
+
+  // Para cada linha, cria um novo parágrafo e adiciona ao textoDiv
+  linhas.forEach(function(linha) {
+    var p = document.createElement('p');
+    p.textContent = linha;
+    textoDiv.appendChild(p);
+  });
+
+
+  // Substitui o textarea e o botão pelo texto
+  div.parentNode.replaceChild(textoDiv, div);
+});
+
       // Atualiza o índice do marcador de letras
       letterIndex++; // Use letterIndex aqui
 
@@ -658,8 +701,6 @@ var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(
   });
 
 }
-
-
 
 
 function selecionaDispositivo(id) {
