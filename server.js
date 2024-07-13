@@ -16,7 +16,6 @@ http.createServer(function (req, res) {
         req.on('end', () => {
             let data;
             const contentType = req.headers['content-type'];
-            console.log('Content-Type recebido:', contentType); // Log para verificar o Content-Type
 
             try {
                 if (contentType.startsWith('application/json')) {
@@ -200,7 +199,7 @@ http.createServer(function (req, res) {
 
             } else if (pathname === '/excluir_resultado') {
                 const id = parseInt(data.id);
-                console.log('ID a ser excluído:', id); // Adicionar depuração para verificar o ID recebido
+                console.log('ID a ser excluído:', id);
                 
                 fs.readFile('resultados.json', (err, fileData) => {
                     if (err) {
@@ -210,13 +209,10 @@ http.createServer(function (req, res) {
                         return;
                     }
                     let json = JSON.parse(fileData);
-                    console.log('Resultados antes da exclusão:', json.resultados); // Adicionar depuração antes da exclusão
-                    
+
                     const lengthBefore = json.resultados.length;
                     json.resultados = json.resultados.filter(resultado => resultado.id !== id);
                     const lengthAfter = json.resultados.length;
-                    
-                    console.log('Resultados após a exclusão:', json.resultados); // Adicionar depuração após a exclusão
 
                     if (lengthBefore === lengthAfter) {
                         console.log('Resultado não encontrado.');
@@ -237,6 +233,27 @@ http.createServer(function (req, res) {
                         res.writeHead(200, { 'Content-Type': 'text/plain' });
                         res.end('Resultado excluído com sucesso!');
                     });
+                });
+
+            } else if (pathname === '/saveState') {
+                fs.writeFile('temporario.json', JSON.stringify(data), (err) => {
+                    if (err) {
+                        res.writeHead(500, { 'Content-Type': 'text/plain' });
+                        res.end('Erro ao salvar o estado!');
+                    } else {
+                        res.writeHead(200, { 'Content-Type': 'text/plain' });
+                        res.end('Estado salvo com sucesso!');
+                    }
+                });
+            } else if (pathname === '/getState') {
+                fs.readFile('temporario.json', 'utf8', (err, fileData) => {
+                    if (err) {
+                        res.writeHead(500, { 'Content-Type': 'text/plain' });
+                        res.end('Erro ao obter o estado!');
+                    } else {
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.end(fileData);
+                    }
                 });
             }
         });

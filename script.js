@@ -235,42 +235,6 @@ function fatosIncluidos() {
     fatos.innerHTML = textarea.value;
   }
 }
-/*
-
-function atualizarVisualizacaoDelitos() {
-  // Limpa a visualização atual
-  document.getElementById("DELITO").innerHTML = '';
-  // Constrói a nova string de delitos
-  let delitosTexto = contadorDelito.slice(0, -1).map(id => delito[id]).join(", ");
-  if (contadorDelito.length > 1) {
-    delitosTexto += " e " + delito[contadorDelito[contadorDelito.length - 1]];
-  } else if (contadorDelito.length === 1) {
-    delitosTexto = delito[contadorDelito[0]];
-  }
-  // Adiciona o texto ao DOM
-  if (delitosTexto) {
-    const node = document.createElement("span");
-    const textnode = document.createTextNode(delitosTexto + ".");
-    node.appendChild(textnode);
-    document.getElementById("DELITO").appendChild(node);
-  }
-  // Atualiza 'dosDelitos' se necessário
-  document.getElementById('dosDelitos').innerHTML = contadorDelito.length > 1 ? 'dos delitos' : '';
-}
-
-function criarElementoDelito(id) {
-  var index = contadorDelito.indexOf(id);
-  if (index !== -1) {
-    // Se o id já está no contadorDelito, remova-o
-    contadorDelito.splice(index, 1);
-  } else {
-    // Se o id não está no contadorDelito, adicione-o
-    contadorDelito.push(id);
-  }
-  // Atualiza a visualização dos delitos após adicionar ou remover
-  atualizarVisualizacaoDelitos();
-}
-*/
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('conversaoForm').addEventListener('submit', function (event) {
@@ -846,7 +810,7 @@ async function copyFormattedTextToClipboard() {
 <head>
 <style>
   body, p {
-    font-family: 'Arial', sans-serif !important; /* Usando !important para tentar forçar a sobreposição de estilos padrão */
+    font-family: 'Arial', sans-serif !important; // Usando !important para tentar forçar a sobreposição de estilos padrão
     margin-bottom: 7.1pt;
     text-indent: 2cm;    
   }
@@ -870,27 +834,3 @@ async function copyFormattedTextToClipboard() {
     console.error('Erro ao copiar texto: ', err);
   }
 }
-
-
-
-
-
-// fazer tela de login
-// fazer tela de cadastro
-// fazer tela de reset de senha
-// fazer tela de perfil
-// fazer tela de edição de perfil
-// fazer tela de edição de senha
-// fazer tela de edição de email
-// fazer tela de exclusão de conta
-// fazer log de quem criar teses, pedidos e resultados
-// fazer tela de busca de teses
-// fazer tela de busca de pedidos
-// fazer tela de busca de resultados
-// fazer log de todos os itens de cada processo
-// fazer tela de administrador com atribuição de privilégios
-// incluir campos de apreensão, droga com maconha, cocaína, crack e outros, e arma com calibre e tipo pistola, revólver, fuzil e outros
-// criar classes agrg e edcl
-// delitos como lista igual o de buscar teses, e que retorne sempre em ordem dos mais usados
-// sob o parecer, criar dinamicamente os pedidos e abrir um campo para que o usuário possa selecionar um resultado
-// criar ratio com dispositivos primeiro sobre o conhecimento, depois sobre o mérito
