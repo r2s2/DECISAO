@@ -1,35 +1,176 @@
+// Exemplo de função para gerar uma chave única (UUID)
+function gerarChaveUnica() {
+  return URL.createObjectURL(new Blob()).slice(-36);
+}
+
 class Classe {
   constructor(nomeExtenso, verbo, agente, dispositivoFavoravel, dispositivoDesfavoravel, sinonimo) {
-    this.nomeExtenso = nomeExtenso
-    this.verbo = verbo
-    this.agente = agente
-    this.dispositivoFavoravel = dispositivoFavoravel
-    this.dispositivoDesfavoravel = dispositivoDesfavoravel
-    this.sinonimo = sinonimo
+    this.nomeExtenso = nomeExtenso;
+    this.verbo = verbo;
+    this.agente = agente;
+    this.dispositivoFavoravel = dispositivoFavoravel;
+    this.dispositivoDesfavoravel = dispositivoDesfavoravel;
+    this.sinonimo = sinonimo;
   }
 
   selecionadoClasse() {
-
-    document.getElementById('classe').innerHTML = this.nomeExtenso;
-    document.getElementById('classe2').innerHTML = this.sinonimo;
-    document.getElementById('reu').innerHTML = this.agente;
-    document.getElementById('VERBO').innerHTML = this.verbo;
+    registrarEstado();
+    if (document.getElementById('classe')) {
+      document.getElementById('classe').innerHTML = this.nomeExtenso;
+    }
+    if (document.getElementById('classe2')) {
+      document.getElementById('classe2').innerHTML = this.sinonimo;
+    }
+    if (document.getElementById('reu')) {
+      document.getElementById('reu').innerHTML = this.agente;
+    }
+    if (document.getElementById('VERBO')) {
+      document.getElementById('VERBO').innerHTML = this.verbo;
+    }
   }
 }
 
-var HC = new Classe("<i>habeas corpus</i>", "impetrado em favor de", "paciente", "<b>concedo a ordem.</b>", "<b>denego a ordem.</b>", "<i>writ</i>")
-var RHC = new Classe("recurso ordinário em <i>habeas corpus</i>", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso ordinário")
-var REsp = new Classe("recurso especial", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial")
-var AREsp = new Classe("agravo em recurso especial", "interposto", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial")
-var agrg = new Classe("agravo regimental", "interposto", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental")
-var edcl = new Classe("embargos de declaração", "opostos", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração")
+const HC = new Classe("<i>habeas corpus</i>", "impetrado em favor de", "paciente", "<b>concedo a ordem.</b>", "<b>denego a ordem.</b>", "<i>writ</i>");
+const RHC = new Classe("recurso ordinário em <i>habeas corpus</i>", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso ordinário");
+const REsp = new Classe("recurso especial", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial");
+const AREsp = new Classe("agravo em recurso especial", "interposto", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial");
+const agrg = new Classe("agravo regimental", "interposto", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental");
+const edcl = new Classe("embargos de declaração", "opostos", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração");
+
+// Função para salvar o estado no arquivo temporário, agora aceitando uma chave de sessão
+async function salvarEstado(chaveSessao, estado) {
+  try {
+    const response = await fetch('/saveState', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ chaveSessao, estado }),
+    });
+    if (!response.ok) throw new Error('Erro ao salvar o estado');
+  } catch (error) {
+    console.error('Erro:', error);
+  }
+}
+
+// Função para obter o estado do arquivo temporário
+async function obterEstado() {
+  try {
+    const response = await fetch('/getState');
+    if (!response.ok) throw new Error('Erro ao obter o estado');
+    const estado = await response.json();
+    return estado;
+  } catch (error) {
+    console.error('Erro:', error);
+    throw error; // Rejeita a promessa com o erro
+
+  }
+}
+
+// Controle de estados em memória para desfazer/refazer
+let estados = [];
+let estadosRefazer = [];
+
+// Função para registrar o estado atual dos elementos
+async function registrarEstado() {
+  const elements = {
+    classe: document.getElementById('classe'),
+    classe2: document.getElementById('classe2'),
+    reu: document.getElementById('reu'),
+    VERBO: document.getElementById('VERBO'),
+    se_liminar: document.getElementById('se_liminar'),
+    se_liminar2: document.getElementById('se_liminar2'),
+    pedidoLiminar: document.getElementById('pedidoLiminar'),
+    resultadoQuo: document.getElementById('resultadoQuo'),
+    DELITO: document.getElementById('DELITO'),
+    dosDelitos: document.getElementById('dosDelitos'),
+    tesesSelecionadas: document.getElementById('tesesSelecionadas'),
+    informacoes: document.getElementById('informacoes'),
+    pedidoPrincipal1: document.getElementById('pedidoPrincipal1'),
+    resultadoTese: document.getElementById('resultadoTese'),
+    dispositivo: document.getElementById('dispositivo')
+  };
+
+  const estadoAtual = {};
+  for (let key in elements) {
+    if (elements[key]) {
+      estadoAtual[key] = elements[key].innerHTML;
+    }
+  }
+
+  estados.push(estadoAtual);
+  estadosRefazer = [];  // Limpar a pilha de refazer quando registrar um novo estado
+  await salvarEstado(estados);
+}
+
+// Função para desfazer a última ação
+async function desfazer() {
+  if (estados.length > 1) {
+    const estadoAnterior = estados.pop();
+    const estado = estados[estados.length - 1];
+
+    for (let key in estado) {
+      if (document.getElementById(key)) {
+        document.getElementById(key).innerHTML = estado[key];
+      }
+    }
+
+    await salvarEstado(estados);
+  }
+}
+
+// Função para refazer a última ação desfeita
+async function refazer() {
+  try {
+  const estado = await obterEstado();
+  if (estado && estado.length > estados.length) {
+    const estadoRefazer = estado[estados.length];
+    estados.push(estadoRefazer);
+
+    for (let key in estadoRefazer) {
+      if (document.getElementById(key)) {
+        document.getElementById(key).innerHTML = estadoRefazer[key];
+      }
+    }
+  }} catch (error) {
+    console.error('Erro:', error);
+  }
+
+}
+
+// Função para inicializar eventos e registrar o estado inicial
+document.addEventListener('DOMContentLoaded', (event) => {
+  registrarEstado();
+
+  const primeiroGrauInput = document.getElementById('primeiroGrau');
+  if (primeiroGrauInput) {
+    primeiroGrauInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        primeiroGrau();
+        event.preventDefault();
+      }
+    });
+  }
+
+  const segundoGrauInput = document.getElementById('segundoGrau');
+  if (segundoGrauInput) {
+    segundoGrauInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        segundoGrau();
+        event.preventDefault();
+      }
+    });
+  }
 
 
+  // Certifique-se de que a função check está definida
+  
+});
 
-
-
+window.check = check;
+// Definição da função check
 function check() {
-
+  registrarEstado();
 
   const classes = {
     'HC': HC,
@@ -41,92 +182,84 @@ function check() {
   };
 
   for (let id in classes) {
-    if (document.getElementById(id).checked) {
+    if (document.getElementById(id) && document.getElementById(id).checked) {
       classes[id].selecionadoClasse();
-
-      if (id === 'HC') {
-        return 'HC'
-      } // para ser chamado no dispositivo
-      break;
     }
   }
 
-
-  //if da escolha da fase
-  if (document.getElementById('analise_liminar').checked) {
+  if (document.getElementById('analise_liminar') && document.getElementById('analise_liminar').checked) {
     document.getElementById("se_liminar").innerHTML = "com pedido liminar";
     document.getElementById('se_liminar2').innerHTML = "";
-    document.getElementById('pedidoLiminar').innerHTML = ', liminarmente e no mérito,'
-  } else if (document.getElementById('analise_merito').checked) {
+    document.getElementById('pedidoLiminar').innerHTML = ', liminarmente e no mérito,';
+  } else if (document.getElementById('analise_merito') && document.getElementById('analise_merito').checked) {
     document.getElementById('se_liminar').innerHTML = "";
-
-  } else if (document.getElementById('sem_liminar').checked) {
+  } else if (document.getElementById('sem_liminar') && document.getElementById('sem_liminar').checked) {
     document.getElementById('se_liminar').innerHTML = "";
-    document.getElementById('se_liminar2').innerHTML = "Não houve pedido liminar."
+    document.getElementById('se_liminar2').innerHTML = "Não houve pedido liminar.";
   }
-
-
 }
-
 
 function selecionaResultado(id) {
-  if (id === 'concedeu') {
-    document.getElementById('resultadoQuo').innerHTML = 'concedeu o <i>habeas corpus</i>.';
-  } else if (id === 'denegou') {
-    document.getElementById('resultadoQuo').innerHTML = 'denegou o <i>habeas corpus</i>.';
-  } else if (id === 'concedeuParcial') {
-    document.getElementById('resultadoQuo').innerHTML = 'concedeu parcialmente o <i>habeas corpus</i>.';
-  } else if (id === 'naoConheceu') {
-    document.getElementById('resultadoQuo').innerHTML = 'não conheceu do <i>habeas corpus</i>.';
-  } else if (id === 'semResultado') {
-    document.getElementById('resultadoQuo').innerHTML = 'não se manifestou.';
-  } else if (id === 'negouProvimento') {
-    document.getElementById('resultadoQuo').innerHTML = 'negou provimento ao recurso.';
-  } else if (id === 'deuProvimento') {
-    document.getElementById('resultadoQuo').innerHTML = 'deu provimento ao recurso.';
-  } else if (id === 'deuParcialProvimento') {
-    document.getElementById('resultadoQuo').innerHTML = 'deu parcial provimento ao recurso.';
-  }
+  registrarEstado();
 
+  const resultadoQuo = document.getElementById('resultadoQuo');
+  if (resultadoQuo) {
+    if (id === 'concedeu') {
+      resultadoQuo.innerHTML = 'concedeu o <i>habeas corpus</i>.';
+    } else if (id === 'denegou') {
+      resultadoQuo.innerHTML = 'denegou o <i>habeas corpus</i>.';
+    } else if (id === 'concedeuParcial') {
+      resultadoQuo.innerHTML = 'concedeu parcialmente o <i>habeas corpus</i>.';
+    } else if (id === 'naoConheceu') {
+      resultadoQuo.innerHTML = 'não conheceu do <i>habeas corpus</i>.';
+    } else if (id === 'semResultado') {
+      resultadoQuo.innerHTML = 'não se manifestou.';
+    } else if (id === 'negouProvimento') {
+      resultadoQuo.innerHTML = 'negou provimento ao recurso.';
+    } else if (id === 'deuProvimento') {
+      resultadoQuo.innerHTML = 'deu provimento ao recurso.';
+    } else if (id === 'deuParcialProvimento') {
+      resultadoQuo.innerHTML = 'deu parcial provimento ao recurso.';
+    }
+  }
 }
 
-var contadorDelito = []
-var contadorPedidos = []
-var contadorTeses = []
+var contadorDelito = [];
+var contadorPedidos = [];
+var contadorTeses = [];
 
 function digitaFls() {
+  registrarEstado();
 
   var x = document.getElementById("eSTJfls");
-
-
-  var node = document.createElement("span");
-
-  var textnode = document.createTextNode('(e-STJ fls. ' + x.value + ')');
-
-  node.appendChild(textnode)
-  document.getElementById("folhasSTJ").appendChild(node);
-
-
+  if (x) {
+    var node = document.createElement("span");
+    var textnode = document.createTextNode('(e-STJ fls. ' + x.value + ')');
+    node.appendChild(textnode);
+    document.getElementById("folhasSTJ").appendChild(node);
+  }
 }
 
-
-
-var faseLiminar = {
-
+const faseLiminar = {
   liminarComLiminar: 'com pedido liminar',
   meritoComLiminar: 'com pedido liminar',
   semLiminar: ''
+};
 
-}
 function selecionaFase(argumento5) {
-  document.getElementById('se_liminar').innerHTML = faseLiminar[argumento5]
-  if (argumento5 != 'liminarComLiminar') {
-    document.getElementById('informacoes').innerHTML = 'Informações prestadas'
-  }
+  registrarEstado();
 
+  const seLiminar = document.getElementById('se_liminar');
+  const informacoes = document.getElementById('informacoes');
+  if (seLiminar && informacoes) {
+    seLiminar.innerHTML = faseLiminar[argumento5];
+    if (argumento5 != 'liminarComLiminar') {
+      informacoes.innerHTML = 'Informações prestadas';
+    }
+  }
 }
 
-var delito = {
+const delito = {
   trafico: ' tráfico de drogas',
   assocTrafico: ' associação para o tráfico',
   roubo: ' roubo',
@@ -144,18 +277,17 @@ var delito = {
   sequestro: ' sequestro',
   estupro: ' estupro',
   receptacao: ' receptação',
-
-
-}
-
+};
 
 function searchTipoPenal() {
   var input, filter, results, i;
   input = document.getElementById('tipoPenal');
+  if (!input) return;
   input.setAttribute('autocomplete', 'off');
 
   filter = input.value.toUpperCase();
   results = document.getElementById('searchTipoPenal');
+  if (!results) return;
   results.innerHTML = '';
 
   for (i in delito) {
@@ -169,6 +301,8 @@ function searchTipoPenal() {
   results.size = results.length;
 
   results.addEventListener('click', function (event) {
+    registrarEstado();
+
     if (event.target.tagName === 'OPTION') {
       var selectedDelitoText = event.target.value;
 
@@ -191,50 +325,56 @@ function searchTipoPenal() {
 }
 
 function atualizarVisualizacaoDelitos() {
+  registrarEstado();
+
   var pDelitosSelecionados = document.getElementById('DELITO');
   var textoDosDelitos = document.getElementById('dosDelitos');
 
-  if (contadorDelito.length > 0) {
-    // Cria a string de delitos, substituindo a última vírgula por " e "
-    var delitosTexto = contadorDelito.join(', ').replace(/, ([^,]*)$/, ' e $1');
-    pDelitosSelecionados.textContent = delitosTexto;
-    // Altera o texto para "dos delitos" se houver mais de um delito selecionado
-    textoDosDelitos.textContent = contadorDelito.length > 1 ? 'dos delitos' : 'do delito';
-  } else {
-    // Se não houver delitos selecionados, limpa o texto do parágrafo e volta ao singular
-    pDelitosSelecionados.textContent = '';
-    textoDosDelitos.textContent = 'do delito';
+  if (pDelitosSelecionados && textoDosDelitos) {
+    if (contadorDelito.length > 0) {
+      // Cria a string de delitos, substituindo a última vírgula por " e "
+      var delitosTexto = contadorDelito.join(', ').replace(/, ([^,]*)$/, ' e $1');
+      pDelitosSelecionados.textContent = delitosTexto;
+      // Altera o texto para "dos delitos" se houver mais de um delito selecionado
+      textoDosDelitos.textContent = contadorDelito.length > 1 ? 'dos delitos' : 'do delito';
+    } else {
+      // Se não houver delitos selecionados, limpa o texto do parágrafo e volta ao singular
+      pDelitosSelecionados.textContent = '';
+      textoDosDelitos.textContent = 'do delito';
+    }
   }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   var inputTexto = document.getElementById('inputTexto');
-  inputTexto.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-      var texto = inputTexto.value;
-      // Cria um novo nó de texto com o valor do input
-      var textoNode = document.createTextNode(texto);
-      var paragrafoTexto = document.getElementById('paragrafoTexto');
-      // Insere o texto no lugar do input
-      paragrafoTexto.insertBefore(textoNode, inputTexto);
-      // Remove o input do parágrafo
-      paragrafoTexto.removeChild(inputTexto);
-      event.preventDefault();
-    }
-  });
+  if (inputTexto) {
+    inputTexto.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        registrarEstado();
+
+        var texto = inputTexto.value;
+        var paragrafoTexto = document.getElementById('paragrafoTexto');
+        if (paragrafoTexto) {
+          // Cria um novo nó de texto com o valor do input
+          var textoNode = document.createTextNode(texto);
+          // Insere o texto no lugar do input
+          paragrafoTexto.insertBefore(textoNode, inputTexto);
+          // Remove o input do parágrafo
+          paragrafoTexto.removeChild(inputTexto);
+        }
+        event.preventDefault();
+      }
+    });
+  }
 });
 
+// Variável global para rastrear o índice do marcador de letras
+var letterIndex = 0;
 
-function fatosIncluidos() {
-  // Pega o textarea e o elemento 'fatos'
-  var textarea = document.getElementById('caixatexto_base_relatorio');
-  var fatos = document.getElementById('fatos');
+// Variável global para rastrear se o evento de clique já foi adicionado
+var clickEventAdded = false;
 
-  // Atualiza o conteúdo de 'fatos' com o valor do textarea
-  if (textarea && fatos) {
-    fatos.innerHTML = textarea.value;
-  }
-}
+
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('conversaoForm').addEventListener('submit', function (event) {
@@ -310,19 +450,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Variável global para rastrear o índice do marcador de letras
-var letterIndex = 0;
-
-// Variável global para rastrear se o evento de clique já foi adicionado
-var clickEventAdded = false;
-
 function searchTese() {
   var input, filter, results, i, tese, tags, count = 0;
   input = document.getElementById('search');
+  if (!input) return;
   input.setAttribute('autocomplete', 'off');
 
   filter = input.value.toUpperCase();
   results = document.getElementById('searchResults');
+  if (!results) return;
   results.innerHTML = '';
 
   fetch('teses.json')
@@ -342,15 +478,15 @@ function searchTese() {
       results.size = results.length; // Define o tamanho do select para o número de opções
     });
 
-
   // Adiciona o evento de clique apenas se ele ainda não foi adicionado
   if (!clickEventAdded) {
-    results.addEventListener('click', function (event) {
+    results.addEventListener('click', function(event) {
+      registrarEstado();
+
       if (event.target.tagName === 'OPTION') {
         var selectedTeseText = event.target.value;
 
         var selectedTese = document.getElementById('tesesSelecionadas');
-
 
         // Verifica se a tese já foi adicionada
         var alreadyAdded = Array.from(selectedTese.getElementsByTagName('p')).some(p => p.textContent.slice(3) === selectedTeseText);
@@ -369,16 +505,8 @@ function searchTese() {
         var p2 = document.createElement('p');
         p2.textContent = String.fromCharCode(97 + letterIndex).toLocaleLowerCase() + ") " + selectedTeseText;
 
-        // Adiciona o evento de clique apenas se ele ainda não foi adicionado
-
-
-
-
-
-
-
         // Atualiza o índice do marcador de letras
-        letterIndex++; // Use letterIndex aqui
+        letterIndex++;
 
         // Remove a tese selecionada dos resultados
         event.target.remove();
@@ -396,25 +524,26 @@ function searchTese() {
 
     // Marca que o evento de clique foi adicionado
     clickEventAdded = true;
-
-
-
   }
 }
 
-// Variável global para rastrear o índice do marcador de letras
+// Variável global para rastrear o índice do marcador de letras para pedidos
 var letterIndexPedido = 0;
 
-// Variável global para rastrear se o evento de clique já foi adicionado
+// Variável global para rastrear se o evento de clique já foi adicionado para pedidos
 var clickEventAddedPedido = false;
 
 function searchPedidoFuncao() {
+  registrarEstado();
+
   var input, filter, results, i, pedido, tags, count = 0;
   input = document.getElementById('pedido');
+  if (!input) return;
   input.setAttribute('autocomplete', 'off');
 
   filter = input.value.toUpperCase();
   results = document.getElementById('searchPedido');
+  if (!results) return;
   results.innerHTML = '';
 
   fetch('pedidos.json')
@@ -437,11 +566,12 @@ function searchPedidoFuncao() {
   // Adiciona o evento de clique apenas se ele ainda não foi adicionado
   if (!clickEventAddedPedido) {
     results.addEventListener('click', function (event) {
+      registrarEstado();
+
       if (event.target.tagName === 'OPTION') {
         var selectedPedidoText = event.target.value;
 
         var selectedPedido = document.getElementById('pedidoPrincipal1');
-
 
         // Verifica se o pedido já foi adicionado
         var alreadyAdded = Array.from(selectedPedido.getElementsByTagName('p')).some(p => p.textContent.slice(4) === selectedPedidoText);
@@ -453,10 +583,8 @@ function searchPedidoFuncao() {
         // Cria um novo parágrafo para o pedido selecionado
         var p = document.createElement('p');
         // Adiciona o marcador de letras correspondente
-        p.textContent = String.fromCharCode(97 + letterIndexPedido) + ") " + selectedPedidoText; // Use letterIndexPedido aqui
+        p.textContent = String.fromCharCode(97 + letterIndexPedido) + ") " + selectedPedidoText;
         selectedPedido.appendChild(p);
-
-
 
         // Atualiza o índice do marcador de letras
         letterIndexPedido++;
@@ -472,46 +600,55 @@ function searchPedidoFuncao() {
 
         // Remove todos os pedidos dos resultados
         results.innerHTML = '';
-
       }
     });
 
     // Marca que o evento de clique foi adicionado
     clickEventAddedPedido = true;
-
   }
-
 }
 
 var pedidos = {
   substituir: 'Subsidiariamente, pleiteia a substituição da prisão preventiva por medidas cautelares diversas.'
-}
+};
 var pedidoSelecionado = null;
 
 function selecionaPedido(id) {
+  registrarEstado();
+
+  const pedidoPrincipal = document.getElementById('pedidoPrincipal1');
+  if (!pedidoPrincipal) return;
+
   if (pedidoSelecionado === id) {
     // Se o id já está selecionado, desmarque-o
     pedidoSelecionado = null;
-    document.getElementById("pedidoPrincipal1").innerHTML = '';
+    pedidoPrincipal.innerHTML = '';
   } else {
     // Se o id não está selecionado, selecione-o
     pedidoSelecionado = id;
-    document.getElementById("pedidoPrincipal1").innerHTML = pedidos[id];
+    pedidoPrincipal.innerHTML = pedidos[id];
   }
 }
-
 
 var liminar = {
   deferida: 'O pedido liminar foi deferido.',
   indeferida: 'O pedido liminar foi indeferido.',
   semPedido: 'Não houve pedido liminar.'
-}
-function selecionaLiminar(argumento4) {
-  document.getElementById('se_liminar2').innerHTML = liminar[argumento4]
-  if (argumento4 == 'semPedido') {
-    document.getElementById('pedidoLiminar').innerHTML = ''
-  } else { document.getElementById('pedidoLiminar').innerHTML = ', inclusive liminarmente, ' }
+};
 
+function selecionaLiminar(argumento4) {
+  registrarEstado();
+
+  const se_liminar2 = document.getElementById('se_liminar2');
+  const pedidoLiminar = document.getElementById('pedidoLiminar');
+  if (!se_liminar2 || !pedidoLiminar) return;
+
+  se_liminar2.innerHTML = liminar[argumento4];
+  if (argumento4 == 'semPedido') {
+    pedidoLiminar.innerHTML = '';
+  } else {
+    pedidoLiminar.innerHTML = ', inclusive liminarmente, ';
+  }
 }
 
 var parecer = {
@@ -520,308 +657,295 @@ var parecer = {
   concessao: 'pela concessão da ordem.',
   provimento: 'pelo provimento do recurso.',
   desprovimento: 'pelo desprovimento do recurso.'
-}
+};
+
 function selecionaParecer(argumento1) {
+  registrarEstado();
 
-  document.getElementById('parecerMinisterial').innerHTML = 'O Ministério Público Federal manifestou-se '
-  document.getElementById('parecerClasse').innerHTML = parecer[argumento1]
+  const parecerMinisterial = document.getElementById('parecerMinisterial');
+  const parecerClasse = document.getElementById('parecerClasse');
+  if (!parecerMinisterial || !parecerClasse) return;
 
+  parecerMinisterial.innerHTML = 'O Ministério Público Federal manifestou-se ';
+  parecerClasse.innerHTML = parecer[argumento1];
 }
 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const primeiroGrauInput = document.getElementById('primeiroGrau');
+  if (primeiroGrauInput) {
+    primeiroGrauInput.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        primeiroGrau();
+      }
+    });
+  }
+
+  const segundoGrauInput = document.getElementById('segundoGrau');
+  if (segundoGrauInput) {
+    segundoGrauInput.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        segundoGrau();
+      }
+    });
+  }
+
+});
 
 function primeiroGrau() {
-  // Obtem o elemento de entrada onde o usuário digita o texto
-  var input = document.getElementById('primeiroGrau');
+  registrarEstado();
 
-  // Cria um novo elemento p
-  var p = document.createElement('p');
-  var p2 = document.createElement('p');
+  const input = document.getElementById('primeiroGrau');
+  const primeiroGrauTexto = document.getElementById('primeiroGrauTexto');
+  if (!input || !primeiroGrauTexto) return;
 
-  // Adiciona estilos ao parágrafo
-  p.style.fontStyle = 'italic'; // Torna o texto itálico
-  p.style.paddingLeft = '4cm'; // Adiciona uma indentação de 2cm
-  p.style.textIndent = '0'; 
-  p.style.fontSize = '10pt'; // Define o tamanho da fonte como 10pt
+  // Verificar se há um conteúdo duplicado para evitar adicioná-lo duas vezes
+  if (primeiroGrauTexto.innerHTML.includes(input.value)) return;
 
-  // Define o conteúdo de texto do parágrafo
-  p2.innerHTML = "Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:"; 
+  const p = document.createElement('p');
+  const p2 = document.createElement('p');
+
+  p.style.fontStyle = 'italic';
+  p.style.paddingLeft = '4cm';
+  p.style.textIndent = '0';
+  p.style.fontSize = '10pt';
+
+  p2.innerHTML = "Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:";
   p.textContent = input.value;
 
-  // Adiciona o parágrafo ao elemento com id 'primeiroGrauTexto'
-  document.getElementById('primeiroGrauTexto').appendChild(p2);
-  document.getElementById('primeiroGrauTexto').appendChild(p);
+  primeiroGrauTexto.appendChild(p2);
+  primeiroGrauTexto.appendChild(p);
 
-  // Limpa o input
   input.value = '';
 }
 
 function segundoGrau() {
-  // Obtem o elemento de entrada onde o usuário digita o texto
-  var input = document.getElementById('segundoGrau');
+  registrarEstado();
 
-  // Cria um novo elemento p
-  var p = document.createElement('p');
-  var p2 = document.createElement('p');
+  const input = document.getElementById('segundoGrau');
+  const segundoGrauTexto = document.getElementById('segundoGrauTexto');
+  if (!input || !segundoGrauTexto) return;
 
-  // Adiciona estilos ao parágrafo
-  p.style.fontStyle = 'italic'; // Torna o texto itálico
-  p.style.paddingLeft = '4cm'; // Adiciona uma indentação de 2cm
-  p.style.textIndent = '0'; 
-  p.style.fontSize = '10pt'; // Define o tamanho da fonte como 10pt
+  // Verificar se há um conteúdo duplicado para evitar adicioná-lo duas vezes
+  if (segundoGrauTexto.innerHTML.includes(input.value)) return;
 
-  // Define o conteúdo de texto do parágrafo
-  p2.innerHTML = "A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:"; 
+  const p = document.createElement('p');
+  const p2 = document.createElement('p');
+
+  p.style.fontStyle = 'italic';
+  p.style.paddingLeft = '4cm';
+  p.style.textIndent = '0';
+  p.style.fontSize = '10pt';
+
+  p2.innerHTML = "A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:";
   p.textContent = input.value;
 
-  // Adiciona o parágrafo ao elemento com id 'primeiroGrauTexto'
-  document.getElementById('segundoGrauTexto').appendChild(p2);
-  document.getElementById('segundoGrauTexto').appendChild(p);
+  segundoGrauTexto.appendChild(p2);
+  segundoGrauTexto.appendChild(p);
 
-  // Limpa o input
   input.value = '';
 }
 
-// Adiciona o evento 'keydown' ao elemento de entrada
-document.getElementById('primeiroGrau').addEventListener('keydown', function(event) {
-  // Verifica se a tecla pressionada foi Enter
-  if (event.key === 'Enter') {
-    // Chama a função primeiroGrau
-    primeiroGrau();
-
-    // Previne a ação padrão do evento Enter
-    event.preventDefault();
-  }
-});
 
 
-// Adiciona o evento 'keydown' ao elemento de entrada
-document.getElementById('primeiroGrau').addEventListener('keydown', function(event) {
-  // Verifica se a tecla pressionada foi Enter
-  if (event.key === 'Enter') {
-    // Chama a função primeiroGrau
-    primeiroGrau();
 
-    // Previne a ação padrão do evento Enter
-    event.preventDefault();
-  }
-});
+
+
+
 
 function removeAcentos(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-
 function searchResultadoFuncao() {
+  registrarEstado();
+
   var input, filter, results, i, resultado, tags, count = 0;
   input = document.getElementById('resultado');
+  if (!input) return;
   input.setAttribute('autocomplete', 'off');
 
   filter = input.value.toUpperCase();
   results = document.getElementById('searchResultado');
+  if (!results) return;
   results.innerHTML = '';
 
   fetch('resultados.json')
-  .then(response => response.json())
-  
-.then(data => {
-  // Divide o filtro em várias palavras-chave e remove os acentos
-  var keywords = filter.split(' ').map(keyword => removeAcentos(keyword));
+    .then(response => response.json())
+    .then(data => {
+      var keywords = filter.split(' ').map(keyword => removeAcentos(keyword));
 
-  for (i = 0; i < data.resultados.length; i++) {
-    resultado = data.resultados[i];
-    tags = resultado.tags || '';
-    var tagsUpper = removeAcentos(tags.toUpperCase());
+      for (i = 0; i < data.resultados.length; i++) {
+        resultado = data.resultados[i];
+        tags = resultado.tags || '';
+        var tagsUpper = removeAcentos(tags.toUpperCase());
 
-    // Verifica se todas as palavras-chave estão presentes nas tags
-    var allKeywordsFound = keywords.every(keyword => tagsUpper.indexOf(keyword.toUpperCase()) > -1);
+        var allKeywordsFound = keywords.every(keyword => tagsUpper.indexOf(keyword.toUpperCase()) > -1);
 
-    if ((resultado.resultado && removeAcentos(resultado.resultado.toUpperCase()).indexOf(filter) > -1) || allKeywordsFound || resultado.id.toString() === input.value) {
-    
-      
-        
+        if ((resultado.resultado && removeAcentos(resultado.resultado.toUpperCase()).indexOf(filter) > -1) || allKeywordsFound || resultado.id.toString() === input.value) {
           var option = document.createElement('option');
-          option.value = resultado.resultado + '|' + resultado.precedente; // Separa o resultado e o precedente com um |
-          option.text = resultado.id + " - " + resultado.resultado + " - " + resultado.precedente; // Inclui o id do resultado e o precedente no texto
+          option.value = resultado.resultado + '|' + resultado.precedente;
+          option.text = resultado.id + " - " + resultado.resultado + " - " + resultado.precedente;
           results.appendChild(option);
           count++;
         }
       }
-      results.size = results.length; // Define o tamanho do select para o número de opções
+      results.size = results.length;
     });
 
   results.addEventListener('click', function (event) {
+    registrarEstado();
 
     if (event.target.tagName === 'OPTION') {
-      var selectedResultadoText = event.target.value.split('|')[0]; // Separa o resultado e o precedente
-      var selectedPrecedenteText = event.target.value.split('|')[1]; // Separa o resultado e o precedente
+      var selectedResultadoText = event.target.value.split('|')[0];
+      var selectedPrecedenteText = event.target.value.split('|')[1];
 
       var selectedResultado = document.getElementById('resultadoTese');
+      if (!selectedResultado) return;
 
-     // Verifica se o resultado já foi adicionado
-var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(p => p.textContent === selectedResultadoText);
+      var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(p => p.textContent === selectedResultadoText);
       if (alreadyAdded) {
-        //alert('Este resultado já foi adicionado.');
         return;
       }
 
-      // Cria um novo parágrafo para o resultado selecionado
       var p = document.createElement('p');
       p.textContent = selectedResultadoText;
       selectedResultado.appendChild(p);
 
-      // Cria um novo parágrafo para o texto "Confira-se:"
       var p2 = document.createElement('p');
       p2.textContent = "Confira-se:";
       selectedResultado.appendChild(p2);
 
-      // Cria um novo parágrafo para o precedente
       var p3 = document.createElement('p');
-
-      // Encontra o texto entre parênteses que começa com letras e termina com um ano ou com um ano e ponto final
       var regex = /\(([A-Za-z].*?\d{4}\.)\)/g;
       var match;
       while ((match = regex.exec(selectedPrecedenteText)) !== null) {
-        // Adiciona tags <span> ao redor do texto encontrado
         selectedPrecedenteText = selectedPrecedenteText.replace(match[0], '<span style="font-style: normal;">' + match[0] + '</span>');
       }
 
-      // Adiciona o texto ao parágrafo
       p3.innerHTML = selectedPrecedenteText;
+      p3.style.cssText += 'font-style: italic !important;';
+      p3.style.cssText += 'padding-left: 4cm !important;';
+      p3.style.cssText += 'text-indent: 0 !important;';
+      p3.style.cssText += 'font-size: 10pt !important;';
 
-            // Adiciona estilos ao parágrafo com !important para evitar sobrescrita
-      p3.style.cssText += 'font-style: italic !important;'; // Torna o texto itálico
-      p3.style.cssText += 'padding-left: 4cm !important;'; // Adiciona uma left de 4cm
-      p3.style.cssText += 'text-indent: 0 !important;'; 
-      p3.style.cssText += 'font-size: 10pt !important;'; // Define o tamanho da fonte como 10pt
-
-      // Adiciona o parágrafo ao resultado
       selectedResultado.appendChild(p3);
 
-      
-// Cria a div que irá conter o textarea e o botão
-var div = document.createElement('div');
+      var div = document.createElement('div');
+      var textarea = document.createElement('textarea');
+      div.appendChild(textarea);
 
-// Cria o textarea
-var textarea = document.createElement('textarea');
+      var button = document.createElement('button');
+      button.textContent = 'Incluir';
+      div.appendChild(button);
 
-// Adiciona o textarea à div
-div.appendChild(textarea);
+      p3.parentNode.insertBefore(div, p3.nextSibling);
 
-// Cria o botão
-var button = document.createElement('button');
-button.textContent = 'Incluir';
+      button.addEventListener('click', function () {
+        registrarEstado();
 
-// Adiciona o botão à div
-div.appendChild(button);
+        var textoDiv = document.createElement('div');
+        var linhas = textarea.value.split('\n');
 
-// Adiciona a div logo após o parágrafo p3
-p3.parentNode.insertBefore(div, p3.nextSibling);
+        linhas.forEach(function (linha) {
+          var p = document.createElement('p');
+          p.textContent = linha;
+          textoDiv.appendChild(p);
+        });
 
-// Configura o evento de clique do botão
-button.addEventListener('click', function() {
-  // Cria um novo elemento para substituir o textarea
-  var textoDiv = document.createElement('div');
+        div.parentNode.replaceChild(textoDiv, div);
+      });
 
-// Divide o valor do textarea em linhas
-  var linhas = textarea.value.split('\n');
-
-  // Para cada linha, cria um novo parágrafo e adiciona ao textoDiv
-  linhas.forEach(function(linha) {
-    var p = document.createElement('p');
-    p.textContent = linha;
-    textoDiv.appendChild(p);
-  });
-
-
-  // Substitui o textarea e o botão pelo texto
-  div.parentNode.replaceChild(textoDiv, div);
-});
-
-      // Atualiza o índice do marcador de letras
-      letterIndex++; // Use letterIndex aqui
-
-      // Remove o resultado selecionado dos resultados
+      letterIndex++;
       event.target.remove();
-
-      // Fecha o select de resultados
       results.size = 0;
-
-      // Limpa o campo de busca
       input.value = '';
-
-      // Remove todos os resultados dos resultados
       results.innerHTML = '';
-
     }
   });
-
 }
 
-
 function selecionaDispositivo(id) {
+  registrarEstado();
+
+  const dispositivo = document.getElementById('dispositivo');
+  if (!dispositivo) return;
+
   if (id === 'conceder') {
-    document.getElementById('dispositivo').innerHTML = '<b>concedo a ordem</b>';
+    dispositivo.innerHTML = '<b>concedo a ordem</b>';
   } else if (id === 'denegar') {
-    document.getElementById('dispositivo').innerHTML = '<b>denego a ordem</b>';
+    dispositivo.innerHTML = '<b>denego a ordem</b>';
   } else if (id === 'concederParcial') {
-    document.getElementById('dispositivo').innerHTML = '<b>concedo parcialmente a ordem</b>';
+    dispositivo.innerHTML = '<b>concedo parcialmente a ordem</b>';
   } else if (id === 'negouProvimento') {
-    document.getElementById('dispositivo').innerHTML = '<b>nego provimento ao recurso</b>';
+    dispositivo.innerHTML = '<b>nego provimento ao recurso</b>';
   } else if (id === 'darProvimento') {
-    document.getElementById('dispositivo').innerHTML = '<b>dou provimento ao recurso</b>';
+    dispositivo.innerHTML = '<b>dou provimento ao recurso</b>';
   } else if (id === 'darParcialProvimento') {
-    document.getElementById('dispositivo').innerHTML = '<b>dou parcial provimento ao recurso</b>';
+    dispositivo.innerHTML = '<b>dou parcial provimento ao recurso</b>';
   } else if (id === 'naoConheco') {
     if (check() === 'HC') {
-      document.getElementById('dispositivo').innerHTML = '<b>não conheço do <i>habeas corpus</i></b>';
+      dispositivo.innerHTML = '<b>não conheço do <i>habeas corpus</i></b>';
     } else {
-      document.getElementById('dispositivo').innerHTML = '<b>não conheço do recurso</b>';
+      dispositivo.innerHTML = '<b>não conheço do recurso</b>';
     }
   } else if (id === 'concederOficio') {
     if (check() === 'HC') {
-      document.getElementById('dispositivo').innerHTML = '<b>não conheço do <i>writ</i></b>. Contudo, <b>concedo a ordem de ofício</b>';
+      dispositivo.innerHTML = '<b>não conheço do <i>writ</i></b>. Contudo, <b>concedo a ordem de ofício</b>';
     } else {
-      document.getElementById('dispositivo').innerHTML = '<b>não conheço do recurso</b>. Contudo, <b>concedo a ordem de ofício</b>';
+      dispositivo.innerHTML = '<b>não conheço do recurso</b>. Contudo, <b>concedo a ordem de ofício</b>';
     }
+  }
 }
-}
-
-
-
-
-
 
 function zerarTudo() {
-  document.getElementById('DELITO').innerHTML = ''
-  document.getElementById('tesesSelecionadas').innerHTML = ''
-  document.getElementById('informacoes').innerHTML = ''
-  contadorDelito = []
-  contadorPedidos = []
-  contadorTeses = []
-  document.getElementById('dosDelitos').innerHTML = 'do delito'
-  document.getElementById('pedidoPrincipal').innerHTML = ''
+  registrarEstado();
+
+  const DELITO = document.getElementById('DELITO');
+  const tesesSelecionadas = document.getElementById('tesesSelecionadas');
+  const informacoes = document.getElementById('informacoes');
+  const dosDelitos = document.getElementById('dosDelitos');
+  const pedidoPrincipal = document.getElementById('pedidoPrincipal1');
+
+  if (DELITO) DELITO.innerHTML = '';
+  if (tesesSelecionadas) tesesSelecionadas.innerHTML = '';
+  if (informacoes) informacoes.innerHTML = '';
+  if (dosDelitos) dosDelitos.innerHTML = 'do delito';
+  if (pedidoPrincipal) pedidoPrincipal.innerHTML = '';
+
+  contadorDelito = [];
+  contadorPedidos = [];
+  contadorTeses = [];
 }
 
-
 async function copyFormattedTextToClipboard() {
-  let element = document.getElementById('texto_base_relatorio');
-  let styledHtml = `
-<html>
-<head>
-<style>
-  body, p {
-    font-family: 'Arial', sans-serif !important; // Usando !important para tentar forçar a sobreposição de estilos padrão
-    margin-bottom: 7.1pt;
-    text-indent: 2cm;    
-  }
-</style>
-</head>
-<body>
-<p>${element.innerHTML}</p>
-</body>
-</html>`;
+  registrarEstado();
+  // esvazia o arquivo temporario.json
+  await salvarEstado([]);
 
-  // Cria um novo Blob com o tipo MIME correto para HTML
+
+  let element = document.getElementById('texto_base_relatorio');
+  if (!element) return;
+
+  let styledHtml = `
+  <html>
+  <head>
+  <style>
+    body, p {
+      font-family: 'Arial', sans-serif !important;
+      margin-bottom: 7.1pt;
+      text-indent: 2cm;    
+    }
+  </style>
+  </head>
+  <body>
+  <p>${element.innerHTML}</p>
+  </body>
+  </html>`;
+
   let textToCopy = new Blob([styledHtml], { type: 'text/html' });
   try {
     await navigator.clipboard.write([
@@ -830,7 +954,18 @@ async function copyFormattedTextToClipboard() {
       })
     ]);
     alert('Texto formatado copiado para a área de transferência');
-  } catch (err) {
-    console.error('Erro ao copiar texto: ', err);
-  }
+      // Enviar conteúdo para o backend para salvar no histórico
+      const response = await fetch('/saveClipboard', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: styledHtml })
+      });
+  
+      if (!response.ok) throw new Error('Erro ao salvar conteúdo da área de transferência');
+    } catch (err) {
+      console.error('Erro ao copiar texto ou salvar no arquivo:', err);
+    }
 }
+

@@ -4,6 +4,13 @@ const url = require('url');
 const path = require('path');
 const querystring = require('querystring');
 
+// Função para gerar um novo ID incremental
+let currentId = 0;
+
+function generateId() {
+    return ++currentId;
+  }
+
 http.createServer(function (req, res) {
     const requestUrl = url.parse(req.url);
     let pathname = requestUrl.pathname;
@@ -32,7 +39,26 @@ http.createServer(function (req, res) {
                 return;
             }
 
-            if (pathname === '/adiciona_teses.html') {
+            if (pathname === '/saveClipboard') {
+                const clipboardData = data.text;
+                const id = generateId();
+                const timestamp = new Date().toLocaleString();
+                const formattedData = `********** INICIO **********\nID: ${id}\nData: ${timestamp}\n${clipboardData}\n********** FIM **********\n`;
+                fs.appendFile('historicoGeral.txt', formattedData, (err) => {
+                  if (err) {
+                    console.error('Erro ao escrever no arquivo:', err);
+                    res.writeHead(500, { 'Content-Type': 'text/plain' });
+                    res.end('Erro ao salvar o conteúdo da área de transferência');
+                    return;
+                  }
+                  console.log('Conteúdo da área de transferência salvo com sucesso!');
+                  res.writeHead(200, { 'Content-Type': 'text/plain' });
+                  res.end('Conteúdo da área de transferência salvo com sucesso!');
+                });
+              
+           
+        
+            } else if (pathname === '/adiciona_teses.html') {
                 const tese = data.tese;
                 const tags = data.tags;
                 const grupo = data.grupo;
@@ -258,7 +284,9 @@ http.createServer(function (req, res) {
             }
         });
 
+
     } else {
+
         const filePath = path.join(__dirname, pathname === '/' ? '/tela_trabalho.html' : pathname);
         const ext = path.extname(filePath).toLowerCase();
         let contentType;
@@ -286,7 +314,14 @@ http.createServer(function (req, res) {
                 res.end(data);
             }
         });
-    }
+    }       
+
+
+
+            
+    
 }).listen(8082, () => {
+    
     console.log('Servidor rodando na porta 8082');
 });
+
