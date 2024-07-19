@@ -858,26 +858,6 @@ function selecionaDispositivo(id) {
   }
 }
 
-function zerarTudo() {
-  registrarEstado();
-
-  const DELITO = document.getElementById('DELITO');
-  const tesesSelecionadas = document.getElementById('tesesSelecionadas');
-  const informacoes = document.getElementById('informacoes');
-  const dosDelitos = document.getElementById('dosDelitos');
-  const pedidoPrincipal = document.getElementById('pedidoPrincipal1');
-
-  if (DELITO) DELITO.innerHTML = '';
-  if (tesesSelecionadas) tesesSelecionadas.innerHTML = '';
-  if (informacoes) informacoes.innerHTML = '';
-  if (dosDelitos) dosDelitos.innerHTML = 'do delito';
-  if (pedidoPrincipal) pedidoPrincipal.innerHTML = '';
-
-  contadorDelito = [];
-  contadorPedidos = [];
-  contadorTeses = [];
-}
-
 async function copyFormattedTextToClipboard() {
   registrarEstado();
   // esvazia o arquivo temporario.json
