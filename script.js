@@ -88,7 +88,8 @@ async function registrarEstado() {
     informacoes: document.getElementById('informacoes'),
     pedidoPrincipal1: document.getElementById('pedidoPrincipal1'),
     resultadoTese: document.getElementById('resultadoTese'),
-    dispositivo: document.getElementById('dispositivo')
+    dispositivo: document.getElementById('dispositivo'),
+    primeiroGrau: document.getElementById('primeiroGrauTexto'),
   };
 
   const estadoAtual = {};
@@ -98,16 +99,21 @@ async function registrarEstado() {
     }
   }
 
-  estados.push(estadoAtual);
-  estadosRefazer = [];  // Limpar a pilha de refazer quando registrar um novo estado
+  const estadoAtualCopy = Object.assign({}, estadoAtual);
+
+  // Adicionar a cópia do estado atual às arrays
+  estados.push(estadoAtualCopy);
+  estadosRefazer = []; // Limpar estadosRefazer ao registrar um novo estado
+  
   await salvarEstado(estados);
 }
 
 // Função para desfazer a última ação
 async function desfazer() {
   if (estados.length > 1) {
-    const estadoAnterior = estados.pop();
-    const estado = estados[estados.length - 1];
+    const estadoAnterior = estados.pop(); // Remove o último estado
+    estadosRefazer.push(estadoAnterior); // Adiciona o estado removido à lista de refazer
+    const estado = estados[estados.length - 1]; // Pega o novo estado atual
 
     for (let key in estado) {
       if (document.getElementById(key)) {
@@ -115,61 +121,17 @@ async function desfazer() {
       }
     }
 
-    await salvarEstado(estados);
+    
+
+    await salvarEstado(estados); // Salva o estado atual após desfazer
   }
 }
 
-// Função para refazer a última ação desfeita
-async function refazer() {
-  try {
-  const estado = await obterEstado();
-  if (estado && estado.length > estados.length) {
-    const estadoRefazer = estado[estados.length];
-    estados.push(estadoRefazer);
-
-    for (let key in estadoRefazer) {
-      if (document.getElementById(key)) {
-        document.getElementById(key).innerHTML = estadoRefazer[key];
-      }
-    }
-  }} catch (error) {
-    console.error('Erro:', error);
-  }
-
-}
-
-// Função para inicializar eventos e registrar o estado inicial
-document.addEventListener('DOMContentLoaded', (event) => {
-  registrarEstado();
-
-  const primeiroGrauInput = document.getElementById('primeiroGrau');
-  if (primeiroGrauInput) {
-    primeiroGrauInput.addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        primeiroGrau();
-        event.preventDefault();
-      }
-    });
-  }
-
-  const segundoGrauInput = document.getElementById('segundoGrau');
-  if (segundoGrauInput) {
-    segundoGrauInput.addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        segundoGrau();
-        event.preventDefault();
-      }
-    });
-  }
-
-
-  // Certifique-se de que a função check está definida
-  
-});
 
 window.check = check;
 // Definição da função check
 function check() {
+  
   registrarEstado();
 
   const classes = {
@@ -184,6 +146,7 @@ function check() {
   for (let id in classes) {
     if (document.getElementById(id) && document.getElementById(id).checked) {
       classes[id].selecionadoClasse();
+      return classes[id];
     }
   }
 
@@ -671,30 +634,6 @@ function selecionaParecer(argumento1) {
 }
 
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  const primeiroGrauInput = document.getElementById('primeiroGrau');
-  if (primeiroGrauInput) {
-    primeiroGrauInput.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        primeiroGrau();
-      }
-    });
-  }
-
-  const segundoGrauInput = document.getElementById('segundoGrau');
-  if (segundoGrauInput) {
-    segundoGrauInput.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        segundoGrau();
-      }
-    });
-  }
-
-});
-
 function primeiroGrau() {
   registrarEstado();
 
@@ -705,19 +644,23 @@ function primeiroGrau() {
   // Verificar se há um conteúdo duplicado para evitar adicioná-lo duas vezes
   if (primeiroGrauTexto.innerHTML.includes(input.value)) return;
 
-  const p = document.createElement('p');
+  // Cria um elemento p2 para o cabeçalho
   const p2 = document.createElement('p');
-
-  p.style.fontStyle = 'italic';
-  p.style.paddingLeft = '4cm';
-  p.style.textIndent = '0';
-  p.style.fontSize = '10pt';
-
   p2.innerHTML = "Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:";
-  p.textContent = input.value;
-
   primeiroGrauTexto.appendChild(p2);
-  primeiroGrauTexto.appendChild(p);
+
+  // Divide o texto de entrada em parágrafos
+  input.value.split('\n').forEach(paragraphText => {
+    if (paragraphText.trim() !== '') { // Ignora linhas vazias
+      const p = document.createElement('p');
+      p.style.fontStyle = 'italic';
+      p.style.paddingLeft = '4cm';
+      p.style.textIndent = '0';
+      p.style.fontSize = '10pt';
+      p.textContent = paragraphText;
+      primeiroGrauTexto.appendChild(p);
+    }
+  });
 
   input.value = '';
 }
@@ -732,22 +675,36 @@ function segundoGrau() {
   // Verificar se há um conteúdo duplicado para evitar adicioná-lo duas vezes
   if (segundoGrauTexto.innerHTML.includes(input.value)) return;
 
-  const p = document.createElement('p');
+  // Cria um elemento p2 para o cabeçalho
   const p2 = document.createElement('p');
-
-  p.style.fontStyle = 'italic';
-  p.style.paddingLeft = '4cm';
-  p.style.textIndent = '0';
-  p.style.fontSize = '10pt';
-
   p2.innerHTML = "A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:";
-  p.textContent = input.value;
-
   segundoGrauTexto.appendChild(p2);
-  segundoGrauTexto.appendChild(p);
+
+  // Divide o texto de entrada em parágrafos
+  input.value.split('\n').forEach(paragraphText => {
+    if (paragraphText.trim() !== '') { // Ignora linhas vazias
+      const p = document.createElement('p');
+      p.style.fontStyle = 'italic';
+      p.style.paddingLeft = '4cm';
+      p.style.textIndent = '0';
+      p.style.fontSize = '10pt';
+      p.textContent = paragraphText;
+      segundoGrauTexto.appendChild(p);
+    }
+  });
 
   input.value = '';
 }
+
+
+function desfazerPrimeiroGrau() {
+  document.getElementById('primeiroGrauTexto').innerHTML = '';
+}
+
+function desfazerSegundoGrau() {
+  document.getElementById('segundoGrauTexto').innerHTML = '';
+}
+
 
 
 
@@ -887,13 +844,13 @@ function selecionaDispositivo(id) {
   } else if (id === 'darParcialProvimento') {
     dispositivo.innerHTML = '<b>dou parcial provimento ao recurso</b>';
   } else if (id === 'naoConheco') {
-    if (check() === 'HC') {
+    if (check() === HC) {
       dispositivo.innerHTML = '<b>não conheço do <i>habeas corpus</i></b>';
     } else {
       dispositivo.innerHTML = '<b>não conheço do recurso</b>';
     }
   } else if (id === 'concederOficio') {
-    if (check() === 'HC') {
+    if (check() === HC) {
       dispositivo.innerHTML = '<b>não conheço do <i>writ</i></b>. Contudo, <b>concedo a ordem de ofício</b>';
     } else {
       dispositivo.innerHTML = '<b>não conheço do recurso</b>. Contudo, <b>concedo a ordem de ofício</b>';

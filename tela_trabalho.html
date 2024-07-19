@@ -106,9 +106,8 @@
 
 
     <section id='formul'>
-        <button onclick="desfazer()">Desfazer</button>
-        <button onclick="refazer()">Refazer</button>
-        <input type="reset" value="Reiniciar" onclick="zerarTudo()">
+        <button onclick="desfazer()">&#x21A9; Desfazer</button>
+       
         <p> <u>CLASSE</u> </p>
         <input type="radio" name="classe_processual" id='HC' value="hc" onclick="check()" checked>
         <label for="HC"> HC</label>
@@ -251,15 +250,24 @@
 
         <p><u>INSTÂNCIAS ORDINÁRIAS</u></p>
         <p>1º Grau</p>
-        <textarea id="primeiroGrau" onkeydown="if(event.key === 'Enter') { primeiroGrau(); event.preventDefault(); }" rows='8' cols="40"
-        placeholder="Assim se manifestou o Juízo de 1º Grau: (apenas colar o texto + Enter)"></textarea>
+        <textarea id="primeiroGrau"  rows='8' cols="40"
+        placeholder="Assim se manifestou o Juízo de 1º Grau: (apenas colar o texto + Incluir)"></textarea>
+        <br>
+        <input type="submit" value="Incluir" onclick="primeiroGrau()" />    
 
+        <input type="button" onclick="desfazerPrimeiroGrau()" value="Desfazer">
+        <br>
+<br>
         <p>2º Grau</p>
 
-        <textarea id="segundoGrau" onkeydown="if(event.key === 'Enter') { segundoGrau(); event.preventDefault(); }" rows='8' cols="40"
-        placeholder="A Corte de origem fundamentou seu entendimento nos seguintes termos: (apenas colar o texto + Enter)"></textarea>
+        <textarea id="segundoGrau"  rows='8' cols="40"
+        placeholder="A Corte de origem fundamentou seu entendimento nos seguintes termos: (apenas colar o texto + Incluir)"></textarea>
+        <br>
+        <input type="submit" value="Incluir" onclick="segundoGrau()" />    
 
-
+        <input type="button" onclick="desfazerSegundoGrau()" value="Desfazer">
+        <br>
+<br>
 
         <p><u>RESULTADOS </u> </p>
         <div class="resultados-api">

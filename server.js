@@ -272,8 +272,10 @@ http.createServer(function (req, res) {
                     }
                 });
             } else if (pathname === '/getState') {
-                fs.readFile('temporario.json', 'utf8', (err, fileData) => {
+                const filePath = path.join(__dirname, 'temporario.json');
+                fs.readFile(filePath, 'utf8', (err, fileData) => {
                     if (err) {
+                        console.error('Erro ao ler o arquivo:', err); // logging the error to the console
                         res.writeHead(500, { 'Content-Type': 'text/plain' });
                         res.end('Erro ao obter o estado!');
                     } else {
@@ -281,6 +283,11 @@ http.createServer(function (req, res) {
                         res.end(fileData);
                     }
                 });
+            } else {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('Not Found');
+            
+            
             }
         });
 

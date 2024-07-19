@@ -1,4 +1,4 @@
-
+/*
  document.addEventListener('DOMContentLoaded', (event) => {
     // Seu código aqui
 
@@ -71,3 +71,4 @@ document.addEventListener('DOMContentLoaded', function() {
 // Abra a conexão com o banco de dados
 
 // Dados a serem inseridos
+*/
