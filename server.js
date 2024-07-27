@@ -294,7 +294,7 @@ http.createServer(function (req, res) {
 
     } else {
 
-        const filePath = path.join(__dirname, pathname === '/' ? '/tela_trabalho.html' : pathname);
+        const filePath = path.join(__dirname, pathname === '/' ? '/index.html' : pathname);
         const ext = path.extname(filePath).toLowerCase();
         let contentType;
 
