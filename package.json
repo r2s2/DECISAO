@@ -1,24 +1,14 @@
 {
-  "name": "decisao",
+  "name": "decisumstj",
   "version": "1.0.0",
-  "description": "Primeira",
-  "main": "client.js",
+  "main": "server.js",
   "scripts": {
-    "test": "a",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "main"
-  },
-  "keywords": [
-    "decisao",
-    "relatorio"
-  ],
-  "author": "rodrigo sacramento",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2",
-    "sqlite3": "^5.1.7"
+    "express": "^4.17.1"
   }
 }
+
+
+
