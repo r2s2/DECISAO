@@ -27,7 +27,8 @@ http.createServer(function (req, res) {
             try {
                 if (contentType.startsWith('application/json')) {
                     data = JSON.parse(body);
-                } else if (contentType === 'application/x-www-form-urlencoded') {
+                } else if (contentType.startsWith('application/x-www-form-urlencoded')) {
+
                     data = querystring.parse(body);
                 } else {
                     throw new Error(`Unsupported content type: ${contentType}`);
@@ -328,7 +329,7 @@ http.createServer(function (req, res) {
             
     
 }).listen(80, '0.0.0.0', () => {
-        
+    
  console.log('Servidor rodando na porta 80 com ngrok');
 
 });
