@@ -327,8 +327,8 @@ http.createServer(function (req, res) {
 
             
     
-}).listen(3000, '0.0.0.0', () => {
+}).listen(80, '0.0.0.0', () => {
     
-    console.log('Servidor rodando na porta 3000');
+    console.log('Servidor rodando na porta 80');
 });
 
