@@ -21,7 +21,7 @@
         
         <button type="submit">Entrar</button>
         <button type="button">Criar Usuário</button>
-        <button type="button">Recuperar Senha$$$</button>
+        <button type="button">Recuperar Senha</button>
     </form>
     
     <p id="error-message"></p>
@@ -35,7 +35,7 @@
             var username = document.querySelector('#username').value;
             var password = document.querySelector('#password').value;
             
-            if ((username === 'admin' && password === 'admin') || (username === 'usuario' && password === 'usuario')) {
+            if ((username === 'admin' && password === 'zico10') || (username === 'usuario' && password === 'usuario')) {
                 localStorage.setItem('username', username);
                 window.location.href = 'tela_trabalho.html';
             } else {
