@@ -71,7 +71,7 @@
             console.log('Enviando ID para exclusão:', id); // Adicione esta linha
         
             $.ajax({
-                url: '/remove_resultado.html',
+                url: '/excluir_resultado',
                 type: 'POST',
                 data: JSON.stringify({ id: id }),
                 contentType: 'application/json; charset=utf-8',

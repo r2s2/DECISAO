@@ -101,7 +101,7 @@
 
         function excluirPedido(id) {
             $.ajax({
-                url: '/remove_pedido.html',
+                url: '/excluir_pedido',
                 type: 'POST',
                 data: { id: id },
                 success: function(data) {
