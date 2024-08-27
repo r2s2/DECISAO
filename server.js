@@ -118,7 +118,7 @@ http.createServer(function (req, res) {
                     });
                 });
 
-            } else if (pathname === '/excluir_tese') {
+            } else if (pathname === '/remove_teses.html') {
                 const id = parseInt(data.id);
 
                 fs.readFile('teses.json', (err, fileData) => {
@@ -153,7 +153,7 @@ http.createServer(function (req, res) {
                     });
                 });
 
-            } else if (pathname === '/excluir_pedido') {
+            } else if (pathname === '/remove_pedido.html') {
                 const id = parseInt(data.id);
 
                 fs.readFile('pedidos.json', (err, fileData) => {
@@ -224,7 +224,7 @@ http.createServer(function (req, res) {
                     });
                 });
 
-            } else if (pathname === '/excluir_resultado') {
+            } else if (pathname === '/remove_resultado.html') {
                 const id = parseInt(data.id);
                 console.log('ID a ser excluído:', id);
                 
