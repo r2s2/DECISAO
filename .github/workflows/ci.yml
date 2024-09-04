@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,5 +39,3 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           REMOTE_TARGET: ${{ secrets.REMOTE_TARGET }}
-
-        
