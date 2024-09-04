@@ -15,7 +15,12 @@ jobs:
         run: |
           git status
           git log -1
+      
+      - name: Instalar dependencias
+        run: npm install
 
+      - name: Build do projeto
+        run: npm run build
 
       - name: Deploy para meu hosting
         uses: easingthemes/ssh-deploy@main
