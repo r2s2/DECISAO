@@ -29,8 +29,7 @@ jobs:
 
       - name: Build do projeto
         run: npm run build
-
-      - name: Deploy para meu hosting
+      - name: Deploy para meu hosting VPS
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
