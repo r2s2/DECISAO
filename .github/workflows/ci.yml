@@ -15,7 +15,15 @@ jobs:
         run: |
           git status
           git log -1
-      
+
+      - name: Verificar configuração do Git
+        run: |
+          git config --list
+
+      - name: Verificar permissões do diretório
+        run: |
+          ls -la
+
       - name: Instalar dependencias
         run: npm install
 
@@ -33,4 +41,4 @@ jobs:
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           REMOTE_TARGET: ${{ secrets.REMOTE_TARGET }}
 
-      
+        
