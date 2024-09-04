@@ -9,7 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do repositorio
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Verificar estado do repositório
+        run: |
+          git status
+          git log -1
+
+
       - name: Deploy para meu hosting
         uses: easingthemes/ssh-deploy@main
         env:
