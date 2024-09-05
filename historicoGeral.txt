@@ -64,3 +64,69 @@ Data: 08/08/2024, 17:21:51
   </body>
   </html>
 ********** FIM **********
+********** INICIO **********
+ID: 1
+Data: 04/09/2024, 19:10:37
+
+  <html>
+  <head>
+  <style>
+    body, p {
+      font-family: 'Arial', sans-serif !important;
+      margin-bottom: 7.1pt;
+      text-indent: 2cm;    
+    }
+  </style>
+  </head>
+  <body>
+  <p>
+
+            <p> Trata-se de <span id="classe">recurso ordinário em <i>habeas corpus</i></span> <span id="se_liminar">[valor]</span> <span id="VERBO">interposto</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">recorrente</span> 
+                <input type="text" id="inputTexto" style="width: 350px;" placeholder="encontra-se preso... foi condenado a... cumpre pena...">
+                <span id="dosDelitos">dos delitos</span>
+                 de<span id="DELITO"> tráfico de drogas e  organização criminosa</span>.
+
+            </p>
+
+            <p><span id="fatos"></span></p>
+
+            <div class="apreensoes">
+                <p id="resultadoApreensao"><p>Foram apreendidas:</p><p><b>Maconha</b>: 1,234 quilogramas;</p><p><b>Cocaína</b>: 1,234 toneladas;</p><p><b><i>Crack</i></b>: 12,341 toneladas;</p><p><b>Outros</b>: 152 munições e 5 pistolas.</p></p>
+            </div>
+
+            <p>O Tribunal de origem <span id="resultadoQuo">negou provimento ao recurso.</span> </p>
+
+            <p>Daí o presente <span id="classe2">recurso ordinário</span>, no qual alega a defesa: </p>
+            <p><span id="tesesSelecionadas"><span id="folhasSTJ"></span><p>a) Ser de rigor a compensação entre a atenuante da confissão e a reincidência.</p><p>b) Ser nulo o reconhecimento realizado sem a observância dos preceitos legais previstos no art. 226 do Código de Processo Penal.</p></span> </p>
+
+            <p>Requer, por fim:</p>
+
+            <span id="pedidoPrincipal1"><p>a) Expedição de alvará de soltura</p><p>b) aaaaaaaaaaaaaaaa</p></span>
+            <p> <span id="se_liminar2"> </span> </p>
+            <p><span id="informacoes"></span></p>
+            <p> <span id="parecerMinisterial">O Ministério Público Federal manifestou-se </span><span id="parecerClasse">pelo desprovimento do recurso.</span></p>
+            <p>É o relatório.</p>
+            <p></p>
+            <p><b>Decido.</b> </p>
+
+            <p> <span id="primeiroGrauTexto"> <p>Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:</p><p style="font-style: italic; padding-left: 4cm; text-indent: 0px; font-size: 10pt;">asdfasd</p></span></p>
+            <p> <span id="segundoGrauTexto"><p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 4cm; text-indent: 0px; font-size: 10pt;">asdfasdf</p></span></p>
+
+            <p> <span id="resultadoTese"><p>asdfasdf</p><p>Confira-se:</p><p style="font-style: italic !important; padding-left: 4cm !important; text-indent: 0px !important; font-size: 10pt !important;">aasdfasdfasdf</p><div><p>asdfasdfasdf</p></div></span></p>
+            <p> <span id="resultadoTextoParticular"></span></p>
+
+            <p>Ante todo o exposto, <span id="dispositivo"><b>não conheço do recurso</b>. Contudo, <b>concedo a ordem de ofício</b></span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+
+          <!--  <p> <span id="teseEnfrentar"></span></p> Creio ser melhor tirar isso  -->
+            <!-- <p> <span id="pedidoEnfrentar"></span></p> -->
+
+
+            <!-- FAZER O RESULTADO FICAR ATRELADO À TESE  -->
+
+        </p>
+  </body>
+  </html>
+********** FIM **********

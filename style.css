@@ -40,6 +40,61 @@ input[type="number"] {
     border-radius: 5px;
 }
 
+#bodyUsuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+#usuarioSenha {
+    width: 10%;
+    padding: 20px;
+    margin: 3px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#usuarioSenha input[type="text"],
+#usuarioSenha input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+#usuarioSenha button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#usuarioSenha button[type="button"] {
+    background-color: #6c757d;
+}
+
+#usuarioSenha button:hover {
+    background-color: #0056b3;
+}
+
+#usuarioSenha button[type="button"]:hover {
+    background-color: #5a6268;
+}
 
 
 #apreensoes {

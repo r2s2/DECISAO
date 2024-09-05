@@ -242,6 +242,8 @@ const delito = {
   receptacao: ' receptação',
 };
 
+var contadorDelito = [];
+
 function searchTipoPenal() {
   var input, filter, results, i;
   input = document.getElementById('tipoPenal');
@@ -280,12 +282,33 @@ function searchTipoPenal() {
     }
   });
 
+  // Adiciona evento de clique ao campo de entrada para selecionar a única opção
+  input.addEventListener('click', function () {
+    if (results.options.length === 1) {
+      var selectedDelitoText = results.options[0].value;
+
+      // Verifica se o delito já foi adicionado
+      if (!contadorDelito.includes(selectedDelitoText)) {
+        contadorDelito.push(selectedDelitoText);
+        atualizarVisualizacaoDelitos();
+      }
+      // Remove o alerta e mantém a funcionalidade de esconder a lista e limpar o campo de entrada
+      results.style.display = 'none'; // Esconde a lista de resultados
+      input.value = ''; // Limpa o campo de entrada
+    }
+  });
+
   if (input.value.trim() === '') {
     results.style.display = 'none';
   } else {
     results.style.display = 'block';
   }
 }
+
+// Adiciona evento de clique ao campo de entrada para exibir a lista de delitos
+document.getElementById('tipoPenal').addEventListener('click', function () {
+  searchTipoPenal();
+});
 
 function atualizarVisualizacaoDelitos() {
   registrarEstado();
