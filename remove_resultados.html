@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remover Resultados</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="style.css">
     <style>
         table {
             border-collapse: collapse;
             width: 100%;
-            font-size: small;
+            font-size: large;
             background-color: rgb(192, 250, 244);
         }
 
@@ -21,21 +19,53 @@
             padding: 8px;
             text-align: left;
         }
+
+        .btn-acao {
+            width: 100px; /* Ajuste o valor conforme necessário */
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-acao:hover {
+            background-color: #0056b3;
+        }
+
+        .resultado {
+            font-weight: bold;
+            color: #333;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .precedente {
+            font-style: italic;
+            color: #555;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .editando {
+            background-color: #ffcccc; /* Cor vermelha suave */
+        }
     </style>
 </head>
-   
 <header>
     <a href="/tela_trabalho.html" class="link-restrito">Tela de trabalho</a>
-        <br> <br>
-        <a href="/adiciona_teses.html" class="link-restrito"> Adicionar teses</a>
-        <a href="/remove_teses.html" class="link-restrito"> Remover Teses</a>
-        <a href="/adiciona_pedidos.html" class="link-restrito"> Adicionar pedidos</a>
-        <a href="/remove_pedido.html" class="link-restrito"> Remover Pedidos</a>
-        <a href="/adiciona_resultados.html" class="link-restrito"> Adicionar Resultados</a>
-        <a href="/remove_resultados.html" class="link-restrito"> Remover Resultados</a>
+    <br> <br>
+    <a href="/adiciona_teses.html" class="link-restrito"> Adicionar teses</a>
+    <a href="/remove_teses.html" class="link-restrito"> Remover Teses</a>
+    <a href="/adiciona_pedidos.html" class="link-restrito"> Adicionar pedidos</a>
+    <a href="/remove_pedido.html" class="link-restrito"> Remover Pedidos</a>
 </header>
 <body>
- 
     <h1>Remover Resultados</h1>
     <table id="resultadosTable">
         <thead>
@@ -50,40 +80,86 @@
             <!-- As linhas da tabela serão preenchidas aqui -->
         </tbody>
     </table>
-
     <script>
+        function excluirResultado(id) {
+            console.log('Enviando ID para exclusão:', id); // Adicione esta linha
+        }
+
+        function editarResultado(id) {
+            var row = $('tr[data-id="' + id + '"]');
+            row.find('.editando').each(function() {
+                var textarea = $(this).find('textarea');
+                if (textarea.length) {
+                    var newValue = textarea.val();
+                    var campo = $(this).hasClass('resultado') ? 'resultado' : 'precedente';
+                    $(this).removeClass('editando').html(newValue.replace(/\n/g, '<br>'));
+                    salvarEdicoes(id, campo, newValue);
+                }
+            });
+            console.log('Editar resultado com ID:', id);
+        }
+
+        function salvarEdicoes(id, campo, valor) {
+            $.ajax({
+                url: '/salvar_edicoes', // URL do endpoint no servidor
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ id: id, campo: campo, valor: valor }),
+                success: function(response) {
+                    console.log('Edição salva com sucesso:', response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erro ao salvar edição:', error);
+                }
+            });
+        }
+
         $(document).ready(function() {
             // Carrega os resultados do arquivo JSON
             $.getJSON('resultados.json', function(data) {
                 $.each(data.resultados, function(i, resultado) {
                     // Adiciona uma linha para cada resultado
-                    var row = $('<tr></tr>');
+                    var row = $('<tr></tr>').attr('data-id', resultado.id);
                     row.append($('<td></td>').text(resultado.id));
-                    row.append($('<td></td>').text(resultado.resultado));
-                    row.append($('<td></td>').text(resultado.precedente));
-                    row.append($('<td></td>').html('<button onclick="excluirResultado(' + resultado.id + ')">Excluir</button>'));
+                    row.append($('<td class="resultado"></td>').html(resultado.resultado.replace(/\n/g, '<br>')));
+                    row.append($('<td class="precedente"></td>').html(resultado.precedente.replace(/\n/g, '<br>')));
+                    row.append($('<td></td>').html(
+                        '<button class="btn-acao" onclick="excluirResultado(' + resultado.id + ')">Excluir</button><br><br>' +
+                        '<button class="btn-acao" onclick="editarResultado(' + resultado.id + ')">Editar</button>'
+                    ));
                     $('#resultadosTable tbody').append(row);
+                });
+
+                // Permitir edição ao clicar na célula
+                $('#resultadosTable').on('click', 'td', function() {
+                    if (!$(this).hasClass('editando') && !$(this).find('button').length) {
+                        // Remover a classe 'editando' de todas as células
+                        $('#resultadosTable td').each(function() {
+                            var textarea = $(this).find('textarea');
+                            if (textarea.length) {
+                                var newValue = textarea.val();
+                                $(this).removeClass('editando').html(newValue.replace(/\n/g, '<br>'));
+                            }
+                        });
+
+                        var currentText = $(this).html().replace(/<br>/g, '\n');
+                        var width = $(this).width();
+                        var height = $(this).height();
+                        var fontSize = $(this).css('font-size');
+                        var fontFamily = $(this).css('font-family');
+                        var fontWeight = $(this).css('font-weight');
+                        var lineHeight = $(this).css('line-height');
+                        var padding = $(this).css('padding');
+                        var borderRadius = $(this).css('border-radius');
+                        var color = $(this).css('color');
+                        var backgroundColor = $(this).css('background-color');
+                        var textAlign = $(this).css('text-align');
+
+                        $(this).addClass('editando').html('<textarea style="width: ' + width + 'px; height: ' + height + 'px; border: none; background: ' + backgroundColor + '; font-size: ' + fontSize + '; font-family: ' + fontFamily + '; font-weight: ' + fontWeight + '; line-height: ' + lineHeight + '; padding: ' + padding + '; border-radius: ' + borderRadius + '; color: ' + color + '; text-align: ' + textAlign + ';">' + currentText + '</textarea>');
+                    }
                 });
             });
         });
-
-        function excluirResultado(id) {
-            console.log('Enviando ID para exclusão:', id); // Adicione esta linha
-        
-            $.ajax({
-                url: '/excluir_resultado',
-                type: 'POST',
-                data: JSON.stringify({ id: id }),
-                contentType: 'application/json; charset=utf-8',
-                success: function(response) {
-                    console.log(response);
-                    location.reload(); // Recarrega a página para mostrar a lista atualizada de resultados
-                },
-                error: function(error) {
-                    console.log(error);
-                }
-            });
-        }
     </script>
 </body>
 </html>

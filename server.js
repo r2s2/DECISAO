@@ -9,7 +9,7 @@ let currentId = 0;
 
 function generateId() {
     return ++currentId;
-  }
+}
 
 http.createServer(function (req, res) {
     const requestUrl = url.parse(req.url);
@@ -28,7 +28,6 @@ http.createServer(function (req, res) {
                 if (contentType.startsWith('application/json')) {
                     data = JSON.parse(body);
                 } else if (contentType.startsWith('application/x-www-form-urlencoded')) {
-
                     data = querystring.parse(body);
                 } else {
                     throw new Error(`Unsupported content type: ${contentType}`);
@@ -46,19 +45,17 @@ http.createServer(function (req, res) {
                 const timestamp = new Date().toLocaleString();
                 const formattedData = `********** INICIO **********\nID: ${id}\nData: ${timestamp}\n${clipboardData}\n********** FIM **********\n`;
                 fs.appendFile('historicoGeral.txt', formattedData, (err) => {
-                  if (err) {
-                    console.error('Erro ao escrever no arquivo:', err);
-                    res.writeHead(500, { 'Content-Type': 'text/plain' });
-                    res.end('Erro ao salvar o conteúdo da área de transferência');
-                    return;
-                  }
-                  console.log('Conteúdo da área de transferência salvo com sucesso!');
-                  res.writeHead(200, { 'Content-Type': 'text/plain' });
-                  res.end('Conteúdo da área de transferência salvo com sucesso!');
+                    if (err) {
+                        console.error('Erro ao escrever no arquivo:', err);
+                        res.writeHead(500, { 'Content-Type': 'text/plain' });
+                        res.end('Erro ao salvar o conteúdo da área de transferência');
+                        return;
+                    }
+                    console.log('Conteúdo da área de transferência salvo com sucesso!');
+                    res.writeHead(200, { 'Content-Type': 'text/plain' });
+                    res.end('Conteúdo da área de transferência salvo com sucesso!');
                 });
-              
-           
-        
+
             } else if (pathname === '/adiciona_teses.html') {
                 const tese = data.tese;
                 const tags = data.tags;
@@ -227,7 +224,7 @@ http.createServer(function (req, res) {
             } else if (pathname === '/excluir_resultado') {
                 const id = parseInt(data.id);
                 console.log('ID a ser excluído:', id);
-                
+
                 fs.readFile('resultados.json', (err, fileData) => {
                     if (err) {
                         console.error('Erro ao ler o arquivo:', err);
@@ -284,17 +281,40 @@ http.createServer(function (req, res) {
                         res.end(fileData);
                     }
                 });
+            } else if (pathname === '/salvar_edicoes') {
+                const { id, campo, valor } = data;
+
+                fs.readFile('resultados.json', 'utf8', (err, fileData) => {
+                    if (err) {
+                        return res.status(500).send('Erro ao ler o arquivo');
+                    }
+
+                    let resultados = JSON.parse(fileData);
+                    let resultado = resultados.resultados.find(r => r.id === id);
+
+                    if (resultado) {
+                        resultado[campo] = valor;
+
+                        fs.writeFile('resultados.json', JSON.stringify(resultados, null, 2), 'utf8', (err) => {
+                            if (err) {
+                                return res.status(500).send('Erro ao salvar o arquivo');
+                            }
+
+                            res.writeHead(200, { 'Content-Type': 'text/plain' });
+                            res.end('Edição salva com sucesso');
+                        });
+                    } else {
+                        res.writeHead(404, { 'Content-Type': 'text/plain' });
+                        res.end('Resultado não encontrado');
+                    }
+                });
             } else {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
                 res.end('Not Found');
-            
-            
             }
         });
 
-
     } else {
-
         const filePath = path.join(__dirname, pathname === '/' ? '/index.html' : pathname);
         const ext = path.extname(filePath).toLowerCase();
         let contentType;
@@ -322,15 +342,8 @@ http.createServer(function (req, res) {
                 res.end(data);
             }
         });
-    }       
+    }
 
-
-
-            
-    
 }).listen(80, '0.0.0.0', () => {
-    
- console.log('Servidor rodando na porta 80 com ngrok');
-
+    console.log('Servidor rodando na porta 80 com ngrok');
 });
-
