@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remover Resultados</title>
+    <title>Editar Resultados</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <style>
         table {
             border-collapse: collapse;
             width: 100%;
-            font-size: large;
+            font-size: larger;
             background-color: rgb(192, 250, 244);
         }
 
@@ -37,7 +37,7 @@
         }
 
         .resultado {
-            font-weight: bold;
+            
             color: #333;
             background-color: #ffffff;
             padding: 10px;
@@ -124,8 +124,8 @@
                     row.append($('<td class="resultado"></td>').html(resultado.resultado.replace(/\n/g, '<br>')));
                     row.append($('<td class="precedente"></td>').html(resultado.precedente.replace(/\n/g, '<br>')));
                     row.append($('<td></td>').html(
-                        '<button class="btn-acao" onclick="excluirResultado(' + resultado.id + ')">Excluir</button><br><br>' +
-                        '<button class="btn-acao" onclick="editarResultado(' + resultado.id + ')">Editar</button>'
+                        '<button class="btn-acao" style="background-color: #ffcccc;" onclick="excluirResultado(' + resultado.id + ')">Excluir</button><br><br>' +
+                        '<button class="btn-acao" onclick="editarResultado(' + resultado.id + ')">Salvar</button>'
                     ));
                     $('#resultadosTable tbody').append(row);
                 });
