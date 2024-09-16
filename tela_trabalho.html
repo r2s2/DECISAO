@@ -55,8 +55,7 @@
             <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
                 <input type="text" id="inputTexto" style="width: 350px;" 
                 placeholder="encontra-se preso... foi condenado a... cumpre pena..." >
-                <span id="dosDelitos"> do delito</span>
-                 de<span id="DELITO"></span>.
+                <span id="dosDelitos"> do delito</span><span id="DELITO"></span>.
 
             </p>
 
@@ -75,6 +74,7 @@
 
             <span id="pedidoPrincipal1"></span>
             <p> <span id="se_liminar2"> </span> </p>
+            <p> <span id="pedidoLiminar"></span></p>
             <p><span id="informacoes"></span></p>
             <p> <span id="parecerMinisterial"></span><span id="parecerClasse"></span></p>
             <p>É o relatório.</p>
@@ -123,17 +123,19 @@
                 <input type="radio" name="classe_processual" id = 'edcl' value ='edcl'>
                 <label for="edcl"> EDcl</label> -->
 
-        <p> <u>FASE</u> </p>
+        <p> <u>LIMINAR</u> </p>
 
         <input type="radio" name="fase" id='analise_liminar' value="Analise_liminar"
             onclick="selecionaFase('liminarComLiminar')" required>
-        <label for="analise_liminar"> Liminar</label>
+        <label for="analise_liminar"> Com liminar</label>
         <input type="radio" name="fase" id='analise_merito' value="Analise_merito"
-            onclick="selecionaFase('meritoComLiminar')">
-        <label for="analise_merito"> Mérito</label>
-        <input type="radio" name="fase" id='sem_liminar' value="Sem_liminar" onclick="selecionaFase('semLiminar')"
+            onclick="selecionaFase('semLiminar')">
+        <label for="analise_merito"> Sem liminar</label>
+       <!-- <input type="radio" name="fase" id='sem_liminar' value="Sem_liminar" onclick="selecionaFase('semLiminar')"
             checked>
         <label for="sem_liminar"> Sem liminar</label>
+
+        -->
 
         <p> <u>RESULTADO DA ORIGEM</u> </p>
 

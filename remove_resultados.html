@@ -37,7 +37,6 @@
         }
 
         .resultado {
-            
             color: #333;
             background-color: #ffffff;
             padding: 10px;
@@ -47,6 +46,13 @@
         .precedente {
             font-style: italic;
             color: #555;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .tags {
+            color: #333;
             background-color: #ffffff;
             padding: 10px;
             border-radius: 4px;
@@ -64,15 +70,18 @@
     <a href="/remove_teses.html" class="link-restrito"> Remover Teses</a>
     <a href="/adiciona_pedidos.html" class="link-restrito"> Adicionar pedidos</a>
     <a href="/remove_pedido.html" class="link-restrito"> Remover Pedidos</a>
+    <a href="/adiciona_resultados.html" class="link-restrito"> Adicionar Resultados</a>
+    
 </header>
 <body>
-    <h1>Remover Resultados</h1>
+   
     <table id="resultadosTable">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Resultado</th>
                 <th>Precedente</th>
+                <th>Tags</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -91,7 +100,7 @@
                 var textarea = $(this).find('textarea');
                 if (textarea.length) {
                     var newValue = textarea.val();
-                    var campo = $(this).hasClass('resultado') ? 'resultado' : 'precedente';
+                    var campo = $(this).hasClass('resultado') ? 'resultado' : $(this).hasClass('precedente') ? 'precedente' : 'tags';
                     $(this).removeClass('editando').html(newValue.replace(/\n/g, '<br>'));
                     salvarEdicoes(id, campo, newValue);
                 }
@@ -123,6 +132,7 @@
                     row.append($('<td></td>').text(resultado.id));
                     row.append($('<td class="resultado"></td>').html(resultado.resultado.replace(/\n/g, '<br>')));
                     row.append($('<td class="precedente"></td>').html(resultado.precedente.replace(/\n/g, '<br>')));
+                    row.append($('<td class="tags"></td>').html(resultado.tags.replace(/\n/g, '<br>')));
                     row.append($('<td></td>').html(
                         '<button class="btn-acao" style="background-color: #ffcccc;" onclick="excluirResultado(' + resultado.id + ')">Excluir</button><br><br>' +
                         '<button class="btn-acao" onclick="editarResultado(' + resultado.id + ')">Salvar</button>'
@@ -156,6 +166,19 @@
                         var textAlign = $(this).css('text-align');
 
                         $(this).addClass('editando').html('<textarea style="width: ' + width + 'px; height: ' + height + 'px; border: none; background: ' + backgroundColor + '; font-size: ' + fontSize + '; font-family: ' + fontFamily + '; font-weight: ' + fontWeight + '; line-height: ' + lineHeight + '; padding: ' + padding + '; border-radius: ' + borderRadius + '; color: ' + color + '; text-align: ' + textAlign + ';">' + currentText + '</textarea>');
+                    }
+                });
+
+                // Desmarcar a célula em edição ao clicar fora da tabela
+                $(document).on('click', function(event) {
+                    if (!$(event.target).closest('#resultadosTable').length) {
+                        $('#resultadosTable td').each(function() {
+                            var textarea = $(this).find('textarea');
+                            if (textarea.length) {
+                                var newValue = textarea.val();
+                                $(this).removeClass('editando').html(newValue.replace(/\n/g, '<br>'));
+                            }
+                        });
                     }
                 });
             });

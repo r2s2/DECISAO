@@ -130,3 +130,133 @@ Data: 04/09/2024, 19:10:37
   </body>
   </html>
 ********** FIM **********
+********** INICIO **********
+ID: 1
+Data: 15/09/2024, 22:12:01
+
+  <html>
+  <head>
+  <style>
+    body, p {
+      font-family: 'Arial', sans-serif !important;
+      margin-bottom: 7.1pt;
+      text-indent: 2cm;    
+    }
+  </style>
+  </head>
+  <body>
+  <p>
+
+            <p> Trata-se de <span id="classe"></span> <span id="se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                <input type="text" id="inputTexto" style="width: 350px;" placeholder="encontra-se preso... foi condenado a... cumpre pena...">
+                <span id="dosDelitos"> tráfico de drogas</span> <span id="DELITO" style="display: block;"></span>.
+
+            </p>
+
+            <p><span id="fatos"></span></p>
+
+            <div class="apreensoes">
+                <p id="resultadoApreensao"></p>
+            </div>
+
+            <p>O Tribunal de origem <span id="resultadoQuo"></span> </p>
+
+            <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+            <p><span id="tesesSelecionadas"><span id="folhasSTJ"></span></span> </p>
+
+            <p>Requer, por fim:</p>
+
+            <span id="pedidoPrincipal1"></span>
+            <p> <span id="se_liminar2"> </span> </p>
+            <p><span id="informacoes"></span></p>
+            <p> <span id="parecerMinisterial"></span><span id="parecerClasse"></span></p>
+            <p>É o relatório.</p>
+            <p></p>
+            <p><b>Decido.</b> </p>
+
+            <p> <span id="primeiroGrauTexto"> </span></p>
+            <p> <span id="segundoGrauTexto"></span></p>
+
+            <p> <span id="resultadoTese"></span></p>
+            <p> <span id="resultadoTextoParticular"></span></p>
+
+            <p>Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+
+          <!--  <p> <span id="teseEnfrentar"></span></p> Creio ser melhor tirar isso  -->
+            <!-- <p> <span id="pedidoEnfrentar"></span></p> -->
+
+
+            <!-- FAZER O RESULTADO FICAR ATRELADO À TESE  -->
+
+        </p>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 2
+Data: 15/09/2024, 22:12:13
+
+  <html>
+  <head>
+  <style>
+    body, p {
+      font-family: 'Arial', sans-serif !important;
+      margin-bottom: 7.1pt;
+      text-indent: 2cm;    
+    }
+  </style>
+  </head>
+  <body>
+  <p>
+
+            <p> Trata-se de <span id="classe"></span> <span id="se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                <input type="text" id="inputTexto" style="width: 350px;" placeholder="encontra-se preso... foi condenado a... cumpre pena...">
+                <span id="dosDelitos"> tráfico de drogas e  lavagem de dinheiro</span> <span id="DELITO" style="display: block;"></span>.
+
+            </p>
+
+            <p><span id="fatos"></span></p>
+
+            <div class="apreensoes">
+                <p id="resultadoApreensao"><p>Foram apreendidas:</p><p><b>Maconha</b>: 1,234 quilogramas.</p></p>
+            </div>
+
+            <p>O Tribunal de origem <span id="resultadoQuo"></span> </p>
+
+            <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+            <p><span id="tesesSelecionadas"><span id="folhasSTJ"></span></span> </p>
+
+            <p>Requer, por fim:</p>
+
+            <span id="pedidoPrincipal1"></span>
+            <p> <span id="se_liminar2"> </span> </p>
+            <p><span id="informacoes"></span></p>
+            <p> <span id="parecerMinisterial"></span><span id="parecerClasse"></span></p>
+            <p>É o relatório.</p>
+            <p></p>
+            <p><b>Decido.</b> </p>
+
+            <p> <span id="primeiroGrauTexto"> </span></p>
+            <p> <span id="segundoGrauTexto"></span></p>
+
+            <p> <span id="resultadoTese"></span></p>
+            <p> <span id="resultadoTextoParticular"></span></p>
+
+            <p>Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+
+          <!--  <p> <span id="teseEnfrentar"></span></p> Creio ser melhor tirar isso  -->
+            <!-- <p> <span id="pedidoEnfrentar"></span></p> -->
+
+
+            <!-- FAZER O RESULTADO FICAR ATRELADO À TESE  -->
+
+        </p>
+  </body>
+  </html>
+********** FIM **********

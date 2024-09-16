@@ -245,90 +245,96 @@ const delito = {
 var contadorDelito = [];
 
 function searchTipoPenal() {
-  var input, filter, results, i;
-  input = document.getElementById('tipoPenal');
-  if (!input) return;
-  input.setAttribute('autocomplete', 'off');
+    var input, filter, results, i;
+    input = document.getElementById('tipoPenal');
+    if (!input) return;
+    input.setAttribute('autocomplete', 'off');
 
-  filter = input.value.toUpperCase();
-  results = document.getElementById('searchTipoPenal');
-  if (!results) return;
-  results.innerHTML = '';
+    filter = input.value.toUpperCase();
+    results = document.getElementById('searchTipoPenal');
+    if (!results) return;
+    results.innerHTML = '';
 
-  for (i in delito) {
-    if (delito[i].toUpperCase().includes(filter)) {
-      var option = document.createElement('option');
-      option.value = delito[i];
-      option.text = delito[i];
-      results.appendChild(option);
+    for (i in delito) {
+        if (delito[i].toUpperCase().includes(filter)) {
+            var option = document.createElement('option');
+            option.value = delito[i];
+            option.text = delito[i];
+            results.appendChild(option);
+        }
     }
-  }
-  results.size = results.length;
+    results.size = results.length;
 
-  results.addEventListener('click', function (event) {
-    registrarEstado();
+    results.addEventListener('click', function (event) {
+        registrarEstado();
 
-    if (event.target.tagName === 'OPTION') {
-      var selectedDelitoText = event.target.value;
+        if (event.target.tagName === 'OPTION') {
+            var selectedDelitoText = event.target.value;
 
-      // Verifica se o delito já foi adicionado
-      if (!contadorDelito.includes(selectedDelitoText)) {
-        contadorDelito.push(selectedDelitoText);
-        atualizarVisualizacaoDelitos();
-      }
-      // Remove o alerta e mantém a funcionalidade de esconder a lista e limpar o campo de entrada
-      results.style.display = 'none'; // Esconde a lista de resultados
-      input.value = ''; // Limpa o campo de entrada
+            // Verifica se o delito já foi adicionado
+            if (!contadorDelito.includes(selectedDelitoText)) {
+                contadorDelito.push(selectedDelitoText);
+                atualizarVisualizacaoDelitos();
+            }
+            // Remove o alerta e mantém a funcionalidade de esconder a lista e limpar o campo de entrada
+            results.style.display = 'none'; // Esconde a lista de resultados
+            input.value = ''; // Limpa o campo de entrada
+        }
+    });
+
+    // Adiciona evento de clique ao campo de entrada para selecionar a única opção
+    input.addEventListener('click', function () {
+        if (results.options.length === 1) {
+            var selectedDelitoText = results.options[0].value;
+
+            // Verifica se o delito já foi adicionado
+            if (!contadorDelito.includes(selectedDelitoText)) {
+                contadorDelito.push(selectedDelitoText);
+                atualizarVisualizacaoDelitos();
+            }
+            // Remove o alerta e mantém a funcionalidade de esconder a lista e limpar o campo de entrada
+            results.style.display = 'none'; // Esconde a lista de resultados
+            input.value = ''; // Limpa o campo de entrada
+        }
+    });
+
+    if (input.value.trim() === '') {
+        results.style.display = 'none';
+    } else {
+        results.style.display = 'block';
     }
-  });
-
-  // Adiciona evento de clique ao campo de entrada para selecionar a única opção
-  input.addEventListener('click', function () {
-    if (results.options.length === 1) {
-      var selectedDelitoText = results.options[0].value;
-
-      // Verifica se o delito já foi adicionado
-      if (!contadorDelito.includes(selectedDelitoText)) {
-        contadorDelito.push(selectedDelitoText);
-        atualizarVisualizacaoDelitos();
-      }
-      // Remove o alerta e mantém a funcionalidade de esconder a lista e limpar o campo de entrada
-      results.style.display = 'none'; // Esconde a lista de resultados
-      input.value = ''; // Limpa o campo de entrada
-    }
-  });
-
-  if (input.value.trim() === '') {
-    results.style.display = 'none';
-  } else {
-    results.style.display = 'block';
-  }
 }
 
-// Adiciona evento de clique ao campo de entrada para exibir a lista de delitos
-document.getElementById('tipoPenal').addEventListener('click', function () {
-  searchTipoPenal();
+document.addEventListener('DOMContentLoaded', function () {
+    var tipoPenalInput = document.getElementById('tipoPenal');
+    if (tipoPenalInput) {
+        tipoPenalInput.addEventListener('click', function () {
+            searchTipoPenal();
+        });
+
+        tipoPenalInput.addEventListener('keyup', function () {
+            searchTipoPenal();
+        });
+    } else {
+        console.error('Elemento com ID "tipoPenal" não encontrado.');
+    }
 });
 
 function atualizarVisualizacaoDelitos() {
-  registrarEstado();
+    registrarEstado();
 
-  var pDelitosSelecionados = document.getElementById('DELITO');
-  var textoDosDelitos = document.getElementById('dosDelitos');
+    var pDelitosSelecionados = document.getElementById('DELITO');
+    var textoDosDelitos = document.getElementById('dosDelitos');
 
-  if (pDelitosSelecionados && textoDosDelitos) {
-    if (contadorDelito.length > 0) {
-      // Cria a string de delitos, substituindo a última vírgula por " e "
-      var delitosTexto = contadorDelito.join(', ').replace(/, ([^,]*)$/, ' e $1');
-      pDelitosSelecionados.textContent = delitosTexto;
-      // Altera o texto para "dos delitos" se houver mais de um delito selecionado
-      textoDosDelitos.textContent = contadorDelito.length > 1 ? 'dos delitos' : 'do delito';
-    } else {
-      // Se não houver delitos selecionados, limpa o texto do parágrafo e volta ao singular
-      pDelitosSelecionados.textContent = '';
-      textoDosDelitos.textContent = 'do delito';
+    if (pDelitosSelecionados && textoDosDelitos) {
+        if (contadorDelito.length > 0) {
+            var delitosTexto = contadorDelito.join(', ').replace(/, ([^,]*)$/, ' e $1');
+            textoDosDelitos.innerHTML = delitosTexto;
+            pDelitosSelecionados.style.display = 'block';
+        } else {
+            pDelitosSelecionados.style.display = 'none';
+        }
     }
-  }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -632,8 +638,8 @@ function selecionaLiminar(argumento4) {
   se_liminar2.innerHTML = liminar[argumento4];
   if (argumento4 == 'semPedido') {
     pedidoLiminar.innerHTML = '';
-  } else {
-    pedidoLiminar.innerHTML = ', inclusive liminarmente, ';
+    se_liminar.innerHTML = '';
+
   }
 }
 
