@@ -1,3 +1,7 @@
+//TODO FAZER QUE A INCLUSÃO DAS FLS SEJA AO LADO DOS CAMPOS DELITOS, APREENSÃO, RESULTADO DA ORIGEM, PEDIDOS, LIMINAR, PARECER DO MP, 1º E 2º GRAU
+// JÁ nas teses fazer que a inclusão do fls apareça ao lado da tese no texto
+
+
 // Exemplo de função para gerar uma chave única (UUID)
 function gerarChaveUnica() {
   return URL.createObjectURL(new Blob()).slice(-36);
@@ -191,7 +195,7 @@ var contadorDelito = [];
 var contadorPedidos = [];
 var contadorTeses = [];
 
-function digitaFls() {
+/*function digitaFls() {
   registrarEstado();
 
   var x = document.getElementById("eSTJfls");
@@ -202,6 +206,59 @@ function digitaFls() {
     document.getElementById("folhasSTJ").appendChild(node);
   }
 }
+
+*/
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    registrarEstado();
+    const inputs = document.querySelectorAll('input[type="text"]');
+
+    inputs.forEach(input => {
+        // Verificar se o ID do input corresponde ao padrão 'input1', 'input2', etc.
+        if (/^input\d+$/.test(input.id)) {
+            input.addEventListener('input', function () {
+                this.value = this.value.replace(/[^0-9/]/g, ''); // Permitir apenas números e '/'
+            });
+
+            input.addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    formatInput(this);
+                }
+            });
+        }
+    });
+});
+
+function formatInput(input) {
+    registrarEstado();
+    const value = input.value;
+    if (!value) return;
+
+    const parts = value.split('/');
+    if (parts.length > 2) {
+        alert('Formato inválido. Use apenas um "/" para separar dois números.');
+        return;
+    }
+
+    const formattedParts = parts.map(part => {
+        return parseInt(part, 10).toLocaleString('pt-BR');
+    });
+
+    const formattedValue = formattedParts.join('/');
+    const prefix = formattedParts.length > 1 ? '(e-STJ fls. ' : '(e-STJ fl. ';
+    const finalText = prefix + formattedValue + ').';
+
+    const node = document.createElement("span");
+    const textnode = document.createTextNode(finalText);
+    node.appendChild(textnode);
+
+    // Substituir o campo de entrada pelo texto formatado
+    input.parentNode.replaceChild(node, input);
+}
+
+
 
 const faseLiminar = {
   liminarComLiminar: 'com pedido liminar',
@@ -326,16 +383,20 @@ function atualizarVisualizacaoDelitos() {
     var pDelitosSelecionados = document.getElementById('DELITO');
     var textoDosDelitos = document.getElementById('dosDelitos');
 
-    if (pDelitosSelecionados && textoDosDelitos) {
-        if (contadorDelito.length > 0) {
+    
+               if (contadorDelito.length > 1) {
             var delitosTexto = contadorDelito.join(', ').replace(/, ([^,]*)$/, ' e $1');
-            textoDosDelitos.innerHTML = delitosTexto;
+            textoDosDelitos.innerHTML = "dos delitos de " + delitosTexto;
+            pDelitosSelecionados.style.display = 'block';
+        } else if (contadorDelito.length === 1) {
+            textoDosDelitos.innerHTML = "do delito de " + contadorDelito[0];
             pDelitosSelecionados.style.display = 'block';
         } else {
+            textoDosDelitos.innerHTML = "";
             pDelitosSelecionados.style.display = 'none';
         }
     }
-}
+
 
 document.addEventListener('DOMContentLoaded', function() {
   var inputTexto = document.getElementById('inputTexto');
