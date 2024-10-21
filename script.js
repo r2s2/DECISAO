@@ -36,10 +36,10 @@ class Classe {
 
 const HC = new Classe("<i>habeas corpus</i>", "impetrado em favor de", "paciente", "<b>concedo a ordem.</b>", "<b>denego a ordem.</b>", "<i>writ</i>");
 const RHC = new Classe("recurso ordinário em <i>habeas corpus</i>", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso ordinário");
-const REsp = new Classe("recurso especial", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial");
-const AREsp = new Classe("agravo em recurso especial", "interposto", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial");
-const agrg = new Classe("agravo regimental", "interposto", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental");
-const edcl = new Classe("embargos de declaração", "opostos", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração");
+const REsp = new Classe("recurso especial", "interposto por", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial");
+const AREsp = new Classe("agravo em recurso especial", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial");
+const agrg = new Classe("agravo regimental", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental");
+const edcl = new Classe("embargos de declaração", "opostos por", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração");
 
 // Função para salvar o estado no arquivo temporário, agora aceitando uma chave de sessão
 async function salvarEstado(chaveSessao, estado) {
