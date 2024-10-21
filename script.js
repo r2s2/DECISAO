@@ -744,9 +744,9 @@ function primeiroGrau() {
     if (paragraphText.trim() !== '') { // Ignora linhas vazias
       const p = document.createElement('p');
       p.style.fontStyle = 'italic';
-      p.style.paddingLeft = '4cm';
+      p.style.paddingLeft = '3.1cm';
       p.style.textIndent = '0';
-      p.style.fontSize = '10pt';
+      p.style.fontSize = '11pt';
       p.textContent = paragraphText;
       primeiroGrauTexto.appendChild(p);
     }
@@ -775,9 +775,9 @@ function segundoGrau() {
     if (paragraphText.trim() !== '') { // Ignora linhas vazias
       const p = document.createElement('p');
       p.style.fontStyle = 'italic';
-      p.style.paddingLeft = '4cm';
+      p.style.paddingLeft = '3.1cm';
       p.style.textIndent = '0';
-      p.style.fontSize = '10pt';
+      p.style.fontSize = '11pt';
       p.textContent = paragraphText;
       segundoGrauTexto.appendChild(p);
     }
@@ -794,11 +794,6 @@ function desfazerPrimeiroGrau() {
 function desfazerSegundoGrau() {
   document.getElementById('segundoGrauTexto').innerHTML = '';
 }
-
-
-
-
-
 
 
 
@@ -870,14 +865,14 @@ function searchResultadoFuncao() {
       var regex = /\(([A-Za-z].*?\d{4}\.)\)/g;
       var match;
       while ((match = regex.exec(selectedPrecedenteText)) !== null) {
-        selectedPrecedenteText = selectedPrecedenteText.replace(match[0], '<span style="font-style: normal;">' + match[0] + '</span>');
+        selectedPrecedenteText = selectedPrecedenteText.replace(match[0], '<span style="font-style: normal;">' + match[0] + '</span>' + '<br>' + '<br>');
       }
 
       p3.innerHTML = selectedPrecedenteText;
       p3.style.cssText += 'font-style: italic !important;';
-      p3.style.cssText += 'padding-left: 4cm !important;';
+      p3.style.cssText += 'padding-left: 3cm !important;';
       p3.style.cssText += 'text-indent: 0 !important;';
-      p3.style.cssText += 'font-size: 10pt !important;';
+      p3.style.cssText += 'font-size: 11pt !important;';
 
       selectedResultado.appendChild(p3);
 
@@ -948,28 +943,73 @@ function selecionaDispositivo(id) {
   }
 }
 
+
 async function copyFormattedTextToClipboard() {
   registrarEstado();
   // esvazia o arquivo temporario.json
   await salvarEstado([]);
 
-
   let element = document.getElementById('texto_base_relatorio');
   if (!element) return;
 
+  // Criar um elemento temporário para manipular o HTML
+  let tempDiv = document.createElement('div');
+
+
+
+
+
+  tempDiv.innerHTML = element.innerHTML;
+
+
+  // IDs específicos a serem verificados e removidos se vazios
+  const idsToCheck = [
+    'resultadoApreensao', 'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
+    'informacoes', 'parecerMinisterial', 'parecerClasse', 'primeiroGrauTexto', 
+    'segundoGrauTexto', 'resultadoTese', 'resultadoTextoParticular', 'tesesSelecionadas', 'folhasSTJ', 'input1', 'inputTexto'
+  ];
+
+  idsToCheck.forEach(id => {
+    let el = tempDiv.querySelector(`#${id}`);
+    if (el && el.innerHTML.trim() === '') {
+      let parent = el.parentElement;
+      el.remove();
+      // Remove o elemento pai <p> se ele estiver vazio após remover o <span>
+      if (parent && parent.tagName === 'P' && parent.innerHTML.trim() === '') {
+        parent.remove();
+      }
+    }
+  });
+
+  // Remover todos os <p> e <span> vazios
+  let elementsToRemove = tempDiv.querySelectorAll('p, span');
+  elementsToRemove.forEach(el => {
+    if (el.innerHTML.trim() === '') {
+      el.remove();
+    }
+  });
+
+    // Zerar todos os estilos e aplicar novos estilos
   let styledHtml = `
   <html>
   <head>
-  <style>
-    body, p {
-      font-family: 'Arial', sans-serif !important;
-      margin-bottom: 7.1pt;
-      text-indent: 2cm;    
-    }
-  </style>
+  
+
   </head>
   <body>
-  <p>${element.innerHTML}</p>
+  <section>${tempDiv.innerHTML}
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    }
+
+
+    
+  </style>
+  </section>
   </body>
   </html>`;
 
@@ -981,18 +1021,18 @@ async function copyFormattedTextToClipboard() {
       })
     ]);
     alert('Texto formatado copiado para a área de transferência');
-      // Enviar conteúdo para o backend para salvar no histórico
-      const response = await fetch('/saveClipboard', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: styledHtml })
-      });
-  
-      if (!response.ok) throw new Error('Erro ao salvar conteúdo da área de transferência');
-    } catch (err) {
-      console.error('Erro ao copiar texto ou salvar no arquivo:', err);
-    }
-}
 
+    // Enviar conteúdo para o backend para salvar no histórico
+    const response = await fetch('/saveClipboard', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: styledHtml })
+    });
+
+    if (!response.ok) throw new Error('Erro ao salvar conteúdo da área de transferência');
+  } catch (err) {
+    console.error('Erro ao copiar texto ou salvar no arquivo:', err);
+  }
+}
