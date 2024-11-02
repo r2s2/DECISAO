@@ -829,8 +829,8 @@ function searchResultadoFuncao() {
 
         if ((resultado.resultado && removeAcentos(resultado.resultado.toUpperCase()).indexOf(filter) > -1) || allKeywordsFound || resultado.id.toString() === input.value) {
           var option = document.createElement('option');
-          option.value = resultado.resultado + '|' + resultado.precedente;
-          option.text = resultado.id + " - " + resultado.resultado + " - " + resultado.precedente;
+          option.value = resultado.topico + '|' + resultado.resultado + '|' + resultado.precedente;
+          option.text = resultado.id + " - " + resultado.topico + " - " resultado.resultado + " - " + resultado.precedente;
           results.appendChild(option);
           count++;
         }

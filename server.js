@@ -186,6 +186,7 @@ http.createServer(function (req, res) {
                 });
 
             } else if (pathname === '/adiciona_resultados.html') {
+                const topico = data.topico;
                 const resultado = data.resultado;
                 const tags = data.tags;
                 const precedente = data.precedente;

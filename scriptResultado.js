@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
 
+        var topico = document.getElementById('topico').value;
         var resultado = document.getElementById('caixaResultado').value;
         var precedente = document.getElementById('caixaPrecedente').value;
         var tags = document.getElementById('caixaTags').value;
 
         var data = {
+            topico: topico,
             resultado: resultado,
             precedente: precedente,
             tags: tags
