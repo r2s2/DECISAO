@@ -207,7 +207,7 @@ http.createServer(function (req, res) {
                     }
                     let json = JSON.parse(fileData);
                     var id = json.resultados.length + 1;
-                    json.resultados.push({ id, resultado, tags, precedente });
+                    json.resultados.push({ id, topico, resultado, tags, precedente });
 
                     fs.writeFile('resultados.json', JSON.stringify(json), (err) => {
                         if (err) {

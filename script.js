@@ -830,7 +830,7 @@ function searchResultadoFuncao() {
         if ((resultado.resultado && removeAcentos(resultado.resultado.toUpperCase()).indexOf(filter) > -1) || allKeywordsFound || resultado.id.toString() === input.value) {
           var option = document.createElement('option');
           option.value = resultado.topico + '|' + resultado.resultado + '|' + resultado.precedente;
-          option.text = resultado.id + " - " + resultado.topico + " - " resultado.resultado + " - " + resultado.precedente;
+          option.text = resultado.id + " - " + resultado.topico  + " - " + resultado.resultado + " - " + resultado.precedente;
           results.appendChild(option);
           count++;
         }
@@ -842,8 +842,9 @@ function searchResultadoFuncao() {
     registrarEstado();
 
     if (event.target.tagName === 'OPTION') {
-      var selectedResultadoText = event.target.value.split('|')[0];
-      var selectedPrecedenteText = event.target.value.split('|')[1];
+      var selectedTopicoText = event.target.value.split('|')[0];
+      var selectedResultadoText = event.target.value.split('|')[1];
+      var selectedPrecedenteText = event.target.value.split('|')[2];
 
       var selectedResultado = document.getElementById('resultadoTese');
       if (!selectedResultado) return;
@@ -854,6 +855,12 @@ function searchResultadoFuncao() {
       }
 
       var p = document.createElement('p');
+      p.textContent = selectedTopicoText;
+      p.style.fontWeight = 'bold'; // Negrito
+      p.style.textDecoration = 'underline'; // Sublinhado
+      selectedResultado.appendChild(p);
+
+      var p = document.createElement('p');
       p.textContent = selectedResultadoText;
       selectedResultado.appendChild(p);
 
@@ -862,17 +869,34 @@ function searchResultadoFuncao() {
       selectedResultado.appendChild(p2);
 
       var p3 = document.createElement('p');
+      
       var regex = /\(([A-Za-z].*?\d{4}\.)\)/g;
       var match;
       while ((match = regex.exec(selectedPrecedenteText)) !== null) {
         selectedPrecedenteText = selectedPrecedenteText.replace(match[0], '<span style="font-style: normal;">' + match[0] + '</span>' + '<br>' + '<br>');
       }
 
-      p3.innerHTML = selectedPrecedenteText;
+      selectedPrecedenteText = selectedPrecedenteText.replace(/\[...\]/g, '<br>[...]');
+
+      var quebraDeLinha = selectedPrecedenteText;
+
+      // Use a regular expression with the global flag to find and replace all occurrences of the pattern
+      var regex = /(\d+\. [A-Z])/g;
+      var replacedText = quebraDeLinha.replace(regex, '<br>$1');
+
+      // Update the content of the element p3 with the replaced text
+      p3.innerHTML = replacedText;
+
+      
+
+
+
       p3.style.cssText += 'font-style: italic !important;';
       p3.style.cssText += 'padding-left: 3cm !important;';
       p3.style.cssText += 'text-indent: 0 !important;';
       p3.style.cssText += 'font-size: 11pt !important;';
+      
+      
 
       selectedResultado.appendChild(p3);
 
