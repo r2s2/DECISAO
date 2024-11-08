@@ -582,7 +582,6 @@ function searchTese() {
 
 // Variável global para rastrear o índice do marcador de letras para pedidos
 var letterIndexPedido = 0;
-
 // Variável global para rastrear se o evento de clique já foi adicionado para pedidos
 var clickEventAddedPedido = false;
 
