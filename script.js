@@ -7,14 +7,36 @@ function gerarChaveUnica() {
   return URL.createObjectURL(new Blob()).slice(-36);
 }
 
+class Origem {
+  constructor(nome, dispositivoFavoravel, dispositivoFavoravelParcial, dispositivoDesfavoravel, naoConhecimento, sinonimo) {
+    this.nome = nome;
+    this.dispositivoFavoravel = dispositivoFavoravel;
+    this.dispositivoDesfavoravel = dispositivoDesfavoravel;
+    this.sinonimo = sinonimo;
+    this.dispositivoFavoravelParcial = dispositivoFavoravelParcial;
+    this.naoConhecimento = naoConhecimento;
+
+  }
+}
+
+/*
+const HC = new Origem("<i>Habeas Corpus</i>", "concedeu a ordem.", "concedeu parcialmente a ordem.", "denegou a ordem.</b>", "não conheceu da ordem", "<i>writ</i>");
+const apelacao = new Origem("Apelação", "deu provimento à apelação.", "deu parcial provimento à apelação.", "negou provimento à apelação.", "não conheceu da apelação", "apelação");
+
+const agravoExecucao = new Origem("Agravo em execução", "deu provimento ao agravo em execução.", "deu parcial provimento ao agravo em execução.", "negou provimento ao agravo.", "não conheceu do agravo", "agravo em execução");
+const rse = new Origem("Recurso em sentido estrito", "deu provimento ao recurso em sentido estrito.", "deu parcial provimento ao recurso em sentido estrito.", "negou provimento ao recurso em sentido estrito.", "não conheceu do recurso", "recurso em sentido estrito");
+const revisao = new Origem("Revisão criminal", "julgou procedente a revisão criminal.", "julgou parcialmente procedente a revisão criminal.", "julgou improcedente a revisão criminal.", "não conheceu da revisão criminal", "revisão criminal");
+*/
+
 class Classe {
-  constructor(nomeExtenso, verbo, agente, dispositivoFavoravel, dispositivoDesfavoravel, sinonimo) {
+  constructor(nomeExtenso, verbo, agente, dispositivoFavoravel, dispositivoDesfavoravel, sinonimo, autorJustica) {
     this.nomeExtenso = nomeExtenso;
     this.verbo = verbo;
     this.agente = agente;
     this.dispositivoFavoravel = dispositivoFavoravel;
     this.dispositivoDesfavoravel = dispositivoDesfavoravel;
     this.sinonimo = sinonimo;
+    this.autorJustica = autorJustica;
   }
 
   selecionadoClasse() {
@@ -31,15 +53,18 @@ class Classe {
     if (document.getElementById('VERBO')) {
       document.getElementById('VERBO').innerHTML = this.verbo;
     }
+    if (document.getElementById('autorJustica')) {
+      document.getElementById('autorJustica').innerHTML = this.autorJustica;
+    }
   }
 }
 
-const HC = new Classe("<i>habeas corpus</i>", "impetrado em favor de", "paciente", "<b>concedo a ordem.</b>", "<b>denego a ordem.</b>", "<i>writ</i>");
-const RHC = new Classe("recurso ordinário em <i>habeas corpus</i>", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso ordinário");
-const REsp = new Classe("recurso especial", "interposto por", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial");
-const AREsp = new Classe("agravo em recurso especial", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial");
-const agrg = new Classe("agravo regimental", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental");
-const edcl = new Classe("embargos de declaração", "opostos por", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração");
+const HC = new Classe("<i>habeas corpus</i>", "impetrado em favor de", "paciente", "<b>concedo a ordem.</b>", "<b>denego a ordem.</b>", "<i>writ</i>", "{{pac");
+const RHC = new Classe("recurso ordinário em <i>habeas corpus</i>", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso ordinário", "{{rec");
+const REsp = new Classe("recurso especial", "interposto por", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial", "{{rec");
+const AREsp = new Classe("agravo em recurso especial", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial", "{{agr");
+const agrg = new Classe("agravo regimental", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental", "{{agr");
+const edcl = new Classe("embargos de declaração", "opostos por", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração", "{{enb");
 
 // Função para salvar o estado no arquivo temporário, agora aceitando uma chave de sessão
 async function salvarEstado(chaveSessao, estado) {
@@ -149,9 +174,18 @@ function check() {
 
   for (let id in classes) {
     if (document.getElementById(id) && document.getElementById(id).checked) {
-      classes[id].selecionadoClasse();
+      classes[id].selecionadoClasse();      
+      if (classes[id] == REsp || classes[id] == AREsp || classes[id] == agrg || classes[id] == edcl) {
+        document.getElementById("se_liminar").innerHTML = "";
+        document.getElementById("se_liminar2").innerHTML = "";
+        
+      } 
       return classes[id];
     }
+  }
+
+  
+    
   }
 
   if (document.getElementById('analise_liminar') && document.getElementById('analise_liminar').checked) {
@@ -164,10 +198,63 @@ function check() {
     document.getElementById('se_liminar').innerHTML = "";
     document.getElementById('se_liminar2').innerHTML = "Não houve pedido liminar.";
   }
-}
+
+
+function selecionaAtoCoator(id) {
+  const element = document.getElementById("atoCoator");
+
+  let valor;
+  switch (id) {
+    case 'hc_origem':
+      valor = 'HC';
+      break;
+    case 'apelacao':
+      valor = 'Apelação';
+      break;
+    case 'agravoExecucao':
+      valor = 'Agravo em execução';
+      break;
+    case 'rse':
+      valor = 'Recurso em sentido estrito';
+      break;
+    default:
+      console.log('ID não reconhecido:', id);
+      valor = null;
+  }
+
+  if (element && valor) {
+    element.textContent = valor;
+  }
+
+  coator = valor;
+
+  }
+
+
+   
+/*
+  for (let id in atosCoatores) {
+    const element = document.getElementById(id);
+    if (element) {
+      console.log(`Elemento encontrado: ${id}`);
+      if (element.checked) {
+        console.log(`Elemento selecionado: ${id}`);
+        atosCoatores[id].selecionadoAtoCoator();
+        return atosCoatores[id];
+      }
+    } else {
+      console.log(`Elemento não encontrado: ${id}`);
+    }
+  }
+
+  console.log('Nenhum ato coator selecionado');
+  return null;
+}*/
+
 
 function selecionaResultado(id) {
   registrarEstado();
+  
 
   const resultadoQuo = document.getElementById('resultadoQuo');
   if (resultadoQuo) {
@@ -502,164 +589,6 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 });
 
-
-function searchTese() {
-  var input, filter, results, i, tese, tags, count = 0;
-  input = document.getElementById('search');
-  if (!input) return;
-  input.setAttribute('autocomplete', 'off');
-
-  filter = input.value.toUpperCase();
-  results = document.getElementById('searchResults');
-  if (!results) return;
-  results.innerHTML = '';
-
-  fetch('teses.json')
-    .then(response => response.json())
-    .then(data => {
-      for (i = 0; i < data.teses.length; i++) {
-        tese = data.teses[i];
-        tags = tese.tags || '';
-        if ((tese.tese && tese.tese.toUpperCase().indexOf(filter) > -1) || (tags && tags.toUpperCase().indexOf(filter) > -1) || tese.id.toString() === input.value) {
-          var option = document.createElement('option');
-          option.value = tese.tese;
-          option.text = tese.id + " - " + tese.tese; // Inclui o id da tese no texto
-          results.appendChild(option);
-          count++;
-        }
-      }
-      results.size = results.length; // Define o tamanho do select para o número de opções
-    });
-
-  // Adiciona o evento de clique apenas se ele ainda não foi adicionado
-  if (!clickEventAdded) {
-    results.addEventListener('click', function(event) {
-      registrarEstado();
-
-      if (event.target.tagName === 'OPTION') {
-        var selectedTeseText = event.target.value;
-
-        var selectedTese = document.getElementById('tesesSelecionadas');
-
-        // Verifica se a tese já foi adicionada
-        var alreadyAdded = Array.from(selectedTese.getElementsByTagName('p')).some(p => p.textContent.slice(3) === selectedTeseText);
-        if (alreadyAdded) {
-          alert('Esta tese já foi adicionada.');
-          return;
-        }
-
-        // Cria um novo parágrafo para a tese selecionada
-        var p = document.createElement('p');
-        // Adiciona o marcador de letras correspondente
-        p.textContent = String.fromCharCode(97 + letterIndex) + ") " + selectedTeseText;
-        selectedTese.appendChild(p);
-
-        // Duplica o código para adicionar a tese ao elemento teseEnfrentar
-        var p2 = document.createElement('p');
-        p2.textContent = String.fromCharCode(97 + letterIndex).toLocaleLowerCase() + ") " + selectedTeseText;
-
-        // Atualiza o índice do marcador de letras
-        letterIndex++;
-
-        // Remove a tese selecionada dos resultados
-        event.target.remove();
-
-        // Fecha o select de resultados
-        results.size = 0;
-
-        // Limpa o campo de busca
-        input.value = '';
-
-        // Remove todas as teses dos resultados
-        results.innerHTML = '';
-      }
-    });
-
-    // Marca que o evento de clique foi adicionado
-    clickEventAdded = true;
-  }
-}
-
-// Variável global para rastrear o índice do marcador de letras para pedidos
-var letterIndexPedido = 0;
-// Variável global para rastrear se o evento de clique já foi adicionado para pedidos
-var clickEventAddedPedido = false;
-
-function searchPedidoFuncao() {
-  registrarEstado();
-
-  var input, filter, results, i, pedido, tags, count = 0;
-  input = document.getElementById('pedido');
-  if (!input) return;
-  input.setAttribute('autocomplete', 'off');
-
-  filter = input.value.toUpperCase();
-  results = document.getElementById('searchPedido');
-  if (!results) return;
-  results.innerHTML = '';
-
-  fetch('pedidos.json')
-    .then(response => response.json())
-    .then(data => {
-      for (i = 0; i < data.pedidos.length; i++) {
-        pedido = data.pedidos[i];
-        tags = pedido.tags || '';
-        if ((pedido.pedido && pedido.pedido.toUpperCase().indexOf(filter) > -1) || (tags && tags.toUpperCase().indexOf(filter) > -1) || pedido.id.toString() === input.value) {
-          var option = document.createElement('option');
-          option.value = pedido.pedido;
-          option.text = pedido.id + " - " + pedido.pedido; // Inclui o id do pedido no texto
-          results.appendChild(option);
-          count++;
-        }
-      }
-      results.size = results.length; // Define o tamanho do select para o número de opções
-    });
-
-  // Adiciona o evento de clique apenas se ele ainda não foi adicionado
-  if (!clickEventAddedPedido) {
-    results.addEventListener('click', function (event) {
-      registrarEstado();
-
-      if (event.target.tagName === 'OPTION') {
-        var selectedPedidoText = event.target.value;
-
-        var selectedPedido = document.getElementById('pedidoPrincipal1');
-
-        // Verifica se o pedido já foi adicionado
-        var alreadyAdded = Array.from(selectedPedido.getElementsByTagName('p')).some(p => p.textContent.slice(4) === selectedPedidoText);
-        if (alreadyAdded) {
-          alert('Este pedido já foi adicionado.');
-          return;
-        }
-
-        // Cria um novo parágrafo para o pedido selecionado
-        var p = document.createElement('p');
-        // Adiciona o marcador de letras correspondente
-        p.textContent = String.fromCharCode(97 + letterIndexPedido) + ") " + selectedPedidoText;
-        selectedPedido.appendChild(p);
-
-        // Atualiza o índice do marcador de letras
-        letterIndexPedido++;
-
-        // Remove o pedido selecionado dos resultados
-        event.target.remove();
-
-        // Fecha o select de resultados
-        results.size = 0;
-
-        // Limpa o campo de busca
-        input.value = '';
-
-        // Remove todos os pedidos dos resultados
-        results.innerHTML = '';
-      }
-    });
-
-    // Marca que o evento de clique foi adicionado
-    clickEventAddedPedido = true;
-  }
-}
-
 var pedidos = {
   substituir: 'Subsidiariamente, pleiteia a substituição da prisão preventiva por medidas cautelares diversas.'
 };
@@ -886,21 +815,19 @@ function searchResultadoFuncao() {
       // Update the content of the element p3 with the replaced text
       p3.innerHTML = replacedText;
 
-      
-
-
-
       p3.style.cssText += 'font-style: italic !important;';
       p3.style.cssText += 'padding-left: 3cm !important;';
       p3.style.cssText += 'text-indent: 0 !important;';
       p3.style.cssText += 'font-size: 11pt !important;';
-      
-      
+            
 
       selectedResultado.appendChild(p3);
 
       var div = document.createElement('div');
       var textarea = document.createElement('textarea');
+      textarea.placeholder = 'Digite o texto a ser incluído';
+      textarea.rows = 8;
+      textarea.cols = 60;
       div.appendChild(textarea);
 
       var button = document.createElement('button');
@@ -1027,6 +954,7 @@ async function copyFormattedTextToClipboard() {
 
     p {
     text-indent : 2cm;
+    margin: 0.2cm !important;
     }
 
 

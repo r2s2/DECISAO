@@ -7,31 +7,26 @@
     <title>Formulário</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-
-
     <script src="client.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var username = localStorage.getItem('username');
-
-            if (username === 'usuario') {
-                var linksRestritos = document.querySelectorAll('.link-restrito');
-                for (var i = 0; i < linksRestritos.length; i++) {
-                    linksRestritos[i].classList.add('ocultar');
-                }
-            }
-        });
-    </script>
+    <!-- <script src="script.js"></script>
+    <script src="scriptTese.js"></script> -->
+    <script src="script.js"></script>
+    <script src="./scripts/scriptTese.js"></script>
+    <script src="./scripts/scriptPedidos.js"></script>
+    <script src="scriptResultado.js"></script>
+    <script src="client.js"></script>
+    <script src="./scripts/scriptEditarTexto.js"></script>
+    <script src="./scripts/usuario.js"></script>
+    <script src="./scripts/pedidos.js"></script>
     
-
-
+    
 </head>
 
 <body>
-    <script src="script.js"></script>
+    
     <header>
 
-        <h1 style="font-size: 20pt;">Rodrigo Sacramento</h1>
+        <h1 style="font-size: 20pt;">Rodrigo Sacramento v. 1.13.24</h1>
         <a href="/tela_trabalho.html" class="link-restrito">Tela de trabalho</a>
         <br> <br>
         <a href="/adiciona_teses.html" class="link-restrito"> Adicionar teses</a>
@@ -51,7 +46,7 @@
         <div id="texto_base_relatorio">
 
             <p> Trata-se de <span id="classe"></span> <span id="se_liminar">[valor]</span> <span
-                    id="VERBO">[valor]</span> [RÉU / MP] apontando como autoridade coatora o [ORIGEM] (HC n. ). </p>
+                    id="VERBO">[valor]</span> <span id="autorJustica">[autor]</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">[Ato coator]</span> n. ). </p>
             <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
                 <input type="text" id="inputTexto" style="width: 350px;" 
                 placeholder="encontra-se preso... foi condenado a... cumpre pena..." >
@@ -63,7 +58,7 @@
             <p id="resultadoApreensao"></p>
             </div>
 
-            <p>O Tribunal de origem <span id="resultadoQuo"></span> </p>
+            <p>O Tribunal de origem <span id="resultadoQuo"></span> <span id="'resultadoOrigem"></span>           <input type="text" id="input1" style="width: 80px;" placeholder="e-STJ fls."> </p>
 
             <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
             <p><span id="tesesSelecionadas"><span id='folhasSTJ'></span></span> </p>
@@ -120,13 +115,26 @@
             onclick="selecionaFase('liminarComLiminar')" required>
         <label for="analise_liminar"> Com liminar</label>
         <input type="radio" name="fase" id='analise_merito' value="Analise_merito"
-            onclick="selecionaFase('semLiminar')">
+            onclick="selecionaFase('semLiminar')" checked>
         <label for="analise_merito"> Sem liminar</label>
        <!-- <input type="radio" name="fase" id='sem_liminar' value="Sem_liminar" onclick="selecionaFase('semLiminar')"
             checked>
         <label for="sem_liminar"> Sem liminar</label>
 
         -->
+
+        <p> <u>ATO COATOR</u> </p>
+                  <input type="radio" name="ato_coator" id="hc_origem" value="hc" onclick="selecionaAtoCoator('hc_origem')" required>
+            <label for="hc_origem"> HC</label>
+            <input type="radio" name="ato_coator" id="apelacao" value="apelacao" onclick="selecionaAtoCoator('apelacao')">    
+            <label for="apelacao"> Apelação</label>
+            <input type="radio" name="ato_coator" id="agravoExecucao" value="agravoExecucao" onclick="selecionaAtoCoator('agravoExecucao')">
+            <label for="agravoExecucao"> Agravo em execução</label>
+            <input type="radio" name="ato_coator" id="rse" value="rse" onclick="selecionaAtoCoator('rse')">
+            <label for="rse"> Recurso em sentido estrito</label>
+            
+           
+            <div id="resultadoOrigem"></div> <!-- Elemento onde o valor será exibido -->
 
         <p> <u>RESULTADO DA ORIGEM</u> </p>
 
@@ -217,10 +225,10 @@
         <input type="radio" id='deferida' name="liminar" value="deferida" required
             onclick="selecionaLiminar('deferida')">
         <label for="deferida"> Deferida</label>
-        <input type="radio" id='indeferida' name="liminar" value="indeferida" checked
+        <input type="radio" id='indeferida' name="liminar" value="indeferida" 
             onclick="selecionaLiminar('indeferida')">
         <label for="indeferida"> Indeferida</label>
-        <input type="radio" id='semLiminar' name="liminar" value="Sem liminar" onclick="selecionaLiminar('semPedido')">
+        <input type="radio" id='semLiminar' name="liminar" value="Sem liminar" onclick="selecionaLiminar('semPedido')" checked>
         <label for="semLiminar"> Sem liminar</label><br>
 
         <p>

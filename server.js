@@ -222,7 +222,7 @@ http.createServer(function (req, res) {
                     });
                 });
 
-            } else if (pathname === '/excluir_resultado') {
+            } else if (pathname === '/remove_resultados') {
                 const id = parseInt(data.id);
                 console.log('ID a ser excluído:', id);
 
@@ -316,7 +316,7 @@ http.createServer(function (req, res) {
         });
 
     } else {
-        const filePath = path.join(__dirname, pathname === '/' ? '/index.html' : pathname);
+        const filePath = path.join(__dirname, pathname === '/' ? '.index.html' : pathname);
         const ext = path.extname(filePath).toLowerCase();
         let contentType;
 

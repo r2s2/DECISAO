@@ -341,3 +341,913 @@ Ou seja, é direcionado àquele pequeno traficante que inicia sua vida no comér
   </body>
   </html>
 ********** FIM **********
+********** INICIO **********
+ID: 1
+Data: 07/11/2024, 14:45:56
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de <span id="classe"><i>habeas corpus</i></span> <span id="se_liminar">com pedido liminar</span> <span id="VERBO">impetrado em favor de</span> [RÉU / MP] apontando como autoridade coatora o {{Tri (HC Apelação RSE Agravo em execução n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">paciente</span> 
+                
+                <span id="dosDelitos"> do delito de </span>  
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem <span id="resultadoQuo">deu provimento ao recurso.</span> </p>
+
+            <p>Daí o presente <span id="classe2"><i>writ</i></span>, no qual alega a defesa: </p>
+            <p></p><p>a) Não ser retroativa a aplicação da obrigatoriedade de realização de exame criminológico a condenações prévias à Lei n. 14
+843/2024</p> 
+            <p>Requer, por fim:</p>
+            <span id="pedidoPrincipal1"><p>a) Determinada a progressão de regime independentemente de realização de exame criminológico.</p></span>
+            
+            
+            
+            
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            
+            <p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Ementa: agravo em execução penal ministerial. Concessão de progressão de regime. Provimento do recurso. Obtenção do requisito objetivo em 21.9.2024 (fls. 11), quando vigente as modificações feitas pela Lei nº 14.843/2024, que começou a viger em 11.4.2024. Necessidade de realização do exame criminológico, segundo os arts. 112, § 1º, e 114, inciso II, ambos da LEP. Recomendação.</p>
+
+            <p style="font-weight: bold; text-decoration: underline;">Retroatividade da exigência de exame criminológico</p><p>A Sexta turma desta Corte decidiu que não se aplica a obrigação de exame criminológico a condenaçôes anteriores à publicação da Lei n. 11.843/2024.</p><p>Confira-se:</p><p style="font-style: italic !important; padding-left: 3cm !important; text-indent: 0px !important; font-size: 11pt !important;">RECURSO EM HABEAS CORPUS. PROGRESSÃO DE REGIME. EXAME CRIMINOLÓGICO. LEI N. 14.843/<br>2024. NOVATIO LEGIS IN PEJUS. IMPOSSIBILIDADE DE APLICAÇÃO RETROATIVA. CASOS COMETIDOS SOB ÉGIDE DA LEI ANTERIOR. PRECEDENTES.
+<br>1. A exigência de realização de exame criminológico para toda e qualquer progressão de regime, nos termos da Lei n. 14/843/2024, constitui novatio legis in pejus, pois incrementa requisito, tornando mais difícil alcançar regimes prisionais menos gravosos à liberdade.
+<br>2. A retroatividade dessa norma se mostra inconstitucional, diante do art. 5º, XL, da Constituição Federal, e ilegal, nos termos do art. 2º do Código Penal.
+<br>3. No caso, todas as condenações do paciente são anteriores à Lei n. 14.843/2024, não sendo aplicável a disposição legal em comento de forma retroativa.
+<br>4. Recurso em habeas corpus provido para afastar a aplicação do § 1º do art. 112 da Lei de Execução Penal, com redação dada pela Lei n. 14.843/2024, determinando o retorno dos autos ao Juízo da execução para que prossiga na análise do pedido de progressão de regime.
+<span style="font-style: normal;">(RHC n. 200.670/GO, relator Ministro Sebastião Reis Júnior, Sexta Turma, julgado em 20/8/2024, DJe de 23/8/2024.)</span><br><br>
+</p><div><p>Logo, não se pode aplicar o referido regramento da obrigatoriedade da realização de exame criminológico a condenações prévias à nova Lei.</p></div>
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo"><b>concedo a ordem</b></span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 2
+Data: 07/11/2024, 14:47:06
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de  <span id="se_liminar">[valor]</span> <span id="VERBO">[valor]</span> [RÉU / MP] apontando como autoridade coatora o {{Tri (HC Apelação RSE Agravo em execução n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                
+                <span id="dosDelitos"> do delito de </span>  <span>(e-STJ fl. 45).</span>
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem  </p>
+
+            <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+            <p> </p>
+            <p>Requer, por fim:</p>
+            
+            
+            
+            
+            
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            
+            
+
+            
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 3
+Data: 07/11/2024, 14:49:24
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de <span id="classe"><i>habeas corpus</i></span> <span id="se_liminar">com pedido liminar</span> <span id="VERBO">impetrado em favor de</span> [RÉU / MP] apontando como autoridade coatora o {{Tri (HC Apelação RSE Agravo em execução n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">paciente</span> 
+                obteve progressão para o regime aberto
+                <span id="dosDelitos"> do delito de </span>  <span>(e-STJ fl. 45).</span>
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem <span id="resultadoQuo">deu provimento ao recurso.</span> </p>
+
+            <p>Daí o presente <span id="classe2"><i>writ</i></span>, no qual alega a defesa: </p>
+            <p></p><p>a) Não ser retroativa a aplicação da obrigatoriedade de realização de exame criminológico a condenações prévias à Lei n. 14
+843/2024</p> 
+            <p>Requer, por fim:</p>
+            <span id="pedidoPrincipal1"><p>a) Determinada a progressão de regime independentemente de realização de exame criminológico.</p></span>
+            
+            
+            
+            <p> <span id="parecerMinisterial">O Ministério Público Federal manifestou-se </span><span id="parecerClasse">pela concessão da ordem.</span></p>
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            
+            <p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Ementa: agravo em execução penal ministerial. Concessão de progressão de regime. Provimento do recurso. Obtenção do requisito objetivo em 21.9.2024 (fls. 11), quando vigente as modificações feitas pela Lei nº 14.843/2024, que começou a viger em 11.4.2024. Necessidade de realização do exame criminológico, segundo os arts. 112, § 1º, e 114, inciso II, ambos da LEP. Recomendação.</p>
+
+            <p style="font-weight: bold; text-decoration: underline;">Retroatividade da exigência de exame criminológico</p><p>A Sexta turma desta Corte decidiu que não se aplica a obrigação de exame criminológico a condenaçôes anteriores à publicação da Lei n. 11.843/2024.</p><p>Confira-se:</p><p style="font-style: italic !important; padding-left: 3cm !important; text-indent: 0px !important; font-size: 11pt !important;">RECURSO EM HABEAS CORPUS. PROGRESSÃO DE REGIME. EXAME CRIMINOLÓGICO. LEI N. 14.843/<br>2024. NOVATIO LEGIS IN PEJUS. IMPOSSIBILIDADE DE APLICAÇÃO RETROATIVA. CASOS COMETIDOS SOB ÉGIDE DA LEI ANTERIOR. PRECEDENTES.
+<br>1. A exigência de realização de exame criminológico para toda e qualquer progressão de regime, nos termos da Lei n. 14/843/2024, constitui novatio legis in pejus, pois incrementa requisito, tornando mais difícil alcançar regimes prisionais menos gravosos à liberdade.
+<br>2. A retroatividade dessa norma se mostra inconstitucional, diante do art. 5º, XL, da Constituição Federal, e ilegal, nos termos do art. 2º do Código Penal.
+<br>3. No caso, todas as condenações do paciente são anteriores à Lei n. 14.843/2024, não sendo aplicável a disposição legal em comento de forma retroativa.
+<br>4. Recurso em habeas corpus provido para afastar a aplicação do § 1º do art. 112 da Lei de Execução Penal, com redação dada pela Lei n. 14.843/2024, determinando o retorno dos autos ao Juízo da execução para que prossiga na análise do pedido de progressão de regime.
+<span style="font-style: normal;">(RHC n. 200.670/GO, relator Ministro Sebastião Reis Júnior, Sexta Turma, julgado em 20/8/2024, DJe de 23/8/2024.)</span><br><br>
+</p><div><p>Logo, é ilegal a exigência de exame criminológico em relação às condenações prévias à Lei em comento</p></div>
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo"><b>concedo a ordem</b></span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 1
+Data: 07/11/2024, 16:56:36
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de  <span id="se_liminar">[valor]</span> <span id="VERBO">[valor]</span> <span id="autorJustica">[autor]</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">[Ato coator]</span> n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                
+                <span id="dosDelitos"> do delito de </span>  
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem              </p>
+
+            <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+            <p> </p>
+            <p>Requer, por fim:</p>
+            <span id="pedidoPrincipal1"><p><b>a)</b> Relaxamento da prisão preventiva.</p></span>
+            
+            
+            
+            
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            
+            
+
+            
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 2
+Data: 07/11/2024, 17:11:08
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de <span id="classe">recurso especial</span> <span id="se_liminar">[valor]</span> <span id="VERBO">interposto por</span> <span id="autorJustica">{{rec</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">Apelação</span> n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">recorrente</span> 
+                foi condenado a 14 anos de reclusão pela prática
+                <span id="dosDelitos">do delito de  estupro de vulnerável</span>  <span>(e-STJ fls. 72/81).</span>
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem <span id="resultadoQuo">deu provimento ao recurso.</span>             </p>
+
+            <p>Daí o presente <span id="classe2">recurso especial</span>, no qual alega a defesa: </p>
+            <p> </p>
+            <p>Requer, por fim:</p>
+            <span id="pedidoPrincipal1"><p><b>a)</b> Relaxamento da prisão preventiva.</p></span>
+            
+            
+            
+            
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            
+            
+
+            
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 3
+Data: 07/11/2024, 17:36:13
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de <span id="classe">recurso especial</span>  <span id="VERBO">interposto por</span> <span id="autorJustica">{{rec</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">Apelação</span> n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">recorrente</span> 
+                foi absolvido da imputação
+                <span id="dosDelitos">do delito de  associação para o tráfico</span>  <span>(e-STJ fls. 989/1.002).</span>
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem <span id="resultadoQuo">deu provimento ao recurso.</span>             </p>
+
+            <p>Daí o presente <span id="classe2">recurso especial</span>, no qual alega a defesa: </p>
+            <p></p><p><b>a)</b> Ausência de fundamentos suficientes para a decretação e manutenção da prisão preventiva.</p> 
+            <p>Requer, por fim:</p>
+            <span id="pedidoPrincipal1"><p><b>a)</b> Absolvição do agente.</p><p><b>b)</b> Fixação de regime inicial menos gravoso.</p></span>
+            <p> <span id="se_liminar2">Não houve pedido liminar.</span> </p>
+            
+            <p><span id="informacoes">Informações prestadas</span></p>
+            <p> <span id="parecerMinisterial">O Ministério Público Federal manifestou-se </span><span id="parecerClasse">pelo provimento do recurso.</span></p>
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            
+            <p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Ficou demonstrado, estreme de dúvidas, que, nas condições de tempo e lugar referidas na inicial, os acusados Paulo e Carlos associaram-se para o fim de praticar, reiteradamente, crimes de tráfico ilícito de entorpecentes. Policiais militares, em patrulhamento de rotina, abordaram o veículo GM/Astra, placas DAW-3141, que era conduzido pelo acusado Carlos e, também, ocupado pelo corréu Paulo. Realizadas buscas pessoais, na posse do acusado Carlos foi encontrada a quantia de R$ 2.232,00 (dois mil duzentos e trinta e dois reais) e do acusado Paulo, a quantia de R$ 70,00 (setenta reais). Posteriormente, foi realizada busca no automóvel, oportunidade em que os acusados demonstraram atitude suspeita, consistente em ficarem nervosos, tendo sido localizadas, na lataria do veículo, 7 (sete) sacolas plásticas, no interior das quais havia diversas cédulas de dinheiro, que totalizaram a quantia de R$ 75,326,00 (setenta e cinco mil trezentos e vinte e seis reais), que exalavam odor típico de substância entorpecente. Indagados a respeito dos fatos, os acusados apresentaram versões inconsistentes. Foram apreendidos, ainda, na posse dos acusados, 3 (três) aparelhos celulares e pedaços de papéis com anotações diversas.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Laudos periciais realizados nas cédulas apreendidas constataram a presença de substância entorpecente, qual seja, de cocaína. Os acusados foram presos em flagrante. Nesse sentido, é a coesa e insuspeita prova oral da acusação, constituída pelos testemunhos dos policiais militares Cláudio Celso Prado Júnior (fls. 5/6, 98/99 e 707/711), Juliano Soares Silva (fls. 8/9, 101/102 e 745/750), do policial civil Leonardo Almas de Abreu (fls. 737/739) e do Delegado de Polícia Richard Alberto Serrano (fls. 731/736). Quanto à credibilidade dos testemunhos dos policiais, é preciso anotar que não há óbice legal a que prestem depoimento, sob compromisso, sobre seus atos de oficio e nada há de concreto nos autos a indicar a existência de qualquer espécie de motivação, para, indevidamente, prejudicar os acusados. No que tange à versão exculpatória apresentada pelo acusado Paulo ao longo da persecução penal (fls. 13/14, 106/107 e 755/758), no sentido de negar qualquer envolvimento com o tráfico ilícito de drogas, porque isolada e afastada, com segurança, pela prova dos autos, não merece acolhimento. No tocante à pueril versão exculpatória apresentada pelo acusado Carlos, ao longo da persecução penal (fls. 10/11, 103/104 e 759/763), no sentido de que o valor apreendido no veículo seria oriundo de uma venda de um imóvel e que teria escondido a quantia na lataria de veículo por "medo", sem precisar o motivo, também não merece credibilidade, eis que devidamente isolada de todo o conjunto probatório dos presentes autos. Importa considerar, ainda, neste sentido, em desfavor dos acusados, como relatado pelos policiais, o odor de entorpecentes das sacolas onde estavam os valores apreendidos. A prova oral da defesa não se presta a alterar o panorama do conjunto probatório (fls. 768/770, 771/773, 774/776, 777/780 e 944/952).</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">[...]</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Quanto ao crime de associação para fms de tráfico, não é demais anotar que a prova acusatória demonstrou que os acusados encontravam-se, efetivamente, estruturados para a prática do comércio clandestino de drogas. Restou demonstrada a existência da associação criminosa nos moldes em que foi concebida sua figura típica, que exige um mínimo de permanência e estabilidade, ainda que sem o propósito de reiteração criminosa, considerada, em particular, as circunstâncias da apreensão, demonstradas pela prova dos autos. Não há dúvida, portanto, de que se tratava de associação estável e permanente e não de mero concurso de agentes. Importa considerar, ainda, no tocante ao corréu Carlos, que o fato gerador da presente persecução penal é, à evidência, diverso daquele descrito no outro feito (fls. 644/648), embora envolvendo o mesmo delito, quer em face das datas dos crimes, quer porque denunciados coautores diferentes, não tendo sido demonstrado trata-se da mesma estrutura criminosa. No que se refere à dosimetria das penas aplicadas, quanto ao acusado Paulo, não merece reparo, impondo-se, porém, a dosimetria das penas a serem aplicadas ao acusado Carlos, em razão do parcial provimento do recurso ministerial. Em relação ao acusado Paulo, as penas - base foram fixadas em seus mínimos legais. Quanto ao acusado Carlos, as penas -base devem ser fixadas nos patamares mínimos, dada a inexistência de circunstância judicial desfavorável. Assim, as penas do acusado Carlos passam a perfazer 3 (três) anos de reclusão e a 700 (setecentos) dias -multa, à razão mínima ao dia -multa. O regime prisional fixado como inicial para o cumprimento da pena privativa de liberdade do acusado Paulo, o semiaberto, apresenta-se como adequado e compatível com as concretas circunstâncias do caso em tela, bem como com o quantum da pena aplicada. Pelos mesmos motivos, fixa-se o regime prisional intermediário como inicial para o cumprimento da pena privativa de liberdade do acusado Carlos.</p>
+
+            
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo"><b>dou parcial provimento ao recurso</b></span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 1
+Data: 08/11/2024, 13:53:41
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de <span id="classe"><i>habeas corpus</i></span>  <span id="VERBO">impetrado em favor de</span> <span id="autorJustica">{{pac</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">Recurso em sentido estrito</span> n. ). </p>
+            <p id="paragrafoTexto" contenteditable="false">Depreende-se dos autos que o <span id="reu">paciente</span> 
+                responde a ação por uso de documento falso<span id="dosDelitos">&nbsp;</span><span>(e-STJ fl. 20).</span>
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem <span id="resultadoQuo">negou provimento ao recurso.</span>            <span>(e-STJ fls. 20/26).</span> </p>
+
+            <p contenteditable="false">Daí o presente <span id="classe2"><i>writ</i></span>, no qual alega a defesa: </p>
+            <p></p><p contenteditable="false"><b>a)</b> Incompetência absoluta da justiça federal ante o fato ter sido perpetrado em detrimento de serviços da União <span>(e-STJ fl. 6).</span></p> 
+            <p>Requer, por fim:</p>
+            <span id="pedidoPrincipal1"><p contenteditable="false"><b>a)</b> A anulação dos atos processuais e o encaminhamento da ação para a Justiça Estadual&nbsp;<span>(e-STJ fl. 15).</span></p></span>
+            
+            
+            <p><span id="informacoes">Informações prestadas</span></p>
+            
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            
+            
+
+            <p style="font-weight: bold; text-decoration: underline;">Tópico genérico</p><p>Entendimento genérico do Superior Tribunal de Justiça.</p><p>Confira-se:</p><p style="font-style: italic !important; padding-left: 3cm !important; text-indent: 0px !important; font-size: 11pt !important;">Precedente genérico</p><div><p>De fato, não há de se falar em competência da Justiça Federal em razão de não haver prática de delitos contra agentes ou serviços da União.</p></div>
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo"><b>denego a ordem</b></span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 2
+Data: 08/11/2024, 14:04:20
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de  <span id="se_liminar">[valor]</span> <span id="VERBO">[valor]</span> <span id="autorJustica">[autor]</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">[Ato coator]</span> n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                
+                <span id="dosDelitos"> do delito de </span>  
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem             <input type="text" id="input1" style="width: 80px;" placeholder="e-STJ fls."> </p>
+
+            <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+            <p> </p>
+            <p>Requer, por fim:</p>
+            
+            
+            
+            
+            
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            
+            <p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">HABEAS CORPUS IMPETRADO EM FACE DE RESOLUÇÃO DE CONFLITO DE COMPETÊNCIA. DESCABIMENTO. AUSÊNCIA DE AMEAÇA AO DIREITO AMBULATÓRIO. CRIME DE TORTURA, PRATICADO NO ÂMBITO DOMÉSTICO, CONTRA CRIANÇA DO SEXO FEMININO. ART. 5.º, INCISO I, DA LEI MARIA DA PENHA. COMPETÊNCIA DO JUIZADO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER. MOTIVAÇÃO DE GÊNERO. REQUISITO REPUTADO COMO PREENCHIDO PELO TRIBUNAL DE ORIGEM. PRECEDENTES DESTA CORTE SUPERIOR QUE SE AMOLDAM À HIPÓTESE. AUSÊNCIA DE ILEGALIDADE FLAGRANTE QUE, EVENTUALMENTE, PUDESSE ENSEJAR A CONCESSÃO DA ORDEM DE OFÍCIO. HABEAS CORPUS NÃO CONHECIDO.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">1. O writ constitucional do habeas corpus se destina a assegurar o direito de ir e vir do cidadão, portanto, não se presta para solucionar questão relativa à competência sem reflexo direto no direito ambulatório, sobretudo porque há previsão recursal para solucionar a questão, nos termos do art. 105, inciso III, da Constituição Federal. Precedente.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">2. E, na espécie, não resta configurada ilegalidade manifesta que, eventualmente, ensejasse a concessão da ordem de habeas corpus de ofício.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">3. O Tribunal de origem, com o grau de discricionariedade próprio à espécie constatou estar preenchido o requisito de motivação de gênero, sendo impossível, à luz dos fatos narrados, infirmar-se essa ilação.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">4. O delito em tese foi cometido contra criança do sexo feminino com abuso da condição de hipossuficiência, inferioridade física e econômica, pois a violência teria ocorrido dentro do âmbito doméstico e familiar. As Pacientes - tia e prima da vítima - foram acusadas de torturar vítima que detinham a guarda por decisão judicial.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">5. "Sujeito passivo da violência doméstica, objeto da referida lei, é a mulher. Sujeito ativo pode ser tanto o homem quanto a mulher, desde que fique caracterizado o vínculo de relação doméstica, familiar ou de afetividade." (CC n. 88.027/MG, Relator Ministro OG FERNANDES, DJ de 18/12/2008) 6. Habeas corpus não conhecido.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">(HC n. 250.435/RJ, relatora Ministra Laurita Vaz, Quinta Turma, julgado em 19/9/2013, DJe de 27/9/2013.)</p>
+
+            
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 3
+Data: 08/11/2024, 14:07:28
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de   <span id="VERBO">[valor]</span> <span id="autorJustica">[autor]</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">[Ato coator]</span> n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                sfsdasda
+                <span id="dosDelitos"> do delito de </span>  
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem             <input type="text" id="input1" style="width: 80px;" placeholder="e-STJ fls."> </p>
+
+            <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+            <p></p><p><b>a)</b> Ser nula a busca pessoal sem demonstração das fundadas suspeitas. <input type="text" id="input1" placeholder="e-STJ fls." style="width: 80px;"></p><p><b>b)</b> Excesso de prazo para o encerramento da instrução criminal. <input type="text" id="input2" placeholder="e-STJ fls." style="width: 80px;"></p><p><b>c)</b> Ser ilegal a aplicação de fração superior a ⅙ a título de reincidência sem a devida fundamentação. <input type="text" id="input3" placeholder="e-STJ fls." style="width: 80px;"></p><p><b>d)</b> Ausência de contemporaneidade entre os fatos narrados e a decretação da prisão preventiva. <input type="text" id="input4" placeholder="e-STJ fls." style="width: 80px;"></p> 
+            <p>Requer, por fim:</p>
+            <span id="pedidoPrincipal1"><p><b>a)</b> Anulação do reconhecimento realizado em desacordo com o art. 226 do CPP. <input type="text" id="input1" placeholder="e-STJ fls." style="width: 80px;"></p><p><b>b)</b> A compensação entre a agravante da reincidência e a atenuante da confissão. <input type="text" id="input2" placeholder="e-STJ fls." style="width: 80px;"></p></span>
+            <p> <span id="se_liminar2">Não houve pedido liminar.</span> </p>
+            
+            
+            <p> <span id="parecerMinisterial">O Ministério Público Federal manifestou-se </span><span id="parecerClasse">pela denegação da ordem.</span></p>
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            <p>Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">sadf</p>
+            <p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">HABEAS CORPUS IMPETRADO EM FACE DE RESOLUÇÃO DE CONFLITO DE COMPETÊNCIA. DESCABIMENTO. AUSÊNCIA DE AMEAÇA AO DIREITO AMBULATÓRIO. CRIME DE TORTURA, PRATICADO NO ÂMBITO DOMÉSTICO, CONTRA CRIANÇA DO SEXO FEMININO. ART. 5.º, INCISO I, DA LEI MARIA DA PENHA. COMPETÊNCIA DO JUIZADO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER. MOTIVAÇÃO DE GÊNERO. REQUISITO REPUTADO COMO PREENCHIDO PELO TRIBUNAL DE ORIGEM. PRECEDENTES DESTA CORTE SUPERIOR QUE SE AMOLDAM À HIPÓTESE. AUSÊNCIA DE ILEGALIDADE FLAGRANTE QUE, EVENTUALMENTE, PUDESSE ENSEJAR A CONCESSÃO DA ORDEM DE OFÍCIO. HABEAS CORPUS NÃO CONHECIDO.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">1. O writ constitucional do habeas corpus se destina a assegurar o direito de ir e vir do cidadão, portanto, não se presta para solucionar questão relativa à competência sem reflexo direto no direito ambulatório, sobretudo porque há previsão recursal para solucionar a questão, nos termos do art. 105, inciso III, da Constituição Federal. Precedente.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">2. E, na espécie, não resta configurada ilegalidade manifesta que, eventualmente, ensejasse a concessão da ordem de habeas corpus de ofício.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">3. O Tribunal de origem, com o grau de discricionariedade próprio à espécie constatou estar preenchido o requisito de motivação de gênero, sendo impossível, à luz dos fatos narrados, infirmar-se essa ilação.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;" contenteditable="false">4. O delito em tese foi cometido contra criança do sexo feminino com abuso da condição de hipossuficiência, inferioridade física e econômica, pois a violência teria ocorrido dentro do âmbito doméstico e familiar. As Pacientes - tia e prima da vítima - foram acusadas de torturar vítima que detinham a guarda por decisão judicial.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">5. "Sujeito passivo da violência doméstica, objeto da referida lei, é a mulher. Sujeito ativo pode ser tanto o homem quanto a mulher, desde que fique caracterizado o vínculo de relação doméstica, familiar ou de afetividade." (CC n. 88.027/MG, Relator Ministro OG FERNANDES, DJ de 18/12/2008) 6. Habeas corpus não conhecido.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">(HC n. 250.435/RJ, relatora Ministra Laurita Vaz, Quinta Turma, julgado em 19/9/2013, DJe de 27/9/2013.)</p><p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">xcvz</p>
+
+            <p style="font-weight: bold; text-decoration: underline;">Inverossimilhança das alegações dos policiais</p><p>A configuração institucional brasileira tem como fundamento&nbsp;lógico&nbsp;e jurídico&nbsp;a confiança na atuação dos agentes estatais, tanto que lhe confere, em diversas situações, a prerrogativa de presunção de veracidade, instituto alçado à categoria de princípio quando em atuação a Administração Pública.
+
+Entretanto, tal presunção não importa em impossibilidade da análise de seus pressupostos fáticos, que pode ser mitigada após a devida valoração com critérios cotidianos como os juízos do senso comum e de verossimilhança.
+
+Devido a isso, esta Corte tem analisado com rigor certas narrativas apresentadas por agentes estatais ao justificarem o afastamento das regras constitucionais de proteção a direitos fundamentais, como a&nbsp;privacidade, a inviolabilidade domiciliar e o exercício cotidiano da&nbsp;cidadania.
+
+Como resultado, há vários julgados em que a narrativa apresentada pelos agentes estatais – em especial policiais que realizaram flagrantes&nbsp;–&nbsp;é considerada inverossímil e desconsiderada para fundamentar a mitigação dos direitos fundamentais protegidos,&nbsp;a despeito das considerações acima acerca da presunção de veracidade.
+
+No mesmo sentido os seguintes julgados:</p><p>Confira-se:</p><p style="font-style: italic !important; padding-left: 3cm !important; text-indent: 0px !important; font-size: 11pt !important;">AGRAVO REGIMENTAL NO HABEAS CORPUS. TRÁFICO DE DROGAS. FLAGRANTE. DOMICÍLIO COMO EXPRESSÃO DO DIREITO À INTIMIDADE. ASILO INVIOLÁVEL. EXCEÇÕES CONSTITUCIONAIS. INTERPRETAÇÃO RESTRITIVA. AUSÊNCIA DE FUNDADAS RAZÕES. NULIDADE DAS PROVAS OBTIDAS. TEORIA DOS FRUTOS DA ÁRVORE ENVENENADA. AGRAVO REGIMENTAL NÃO PROVIDO.
+
+<br>[...]
+
+<br>4. Soa inverossímil a versão policial, ao narrar que a ré, após ser abordada por agentes estatais em via pública, haveria confessado ter mais drogas no interior de sua casa, levado os policiais voluntariamente até lá e franqueado a entrada em seu domicílio.
+
+<br>[...]
+
+["Se, de um lado, se deve, como regra, presumir a veracidade das declarações de qualquer servidor público, não se há de ignorar, por outro lado, que o&nbsp;senso comum&nbsp;e as&nbsp;regras&nbsp;de experiência merecem ser consideradas quando tudo indica não ser crível a versão oficial apresentada, máxime quando interfere em direitos fundamentais do indivíduo e quando se nota um indisfarçável desejo de se criar uma narrativa amparadora de uma versão que confira plena legalidade à ação estatal" - trecho do voto condutor deste julgado]
+
+(AgRg no HC n. 732.128/SP, relator Ministro Rogerio Schietti Cruz, Sexta Turma, julgado em 27/9/2022, DJe de 7/10/2022, grifei)
+
+
+
+AGRAVO REGIMENTAL NO RECURSO ORDINÁRIO EM HABEAS CORPUS. PROCESSUAL PENAL. TRÁFICO ILÍCITO DE ENTORPECENTES. REVISTA PESSOAL. VIOLAÇÃO AO ART. 240, § 2.º DO CÓDIGO DE PROCESSO PENAL. AUSÊNCIA DE FUNDADAS SUSPEITAS. INGRESSO FORÇADO EM DOMICÍLIO. INEXISTÊNCIA DE FUNDADAS RAZÕES. ILICITUDE DAS PROVAS OBTIDAS. RECURSO DESPROVIDO.
+
+<br>[...]
+
+<br>4. Nos termos da jurisprudência da Sexta Turma desta Corte, "[a]s regras de experiência e o senso comum, somadas às peculiaridades do caso concreto, não conferem verossimilhança à afirmação dos agentes policiais de que o paciente teria autorizado, livre e voluntariamente, o ingresso em seu próprio domicílio, franqueando àqueles a apreensão de drogas e de arma de fogo e, consequentemente, a formação de prova incriminatória em desfavor do réu." (HC 566.532/MG, Rel. Ministro NEFI CORDEIRO, Rel. p/ Acórdão Ministro ROGERIO SCHIETTI CRUZ, SEXTA TURMA, julgado em 09/03/2021, DJe 07/06/2021).
+
+<br>[...]
+
+(AgRg no RHC n. 166.508/GO, relatora Ministra Laurita Vaz, Sexta Turma, julgado em 27/9/2022, DJe de 3/10/2022, grifei)
+
+
+
+AGRAVOS REGIMENTAIS NO RECURSO ESPECIAL. TRÁFICO DE DROGAS. WRIT CONCEDIDO. ABSOLVIÇÃO. BUSCA DOMICILIAR. DENÚNCIA ANÔNIMA SOBRE A LOCALIZAÇÃO DO ACUSADO. CONDIÇÃO DE FORAGIDO. AUSÊNCIA DE PERMISSÃO VÁLIDA PARA A ENTRADA NO IMÓVEL. BUSCA PROBATÓRIA DESVIRTUADA DE SUA CAPTURA. DESVIO DE FINALIDADE. ILICITUDE PROBATÓRIA. MANIFESTA ILEGALIDADE. OCORRÊNCIA.
+
+<br>1. Verifica-se a ilicitude das provas colhidas em busca domiciliar se, após denúncia apócrifa sobre a localização do acusado, foragido do sistema prisional, os agentes policiais entraram no imóvel (quarto de hotel), afirmando ter ocorrido a permissão por parte deste, e realizaram busca probatória desvirtuada de sua captura, que resultou na apreensão de drogas e apetrechos para o tráfico.
+
+<br>2. Conforme a jurisprudência desta Corte, a entrada no imóvel para a captura de foragido não deve servir de salvo-conduto para que todo o seu interior seja vasculhado indistintamente, em verdadeira pescaria probatória (fishing expedition), bem como não é verossímil, diante das regras de experiência e de senso comum, a afirmação de que houve a autorização de entrada no imóvel por parte do acusado, possibilitando a formação de prova incriminatória contra si.
+
+<br>[...]
+
+(AgRg no REsp n. 2.024.193/AM, relator Ministro Jesuíno Rissato (Desembargador Convocado do TJDFT), Sexta Turma, julgado em 7/3/2023, DJe de 10/3/2023, grifei)
+
+PROCESSO PENAL. AGRAVO REGIMENTAL NO RECURSO ESPECIAL. TRÁFICO DE DROGAS. VIOLAÇÃO DE DOMICÍLIO. INGRESSO POLICIAL APOIADO EM DENÚNCIA ANÔNIMA. AUSÊNCIA DE JUSTA CAUSA. APLICAÇÃO DO ENTENDIMENTO FIRMADO NO HC N. 598.051/SP. ILEGALIDADE FLAGRANTE. AGRAVO REGIMENTAL NÃO PROVIDO.
+
+<br>[...]
+
+<br>7. No caso concreto, as regras de experiência e o senso comum, somadas às peculiaridades do caso concreto, não conferem verossimilhança à afirmação dos agentes castrenses de que o acusado teria autorizado, livre e voluntariamente, o ingresso em seu próprio domicílio, franqueando àqueles a apreensão de drogas e, consequentemente, a formação de prova incriminatória em seu desfavor.
+
+<br>8. Diante disso, a existência de denúncia anônima não constitui justa causa para o ingresso forçado de autoridades policiais, mesmo que se trate de crime permanente. Nessas hipóteses, é indispensável que, a partir da notícia de suposta prática do delito de tráfico de entorpecentes, a autoridade policial realize diligências preliminares para atestar a veracidade das informações recebidas, de modo que, antes de ingressar na residência indicada, constate movimentação atípica no local ou surpreenda a prática da atividade ilícita.
+
+<br>[...]
+
+(AgRg no REsp n. 2.041.858/SC, relator Ministro Reynaldo Soares da Fonseca, Quinta Turma, julgado em 14/2/2023, DJe de 27/2/2023, grifei)
+
+
+
+AGRAVO REGIMENTAL NO HABEAS CORPUS. PROCESSO PENAL. TRÁFICO DE ENTORPECENTES. NULIDADE. INVASÃO DE DOMICÍLIO. AUSÊNCIA DE FUNDADAS RAZÕES PARA O INGRESSO. AUTORIZAÇÃO DE INGRESSO. NÃO COMPROVADO. ÔNUS ESTATAL. AGRAVO REGIMENTAL DESPROVIDO.
+
+<br>[...]
+
+<br>3. No caso em tela, o agentes policiais tentam fazer crer que, em perseguição a um cidadão em "atitude suspeita" que se refugiou em sua residência, inadvertidamente olharam para dentro dela por uma janela aberta e divisaram 15 gramas de crack sobre uma mesa, daí porque concluíram imediatamente se tratar de tráfico de drogas, o que justificaria a irrupção no domicílio sem prévio mandado.
+
+<br>[...]
+
+(AgRg no HC n. 735.572/RS, de minha relatoria, Sexta Turma, julgado em 21/6/2022, DJe de 24/6/2022, grifei)
+
+
+
+AGRAVO REGIMENTAL EM HABEAS CORPUS INTERPOSTO PELO MINISTÉRIO PÚBLICO FEDERAL CONTRA DECISÃO QUE CONCEDEU A ORDEM. TRÁFICO ILÍCITO DE ENTORPECENTES. NULIDADE. BUSCA PESSOAL E VIOLAÇÃO DE DOMICÍLIO. AUSÊNCIA DE FUNDADAS RAZÕES. VOLUNTARIEDADE DO CONSENTIMENTO PARA O INGRESSO NA RESIDÊNCIA. FALTA DE COMPROVAÇÃO. CONSTRANGIMENTO ILEGAL EVIDENCIADO. PRECEDENTES.
+
+<br>[...]
+
+<br>4. A Sexta Turma tem sedimentado entendimento, no sentido de que é inverossímil a suposta confissão informal (livre e voluntária) do réu sobre armazenamento de drogas no interior do imóvel, seguida de autorização para ingresso dos policiais (por parte do acusado ou de outro morador da residência), ante a ausência de comprovação do consentimento dos moradores, como ocorreu no presente caso (AgRg no HC n. 742.270/GO, Ministra Laurita Vaz, Sexta Turma, DJe 24/10/2022).
+
+<br>[...]
+
+(AgRg no HC n. 768.471/SP, relator Ministro Sebastião Reis Júnior, Sexta Turma, julgado em 27/3/2023, DJe de 31/3/2023, grifei)</p><div><textarea placeholder="Digite o texto a ser incluído" rows="8" cols="60"></textarea><button>Incluir</button></div>
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo"><b>denego a ordem</b></span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 4
+Data: 08/11/2024, 14:09:50
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p> Trata-se de   <span id="VERBO">[valor]</span> <span id="autorJustica">[autor]</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">[Ato coator]</span> n. ). </p>
+            <p id="paragrafoTexto">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                sfsdasda
+                <span id="dosDelitos"> do delito de </span>  
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem             <input type="text" id="input1" style="width: 80px;" placeholder="e-STJ fls."> </p>
+
+            <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa: </p>
+            <p></p><p><b>a)</b> Ser nula a busca pessoal sem demonstração das fundadas suspeitas. <input type="text" id="input1" placeholder="e-STJ fls." style="width: 80px;"></p><p><b>b)</b> Excesso de prazo para o encerramento da instrução criminal. <input type="text" id="input2" placeholder="e-STJ fls." style="width: 80px;"></p><p><b>c)</b> Ser ilegal a aplicação de fração superior a ⅙ a título de reincidência sem a devida fundamentação. <input type="text" id="input3" placeholder="e-STJ fls." style="width: 80px;"></p><p><b>d)</b> Ausência de contemporaneidade entre os fatos narrados e a decretação da prisão preventiva. <input type="text" id="input4" placeholder="e-STJ fls." style="width: 80px;"></p> 
+            <p>Requer, por fim:</p>
+            <span id="pedidoPrincipal1"><p><b>a)</b> Anulação do reconhecimento realizado em desacordo com o art. 226 do CPP. <input type="text" id="input1" placeholder="e-STJ fls." style="width: 80px;"></p><p><b>b)</b> A compensação entre a agravante da reincidência e a atenuante da confissão. <input type="text" id="input2" placeholder="e-STJ fls." style="width: 80px;"></p></span>
+            <p> <span id="se_liminar2">Não houve pedido liminar.</span> </p>
+            
+            
+            <p> <span id="parecerMinisterial">O Ministério Público Federal manifestou-se </span><span id="parecerClasse">pela denegação da ordem.</span></p>
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            <p>Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">sadf</p>
+            <p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">HABEAS CORPUS IMPETRADO EM FACE DE RESOLUÇÃO DE CONFLITO DE COMPETÊNCIA. DESCABIMENTO. AUSÊNCIA DE AMEAÇA AO DIREITO AMBULATÓRIO. CRIME DE TORTURA, PRATICADO NO ÂMBITO DOMÉSTICO, CONTRA CRIANÇA DO SEXO FEMININO. ART. 5.º, INCISO I, DA LEI MARIA DA PENHA. COMPETÊNCIA DO JUIZADO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER. MOTIVAÇÃO DE GÊNERO. REQUISITO REPUTADO COMO PREENCHIDO PELO TRIBUNAL DE ORIGEM. PRECEDENTES DESTA CORTE SUPERIOR QUE SE AMOLDAM À HIPÓTESE. AUSÊNCIA DE ILEGALIDADE FLAGRANTE QUE, EVENTUALMENTE, PUDESSE ENSEJAR A CONCESSÃO DA ORDEM DE OFÍCIO. HABEAS CORPUS NÃO CONHECIDO.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">1. O writ constitucional do habeas corpus se destina a assegurar o direito de ir e vir do cidadão, portanto, não se presta para solucionar questão relativa à competência sem reflexo direto no direito ambulatório, sobretudo porque há previsão recursal para solucionar a questão, nos termos do art. 105, inciso III, da Constituição Federal. Precedente.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">2. E, na espécie, não resta configurada ilegalidade manifesta que, eventualmente, ensejasse a concessão da ordem de habeas corpus de ofício.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">3. O Tribunal de origem, com o grau de discricionariedade próprio à espécie constatou estar preenchido o requisito de motivação de gênero, sendo impossível, à luz dos fatos narrados, infirmar-se essa ilação.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;" contenteditable="false">4. O delito em tese foi cometido contra criança do sexo feminino com abuso da condição de hipossuficiência, inferioridade física e econômica, pois a violência teria ocorrido dentro do âmbito doméstico e familiar. As Pacientes - tia e prima da vítima - foram acusadas de torturar vítima que detinham a guarda por decisão judicial.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">5. "Sujeito passivo da violência doméstica, objeto da referida lei, é a mulher. Sujeito ativo pode ser tanto o homem quanto a mulher, desde que fique caracterizado o vínculo de relação doméstica, familiar ou de afetividade." (CC n. 88.027/MG, Relator Ministro OG FERNANDES, DJ de 18/12/2008) 6. Habeas corpus não conhecido.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">(HC n. 250.435/RJ, relatora Ministra Laurita Vaz, Quinta Turma, julgado em 19/9/2013, DJe de 27/9/2013.)</p><p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">xcvz</p>
+
+            <p style="font-weight: bold; text-decoration: underline;">Inverossimilhança das alegações dos policiais</p><p>A configuração institucional brasileira tem como fundamento&nbsp;lógico&nbsp;e jurídico&nbsp;a confiança na atuação dos agentes estatais, tanto que lhe confere, em diversas situações, a prerrogativa de presunção de veracidade, instituto alçado à categoria de princípio quando em atuação a Administração Pública.
+
+Entretanto, tal presunção não importa em impossibilidade da análise de seus pressupostos fáticos, que pode ser mitigada após a devida valoração com critérios cotidianos como os juízos do senso comum e de verossimilhança.
+
+Devido a isso, esta Corte tem analisado com rigor certas narrativas apresentadas por agentes estatais ao justificarem o afastamento das regras constitucionais de proteção a direitos fundamentais, como a&nbsp;privacidade, a inviolabilidade domiciliar e o exercício cotidiano da&nbsp;cidadania.
+
+Como resultado, há vários julgados em que a narrativa apresentada pelos agentes estatais – em especial policiais que realizaram flagrantes&nbsp;–&nbsp;é considerada inverossímil e desconsiderada para fundamentar a mitigação dos direitos fundamentais protegidos,&nbsp;a despeito das considerações acima acerca da presunção de veracidade.
+
+No mesmo sentido os seguintes julgados:</p><p>Confira-se:</p><p style="font-style: italic !important; padding-left: 3cm !important; text-indent: 0px !important; font-size: 11pt !important;">AGRAVO REGIMENTAL NO HABEAS CORPUS. TRÁFICO DE DROGAS. FLAGRANTE. DOMICÍLIO COMO EXPRESSÃO DO DIREITO À INTIMIDADE. ASILO INVIOLÁVEL. EXCEÇÕES CONSTITUCIONAIS. INTERPRETAÇÃO RESTRITIVA. AUSÊNCIA DE FUNDADAS RAZÕES. NULIDADE DAS PROVAS OBTIDAS. TEORIA DOS FRUTOS DA ÁRVORE ENVENENADA. AGRAVO REGIMENTAL NÃO PROVIDO.
+
+<br>[...]
+
+<br>4. Soa inverossímil a versão policial, ao narrar que a ré, após ser abordada por agentes estatais em via pública, haveria confessado ter mais drogas no interior de sua casa, levado os policiais voluntariamente até lá e franqueado a entrada em seu domicílio.
+
+<br>[...]
+
+["Se, de um lado, se deve, como regra, presumir a veracidade das declarações de qualquer servidor público, não se há de ignorar, por outro lado, que o&nbsp;senso comum&nbsp;e as&nbsp;regras&nbsp;de experiência merecem ser consideradas quando tudo indica não ser crível a versão oficial apresentada, máxime quando interfere em direitos fundamentais do indivíduo e quando se nota um indisfarçável desejo de se criar uma narrativa amparadora de uma versão que confira plena legalidade à ação estatal" - trecho do voto condutor deste julgado]
+
+(AgRg no HC n. 732.128/SP, relator Ministro Rogerio Schietti Cruz, Sexta Turma, julgado em 27/9/2022, DJe de 7/10/2022, grifei)
+
+
+
+AGRAVO REGIMENTAL NO RECURSO ORDINÁRIO EM HABEAS CORPUS. PROCESSUAL PENAL. TRÁFICO ILÍCITO DE ENTORPECENTES. REVISTA PESSOAL. VIOLAÇÃO AO ART. 240, § 2.º DO CÓDIGO DE PROCESSO PENAL. AUSÊNCIA DE FUNDADAS SUSPEITAS. INGRESSO FORÇADO EM DOMICÍLIO. INEXISTÊNCIA DE FUNDADAS RAZÕES. ILICITUDE DAS PROVAS OBTIDAS. RECURSO DESPROVIDO.
+
+<br>[...]
+
+<br>4. Nos termos da jurisprudência da Sexta Turma desta Corte, "[a]s regras de experiência e o senso comum, somadas às peculiaridades do caso concreto, não conferem verossimilhança à afirmação dos agentes policiais de que o paciente teria autorizado, livre e voluntariamente, o ingresso em seu próprio domicílio, franqueando àqueles a apreensão de drogas e de arma de fogo e, consequentemente, a formação de prova incriminatória em desfavor do réu." (HC 566.532/MG, Rel. Ministro NEFI CORDEIRO, Rel. p/ Acórdão Ministro ROGERIO SCHIETTI CRUZ, SEXTA TURMA, julgado em 09/03/2021, DJe 07/06/2021).
+
+<br>[...]
+
+(AgRg no RHC n. 166.508/GO, relatora Ministra Laurita Vaz, Sexta Turma, julgado em 27/9/2022, DJe de 3/10/2022, grifei)
+
+
+
+AGRAVOS REGIMENTAIS NO RECURSO ESPECIAL. TRÁFICO DE DROGAS. WRIT CONCEDIDO. ABSOLVIÇÃO. BUSCA DOMICILIAR. DENÚNCIA ANÔNIMA SOBRE A LOCALIZAÇÃO DO ACUSADO. CONDIÇÃO DE FORAGIDO. AUSÊNCIA DE PERMISSÃO VÁLIDA PARA A ENTRADA NO IMÓVEL. BUSCA PROBATÓRIA DESVIRTUADA DE SUA CAPTURA. DESVIO DE FINALIDADE. ILICITUDE PROBATÓRIA. MANIFESTA ILEGALIDADE. OCORRÊNCIA.
+
+<br>1. Verifica-se a ilicitude das provas colhidas em busca domiciliar se, após denúncia apócrifa sobre a localização do acusado, foragido do sistema prisional, os agentes policiais entraram no imóvel (quarto de hotel), afirmando ter ocorrido a permissão por parte deste, e realizaram busca probatória desvirtuada de sua captura, que resultou na apreensão de drogas e apetrechos para o tráfico.
+
+<br>2. Conforme a jurisprudência desta Corte, a entrada no imóvel para a captura de foragido não deve servir de salvo-conduto para que todo o seu interior seja vasculhado indistintamente, em verdadeira pescaria probatória (fishing expedition), bem como não é verossímil, diante das regras de experiência e de senso comum, a afirmação de que houve a autorização de entrada no imóvel por parte do acusado, possibilitando a formação de prova incriminatória contra si.
+
+<br>[...]
+
+(AgRg no REsp n. 2.024.193/AM, relator Ministro Jesuíno Rissato (Desembargador Convocado do TJDFT), Sexta Turma, julgado em 7/3/2023, DJe de 10/3/2023, grifei)
+
+PROCESSO PENAL. AGRAVO REGIMENTAL NO RECURSO ESPECIAL. TRÁFICO DE DROGAS. VIOLAÇÃO DE DOMICÍLIO. INGRESSO POLICIAL APOIADO EM DENÚNCIA ANÔNIMA. AUSÊNCIA DE JUSTA CAUSA. APLICAÇÃO DO ENTENDIMENTO FIRMADO NO HC N. 598.051/SP. ILEGALIDADE FLAGRANTE. AGRAVO REGIMENTAL NÃO PROVIDO.
+
+<br>[...]
+
+<br>7. No caso concreto, as regras de experiência e o senso comum, somadas às peculiaridades do caso concreto, não conferem verossimilhança à afirmação dos agentes castrenses de que o acusado teria autorizado, livre e voluntariamente, o ingresso em seu próprio domicílio, franqueando àqueles a apreensão de drogas e, consequentemente, a formação de prova incriminatória em seu desfavor.
+
+<br>8. Diante disso, a existência de denúncia anônima não constitui justa causa para o ingresso forçado de autoridades policiais, mesmo que se trate de crime permanente. Nessas hipóteses, é indispensável que, a partir da notícia de suposta prática do delito de tráfico de entorpecentes, a autoridade policial realize diligências preliminares para atestar a veracidade das informações recebidas, de modo que, antes de ingressar na residência indicada, constate movimentação atípica no local ou surpreenda a prática da atividade ilícita.
+
+<br>[...]
+
+(AgRg no REsp n. 2.041.858/SC, relator Ministro Reynaldo Soares da Fonseca, Quinta Turma, julgado em 14/2/2023, DJe de 27/2/2023, grifei)
+
+
+
+AGRAVO REGIMENTAL NO HABEAS CORPUS. PROCESSO PENAL. TRÁFICO DE ENTORPECENTES. NULIDADE. INVASÃO DE DOMICÍLIO. AUSÊNCIA DE FUNDADAS RAZÕES PARA O INGRESSO. AUTORIZAÇÃO DE INGRESSO. NÃO COMPROVADO. ÔNUS ESTATAL. AGRAVO REGIMENTAL DESPROVIDO.
+
+<br>[...]
+
+<br>3. No caso em tela, o agentes policiais tentam fazer crer que, em perseguição a um cidadão em "atitude suspeita" que se refugiou em sua residência, inadvertidamente olharam para dentro dela por uma janela aberta e divisaram 15 gramas de crack sobre uma mesa, daí porque concluíram imediatamente se tratar de tráfico de drogas, o que justificaria a irrupção no domicílio sem prévio mandado.
+
+<br>[...]
+
+(AgRg no HC n. 735.572/RS, de minha relatoria, Sexta Turma, julgado em 21/6/2022, DJe de 24/6/2022, grifei)
+
+
+
+AGRAVO REGIMENTAL EM HABEAS CORPUS INTERPOSTO PELO MINISTÉRIO PÚBLICO FEDERAL CONTRA DECISÃO QUE CONCEDEU A ORDEM. TRÁFICO ILÍCITO DE ENTORPECENTES. NULIDADE. BUSCA PESSOAL E VIOLAÇÃO DE DOMICÍLIO. AUSÊNCIA DE FUNDADAS RAZÕES. VOLUNTARIEDADE DO CONSENTIMENTO PARA O INGRESSO NA RESIDÊNCIA. FALTA DE COMPROVAÇÃO. CONSTRANGIMENTO ILEGAL EVIDENCIADO. PRECEDENTES.
+
+<br>[...]
+
+<br>4. A Sexta Turma tem sedimentado entendimento, no sentido de que é inverossímil a suposta confissão informal (livre e voluntária) do réu sobre armazenamento de drogas no interior do imóvel, seguida de autorização para ingresso dos policiais (por parte do acusado ou de outro morador da residência), ante a ausência de comprovação do consentimento dos moradores, como ocorreu no presente caso (AgRg no HC n. 742.270/GO, Ministra Laurita Vaz, Sexta Turma, DJe 24/10/2022).
+
+<br>[...]
+
+(AgRg no HC n. 768.471/SP, relator Ministro Sebastião Reis Júnior, Sexta Turma, julgado em 27/3/2023, DJe de 31/3/2023, grifei)</p><div><p>asdf</p></div>
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo"><b>denego a ordem</b></span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 5
+Data: 08/11/2024, 14:24:39
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  <section>
+
+            <p contenteditable="false"> Trata-se de <span id="classe"><i>habeas corpus</i></span> <span id="se_liminar">com pedido liminar</span> <span id="VERBO">impetrado em favor de</span> <span id="autorJustica">{{pac</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">Apelação</span> n. 1509456-55.2024.8.26.0228). </p>
+            <p id="paragrafoTexto" contenteditable="false">Depreende-se dos autos que o <span id="reu">paciente</span> 
+                foi condenado a 6 anos de reclusão pela prática
+                <span id="dosDelitos">do delito de  tráfico de drogas</span>  <span>(e-STJ fl. 4).</span>
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p>O Tribunal de origem <span id="resultadoQuo">negou provimento ao recurso.</span>            <span>(e-STJ fls. 33/60).</span> </p>
+
+            <p contenteditable="false">Daí o presente <span id="classe2"><i>writ</i></span>, no qual alega a defesa: </p>
+            <p></p><p><b>a)</b> Ser nula a busca pessoal sem demonstração das fundadas suspeitas. <span>(e-STJ fl. 5).</span></p><p><b>b)</b> Ser desproporcional o aumento realizado na primeira fase da dosimetria. <span>(e-STJ fl. 12).</span></p><p><b>c)</b> Fazer jus o réu à aplicação de regime menos gravoso. <span>(e-STJ fl. 16).</span></p> 
+            <p>Requer, por fim:</p>
+            <span id="pedidoPrincipal1"><p><b>a)</b> Absolvição do agente. <span>(e-STJ fl. 16).</span></p><p><b>b)</b> A redução da pena-base. <span>(e-STJ fl. 17).</span></p><p><b>c)</b> Fixação de regime inicial menos gravoso. <span>(e-STJ fl. 17).</span></p></span>
+            
+            
+            
+            
+            <p>É o relatório.</p>
+            
+            <p><b>Decido.</b> </p>
+
+            <p>Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Ouvidos em Juízo, Leandro Cardoso Lourenço e Tiago Pinto Vieira declararam, em versões de todo harmônicas, que, na ocasião, por volta das 16h30, exerciam suas funções, na Operação Cena Aberta de Uso, quando avistaram uma mulher, que posteriormente se identificou como Patrícia, sentada no chão, comercializando algo que parecia ser crack. Ao lado dela, estava um homem, posteriormente identificado como Jorge. Observaram que Patrícia cortava as pedras e as entregava aos usuários, enquanto Jorge recebia o pagamento. Logo em seguida, começou a limpeza do fluxo e os usuários se deslocaram, momento em que aproveitaram e abordaram o casal. Em busca pessoal, com Jorge, encontraram algumas notas de dinheiro que somadas totalizaram R$ 898,00 (oitocentos e noventa e oito reais), presos em cada perna, com um elástico. Além disso, em um dos bolsos de seu casaco, encontraram 26 (vinte e seis) pedras pequenas de substância parecida com crack. Com Patrícia, localizaram dentro do sutiã, uma sacola plástica contendo R$ 50,00 (cinquenta reais) em moedas. Diante disto, derem voz de prisão e conduziram os envolvidos ao Distrito Policial.</p>
+            <p>A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Logo se verifica que a Constituição Federal não retira dos membros da Guarda Civil Municipal a condição de agentes de autoridade, legitimados a praticar atos de defesa à sociedade, inclusive em situações análogas às da espécie, qual seja, prender em flagrante e acompanhar a mercancia de drogas. Ademais, o Estatuto dos Guardas municipais (Lei nº 13.022/14) trata da possibilidade de patrulhamento preventivo (artigo 3º, III) e da colaboração integrada com os demais órgãos de segurança pública (artigo 5º, IV). Portanto, lhes foi conferido poder de polícia, o que legitima tal atuação. </p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">[...]</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Quanto à busca pessoal essa se deu na Cracolândia estando os réus em atitude de mercancia, ou seja, sentados no chão, enquanto ela distribuía as porções de crack, ele recolhia o dinheiro dos usuários, inclusive os guardas encontraram com eles certa quantia, em dinheiro proveniente da venda de outras porções de drogas, o que motivou a abordagem.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">[...]</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">O guarda municipal Tiago narrou que estava na região da Cracolândia, realizando apoio as equipes presentes, momento no qual avistou o casal. O agente contou que a ré entregava os entorpecentes e o réu recolhia o dinheiro dos usuários. Os agentes esperaram que o fluxo de pessoas passasse para realizar a abordagem, oportunidade na qual encontraram dinheiro e drogas. Alegou que a acusada tinha algumas moedas em uma sacola e o acusado estava com uma quantidade de pedras de crack e dinheiro. Informalmente, eles ficarem em silêncio e ele não os conhecia. Os acusados forneceram suas informações de qualificação, entretanto não se recorda do nome apresentado pela ré. </p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">[...]</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Como visto, os guardas municipais, de forma harmônica e congruente entre si, narram o encontro dos réus traficando. Os agentes observaram que a acusada Katia separava as porções de crack e entregava aos usuários, enquanto o acusado Jorge recolhia o dinheiro. Logo, ausentes qualquer prova de falsidade no quanto alegam, não há como desprezar os seus depoimentos. </p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">[...]</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">Do réu Jorge Tráfico de drogas Na primeira fase, a r. sentença exasperou a pena-base em 1/5 diante dos maus antecedentes37, inclusive específicos, do réu. A Defesa pleiteou pela redução da pena-base ao mínimo legal ou a diminuição da fração aplicada, tendo em vista a aplicação da teoria do esquecimento e a proporcionalidade das penas. O réu ostenta três condenações definitivas não geradoras de reincidência, quais sejam, o processo de nº 0023734-49.2008.8.26.0050 (tráfico de drogas); processo de nº 0065160-51.2002. 8.26.0050 (posse de drogas); processo de nº 0068553 81.2002.8.26.0050 (tráfico de drogas) o que só aqui já se justificaria o aumento de 1/5, eis que presentes três condenações anteriores. Não há que se falar em direito ao esquecimento, destaca-se que mesmo transcorrido prazo superior a cinco anos entre o cumprimento ou extinção da pena e a infração posterior não afasta a majoração por antecedentes.</p><p style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">[...]</p><p contenteditable="false" style="font-style: italic; padding-left: 3.1cm; text-indent: 0px; font-size: 11pt;">O regime fechado impõe-se. Observo que foi apreendida considerável quantidade de entorpecentes. Sendo o crime de perigo contra a saúde pública fica claro que tal quantidade poderia facilmente alcançar um elevado número de pessoas, o que denota maior reprovabilidade em sua conduta, visto o maior ataque ao bem jurídico. No caso, a natureza da droga apreendida (crack) também indica maior reprovabilidade, visto que tal entorpecente possui grande capacidade de viciar, como é notório e visto em toda a mídia. Assim em face do bem jurídico protegido, aliado ao artigo 42 da Lei nº 11.343/06, quanto maior a capacidade de viciar da droga, em abstrato, maior a  reprovabilidade. Além disso, o réu Jorge ostenta maus antecedentes específicos e a ré Katia ostenta maus antecedentes e reincidência específica, o que indica a necessidade de regime mais gravoso para desestimulá-los da senda do crime. Portanto, demonstraram periculosidade e culpabilidade acima da média, de forma que o regime fechado é o único que se mostra suficiente para atingir a função preventiva específica da pena, que é inibir a prática de novas ações delituosas, nos termos do artigo 33, § 3º, do Código Penal. Neste sentido, cita-se CESARE BECCARIA46, para quem a pena para ser justa deve ter o rigor necessário para desviar o homem da senda do crime, ao afirmar que “una pena sia giusta, non deve avere che quei soli gradi d'intensione che bastano a rimuovere gli uomini dai delitti ('para que a pena seja justa, só deve ter os indispensáveis graus de intensidade suficientes para afastar os homens dos delitos')”. Em relação ao cumprimento da pena de detenção, a r. sentença fixou o regime semiaberto para a ré Katia. Inviável a substituição da pena privativa de liberdade por restritiva de direitos ou a suspensão condicional da pena ante o quantum da pena, os maus antecedentes dos acusados e a reincidência específica da ré.</p>
+
+            <p style="font-weight: bold; text-decoration: underline;">Busca pessoal</p><p>Sabe-se que o art. 244 do Código de Processo Penal prevê que "a busca pessoal independerá de mandado, no caso de prisão ou quando houver fundada suspeita de que a pessoa esteja na posse de arma proibida ou de objetos ou papéis que constituam corpo de delito, ou quando a medida for determinada no curso de busca domiciliar".
+
+A Sexta Turma do Superior Tribunal de Justiça, ao analisar o Recurso em Habeas Corpus n. 158.580/BA, apreciou a matéria referente à busca pessoal prevista no referido art. 244 do CPP. O Ministro Rogerio Schietti, relator do referido recurso, concluiu que:
+
+</p><p>Confira-se:</p><p style="font-style: italic !important; padding-left: 3cm !important; text-indent: 0px !important; font-size: 11pt !important;">RECURSO EM HABEAS CORPUS. TRÁFICO DE DROGAS. BUSCA PESSOAL. AUSÊNCIA DE FUNDADA SUSPEITA. ALEGAÇÃO VAGA DE "ATITUDE SUSPEITA". INSUFICIÊNCIA. ILICITUDE DA PROVA OBTIDA. TRANCAMENTO DO PROCESSO. RECURSO PROVIDO.
+
+<br>1. Exige-se, em termos de standard probatório para busca pessoal ou veicular sem mandado judicial, a existência de fundada suspeita (justa causa) - baseada em um juízo de probabilidade, descrita com a maior precisão possível, aferida de modo objetivo e devidamente justificada pelos indícios e circunstâncias do caso concreto - de que o indivíduo esteja na posse de drogas, armas ou de outros objetos ou papéis que constituam corpo de delito, evidenciando-se a urgência de se executar a diligência.
+
+<br>2. Entretanto, a normativa constante do art. 244 do CPP não se limita a exigir que a suspeita seja fundada. É preciso, também, que esteja relacionada à "posse de arma proibida ou de objetos ou papéis que constituam corpo de delito". Vale dizer, há uma necessária referibilidade da medida, vinculada à sua finalidade legal probatória, a fim de que não se converta em salvo-conduto para abordagens e revistas exploratórias (fishing expeditions), baseadas em suspeição genérica existente sobre indivíduos, atitudes ou situações, sem relação específica com a posse de arma proibida ou objeto (droga, por exemplo) que constitua corpo de delito de uma infração penal. O art. 244 do CPP não autoriza buscas pessoais praticadas como "rotina" ou "praxe" do policiamento ostensivo, com finalidade preventiva e motivação exploratória, mas apenas buscas pessoais com finalidade probatória e motivação correlata.
+
+<br>3. Não satisfazem a exigência legal, por si sós, meras informações de fonte não identificada (e.g. denúncias anônimas) ou intuições e impressões subjetivas, intangíveis e não demonstráveis de maneira clara e concreta, apoiadas, por exemplo, exclusivamente, no tirocínio policial. Ante a ausência de descrição concreta e precisa, pautada em elementos objetivos, a classificação subjetiva de determinada atitude ou aparência como suspeita, ou de certa reação ou expressão corporal como nervosa, não preenche o standard probatório de "fundada suspeita" exigido pelo art. 244 do CPP.
+
+<br>4. O fato de haverem sido encontrados objetos ilícitos - independentemente da quantidade - após a revista não convalida a ilegalidade prévia, pois é necessário que o elemento "fundada suspeita de posse de corpo de delito" seja aferido com base no que se tinha antes da diligência. Se não havia fundada suspeita de que a pessoa estava na posse de arma proibida, droga ou de objetos ou papéis que constituam corpo de delito, não há como se admitir que a mera descoberta casual de situação de flagrância, posterior à revista do indivíduo, justifique a medida.
+
+<br>5. A violação dessas regras e condições legais para busca pessoal resulta na ilicitude das provas obtidas em decorrência da medida, bem como das demais provas que dela decorrerem em relação de causalidade, sem prejuízo de eventual responsabilização penal do(s) agente(s) público(s) que tenha(m) realizado a diligência.
+
+<br>6. Há três razões principais para que se exijam elementos sólidos, objetivos e concretos para a realização de busca pessoal - vulgarmente conhecida como "dura", "geral", "revista", "enquadro" ou "baculejo" -, além da intuição baseada no tirocínio policial:
+
+a) evitar o uso excessivo desse expediente e, por consequência, a restrição desnecessária e abusiva dos direitos fundamentais à intimidade, à privacidade e à liberdade (art. 5º, caput, e X, da Constituição Federal), porquanto, além de se tratar de conduta invasiva e constrangedora - mesmo se realizada com urbanidade, o que infelizmente nem sempre ocorre -, também implica a detenção do indivíduo, ainda que por breves instantes;
+
+b) garantir a sindicabilidade da abordagem, isto é, permitir que tanto possa ser contrastada e questionada pelas partes, quanto ter sua validade controlada a posteriori por um terceiro imparcial (Poder Judiciário), o que se inviabiliza quando a medida tem por base apenas aspectos subjetivos, intangíveis e não demonstráveis;
+
+c) evitar a repetição - ainda que nem sempre consciente - de práticas que reproduzem preconceitos estruturais arraigados na sociedade, como é o caso do perfilamento racial, reflexo direto do racismo estrutural.
+
+<br>7. Em um país marcado por alta desigualdade social e racial, o policiamento ostensivo tende a se concentrar em grupos marginalizados e considerados potenciais criminosos ou usuais suspeitos, assim definidos por fatores subjetivos, como idade, cor da pele, gênero, classe social, local da residência, vestimentas etc. Sob essa perspectiva, a ausência de justificativas e de elementos seguros a legitimar a ação dos agentes públicos -- diante da discricionariedade policial na identificação de suspeitos de práticas criminosas - pode fragilizar e tornar írritos os direitos à intimidade, à privacidade e à liberdade.
+
+8. "Os enquadros se dirigem desproporcionalmente aos rapazes negros moradores de favelas dos bairros pobres das periferias. Dados similares quanto à sobrerrepresentação desse perfil entre os suspeitos da polícia são apontados por diversas pesquisas desde os anos 1960 até hoje e em diferentes países do mundo. Trata-se de um padrão consideravelmente antigo e que ainda hoje se mantém, de modo que, ao menos entre os estudiosos da polícia, não existe mais dúvida de que o racismo é reproduzido e reforçado através da maior vigilância policial a que é submetida a população negra". Mais do que isso, "os policiais tendem a enquadrar mais pessoas jovens, do sexo masculino e de cor negra não apenas como um fruto da dinâmica da criminalidade, como resposta a ações criminosas, mas como um enviesamento no exercício do seu poder contra esse grupo social, independentemente do seu efetivo engajamento com condutas ilegais, por um direcionamento prévio do controle social na sua direção" (DA MATA, Jéssica, A Política do Enquadro, São Paulo: RT, 2021, p. 150 e 156).
+
+<br>9. A pretexto de transmitir uma sensação de segurança à população, as agências policiais - em verdadeiros "tribunais de rua" - cotidianamente constrangem os famigerados "elementos suspeitos" com base em preconceitos estruturais, restringem indevidamente seus direitos fundamentais, deixam-lhes graves traumas e, com isso, ainda prejudicam a imagem da própria instituição e aumentam a desconfiança da coletividade sobre ela.
+
+<br>10. Daí a importância, como se tem insistido desde o julgamento do HC n. 598.051/SP (Rel. Ministro Rogerio Schietti, 6ª T., DJe 15/3/2021), do uso de câmeras pelos agentes de segurança, a fim de que se possa aprimorar o controle sobre a atividade policial, tanto para coibir práticas ilegais, quanto para preservar os bons policiais de injustas e levianas acusações de abuso. Sobre a gravação audiovisual, aliás, é pertinente destacar o recente julgamento pelo Supremo Tribunal Federal dos Embargos de Declaração na Medida Cautelar da ADPF n. 635 ("ADPF das Favelas", finalizado em 3/2/2022), oportunidade na qual o Pretório Excelso - em sua composição plena e em consonância com o decidido por este Superior Tribunal no HC n. 598.051/SP - reconheceu a imprescindibilidade de tal forma de monitoração da atividade policial e determinou, entre outros pontos, que "o Estado do Rio de Janeiro, no prazo máximo de 180 (cento e oitenta) dias, instale equipamentos de GPS e sistemas de gravação de áudio e vídeo nas viaturas policiais e nas fardas dos agentes de segurança, com o posterior armazenamento digital dos respectivos arquivos".
+
+<br>11. Mesmo que se considere que todos os flagrantes decorrem de busca pessoal - o que por certo não é verdade -, as estatísticas oficiais das Secretarias de Segurança Pública apontam que o índice de eficiência no encontro de objetos ilícitos em abordagens policiais é de apenas 1%; isto é, de cada 100 pessoas revistadas pelas polícias brasileiras, apenas uma é autuada por alguma ilegalidade. É oportuno lembrar, nesse sentido, que, em Nova Iorque, o percentual de "eficiência" das stop and frisks era de 12%, isto é, 12 vezes a porcentagem de acerto da polícia brasileira, e, mesmo assim, foi considerado baixo e inconstitucional em 2013, no julgamento da class action Floyd, et al. v. City of New York, et al. pela juíza federal Shira Scheindlin.
+
+<br>12. Conquanto as instituições policiais hajam figurado no centro das críticas, não são as únicas a merecê-las. É preciso que todos os integrantes do sistema de justiça criminal façam uma reflexão conjunta sobre o papel que ocupam na manutenção da seletividade racial. Por se tratar da "porta de entrada" no sistema, o padrão discriminatório salta aos olhos, à primeira vista, nas abordagens policiais, efetuadas principalmente pela Polícia Militar. No entanto, práticas como a evidenciada no processo objeto deste recurso só se perpetuam porque, a pretexto de combater a criminalidade, encontram respaldo e chancela, tanto de delegados de polícia, quanto de representantes do Ministério Público - a quem compete, por excelência, o controle externo da atividade policial (art. 129, VII, da Constituição Federal) e o papel de custos iuris -, como também, em especial, de segmentos do Poder Judiciário, ao validarem medidas ilegais e abusivas perpetradas pelas agências de segurança.
+
+<br>13. Nessa direção, o Manual do Conselho Nacional de Justiça para Tomada de Decisão na Audiência de Custódia orienta a que:
+
+"Reconhecendo o perfilamento racial nas abordagens policiais e, consequentemente, nos flagrantes lavrados pela polícia, cabe então ao Poder Judiciário assumir um papel ativo para interromper e reverter esse quadro, diferenciando-se dos atores que o antecedem no fluxo do sistema de justiça criminal".
+
+<br>14. Em paráfrase ao mote dos movimentos antirracistas, é preciso que sejamos mais efetivos ante as práticas autoritárias e violentas do Estado brasileiro, pois enquanto não houver um alinhamento pleno, por parte de todos nós, entre o discurso humanizante e ações verdadeiramente transformadoras de certas práticas institucionais e individuais, continuaremos a assistir, apenas com lamentos, a morte do presente e do futuro, de nosso país e de sua população mais invisível e vulnerável. E não realizaremos o programa anunciado logo no preâmbulo de nossa Constituição, de construção de um Estado Democrático, destinado a assegurar o exercício dos direitos sociais e individuais, a liberdade, a segurança, o bem-estar, o desenvolvimento, a igualdade e a justiça como valores supremos de uma sociedade fraterna, pluralista e sem preconceitos.
+
+<br>15. Na espécie, a guarnição policial "deparou com um indivíduo desconhecido em atitude suspeita" e, ao abordá-lo e revistar sua mochila, encontrou porções de maconha e cocaína em seu interior, do que resultou a prisão em flagrante do recorrente. Não foi apresentada nenhuma justificativa concreta para a revista no recorrente além da vaga menção a uma suposta "atitude suspeita", algo insuficiente para tal medida invasiva, conforme a jurisprudência deste Superior Tribunal, do Supremo Tribunal Federal e da Corte Interamericana de Direitos Humanos.
+
+<br>16. Recurso provido para determinar o trancamento do processo.
+
+<span style="font-style: normal;">(RHC n. 158.580/BA, relator Ministro Rogerio Schietti Cruz, Sexta Turma, julgado em 19/4/2022, DJe de 25/4/2022.)</span><br><br>
+
+</p><div><p>No caso, os Guardas Municipais flagraram os agentes praticando atos de traficância, o que justifica a busca pessoal ainda que em desvio momentâneo de suas atribuições institucionais.</p></div><p style="font-weight: bold; text-decoration: underline;">Tópico genérico</p><p>Entendimento genérico do Superior Tribunal de Justiça.</p><p>Confira-se:</p><p style="font-style: italic !important; padding-left: 3cm !important; text-indent: 0px !important; font-size: 11pt !important;">Precedente genérico</p><div><textarea placeholder="Digite o texto a ser incluído" rows="8" cols="60" contenteditable="false"></textarea><button>Incluir</button></div>
+            
+
+            <p>Ante todo o exposto, <span id="dispositivo"><b>concedo parcialmente a ordem</b></span>.</p>
+            <p>Publique-se. Intimem-se.</p>
+
+        
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    margin: 0.2cm !important;
+    }
+
+
+    
+  </style>
+  </section>
+  </body>
+  </html>
+********** FIM **********
