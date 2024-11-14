@@ -819,6 +819,7 @@ function searchResultadoFuncao() {
       p3.style.cssText += 'padding-left: 3cm !important;';
       p3.style.cssText += 'text-indent: 0 !important;';
       p3.style.cssText += 'font-size: 11pt !important;';
+      
             
 
       selectedResultado.appendChild(p3);
@@ -872,7 +873,7 @@ function selecionaDispositivo(id) {
     dispositivo.innerHTML = '<b>denego a ordem</b>';
   } else if (id === 'concederParcial') {
     dispositivo.innerHTML = '<b>concedo parcialmente a ordem</b>';
-  } else if (id === 'negouProvimento') {
+  } else if (id === 'negarProvimento') {
     dispositivo.innerHTML = '<b>nego provimento ao recurso</b>';
   } else if (id === 'darProvimento') {
     dispositivo.innerHTML = '<b>dou provimento ao recurso</b>';
@@ -893,7 +894,6 @@ function selecionaDispositivo(id) {
   }
 }
 
-
 async function copyFormattedTextToClipboard() {
   registrarEstado();
   // esvazia o arquivo temporario.json
@@ -904,13 +904,7 @@ async function copyFormattedTextToClipboard() {
 
   // Criar um elemento temporário para manipular o HTML
   let tempDiv = document.createElement('div');
-
-
-
-
-
   tempDiv.innerHTML = element.innerHTML;
-
 
   // IDs específicos a serem verificados e removidos se vazios
   const idsToCheck = [
@@ -924,10 +918,12 @@ async function copyFormattedTextToClipboard() {
     if (el && el.innerHTML.trim() === '') {
       let parent = el.parentElement;
       el.remove();
+
       // Remove o elemento pai <p> se ele estiver vazio após remover o <span>
+/*
       if (parent && parent.tagName === 'P' && parent.innerHTML.trim() === '') {
         parent.remove();
-      }
+      }*/
     }
   });
 
@@ -939,28 +935,27 @@ async function copyFormattedTextToClipboard() {
     }
   });
 
-    // Zerar todos os estilos e aplicar novos estilos
+  // Adicionar classe aos parágrafos que não começam com <i>
+  let paragraphs = tempDiv.querySelectorAll('p');
+  paragraphs.forEach(p => {
+    if (!p.innerHTML.trim().startsWith('<i>')) {
+      p.classList.add('text-indent');
+    }
+  });
+
+  // Zerar todos os estilos e aplicar novos estilos
   let styledHtml = `
   <html>
   <head>
-  
-
+    <style>
+      p.text-indent {
+      text-indent: 2cm;
+      
+      }
+    </style>
   </head>
   <body>
-  <section>${tempDiv.innerHTML}
-  
-  <style>
- 
-
-    p {
-    text-indent : 2cm;
-    margin: 0.2cm !important;
-    }
-
-
-    
-  </style>
-  </section>
+    ${tempDiv.innerHTML}
   </body>
   </html>`;
 
