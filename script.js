@@ -1,6 +1,80 @@
 //TODO FAZER QUE A INCLUSÃO DAS FLS SEJA AO LADO DOS CAMPOS DELITOS, APREENSÃO, RESULTADO DA ORIGEM, PEDIDOS, LIMINAR, PARECER DO MP, 1º E 2º GRAU
 // JÁ nas teses fazer que a inclusão do fls apareça ao lado da tese no texto
 
+// Botão de folhas
+document.addEventListener('DOMContentLoaded', function() {
+  const floatButton = document.getElementById('floatButton');
+  const textoBaseRelatorio = document.getElementById('texto_base_relatorio');
+
+  floatButton.addEventListener('dragstart', function(event) {
+      event.dataTransfer.setData('text/plain', 'input1');
+  });
+
+  textoBaseRelatorio.addEventListener('dragover', function(event) {
+      event.preventDefault();
+      // Adiciona uma classe para destacar a linha
+      if (event.target.tagName === 'P' || event.target.tagName === 'SPAN') {
+        event.target.classList.add('highlight');
+      }
+  });
+
+  textoBaseRelatorio.addEventListener('dragleave', function(event) {
+      // Remove a classe de destaque quando o botão é arrastado para fora da linha
+      if (event.target.tagName === 'P' || event.target.tagName === 'SPAN') {
+        event.target.classList.remove('highlight');
+      }
+  });
+
+  textoBaseRelatorio.addEventListener('drop', function(event) {
+      event.preventDefault();
+      const inputId = event.dataTransfer.getData('text/plain');
+      if (inputId === 'input1') {
+          const inputElement = document.createElement('input');
+          inputElement.type = 'text';
+          inputElement.id = 'input1';
+          inputElement.style.width = '80px';
+          inputElement.placeholder = 'e-STJ fls.';
+
+          // Verifica se o elemento alvo é um texto e ajusta a posição do input
+          if (event.target.nodeType === Node.TEXT_NODE) {
+              const textContent = event.target.textContent;
+              const regex = /([,.:])(\s*\(e-STJ fl\. \))/;
+              const match = textContent.match(regex);
+
+              if (match) {
+                  const newText = textContent.replace(regex, ' $2$1');
+                  event.target.textContent = newText;
+                  event.target.parentNode.insertBefore(inputElement, event.target.nextSibling);
+              } else {
+                  event.target.parentNode.insertBefore(inputElement, event.target.nextSibling);
+              }
+          } else {
+              event.target.appendChild(inputElement);
+          }
+
+          // Adiciona os event listeners ao novo input
+          inputElement.addEventListener('input', function () {
+            this.value = this.value.replace(/[^0-9/]/g, ''); // Permitir apenas números e '/'
+          });
+
+          inputElement.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+              event.preventDefault();
+              formatInput(this);
+            }
+          });
+
+          // Focar no input para permitir a digitação imediata
+          inputElement.focus();
+      }
+
+      // Remove a classe de destaque após soltar o botão
+      if (event.target.tagName === 'P' || event.target.tagName === 'SPAN') {
+        event.target.classList.remove('highlight');
+      }
+  });
+});
+
 
 // Exemplo de função para gerar uma chave única (UUID)
 function gerarChaveUnica() {
@@ -318,34 +392,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+// Função formatInput (exemplo)
 function formatInput(input) {
-    registrarEstado();
-    const value = input.value;
-    if (!value) return;
+  registrarEstado();
+  let value = input.value;
+  if (!value) return;
 
-    const parts = value.split('/');
-    if (parts.length > 2) {
-        alert('Formato inválido. Use apenas um "/" para separar dois números.');
-        return;
-    }
+  // Remove qualquer ponto final no final do valor
+  value = value.replace(/\.$/, '');
 
-    const formattedParts = parts.map(part => {
-        return parseInt(part, 10).toLocaleString('pt-BR');
-    });
+  const parts = value.split('/');
+  if (parts.length > 2) {
+      alert('Formato inválido. Use apenas um "/" para separar dois números.');
+      return;
+  }
 
-    const formattedValue = formattedParts.join('/');
-    const prefix = formattedParts.length > 1 ? '(e-STJ fls. ' : '(e-STJ fl. ';
-    const finalText = prefix + formattedValue + ').';
+  const formattedParts = parts.map(part => {
+      return parseInt(part, 10).toLocaleString('pt-BR');
+  });
 
-    const node = document.createElement("span");
-    const textnode = document.createTextNode(finalText);
-    node.appendChild(textnode);
+  const formattedValue = formattedParts.join('/');
+  const prefix = formattedParts.length > 1 ? '(e-STJ fls. ' : '(e-STJ fl. ';
+  const finalText = prefix + formattedValue + ').';
 
-    // Substituir o campo de entrada pelo texto formatado
-    input.parentNode.replaceChild(node, input);
+  const node = document.createElement("span");
+  const textnode = document.createTextNode(finalText);
+  node.appendChild(textnode);
+
+  // Substituir o campo de entrada pelo texto formatado
+  input.parentNode.replaceChild(node, input);
 }
-
-
 
 const faseLiminar = {
   liminarComLiminar: 'com pedido liminar',
