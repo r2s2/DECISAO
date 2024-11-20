@@ -1,6 +1,69 @@
 //TODO FAZER QUE A INCLUSÃO DAS FLS SEJA AO LADO DOS CAMPOS DELITOS, APREENSÃO, RESULTADO DA ORIGEM, PEDIDOS, LIMINAR, PARECER DO MP, 1º E 2º GRAU
 // JÁ nas teses fazer que a inclusão do fls apareça ao lado da tese no texto
 
+// Botão e função do folhas
+
+document.addEventListener('DOMContentLoaded', function () {
+  registrarEstado();
+  const inputs = document.querySelectorAll('input[type="text"]');
+
+  inputs.forEach(input => {
+      // Verificar se o ID do input corresponde ao padrão 'input1', 'input2', etc.
+      if (/^input\d+$/.test(input.id)) {
+          input.addEventListener('input', function () {
+              this.value = this.value.replace(/[^0-9/]/g, ''); // Permitir apenas números e '/'
+          });
+
+          input.addEventListener('keypress', function (event) {
+              if (event.key === 'Enter') {
+                  event.preventDefault();
+                  formatInput(this);
+              }
+          });
+      }
+  });
+});
+
+
+// Função formatInput (exemplo)
+function formatInput(input) {
+registrarEstado();
+let value = input.value;
+if (!value) return;
+
+// Remove qualquer ponto final no final do valor
+value = value.replace(/\.$/, '');
+
+const parts = value.split('/');
+if (parts.length > 2) {
+    alert('Formato inválido. Use apenas um "/" para separar dois números.');
+    return;
+}
+
+const formattedParts = parts.map(part => {
+    return parseInt(part, 10).toLocaleString('pt-BR');
+});
+
+const formattedValue = formattedParts.join('/');
+const prefix = formattedParts.length > 1 ? '(e-STJ fls. ' : '(e-STJ fl. ';
+const finalText = prefix + formattedValue + ').';
+
+const node = document.createElement("span");
+const textnode = document.createTextNode(finalText);
+node.appendChild(textnode);
+
+// Substituir o campo de entrada pelo texto formatado
+input.parentNode.replaceChild(node, input);
+}
+
+const faseLiminar = {
+liminarComLiminar: 'com pedido liminar',
+meritoComLiminar: 'com pedido liminar',
+semLiminar: ''
+};
+
+
+
 // Botão de folhas
 document.addEventListener('DOMContentLoaded', function() {
   const floatButton = document.getElementById('floatButton');
@@ -26,32 +89,24 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   textoBaseRelatorio.addEventListener('drop', function(event) {
-      event.preventDefault();
-      const inputId = event.dataTransfer.getData('text/plain');
-      if (inputId === 'input1') {
-          const inputElement = document.createElement('input');
-          inputElement.type = 'text';
-          inputElement.id = 'input1';
-          inputElement.style.width = '80px';
-          inputElement.placeholder = 'e-STJ fls.';
+    event.preventDefault();
+    const inputId = event.dataTransfer.getData('text/plain');
+    if (inputId === 'input1') {
+        const inputElement = document.createElement('input');
+        inputElement.type = 'text';
+        inputElement.id = 'input1';
+        inputElement.style.width = '80px';
+        inputElement.placeholder = 'e-STJ fls.';
 
           // Verifica se o elemento alvo é um texto e ajusta a posição do input
           if (event.target.nodeType === Node.TEXT_NODE) {
-              const textContent = event.target.textContent;
-              const regex = /([,.:])(\s*\(e-STJ fl\. \))/;
-              const match = textContent.match(regex);
-
-              if (match) {
-                  const newText = textContent.replace(regex, ' $2$1');
-                  event.target.textContent = newText;
-                  event.target.parentNode.insertBefore(inputElement, event.target.nextSibling);
-              } else {
-                  event.target.parentNode.insertBefore(inputElement, event.target.nextSibling);
-              }
-          } else {
-              event.target.appendChild(inputElement);
-          }
-
+            const textContent = event.target.textContent;
+            const newText = textContent.slice(0, -1) + ' (e-STJ fls. )' + textContent.slice(-1);
+            event.target.textContent = newText;
+            event.target.parentNode.insertBefore(inputElement, event.target.nextSibling);
+        } else {
+            event.target.appendChild(inputElement);
+        }
           // Adiciona os event listeners ao novo input
           inputElement.addEventListener('input', function () {
             this.value = this.value.replace(/[^0-9/]/g, ''); // Permitir apenas números e '/'
@@ -370,65 +425,6 @@ var contadorTeses = [];
 
 */
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    registrarEstado();
-    const inputs = document.querySelectorAll('input[type="text"]');
-
-    inputs.forEach(input => {
-        // Verificar se o ID do input corresponde ao padrão 'input1', 'input2', etc.
-        if (/^input\d+$/.test(input.id)) {
-            input.addEventListener('input', function () {
-                this.value = this.value.replace(/[^0-9/]/g, ''); // Permitir apenas números e '/'
-            });
-
-            input.addEventListener('keypress', function (event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    formatInput(this);
-                }
-            });
-        }
-    });
-});
-
-
-// Função formatInput (exemplo)
-function formatInput(input) {
-  registrarEstado();
-  let value = input.value;
-  if (!value) return;
-
-  // Remove qualquer ponto final no final do valor
-  value = value.replace(/\.$/, '');
-
-  const parts = value.split('/');
-  if (parts.length > 2) {
-      alert('Formato inválido. Use apenas um "/" para separar dois números.');
-      return;
-  }
-
-  const formattedParts = parts.map(part => {
-      return parseInt(part, 10).toLocaleString('pt-BR');
-  });
-
-  const formattedValue = formattedParts.join('/');
-  const prefix = formattedParts.length > 1 ? '(e-STJ fls. ' : '(e-STJ fl. ';
-  const finalText = prefix + formattedValue + ').';
-
-  const node = document.createElement("span");
-  const textnode = document.createTextNode(finalText);
-  node.appendChild(textnode);
-
-  // Substituir o campo de entrada pelo texto formatado
-  input.parentNode.replaceChild(node, input);
-}
-
-const faseLiminar = {
-  liminarComLiminar: 'com pedido liminar',
-  meritoComLiminar: 'com pedido liminar',
-  semLiminar: ''
-};
 
 function selecionaFase(argumento5) {
   registrarEstado();
@@ -985,9 +981,9 @@ async function copyFormattedTextToClipboard() {
 
   // IDs específicos a serem verificados e removidos se vazios
   const idsToCheck = [
-    'resultadoApreensao', 'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
-    'informacoes', 'parecerMinisterial', 'parecerClasse', 'primeiroGrauTexto', 
-    'segundoGrauTexto', 'resultadoTese', 'resultadoTextoParticular', 'tesesSelecionadas', 'folhasSTJ', 'input1', 'inputTexto'
+    /*'resultadoApreensao', */ 'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
+    /*'informacoes', 'parecerMinisterial', 'parecerClasse', 'primeiroGrauTexto', 
+    'segundoGrauTexto',*/ 'resultadoTese', 'resultadoTextoParticular', 'tesesSelecionadas', 'folhasSTJ',  'input1', 'inputTexto'
   ];
 
   idsToCheck.forEach(id => {
@@ -997,10 +993,10 @@ async function copyFormattedTextToClipboard() {
       el.remove();
 
       // Remove o elemento pai <p> se ele estiver vazio após remover o <span>
-/*
+
       if (parent && parent.tagName === 'P' && parent.innerHTML.trim() === '') {
         parent.remove();
-      }*/
+      }
     }
   });
 
@@ -1020,19 +1016,30 @@ async function copyFormattedTextToClipboard() {
     }
   });
 
+  
+
   // Zerar todos os estilos e aplicar novos estilos
   let styledHtml = `
   <html>
   <head>
-    <style>
-      p.text-indent {
-      text-indent: 2cm;
-      
-      }
-    </style>
+  
+
   </head>
   <body>
-    ${tempDiv.innerHTML}
+  ${tempDiv.innerHTML}
+  
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    }
+
+
+    
+  </style>
+  
   </body>
   </html>`;
 

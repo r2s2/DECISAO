@@ -4429,3 +4429,127 @@ AGRAVO REGIMENTAL NO HABEAS CORPUS. TRÁFICO DE DROGAS E ASSOCIAÇÃO PARA O TR�
   </body>
   </html>
 ********** FIM **********
+********** INICIO **********
+ID: 1
+Data: 19/11/2024, 22:40:02
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  
+
+            <p class="text-indent"> Trata-se de  <span id="se_liminar">[valor]</span> <span id="VERBO">[valor]</span> <span id="autorJustica">[autor]</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">[Ato coator]</span> n. ). </p>
+            <p id="paragrafoTexto" class="text-indent">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                adsfaf
+                <span id="dosDelitos"> do delito de </span>  
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p class="text-indent">O Tribunal de origem             </p>
+
+            <p class="text-indent">Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa:</p>
+            <p class="text-indent"> </p>
+            <p class="text-indent">Requer, por fim:</p>
+            
+            
+            
+            <p class="text-indent"></p>
+            <p class="text-indent"> </p>
+            <p class="text-indent">É o relatório.</p>
+            
+            <p class="text-indent"><b>Decido.</b> </p>
+
+            <p class="text-indent">  </p>
+            <p class="text-indent"> </p>
+            
+            
+
+            <p class="text-indent">Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
+            <p class="text-indent">Publique-se. Intimem-se.</p>
+
+        
+  
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    }
+
+
+    
+  </style>
+  
+  </body>
+  </html>
+********** FIM **********
+********** INICIO **********
+ID: 2
+Data: 19/11/2024, 22:43:29
+
+  <html>
+  <head>
+  
+
+  </head>
+  <body>
+  
+
+            <p class="text-indent"> Trata-se de  <span id="se_liminar">[valor]</span> <span id="VERBO">[valor]</span> <span id="autorJustica">[autor]</span> apontando como autoridade coatora o {{Tri (<span id="atoCoator">[Ato coator]</span> n. ). </p>
+            <p id="paragrafoTexto" class="text-indent">Depreende-se dos autos que o <span id="reu">[valor]</span> 
+                adsfaf
+                <span id="dosDelitos"> do delito de </span>  
+            </p>
+
+            
+            <div class="apreensoes">
+            
+            </div>
+
+            <p class="text-indent">O Tribunal de origem             </p>
+
+            <p class="text-indent">Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa:</p>
+            <p class="text-indent"> </p>
+            <p class="text-indent">Requer, por fim:</p>
+            
+            
+            
+            <p class="text-indent"></p>
+            <p class="text-indent"> </p>
+            <p class="text-indent">É o relatório.</p>
+            
+            <p class="text-indent"><b>Decido.</b> </p>
+
+            <p class="text-indent">  </p>
+            <p class="text-indent"> </p>
+            
+            
+
+            <p class="text-indent">Ante todo o exposto, <span id="dispositivo">[VALOR]</span>.</p>
+            <p class="text-indent">Publique-se. Intimem-se.</p>
+
+        
+  
+  
+  <style>
+ 
+
+    p {
+    text-indent : 2cm;
+    }
+
+
+    
+  </style>
+  
+  </body>
+  </html>
+********** FIM **********
