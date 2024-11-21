@@ -345,6 +345,6 @@ http.createServer(function (req, res) {
         });
     }
 
-}).listen(80, '0.0.0.0', () => {
-    console.log('Servidor rodando na porta 80 com ngrok');
+}).listen(3000, '0.0.0.0', () => {
+    console.log('Servidor rodando na porta 3000 com ngrok');
 });
