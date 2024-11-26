@@ -967,6 +967,7 @@ function selecionaDispositivo(id) {
   }
 }
 
+
 async function copyFormattedTextToClipboard() {
   registrarEstado();
   // esvazia o arquivo temporario.json
@@ -993,7 +994,6 @@ async function copyFormattedTextToClipboard() {
       el.remove();
 
       // Remove o elemento pai <p> se ele estiver vazio após remover o <span>
-
       if (parent && parent.tagName === 'P' && parent.innerHTML.trim() === '') {
         parent.remove();
       }
@@ -1008,42 +1008,34 @@ async function copyFormattedTextToClipboard() {
     }
   });
 
-  // Adicionar classe aos parágrafos que não começam com <i>
+  // Adicionar classe e estilo aos parágrafos
   let paragraphs = tempDiv.querySelectorAll('p');
   paragraphs.forEach(p => {
-    if (!p.innerHTML.trim().startsWith('<i>')) {
+        if (p.id === 'primeiroGrau' || p.id === 'segundoGrau' || p.id === 'searchResultadoFuncao') {
+      p.style.cssText += 'font-style: italic !important;';
+      p.style.cssText += 'padding-left: 3cm !important;';
+      p.style.cssText += 'text-indent: 0.5 !important;';
+      p.style.cssText += 'font-size: 11pt !important;';
+      p.style.cssText += 'font-family: Arial, Helvetica, sans-serif;';
+      p.style.cssText += 'line-height: 100% !important;';
+    
+    } else {
       p.classList.add('text-indent');
+      p.style.cssText += 'color:#000000;margin-bottom:0.25cm;text-align:justify;text-indent:2cm;line-height:150%';
+      p.querySelectorAll('span').forEach(span => {
+        span.style.cssText += 'line-height:150%;font-family:Arial,Helvetica,sans-serif;font-size:12pt;';
+      });
     }
   });
 
-  
+  // Concatenar o HTML de cada parágrafo individualmente
+  let formattedHTML = '';
+  paragraphs.forEach(p => {
+    formattedHTML += p.outerHTML;
+  });
 
-  // Zerar todos os estilos e aplicar novos estilos
-  let styledHtml = `
-  <html>
-  <head>
-  
-
-  </head>
-  <body>
-  ${tempDiv.innerHTML}
-  
-  
-  <style>
- 
-
-    p {
-    text-indent : 2cm;
-    }
-
-
-    
-  </style>
-  
-  </body>
-  </html>`;
-
-  let textToCopy = new Blob([styledHtml], { type: 'text/html' });
+  // Copiar o HTML formatado diretamente
+  let textToCopy = new Blob([formattedHTML], { type: 'text/html' });
   try {
     await navigator.clipboard.write([
       new ClipboardItem({
@@ -1058,7 +1050,7 @@ async function copyFormattedTextToClipboard() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text: styledHtml })
+      body: JSON.stringify({ text: formattedHTML })
     });
 
     if (!response.ok) throw new Error('Erro ao salvar conteúdo da área de transferência');
