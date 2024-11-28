@@ -740,10 +740,11 @@ function primeiroGrau() {
   p2.innerHTML = "Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:";
   primeiroGrauTexto.appendChild(p2);
 
-  // Divide o texto de entrada em parágrafos
+    // Divide o texto de entrada em parágrafos
   input.value.split('\n').forEach(paragraphText => {
     if (paragraphText.trim() !== '') { // Ignora linhas vazias
       const p = document.createElement('p');
+      p.id = 'primeiroGrauId'; // Adiciona o ID primeiroGrau ao parágrafo
       p.style.fontStyle = 'italic';
       p.style.paddingLeft = '3.1cm';
       p.style.textIndent = '0';
@@ -752,6 +753,7 @@ function primeiroGrau() {
       primeiroGrauTexto.appendChild(p);
     }
   });
+  ;
 
   input.value = '';
 }
@@ -775,9 +777,10 @@ function segundoGrau() {
   input.value.split('\n').forEach(paragraphText => {
     if (paragraphText.trim() !== '') { // Ignora linhas vazias
       const p = document.createElement('p');
+      p.id = 'segundoGrauId'; // Adiciona o ID segundoGrau ao parágrafo
       p.style.fontStyle = 'italic';
-      p.style.paddingLeft = '3.1cm';
-      p.style.textIndent = '0';
+      p.style.marginLeft = '3.1cm';
+      p.style.textIndent = '0cm';
       p.style.fontSize = '11pt';
       p.textContent = paragraphText;
       segundoGrauTexto.appendChild(p);
@@ -1009,13 +1012,15 @@ async function copyFormattedTextToClipboard() {
   // Adicionar classe e estilo aos parágrafos
   let paragraphs = tempDiv.querySelectorAll('p, [contenteditable="false"]');
   paragraphs.forEach(p => {
-    if (p.id === 'primeiroGrau' || p.id === 'segundoGrau' || p.id === 'searchResultadoFuncao') {
+    if (p.id === 'primeiroGrauId' || p.id === 'segundoGrauId' || p.id === 'searchResultadoFuncao') {
+      p.style.cssText += 'padding-left: 0cm !important;';
       p.style.cssText += 'font-style: italic !important;';
-      p.style.cssText += 'padding-left: 3cm !important;';
-      p.style.cssText += 'text-indent: 0 !important;';
+      p.style.cssText += 'margin-left: 120px !important;';
+      p.style.cssText += 'text-indent: 0cm !important;';
       p.style.cssText += 'font-size: 11pt !important;';
       p.style.cssText += 'font-family: Arial, Helvetica, sans-serif;';
       p.style.cssText += 'line-height: 100% !important;';
+      p.style.cssText += 'margin-bottom: 0.3cm !important;';
     } else {
       p.classList.add('text-indent');
       p.style.cssText += 'color:#000000;margin-bottom:0.25cm;text-align:justify;text-indent:2cm;line-height:150%';
