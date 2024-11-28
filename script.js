@@ -967,7 +967,6 @@ function selecionaDispositivo(id) {
   }
 }
 
-
 async function copyFormattedTextToClipboard() {
   registrarEstado();
   // esvazia o arquivo temporario.json
@@ -981,11 +980,10 @@ async function copyFormattedTextToClipboard() {
   tempDiv.innerHTML = element.innerHTML;
 
   // IDs específicos a serem verificados e removidos se vazios
-  /*
   const idsToCheck = [
-    'resultadoApreensao',  'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
+    'resultadoApreensao', 'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
     'informacoes', 'parecerMinisterial', 'parecerClasse', 'primeiroGrauTexto', 
-    'segundoGrauTexto', 'resultadoTese', 'resultadoTextoParticular', 'tesesSelecionadas', 'folhasSTJ',  'input1', 'inputTexto' 
+    'segundoGrauTexto', 'resultadoTese', 'resultadoTextoParticular', 'tesesSelecionadas', 'folhasSTJ', 'input1', 'inputTexto'
   ];
 
   idsToCheck.forEach(id => {
@@ -993,7 +991,6 @@ async function copyFormattedTextToClipboard() {
     if (el && el.innerHTML.trim() === '') {
       let parent = el.parentElement;
       el.remove();
-
       // Remove o elemento pai <p> se ele estiver vazio após remover o <span>
       if (parent && parent.tagName === 'P' && parent.innerHTML.trim() === '') {
         parent.remove();
@@ -1008,18 +1005,17 @@ async function copyFormattedTextToClipboard() {
       el.remove();
     }
   });
-*/
+
   // Adicionar classe e estilo aos parágrafos
-  let paragraphs = tempDiv.querySelectorAll('p');
+  let paragraphs = tempDiv.querySelectorAll('p, [contenteditable="false"]');
   paragraphs.forEach(p => {
-        if (p.id === 'primeiroGrau' || p.id === 'segundoGrau' || p.id === 'searchResultadoFuncao') {
+    if (p.id === 'primeiroGrau' || p.id === 'segundoGrau' || p.id === 'searchResultadoFuncao') {
       p.style.cssText += 'font-style: italic !important;';
       p.style.cssText += 'padding-left: 3cm !important;';
       p.style.cssText += 'text-indent: 0.5 !important;';
       p.style.cssText += 'font-size: 11pt !important;';
       p.style.cssText += 'font-family: Arial, Helvetica, sans-serif;';
       p.style.cssText += 'line-height: 100% !important;';
-    
     } else {
       p.classList.add('text-indent');
       p.style.cssText += 'color:#000000;margin-bottom:0.25cm;text-align:justify;text-indent:2cm;line-height:150%';
