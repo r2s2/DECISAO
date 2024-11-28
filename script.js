@@ -978,7 +978,7 @@ async function copyFormattedTextToClipboard() {
   // Criar um elemento temporário para manipular o HTML
   let tempDiv = document.createElement('div');
   tempDiv.innerHTML = element.innerHTML;
-
+/*
   // IDs específicos a serem verificados e removidos se vazios
   const idsToCheck = [
     'resultadoApreensao', 'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
@@ -1005,14 +1005,14 @@ async function copyFormattedTextToClipboard() {
       el.remove();
     }
   });
-
+*/
   // Adicionar classe e estilo aos parágrafos
   let paragraphs = tempDiv.querySelectorAll('p, [contenteditable="false"]');
   paragraphs.forEach(p => {
     if (p.id === 'primeiroGrau' || p.id === 'segundoGrau' || p.id === 'searchResultadoFuncao') {
       p.style.cssText += 'font-style: italic !important;';
       p.style.cssText += 'padding-left: 3cm !important;';
-      p.style.cssText += 'text-indent: 0.5 !important;';
+      p.style.cssText += 'text-indent: 0 !important;';
       p.style.cssText += 'font-size: 11pt !important;';
       p.style.cssText += 'font-family: Arial, Helvetica, sans-serif;';
       p.style.cssText += 'line-height: 100% !important;';
