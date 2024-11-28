@@ -982,9 +982,9 @@ async function copyFormattedTextToClipboard() {
 
   // IDs específicos a serem verificados e removidos se vazios
   const idsToCheck = [
-    /*'resultadoApreensao', */ 'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
-    /*'informacoes', 'parecerMinisterial', 'parecerClasse', 'primeiroGrauTexto', 
-    'segundoGrauTexto',*/ 'resultadoTese', 'resultadoTextoParticular', 'tesesSelecionadas', 'folhasSTJ',  'input1', 'inputTexto'
+    /*'resultadoApreensao',  'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
+    'informacoes', 'parecerMinisterial', 'parecerClasse', 'primeiroGrauTexto', 
+    'segundoGrauTexto', 'resultadoTese', 'resultadoTextoParticular', 'tesesSelecionadas', 'folhasSTJ',  'input1', 'inputTexto' */
   ];
 
   idsToCheck.forEach(id => {
