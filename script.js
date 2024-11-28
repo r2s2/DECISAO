@@ -981,10 +981,11 @@ async function copyFormattedTextToClipboard() {
   tempDiv.innerHTML = element.innerHTML;
 
   // IDs específicos a serem verificados e removidos se vazios
+  /*
   const idsToCheck = [
-    /*'resultadoApreensao',  'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
+    'resultadoApreensao',  'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
     'informacoes', 'parecerMinisterial', 'parecerClasse', 'primeiroGrauTexto', 
-    'segundoGrauTexto', 'resultadoTese', 'resultadoTextoParticular', 'tesesSelecionadas', 'folhasSTJ',  'input1', 'inputTexto' */
+    'segundoGrauTexto', 'resultadoTese', 'resultadoTextoParticular', 'tesesSelecionadas', 'folhasSTJ',  'input1', 'inputTexto' 
   ];
 
   idsToCheck.forEach(id => {
@@ -1007,7 +1008,7 @@ async function copyFormattedTextToClipboard() {
       el.remove();
     }
   });
-
+*/
   // Adicionar classe e estilo aos parágrafos
   let paragraphs = tempDiv.querySelectorAll('p');
   paragraphs.forEach(p => {
