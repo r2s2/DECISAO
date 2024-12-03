@@ -18,6 +18,10 @@
     <script src="./scripts/scriptEditarTexto.js"></script>
     <script src="./scripts/usuario.js"></script>
     <script src="./scripts/pedidos.js"></script>
+    <script src="./scripts/primeiroGrau.js"></script>
+    <script src="./scripts/segundoGrau.js"></script>
+    <script src="./scripts/apreensao.js"></script>
+
     
     
 </head>
@@ -93,7 +97,12 @@
     <section id='formul'>
         <button onclick="desfazer()">&#x21A9; Desfazer</button>
 
-        <button id="floatButton" draggable="true">FOLHAS</button>
+        <button id="floatButton" draggable="true">FOLHAS</button>        
+        <button id="floatButtonPrimeiroGrau" >Incluir 1º Grau</button>     
+        <button id="floatButtonSegundoGrau" >Incluir 2º Grau</button>
+        <button id="floatButtonApreensao" >Incluir Apreensão</button>
+        <button id="floatButtonCopiarTexto" onclick="copyFormattedTextToClipboard()">Copiar Texto</button>
+        
        
         <p> <u>CLASSE</u> </p>
         <input type="radio" name="classe_processual" id='HC' value="hc" onclick="check()" checked>
@@ -178,14 +187,14 @@
         placeholder="Buscar tipo">
         <select id="searchTipoPenal" style="font-family: Arial; font-size: 10px;"></select>
       
-
+<!--
        
         <p><u>APREENSÃO</u> </p>
 
 
         <form id="conversaoForm">
 
-            <!-- colocar o texto do input como um botão de submeter ao js  -->
+            
 
             <input type="number" id="maconha" name="gramas" min="0" step="any"
                 placeholder="Digite a quantidade de gramas"> MACONHA <br>
@@ -199,7 +208,7 @@
             ARMAS<br>
             <input type="submit" value="Enviar">
 
-        </form>
+        </form> -->
 
 
         <p><u>TESES </u> </p>
@@ -250,26 +259,7 @@
 
         <br>
 
-        <p><u>INSTÂNCIAS ORDINÁRIAS</u></p>
-        <p>1º Grau</p>
-        <textarea id="primeiroGrau"  rows='8' cols="40"
-        placeholder="Assim se manifestou o Juízo de 1º Grau: (apenas colar o texto + Incluir)"></textarea>
-        <br>
-        <input type="submit" value="Incluir" onclick="primeiroGrau()" />    
-
-        <input type="button" onclick="desfazerPrimeiroGrau()" value="Desfazer">
-        <br>
-<br>
-        <p>2º Grau</p>
-
-        <textarea id="segundoGrau"  rows='8' cols="40"
-        placeholder="A Corte de origem fundamentou seu entendimento nos seguintes termos: (apenas colar o texto + Incluir)"></textarea>
-        <br>
-        <input type="submit" value="Incluir" onclick="segundoGrau()" />    
-
-        <input type="button" onclick="desfazerSegundoGrau()" value="Desfazer">
-        <br>
-<br>
+       
 
         <p><u>RESULTADOS </u> </p>
         <div class="resultados-api">

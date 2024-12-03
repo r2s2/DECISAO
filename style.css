@@ -15,9 +15,70 @@ body {
     border-radius: 50px;
     cursor: pointer;
     z-index: 1000;
-    opacity: 0.8;
+    opacity: 0.9;
     
 }
+
+#floatButtonPrimeiroGrau {
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    background-color: #ff6b09;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.9;
+}
+
+
+#floatButtonSegundoGrau {
+    position: fixed;
+    top: 220px;
+    right: 20px;
+    background-color: #ff6b09;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.9;
+}
+
+#floatButtonApreensao {
+    position: fixed;
+    top: 290px;
+    right: 20px;
+    background-color: #ff6b09;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.9;
+}
+
+#floatButtonCopiarTexto {
+    position: fixed;
+    top: 360px;
+    right: 20px;
+    background-color: #ff6b09;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.9;
+}
+
+
+
+
 
 .highlight {
     background-color: yellow;

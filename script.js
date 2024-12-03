@@ -581,6 +581,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+
+/*
 // Variável global para rastrear o índice do marcador de letras
 var letterIndex = 0;
 
@@ -660,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   })
-});
+});*/
 
 var pedidos = {
   substituir: 'Subsidiariamente, pleiteia a substituição da prisão preventiva por medidas cautelares diversas.'
@@ -724,71 +726,6 @@ function selecionaParecer(argumento1) {
   parecerClasse.innerHTML = parecer[argumento1];
 }
 
-
-function primeiroGrau() {
-  registrarEstado();
-
-  const input = document.getElementById('primeiroGrau');
-  const primeiroGrauTexto = document.getElementById('primeiroGrauTexto');
-  if (!input || !primeiroGrauTexto) return;
-
-  // Verificar se há um conteúdo duplicado para evitar adicioná-lo duas vezes
-  if (primeiroGrauTexto.innerHTML.includes(input.value)) return;
-
-  // Cria um elemento p2 para o cabeçalho
-  const p2 = document.createElement('p');
-  p2.innerHTML = "Assim se manifestou o Juízo de 1º Grau, <i>ipsis litteris</i>:";
-  primeiroGrauTexto.appendChild(p2);
-
-    // Divide o texto de entrada em parágrafos
-  input.value.split('\n').forEach(paragraphText => {
-    if (paragraphText.trim() !== '') { // Ignora linhas vazias
-      const p = document.createElement('p');
-      p.id = 'primeiroGrauId'; // Adiciona o ID primeiroGrau ao parágrafo
-      p.style.fontStyle = 'italic';
-      p.style.paddingLeft = '3.1cm';
-      p.style.textIndent = '0';
-      p.style.fontSize = '11pt';
-      p.textContent = paragraphText;
-      primeiroGrauTexto.appendChild(p);
-    }
-  });
-  ;
-
-  input.value = '';
-}
-
-function segundoGrau() {
-  registrarEstado();
-
-  const input = document.getElementById('segundoGrau');
-  const segundoGrauTexto = document.getElementById('segundoGrauTexto');
-  if (!input || !segundoGrauTexto) return;
-
-  // Verificar se há um conteúdo duplicado para evitar adicioná-lo duas vezes
-  if (segundoGrauTexto.innerHTML.includes(input.value)) return;
-
-  // Cria um elemento p2 para o cabeçalho
-  const p2 = document.createElement('p');
-  p2.innerHTML = "A Corte de origem fundamentou seu entendimento nos seguintes termos, <i>in verbis</i>:";
-  segundoGrauTexto.appendChild(p2);
-
-  // Divide o texto de entrada em parágrafos
-  input.value.split('\n').forEach(paragraphText => {
-    if (paragraphText.trim() !== '') { // Ignora linhas vazias
-      const p = document.createElement('p');
-      p.id = 'segundoGrauId'; // Adiciona o ID segundoGrau ao parágrafo
-      p.style.fontStyle = 'italic';
-      p.style.marginLeft = '3.1cm';
-      p.style.textIndent = '0cm';
-      p.style.fontSize = '11pt';
-      p.textContent = paragraphText;
-      segundoGrauTexto.appendChild(p);
-    }
-  });
-
-  input.value = '';
-}
 
 
 function desfazerPrimeiroGrau() {
@@ -970,6 +907,7 @@ function selecionaDispositivo(id) {
   }
 }
 
+
 async function copyFormattedTextToClipboard() {
   registrarEstado();
   // esvazia o arquivo temporario.json
@@ -981,7 +919,7 @@ async function copyFormattedTextToClipboard() {
   // Criar um elemento temporário para manipular o HTML
   let tempDiv = document.createElement('div');
   tempDiv.innerHTML = element.innerHTML;
-/*
+
   // IDs específicos a serem verificados e removidos se vazios
   const idsToCheck = [
     'resultadoApreensao', 'pedidoPrincipal1', 'se_liminar2', 'pedidoLiminar', 
@@ -1008,7 +946,7 @@ async function copyFormattedTextToClipboard() {
       el.remove();
     }
   });
-*/
+
   // Adicionar classe e estilo aos parágrafos
   let paragraphs = tempDiv.querySelectorAll('p, [contenteditable="false"]');
   paragraphs.forEach(p => {
