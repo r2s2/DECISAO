@@ -21,6 +21,7 @@
     <script src="./scripts/primeiroGrau.js"></script>
     <script src="./scripts/segundoGrau.js"></script>
     <script src="./scripts/apreensao.js"></script>
+    <script src="./scripts/scriptDelitos.js"></script>
 
     
     
@@ -103,7 +104,8 @@
         <button id="floatButtonApreensao" >Incluir Apreensão</button>
         <button id="floatButtonCopiarTexto" onclick="copyFormattedTextToClipboard()">Copiar Texto</button>
         
-       
+       <br>
+       <br>
         <p> <u>CLASSE</u> </p>
         <input type="radio" name="classe_processual" id='HC' value="hc" onclick="check()" checked>
         <label for="HC"> HC</label>
@@ -118,6 +120,9 @@
                 <label for="agrg"> AgRg</label>
                 <input type="radio" name="classe_processual" id = 'edcl' value ='edcl'>
                 <label for="edcl"> EDcl</label> -->
+        <br>
+        <br>
+
 
         <p> <u>LIMINAR</u> </p>
 
@@ -132,7 +137,9 @@
         <label for="sem_liminar"> Sem liminar</label>
 
         -->
-
+        
+        <br>
+        <br>
         <p> <u>ATO COATOR</u> </p>
                   <input type="radio" name="ato_coator" id="hc_origem" value="hc" onclick="selecionaAtoCoator('hc_origem')" required>
             <label for="hc_origem"> HC</label>
@@ -145,7 +152,8 @@
             
            
             <div id="resultadoOrigem"></div> <!-- Elemento onde o valor será exibido -->
-
+            <br>
+            
         <p> <u>RESULTADO DA ORIGEM</u> </p>
 
         <input type="radio" name="resultado_origem" id='denegou' value="denegou" onclick="selecionaResultado('denegou')"
@@ -180,36 +188,16 @@
 
 
 
-
+        <br>
+        <br>
 
         <p> <u>DELITOS</u> </p>
         <input type="text" id="tipoPenal" onkeyup="searchTipoPenal()"
         placeholder="Buscar tipo">
         <select id="searchTipoPenal" style="font-family: Arial; font-size: 10px;"></select>
       
-<!--
-       
-        <p><u>APREENSÃO</u> </p>
-
-
-        <form id="conversaoForm">
-
-            
-
-            <input type="number" id="maconha" name="gramas" min="0" step="any"
-                placeholder="Digite a quantidade de gramas"> MACONHA <br>
-            <input type="number" id="cocaina" name="gramas" min="0" step="any"
-                placeholder="Digite a quantidade de gramas"> COCAÍNA<br>
-            <input type="number" id="crack" name="gramas" min="0" step="any"
-                placeholder="Digite a quantidade de gramas"> CRACK<br>
-            <input type="text" id="outros" name="gramas" min="0" step="any"
-                placeholder="12 tubos de lança-perfume com 30 mL de líquido"> OUTRAS DROGAS<br>
-            <input type="text" id="armas" name="armas" placeholder="3 pistolas calibre .38, 7 munições 9mm etc">
-            ARMAS<br>
-            <input type="submit" value="Enviar">
-
-        </form> -->
-
+        <br>
+        <br>
 
         <p><u>TESES </u> </p>
 
@@ -240,7 +228,7 @@
         <label for="indeferida"> Indeferida</label>
         <input type="radio" id='semLiminar' name="liminar" value="Sem liminar" onclick="selecionaLiminar('semPedido')" checked>
         <label for="semLiminar"> Sem liminar</label><br>
-
+        <br>
         <p>
             <u>PARECER DO MP</u>
         </p>

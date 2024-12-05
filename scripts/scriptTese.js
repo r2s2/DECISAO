@@ -111,11 +111,34 @@ function searchTese() {
       }
     });
 
+    // Adiciona evento de clique fora do campo de busca
+    document.addEventListener('click', function(event) {
+      if (!input.contains(event.target) && !results.contains(event.target)) {
+        fecharPrateleira();
+      }
+    });
+
+    // Adiciona evento de entrada de texto ao campo de busca
+    input.addEventListener('input', function() {
+      if (input.value.trim() === '') {
+        fecharPrateleira();
+      } else {
+        results.style.display = 'block';
+      }
+    });
+
     // Marca que o evento de clique foi adicionado
     clickEventAdded = true;
   }
 }
 
+// Função para fechar a prateleira de resultados
+function fecharPrateleira() {
+  var results = document.getElementById('searchResults');
+  if (results) {
+    results.style.display = 'none';
+  }
+}
 
 // Função formatInput (exemplo)
 function formatInput(input) {

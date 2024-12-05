@@ -1,14 +1,9 @@
 // importar função formatInput do script.js da pasta DECISAO
 
-
-
 // Variável global para rastrear o índice do marcador de letras para pedidos
 var letterIndexPedido = 0;
 // Variável global para rastrear se o evento de clique já foi adicionado para pedidos
 var clickEventAddedPedido = false;
-
-var clickEventAddedPedido = false;
-var letterIndexPedido = 0;
 
 function searchPedidoFuncao() {
   registrarEstado();
@@ -58,11 +53,26 @@ function searchPedidoFuncao() {
       }
     });
 
+    // Adiciona evento de clique fora do campo de busca
+    document.addEventListener('click', function(event) {
+      if (!input.contains(event.target) && !results.contains(event.target)) {
+        fecharPrateleira();
+      }
+    });
+
+    // Adiciona evento de entrada de texto ao campo de busca
+    input.addEventListener('input', function() {
+      if (input.value.trim() === '') {
+        fecharPrateleira();
+      } else {
+        results.style.display = 'block';
+      }
+    });
+
     // Marca que o evento de clique foi adicionado
     clickEventAddedPedido = true;
   }
 }
-
 
 function incluirPedido(selectedPedidoText) {
   var selectedPedido = document.getElementById('pedidoPrincipal1');
@@ -124,6 +134,14 @@ function incluirPedido(selectedPedidoText) {
       formatInput(this);
     }
   });
+}
+
+// Função para fechar a prateleira de resultados
+function fecharPrateleira() {
+  var results = document.getElementById('searchPedido');
+  if (results) {
+    results.style.display = 'none';
+  }
 }
 
 // Função formatInput (exemplo)

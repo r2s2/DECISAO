@@ -439,230 +439,6 @@ function selecionaFase(argumento5) {
   }
 }
 
-const delito = {
-  trafico: ' tráfico de drogas',
-  assocTrafico: ' associação para o tráfico',
-  roubo: ' roubo',
-  furto: ' furto',
-  homicidio: ' homicídio',
-  estuproVuln: ' estupro de vulnerável',
-  orcrim: ' organização criminosa',
-  estelionato: ' estelionato',
-  lavagemDinheiro: ' lavagem de dinheiro',
-  corrupcao: ' corrupção',
-  tortura: ' tortura',
-  contrabando: ' contrabando',
-  descaminho: ' descaminho',
-  armas: ' porte ilegal de armas',
-  sequestro: ' sequestro',
-  estupro: ' estupro',
-  receptacao: ' receptação',
-};
-
-var contadorDelito = [];
-
-function searchTipoPenal() {
-    var input, filter, results, i;
-    input = document.getElementById('tipoPenal');
-    if (!input) return;
-    input.setAttribute('autocomplete', 'off');
-
-    filter = input.value.toUpperCase();
-    results = document.getElementById('searchTipoPenal');
-    if (!results) return;
-    results.innerHTML = '';
-
-    for (i in delito) {
-        if (delito[i].toUpperCase().includes(filter)) {
-            var option = document.createElement('option');
-            option.value = delito[i];
-            option.text = delito[i];
-            results.appendChild(option);
-        }
-    }
-    results.size = results.length;
-
-    results.addEventListener('click', function (event) {
-        registrarEstado();
-
-        if (event.target.tagName === 'OPTION') {
-            var selectedDelitoText = event.target.value;
-
-            // Verifica se o delito já foi adicionado
-            if (!contadorDelito.includes(selectedDelitoText)) {
-                contadorDelito.push(selectedDelitoText);
-                atualizarVisualizacaoDelitos();
-            }
-            // Remove o alerta e mantém a funcionalidade de esconder a lista e limpar o campo de entrada
-            results.style.display = 'none'; // Esconde a lista de resultados
-            input.value = ''; // Limpa o campo de entrada
-        }
-    });
-
-    // Adiciona evento de clique ao campo de entrada para selecionar a única opção
-    input.addEventListener('click', function () {
-        if (results.options.length === 1) {
-            var selectedDelitoText = results.options[0].value;
-
-            // Verifica se o delito já foi adicionado
-            if (!contadorDelito.includes(selectedDelitoText)) {
-                contadorDelito.push(selectedDelitoText);
-                atualizarVisualizacaoDelitos();
-            }
-            // Remove o alerta e mantém a funcionalidade de esconder a lista e limpar o campo de entrada
-            results.style.display = 'none'; // Esconde a lista de resultados
-            input.value = ''; // Limpa o campo de entrada
-        }
-    });
-
-    if (input.value.trim() === '') {
-        results.style.display = 'none';
-    } else {
-        results.style.display = 'block';
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    var tipoPenalInput = document.getElementById('tipoPenal');
-    if (tipoPenalInput) {
-        tipoPenalInput.addEventListener('click', function () {
-            searchTipoPenal();
-        });
-
-        tipoPenalInput.addEventListener('keyup', function () {
-            searchTipoPenal();
-        });
-    } else {
-        console.error('Elemento com ID "tipoPenal" não encontrado.');
-    }
-});
-
-function atualizarVisualizacaoDelitos() {
-    registrarEstado();
-
-    var pDelitosSelecionados = document.getElementById('DELITO');
-    var textoDosDelitos = document.getElementById('dosDelitos');
-
-    
-               if (contadorDelito.length > 1) {
-            var delitosTexto = contadorDelito.join(', ').replace(/, ([^,]*)$/, ' e $1');
-            textoDosDelitos.innerHTML = "dos delitos de " + delitosTexto;
-            pDelitosSelecionados.style.display = 'block';
-        } else if (contadorDelito.length === 1) {
-            textoDosDelitos.innerHTML = "do delito de " + contadorDelito[0];
-            pDelitosSelecionados.style.display = 'block';
-        } else {
-            textoDosDelitos.innerHTML = "";
-            pDelitosSelecionados.style.display = 'none';
-        }
-    }
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  var inputTexto = document.getElementById('inputTexto');
-  if (inputTexto) {
-    inputTexto.addEventListener('keypress', function(event) {
-      if (event.key === 'Enter') {
-        registrarEstado();
-
-        var texto = inputTexto.value;
-        var paragrafoTexto = document.getElementById('paragrafoTexto');
-        if (paragrafoTexto) {
-          // Cria um novo nó de texto com o valor do input
-          var textoNode = document.createTextNode(texto);
-          // Insere o texto no lugar do input
-          paragrafoTexto.insertBefore(textoNode, inputTexto);
-          // Remove o input do parágrafo
-          paragrafoTexto.removeChild(inputTexto);
-        }
-        event.preventDefault();
-      }
-    });
-  }
-});
-
-
-/*
-// Variável global para rastrear o índice do marcador de letras
-var letterIndex = 0;
-
-// Variável global para rastrear se o evento de clique já foi adicionado
-var clickEventAdded = false;
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('conversaoForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    var maconha = document.getElementById('maconha').value ? document.getElementById('maconha').value : null;
-    var cocaina = document.getElementById('cocaina').value ? document.getElementById('cocaina').value : null;
-    var crack = document.getElementById('crack').value ? document.getElementById('crack').value : null;
-    var outros = document.getElementById('outros').value ? document.getElementById('outros').value : null;
-    var armas = document.getElementById('armas').value ? document.getElementById('armas').value : null;
-
-    var resultadoApreensao = document.getElementById('resultadoApreensao');
-    resultadoApreensao.innerHTML = ''; // Limpa o conteúdo do elemento 'resultadoApreensao'
-
-    var apreensoes = [];
-
-    if (maconha) {
-      var texto = '';
-      if (maconha >= 1000000) {
-        texto = '<b>Maconha</b>: ' + (maconha / 1000000).toLocaleString('pt-BR') + ' toneladas';
-      } else if (maconha >= 1000) {
-        texto = '<b>Maconha</b>: ' + (maconha / 1000).toLocaleString('pt-BR') + ' quilogramas';
-      } else {
-        texto = '<b>Maconha</b>: ' + maconha.toLocaleString('pt-BR') + ' gramas';
-      }
-      apreensoes.push(texto);
-    }
-    if (cocaina) {
-      var texto = '';
-      if (cocaina >= 1000000) {
-        texto = '<b>Cocaína</b>: ' + (cocaina / 1000000).toLocaleString('pt-BR') + ' toneladas';
-      } else if (cocaina >= 1000) {
-        texto = '<b>Cocaína</b>: ' + (cocaina / 1000).toLocaleString('pt-BR') + ' quilogramas';
-      } else {
-        texto = '<b>Cocaína</b>: ' + cocaina.toLocaleString('pt-BR') + ' gramas';
-      }
-      apreensoes.push(texto);
-    }
-    if (crack) {
-      var texto = '';
-      if (crack >= 1000000) {
-        texto = '<b><i>Crack</i></b>: ' + (crack / 1000000).toLocaleString('pt-BR') + ' toneladas';
-      } else if (crack >= 1000) {
-        texto = '<b><i>Crack</i></b>: ' + (crack / 1000).toLocaleString('pt-BR') + ' quilogramas';
-      } else {
-        texto = '<b><i>Crack</i></b>: ' + crack.toLocaleString('pt-BR') + ' gramas';
-      }
-      apreensoes.push(texto);
-    }
-    if (outros) {
-      var texto = '<b>Outros</b>: ' + outros.toLocaleString('pt-BR');
-      apreensoes.push(texto);
-    }
-    if (armas) {
-      var texto = '<b>Armas</b>: ' + armas;
-      apreensoes.push(texto);
-    }
-
-    if (apreensoes.length > 0) {
-      var paragrafoIntro = document.createElement('p');
-      paragrafoIntro.innerHTML = 'Foram apreendidas:';
-      resultadoApreensao.appendChild(paragrafoIntro);
-
-      for (var i = 0; i < apreensoes.length; i++) {
-        var novoParagrafo = document.createElement('p');
-        novoParagrafo.innerHTML = apreensoes[i] + (i === apreensoes.length - 1 ? '.' : ';');
-        resultadoApreensao.appendChild(novoParagrafo);
-      }
-    }
-
-
-  })
-});*/
 
 var pedidos = {
   substituir: 'Subsidiariamente, pleiteia a substituição da prisão preventiva por medidas cautelares diversas.'
@@ -771,7 +547,7 @@ function searchResultadoFuncao() {
         if ((resultado.resultado && removeAcentos(resultado.resultado.toUpperCase()).indexOf(filter) > -1) || allKeywordsFound || resultado.id.toString() === input.value) {
           var option = document.createElement('option');
           option.value = resultado.topico + '|' + resultado.resultado + '|' + resultado.precedente;
-          option.text = resultado.id + " - " + resultado.topico  + " - " + resultado.resultado + " - " + resultado.precedente;
+          option.text = resultado.id + " - " + resultado.topico + " - " + resultado.tags;  //+ " - " + resultado.resultado + " - " + resultado.precedente;
           results.appendChild(option);
           count++;
         }
@@ -783,93 +559,123 @@ function searchResultadoFuncao() {
     registrarEstado();
 
     if (event.target.tagName === 'OPTION') {
-      var selectedTopicoText = event.target.value.split('|')[0];
-      var selectedResultadoText = event.target.value.split('|')[1];
-      var selectedPrecedenteText = event.target.value.split('|')[2];
+      adicionarResultado(event.target.value);
+    }
+  });
 
-      var selectedResultado = document.getElementById('resultadoTese');
-      if (!selectedResultado) return;
+  input.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter' && results.length === 1) {
+      event.preventDefault();
+      adicionarResultado(results.options[0].value);
+    }
+  });
 
-      var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(p => p.textContent === selectedResultadoText);
-      if (alreadyAdded) {
-        return;
-      }
+  // Função para adicionar o resultado selecionado
+  function adicionarResultado(value) {
+    var selectedTopicoText = value.split('|')[0];
+    var selectedResultadoText = value.split('|')[1];
+    var selectedPrecedenteText = value.split('|')[2];
 
-      var p = document.createElement('p');
-      p.textContent = selectedTopicoText;
-      p.style.fontWeight = 'bold'; // Negrito
-      p.style.textDecoration = 'underline'; // Sublinhado
-      selectedResultado.appendChild(p);
+    var selectedResultado = document.getElementById('resultadoTese');
+    if (!selectedResultado) return;
 
-      var p = document.createElement('p');
-      p.textContent = selectedResultadoText;
-      selectedResultado.appendChild(p);
+    var alreadyAdded = Array.from(selectedResultado.getElementsByTagName('p')).some(p => p.textContent === selectedResultadoText);
+    if (alreadyAdded) {
+      return;
+    }
 
-      var p2 = document.createElement('p');
-      p2.textContent = "Confira-se:";
-      selectedResultado.appendChild(p2);
+    var p = document.createElement('p');
+    p.textContent = selectedTopicoText;
+    p.style.fontWeight = 'bold'; // Negrito
+    p.style.textDecoration = 'underline'; // Sublinhado
+    selectedResultado.appendChild(p);
 
-      var p3 = document.createElement('p');
-      
-      var regex = /\(([A-Za-z].*?\d{4}\.)\)/g;
-      var match;
-      while ((match = regex.exec(selectedPrecedenteText)) !== null) {
-        selectedPrecedenteText = selectedPrecedenteText.replace(match[0], '<span style="font-style: normal;">' + match[0] + '</span>' + '<br>' + '<br>');
-      }
+    var p = document.createElement('p');
+    p.textContent = selectedResultadoText;
+    selectedResultado.appendChild(p);
 
-      selectedPrecedenteText = selectedPrecedenteText.replace(/\[...\]/g, '<br>[...]');
+    var p2 = document.createElement('p');
+    p2.textContent = "Confira-se:";
+    selectedResultado.appendChild(p2);
 
-      var quebraDeLinha = selectedPrecedenteText;
+    var p3 = document.createElement('p');
+    
+    var regex = /\(([A-Za-z].*?\d{4}\.)\)/g;
+    var match;
+    while ((match = regex.exec(selectedPrecedenteText)) !== null) {
+      selectedPrecedenteText = selectedPrecedenteText.replace(match[0], '<span style="font-style: normal;">' + match[0] + '</span>' + '<br>' + '<br>');
+    }
 
-      // Use a regular expression with the global flag to find and replace all occurrences of the pattern
-      var regex = /(\d+\. [A-Z])/g;
-      var replacedText = quebraDeLinha.replace(regex, '<br>$1');
+    selectedPrecedenteText = selectedPrecedenteText.replace(/\[...\]/g, '<br>[...]');
 
-      // Update the content of the element p3 with the replaced text
-      p3.innerHTML = replacedText;
+    var quebraDeLinha = selectedPrecedenteText;
 
-      p3.style.cssText += 'font-style: italic !important;';
-      p3.style.cssText += 'padding-left: 3cm !important;';
-      p3.style.cssText += 'text-indent: 0 !important;';
-      p3.style.cssText += 'font-size: 11pt !important;';
-      
-            
+    // Use a regular expression with the global flag to find and replace all occurrences of the pattern
+    var regex = /(\d+\. [A-Z])/g;
+    var replacedText = quebraDeLinha.replace(regex, '<br>$1');
 
-      selectedResultado.appendChild(p3);
+    // Update the content of the element p3 with the replaced text
+    p3.innerHTML = replacedText;
 
-      var div = document.createElement('div');
-      var textarea = document.createElement('textarea');
-      textarea.placeholder = 'Digite o texto a ser incluído';
-      textarea.rows = 8;
-      textarea.cols = 60;
-      div.appendChild(textarea);
+    p3.style.cssText += 'font-style: italic !important;';
+    p3.style.cssText += 'padding-left: 3cm !important;';
+    p3.style.cssText += 'text-indent: 0 !important;';
+    p3.style.cssText += 'font-size: 11pt !important;';
+    
+    selectedResultado.appendChild(p3);
 
-      var button = document.createElement('button');
-      button.textContent = 'Incluir';
-      div.appendChild(button);
+    var div = document.createElement('div');
+    var textarea = document.createElement('textarea');
+    textarea.placeholder = 'Digite o texto a ser incluído';
+    textarea.rows = 8;
+    textarea.cols = 60;
+    div.appendChild(textarea);
 
-      p3.parentNode.insertBefore(div, p3.nextSibling);
+    var button = document.createElement('button');
+    button.textContent = 'Incluir';
+    div.appendChild(button);
 
-      button.addEventListener('click', function () {
-        registrarEstado();
+    p3.parentNode.insertBefore(div, p3.nextSibling);
 
-        var textoDiv = document.createElement('div');
-        var linhas = textarea.value.split('\n');
+    button.addEventListener('click', function () {
+      registrarEstado();
 
-        linhas.forEach(function (linha) {
-          var p = document.createElement('p');
-          p.textContent = linha;
-          textoDiv.appendChild(p);
-        });
+      var textoDiv = document.createElement('div');
+      var linhas = textarea.value.split('\n');
 
-        div.parentNode.replaceChild(textoDiv, div);
+      linhas.forEach(function (linha) {
+        var p = document.createElement('p');
+        p.textContent = linha;
+        textoDiv.appendChild(p);
       });
 
-      letterIndex++;
-      event.target.remove();
-      results.size = 0;
-      input.value = '';
-      results.innerHTML = '';
+      div.parentNode.replaceChild(textoDiv, div);
+    });
+
+    letterIndex++;
+    results.size = 0;
+    input.value = '';
+    results.innerHTML = '';
+  }
+
+  // Função para fechar a prateleira de resultados
+  function fecharPrateleira() {
+    results.style.display = 'none';
+  }
+
+  // Adiciona evento de clique fora do campo de busca
+  document.addEventListener('click', function(event) {
+    if (!input.contains(event.target) && !results.contains(event.target)) {
+      fecharPrateleira();
+    }
+  });
+
+  // Adiciona evento de entrada de texto ao campo de busca
+  input.addEventListener('input', function() {
+    if (input.value.trim() === '') {
+      fecharPrateleira();
+    } else {
+      results.style.display = 'block';
     }
   });
 }
