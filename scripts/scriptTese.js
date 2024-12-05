@@ -91,6 +91,7 @@ function searchTese() {
         }
       }
       results.size = results.length; // Define o tamanho do select para o número de opções
+      results.style.display = results.length > 0 ? 'block' : 'none'; // Exibe ou oculta a prateleira de resultados
     });
 
   // Adiciona o evento de clique apenas se ele ainda não foi adicionado
@@ -113,15 +114,18 @@ function searchTese() {
 
     // Adiciona evento de clique fora do campo de busca
     document.addEventListener('click', function(event) {
+      const input = document.getElementById('search');
+      const results = document.getElementById('searchResults');
       if (!input.contains(event.target) && !results.contains(event.target)) {
-        fecharPrateleira();
+        fecharPrateleiraTese();
       }
     });
 
     // Adiciona evento de entrada de texto ao campo de busca
     input.addEventListener('input', function() {
+      const results = document.getElementById('searchResults');
       if (input.value.trim() === '') {
-        fecharPrateleira();
+        fecharPrateleiraTese();
       } else {
         results.style.display = 'block';
       }
@@ -133,7 +137,7 @@ function searchTese() {
 }
 
 // Função para fechar a prateleira de resultados
-function fecharPrateleira() {
+function fecharPrateleiraTese() {
   var results = document.getElementById('searchResults');
   if (results) {
     results.style.display = 'none';
