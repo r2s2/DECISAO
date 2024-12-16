@@ -31,7 +31,7 @@
     
     <header>
 
-        <h1 style="font-size: 20pt;">Rodrigo Sacramento v. 1.13.29</h1>
+        <h1 style="font-size: 20pt;">Rodrigo Sacramento v. 1.13.45</h1>
         <a href="/tela_trabalho.html" class="link-restrito">Tela de trabalho</a>
         <br> <br>
         <a href="/adiciona_teses.html" class="link-restrito"> Adicionar teses</a>
@@ -62,15 +62,19 @@
             <div class="apreensoes">
             <p id="resultadoApreensao"></p>
             </div>
+            
 
             <p>O Tribunal de origem <span id="resultadoQuo"></span> <span id="'resultadoOrigem"></span>           </p>
+            
 
-            <p>Daí o presente <span id="classe2">[valor]</span>, no qual alega a defesa:</p>
+            <p>Daí o <span id="classe2">[valor]</span>, no qual alega <span id="seArespParte">[valor]</span>:</p>
+         
             <p><span id="tesesSelecionadas"><span id='folhasSTJ'></span></span> </p>
-            <p>Requer, por fim:</p>
+            <p>Requer:</p>
             <span id="pedidoPrincipal1"></span>
             <p> <span id="se_liminar2"> </span> </p>
             <p> <span id="pedidoLiminar"></span></p>
+            <p> <span id="seAresp"> </span> </p>
             <p><span id="informacoes"></span></p>
             <p> <span id="parecerMinisterial"></span><span id="parecerClasse"></span></p>
             <p>É o relatório.</p>
@@ -148,7 +152,9 @@
             <input type="radio" name="ato_coator" id="agravoExecucao" value="agravoExecucao" onclick="selecionaAtoCoator('agravoExecucao')">
             <label for="agravoExecucao"> Agravo em execução</label>
             <input type="radio" name="ato_coator" id="rse" value="rse" onclick="selecionaAtoCoator('rse')">
-            <label for="rse"> Recurso em sentido estrito</label>
+            <label for="rse"> RSE</label>
+            <input type="radio" name="ato_coator" id="revisao" value="revisao" onclick="selecionaAtoCoator('revisao')">
+            <label for="revisao"> Revisão Criminal</label>
             
            
             <div id="resultadoOrigem"></div> <!-- Elemento onde o valor será exibido -->

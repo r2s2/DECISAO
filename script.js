@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Função formatInput (exemplo)
+// Função formatInput
 function formatInput(input) {
 registrarEstado();
 let value = input.value;
@@ -158,7 +158,7 @@ const revisao = new Origem("Revisão criminal", "julgou procedente a revisão cr
 */
 
 class Classe {
-  constructor(nomeExtenso, verbo, agente, dispositivoFavoravel, dispositivoDesfavoravel, sinonimo, autorJustica) {
+  constructor(nomeExtenso, verbo, agente, dispositivoFavoravel, dispositivoDesfavoravel, sinonimo, autorJustica, seArespParte, seAresp) {
     this.nomeExtenso = nomeExtenso;
     this.verbo = verbo;
     this.agente = agente;
@@ -166,11 +166,13 @@ class Classe {
     this.dispositivoDesfavoravel = dispositivoDesfavoravel;
     this.sinonimo = sinonimo;
     this.autorJustica = autorJustica;
+    this.seArespParte = seArespParte;
+    this.seAresp = seAresp;
   }
 
-  selecionadoClasse() {
+  selecionadoClasse(id) {
     registrarEstado();
-    if (document.getElementById('classe')) {
+if (document.getElementById('classe')) {
       document.getElementById('classe').innerHTML = this.nomeExtenso;
     }
     if (document.getElementById('classe2')) {
@@ -185,15 +187,22 @@ class Classe {
     if (document.getElementById('autorJustica')) {
       document.getElementById('autorJustica').innerHTML = this.autorJustica;
     }
+    if (document.getElementById('seArespParte')) {
+      document.getElementById('seArespParte').innerHTML = this.seArespParte;
+    } if (document.getElementById('seAresp')) {
+      document.getElementById('seAresp').innerHTML = this.seAresp;
+    }    
+  }    
   }
-}
 
-const HC = new Classe("<i>habeas corpus</i>", "impetrado em favor de", "paciente", "<b>concedo a ordem.</b>", "<b>denego a ordem.</b>", "<i>writ</i>", "{{pac");
-const RHC = new Classe("recurso ordinário em <i>habeas corpus</i>", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso ordinário", "{{rec");
-const REsp = new Classe("recurso especial", "interposto por", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial", "{{rec");
-const AREsp = new Classe("agravo em recurso especial", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo em recurso especial", "{{agr");
-const agrg = new Classe("agravo regimental", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental", "{{agr");
-const edcl = new Classe("embargos de declaração", "opostos por", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração", "{{enb");
+
+
+const HC = new Classe("<i>habeas corpus</i>", "impetrado em favor de", "paciente", "<b>concedo a ordem.</b>", "<b>denego a ordem.</b>", "<i>writ</i>", "{{pac", "a defesa", '');
+const RHC = new Classe("recurso ordinário em <i>habeas corpus</i>", "interposto", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso ordinário", "{{rec", "o recorrente", '');
+const REsp = new Classe("recurso especial", "interposto por", "recorrente", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial", "{{rec", "o recorrente", '');
+const AREsp = new Classe("agravo em recurso especial", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "recurso especial", "{{agr", "o ora agravante", "Inadmitido o recurso especial (e-STJ fls. ), foi interposto o presente agravo em recurso especial (e-STJ fls. ).");
+const agrg = new Classe("agravo regimental", "interposto por", "agravante", "<b>dou provimento ao recurso.</b>", "<b>nego provimento ao recurso.</b>", "agravo regimental", "{{agr", "o agravante", '');
+const edcl = new Classe("embargos de declaração", "opostos por", "embargante", "<b>acolho os embargos.</b>", "<b>rejeito os embargos.</b>", "embargos de declaração", "{{enb",  "o embargante", '');
 
 // Função para salvar o estado no arquivo temporário, agora aceitando uma chave de sessão
 async function salvarEstado(chaveSessao, estado) {
@@ -345,6 +354,9 @@ function selecionaAtoCoator(id) {
       break;
     case 'rse':
       valor = 'Recurso em sentido estrito';
+      break;
+    case 'revisao':
+      valor = 'Revisão criminal';
       break;
     default:
       console.log('ID não reconhecido:', id);
