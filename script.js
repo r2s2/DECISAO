@@ -63,14 +63,18 @@ semLiminar: ''
 };
 
 
-
 // Botão de folhas
 document.addEventListener('DOMContentLoaded', function() {
   const floatButton = document.getElementById('floatButton');
+  const floatButtonTextArea = document.getElementById('floatButtonTextArea');
   const textoBaseRelatorio = document.getElementById('texto_base_relatorio');
 
   floatButton.addEventListener('dragstart', function(event) {
       event.dataTransfer.setData('text/plain', 'input1');
+  });
+
+  floatButtonTextArea.addEventListener('dragstart', function(event) {
+      event.dataTransfer.setData('text/plain', 'textarea');
   });
 
   textoBaseRelatorio.addEventListener('dragover', function(event) {
@@ -98,35 +102,65 @@ document.addEventListener('DOMContentLoaded', function() {
         inputElement.style.width = '80px';
         inputElement.placeholder = 'e-STJ fls.';
 
-          // Verifica se o elemento alvo é um texto e ajusta a posição do input
-          if (event.target.nodeType === Node.TEXT_NODE) {
-            const textContent = event.target.textContent;
-            const newText = textContent.slice(0, -1) + ' (e-STJ fls. )' + textContent.slice(-1);
-            event.target.textContent = newText;
-            event.target.parentNode.insertBefore(inputElement, event.target.nextSibling);
+        // Verifica se o elemento alvo é um texto e ajusta a posição do input
+        if (event.target.nodeType === Node.TEXT_NODE) {
+          const textContent = event.target.textContent;
+          const newText = textContent.slice(0, -1) + ' (e-STJ fls. )' + textContent.slice(-1);
+          event.target.textContent = newText;
+          event.target.parentNode.insertBefore(inputElement, event.target.nextSibling);
         } else {
-            event.target.appendChild(inputElement);
+          event.target.appendChild(inputElement);
         }
-          // Adiciona os event listeners ao novo input
-          inputElement.addEventListener('input', function () {
-            this.value = this.value.replace(/[^0-9/]/g, ''); // Permitir apenas números e '/'
-          });
 
-          inputElement.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-              event.preventDefault();
-              formatInput(this);
-            }
-          });
+        // Adiciona os event listeners ao novo input
+        inputElement.addEventListener('input', function () {
+          this.value = this.value.replace(/[^0-9/]/g, ''); // Permitir apenas números e '/'
+        });
 
-          // Focar no input para permitir a digitação imediata
-          inputElement.focus();
-      }
+        inputElement.addEventListener('keypress', function (event) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            formatInput(this);
+          }
+        });
 
-      // Remove a classe de destaque após soltar o botão
-      if (event.target.tagName === 'P' || event.target.tagName === 'SPAN') {
-        event.target.classList.remove('highlight');
-      }
+        // Focar no input para permitir a digitação imediata
+        inputElement.focus();
+    } else if (inputId === 'textarea') {
+        const pElement = document.createElement('p');
+        const textareaElement = document.createElement('textarea');
+        textareaElement.rows = 4;
+        textareaElement.cols = 50;
+        textareaElement.placeholder = 'Digite o texto aqui...';
+
+        const buttonElement = document.createElement('button');
+        buttonElement.textContent = 'Incluir';
+        buttonElement.addEventListener('click', function() {
+          const texto = textareaElement.value;
+          const novoParagrafo = document.createElement('p');
+          novoParagrafo.textContent = texto;
+          textoBaseRelatorio.insertBefore(novoParagrafo, pElement.nextSibling);
+          pElement.remove();
+        });
+
+        pElement.appendChild(textareaElement);
+        pElement.appendChild(buttonElement);
+
+        // Adiciona o parágrafo após o parágrafo em que foi incluído
+        if (event.target.tagName === 'P' || event.target.tagName === 'SPAN') {
+          event.target.parentNode.insertBefore(pElement, event.target.nextSibling);
+        } else {
+          textoBaseRelatorio.appendChild(pElement);
+        }
+
+        // Focar no textarea para permitir a digitação imediata
+        textareaElement.focus();
+    }
+
+    // Remove a classe de destaque após soltar o botão
+    if (event.target.tagName === 'P' || event.target.tagName === 'SPAN') {
+      event.target.classList.remove('highlight');
+    }
   });
 });
 

@@ -3,7 +3,7 @@ body {
     line-height: 1.5; /* Espaçamento entre linhas */
 }
 
-#floatButton {
+#floatButtonTextArea {
     position: fixed;
     top: 80px;
     right: 20px;
@@ -19,9 +19,28 @@ body {
     
 }
 
+
+#floatButton {
+    position: fixed;
+    top: 140px;
+    right: 20px;
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+    font-size: large;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.9;
+    
+}
+
+
+
 #floatButtonPrimeiroGrau {
     position: fixed;
-    top: 150px;
+    top: 200px;
     right: 20px;
     background-color: #ff6b09;
     color: white;
@@ -36,7 +55,7 @@ body {
 
 #floatButtonSegundoGrau {
     position: fixed;
-    top: 220px;
+    top: 260px;
     right: 20px;
     background-color: #ff6b09;
     color: white;
@@ -50,7 +69,7 @@ body {
 
 #floatButtonApreensao {
     position: fixed;
-    top: 290px;
+    top: 320px;
     right: 20px;
     background-color: #ff6b09;
     color: white;
@@ -64,10 +83,10 @@ body {
 
 #floatButtonCopiarTexto {
     position: fixed;
-    top: 360px;
+    top: 380px;
     right: 20px;
     background-color: #f0bc11;
-    color: white;
+    color: rgb(12, 11, 11);
     padding: 10px 20px;
     border: none;
     border-radius: 50px;
