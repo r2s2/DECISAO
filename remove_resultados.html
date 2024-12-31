@@ -29,37 +29,6 @@
             background-color: #007bff;
             color: white;
             cursor: pointer;
-            font-size: 16px;
-        }
-
-        .btn-acao:hover {
-            background-color: #0056b3;
-        }
-
-        .resultado {
-            color: #333;
-            background-color: #ffffff;
-            padding: 10px;
-            border-radius: 4px;
-        }
-
-        .precedente {
-            font-style: italic;
-            color: #555;
-            background-color: #ffffff;
-            padding: 10px;
-            border-radius: 4px;
-        }
-
-        .tags {
-            color: #333;
-            background-color: #ffffff;
-            padding: 10px;
-            border-radius: 4px;
-        }
-
-        .editando {
-            background-color: #ffcccc; /* Cor vermelha suave */
         }
     </style>
 </head>
@@ -71,10 +40,10 @@
     <a href="/adiciona_pedidos.html" class="link-restrito"> Adicionar pedidos</a>
     <a href="/remove_pedido.html" class="link-restrito"> Editar Pedidos</a>
     <a href="/adiciona_resultados.html" class="link-restrito"> Adicionar Resultados</a>
-    
+
 </header>
 <body>
-   
+    <h1>Lista de Resultados</h1>
     <table id="resultadosTable">
         <thead>
             <tr>
@@ -90,10 +59,26 @@
             <!-- As linhas da tabela serão preenchidas aqui -->
         </tbody>
     </table>
+    
     <script>
         function excluirResultado(id) {
-            console.log('Enviando ID para exclusão:', id); // Adicione esta linha, ainda precisa fazer essa alteração
+            console.log('Enviando ID para exclusão:', id); // Adicione esta linha
+        
+            $.ajax({
+                url: '/excluir_resultado',
+                type: 'POST',
+                data: JSON.stringify({ id: id }),
+                contentType: 'application/json; charset=utf-8',
+                success: function(response) {
+                    console.log(response);
+                    location.reload(); // Recarrega a página para mostrar a lista atualizada de resultados
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
         }
+
 
         function editarResultado(id) {
             var row = $('tr[data-id="' + id + '"]');

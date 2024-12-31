@@ -222,10 +222,10 @@ http.createServer(function (req, res) {
                     });
                 });
 
-            } else if (pathname === '/remove_resultados') {
+            } else if (pathname === '/excluir_resultado') {
                 const id = parseInt(data.id);
                 console.log('ID a ser excluído:', id);
-
+                
                 fs.readFile('resultados.json', (err, fileData) => {
                     if (err) {
                         console.error('Erro ao ler o arquivo:', err);
