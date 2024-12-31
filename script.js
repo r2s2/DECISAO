@@ -590,7 +590,8 @@ function searchResultadoFuncao() {
 
         var allKeywordsFound = keywords.every(keyword => tagsUpper.indexOf(keyword.toUpperCase()) > -1);
 
-        if ((resultado.resultado && removeAcentos(resultado.resultado.toUpperCase()).indexOf(filter) > -1) || allKeywordsFound || resultado.id.toString() === input.value) {
+        // Verificar se topico e resultado não estão vazios
+        if (resultado.topico && resultado.resultado && ((removeAcentos(resultado.resultado.toUpperCase()).indexOf(filter) > -1) || allKeywordsFound || resultado.id.toString() === input.value)) {
           var option = document.createElement('option');
           option.value = resultado.topico + '|' + resultado.resultado + '|' + resultado.precedente;
           option.text = resultado.id + " - " + resultado.topico + " - " + resultado.tags;  //+ " - " + resultado.resultado + " - " + resultado.precedente;
