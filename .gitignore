@@ -1,3 +1,8 @@
 .vercel
-*.json
+
 *.txt
+package-lock.json
+package.json
+pedidos.json
+temporario.json
+teses.json
