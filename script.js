@@ -588,8 +588,6 @@ function searchResultadoFuncao() {
         tags = resultado.tags || '';
         var tagsUpper = removeAcentos(tags.toUpperCase());
 
-        var allKeywordsFound = keywords.every(keyword => tagsUpper.indexOf(keyword.toUpperCase()) > -1);
-
         // Verificar se topico e resultado não estão vazios
         if (resultado.topico && resultado.resultado && ((removeAcentos(resultado.resultado.toUpperCase()).indexOf(filter) > -1) || allKeywordsFound || resultado.id.toString() === input.value)) {
           var option = document.createElement('option');
