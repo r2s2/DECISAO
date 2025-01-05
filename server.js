@@ -222,9 +222,9 @@ http.createServer(function (req, res) {
                     });
                 });
 
-            } else if (pathname === '/excluir_resultado') {
+            }   else if (pathname === '/excluir_resultado') {
                 const id = parseInt(data.id);
-                console.log('ID a ser excluído:', id);
+                console.log('ID a ser atualizado:', id);
                 
                 fs.readFile('resultados.json', (err, fileData) => {
                     if (err) {
@@ -234,31 +234,42 @@ http.createServer(function (req, res) {
                         return;
                     }
                     let json = JSON.parse(fileData);
-
-                    const lengthBefore = json.resultados.length;
-                    json.resultados = json.resultados.filter(resultado => resultado.id !== id);
-                    const lengthAfter = json.resultados.length;
-
-                    if (lengthBefore === lengthAfter) {
+            
+                    let resultadoEncontrado = false;
+                    json.resultados = json.resultados.map(resultado => {
+                        if (resultado.id === id) {
+                            resultadoEncontrado = true;
+                            return {
+                                
+                                resultado: '',
+                                precedente: '',
+                                tags: ''
+                            };
+                        }
+                        return resultado;
+                    });
+            
+                    if (!resultadoEncontrado) {
                         console.log('Resultado não encontrado.');
                         res.writeHead(404, { 'Content-Type': 'text/plain' });
                         res.end('Resultado não encontrado.');
                         return;
                     }
-
-                    fs.writeFile('resultados.json', JSON.stringify(json), (err) => {
+            
+                    fs.writeFile('resultados.json', JSON.stringify(json, null, 2), (err) => {
                         if (err) {
                             console.error('Erro ao escrever no arquivo:', err);
                             res.writeHead(500, { 'Content-Type': 'text/plain' });
                             res.end('Erro ao escrever no arquivo de resultados');
                             return;
                         }
-
-                        console.log('Resultado excluído com sucesso!');
+            
+                        console.log('Resultado atualizado com sucesso!');
                         res.writeHead(200, { 'Content-Type': 'text/plain' });
-                        res.end('Resultado excluído com sucesso!');
+                        res.end('Resultado atualizado com sucesso!');
                     });
-                });
+                });         
+
 
             } else if (pathname === '/saveState') {
                 fs.writeFile('temporario.json', JSON.stringify(data), (err) => {
